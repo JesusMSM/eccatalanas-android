@@ -1,0 +1,48 @@
+
+<PreferenceScreen
+    android:key="foobar"
+    android:title="@string/preferencias_titulo"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <com.jenzz.materialpreference.PreferenceCategory
+        android:title="@string/idiomas">
+
+        <com.jenzz.materialpreference.Preference
+            android:title="@string/seleccion_idioma"
+            android:key="seleccionidioma"
+            />
+
+
+    </com.jenzz.materialpreference.PreferenceCategory>
+
+    <com.jenzz.materialpreference.PreferenceCategory
+        android:title="Notificaciones"
+        >
+        <com.jenzz.materialpreference.CheckBoxPreference
+            android:title="PP" />
+        <com.jenzz.materialpreference.CheckBoxPreference
+            android:title="PSOE" />
+        <com.jenzz.materialpreference.CheckBoxPreference
+            android:title="PODEMOS" />
+        <com.jenzz.materialpreference.CheckBoxPreference
+            android:title="CIUDADANOS" />
+        <com.jenzz.materialpreference.CheckBoxPreference
+            android:title="PP" />
+        <com.jenzz.materialpreference.CheckBoxPreference
+            android:title="PP" />
+        <com.jenzz.materialpreference.CheckBoxPreference
+            android:title="PP" />
+        <com.jenzz.materialpreference.CheckBoxPreference
+            android:title="PP" />
+        <com.jenzz.materialpreference.CheckBoxPreference
+            android:title="PP" />
+        <com.jenzz.materialpreference.CheckBoxPreference
+            android:title="PP" />
+        <com.jenzz.materialpreference.CheckBoxPreference
+            android:title="PP" />
+
+
+    </com.jenzz.materialpreference.PreferenceCategory>
+
+</PreferenceScreen>
