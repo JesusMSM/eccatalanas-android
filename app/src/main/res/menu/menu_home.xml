@@ -1,6 +1,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".HomeActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+   <!-- <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never" />-->
+    <!--<item android:id="@+id/action_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home"
+        app:showAsAction="always"
+        android:orderInCategory="1"/>
+    <item android:id="@+id/action_chart"
+        android:icon="@drawable/ic_chart_pie"
+        android:title="Chart"
+        app:showAsAction="always"
+        android:orderInCategory="2"/>
+    <item android:id="@+id/action_document"
+        android:icon="@drawable/ic_file_document"
+        android:title="Document"
+        app:showAsAction="always"
+        android:orderInCategory="3"/>
+    <item android:id="@+id/action_rss"
+        android:icon="@drawable/ic_rss"
+        android:title="RSS"
+        app:showAsAction="always"
+        android:orderInCategory="4"/>-->
 </menu>

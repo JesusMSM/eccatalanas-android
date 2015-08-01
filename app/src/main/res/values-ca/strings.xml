@@ -1,0 +1,18 @@
+<resources>
+
+    <string name="tab_escrutinio_titulo">Escrutini</string>
+    <string name="tab_noticias_titulo">Notícies</string>
+    <string name="tab_quizs_titulo">Quizs</string>
+    <string name="app_name">EleccionsEC</string>
+    <string name="action_settings">Preferencias</string>
+    <string name="preferencias_titulo">Preferencias</string>
+    <string name="seleccion_idioma">Seleccione su idioma CA</string>
+    <string name="idiomas">Idiomas CA</string>
+    <string name="catalan">CATALAN CA</string>
+    <string name="castellano">CAST CA</string>
+    <string name="cambiar">CAMBIAR CA</string>
+    <string name="creditos">Créditos CA</string>
+    <string name="notificaciones">Notificaciones CA</string>
+
+
+</resources>
