@@ -1,32 +1,46 @@
 package es.elconfidencial.eleccionesec.activities;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
+import android.os.CountDownTimer;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Locale;
+import org.w3c.dom.Text;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import es.elconfidencial.eleccionesec.activities.adapters.MyRecyclerViewAdapter;
 import es.elconfidencial.eleccionesec.R;
+import es.elconfidencial.eleccionesec.activities.model.Noticia;
+import es.elconfidencial.eleccionesec.activities.model.Quiz;
 
 
 public class HomeActivity extends ActionBarActivity {
 
     public static Context context;
     ActionBar actionBar;
+    TextView tiempo;
+    TextView label;
+
+    //RecyclerView atributtes
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private static String LOG_TAG = "HomeActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +71,14 @@ public class HomeActivity extends ActionBarActivity {
         //Cargamos el customView
         actionBar.setCustomView(mCustomView);
         actionBar.setDisplayShowCustomEnabled(true);
+
+        //RecyclerView
+        mRecyclerView = (RecyclerView) findViewById(R.id.home_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new MyRecyclerViewAdapter(this, getSampleArrayList());
+        mRecyclerView.setAdapter(mAdapter);
     }
 
 
@@ -80,6 +102,17 @@ public class HomeActivity extends ActionBarActivity {
         }*/
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private ArrayList<Object> getSampleArrayList() {
+        ArrayList<Object> items = new ArrayList<>();
+        items.add("contador");
+        items.add(new Noticia("¿Qué pasará en Grecia el día después del referendum?", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. ", "AUTOR", R.drawable.imagequiz));
+        items.add(new Noticia("¿Qué pasará en Grecia el día después del referendum?", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.", "AUTOR", R.drawable.imagequiz));
+        items.add(new Noticia("¿Qué pasará en Grecia el día después del referendum?", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.", "AUTOR", R.drawable.imagequiz));
+        items.add(new Quiz(R.drawable.imagequiz,"Quiz 1","Descripcion 1"));
+        items.add(new Quiz(R.drawable.imagequiz,"Quiz 2","Descripcion 2"));
+        return items;
     }
 
 
