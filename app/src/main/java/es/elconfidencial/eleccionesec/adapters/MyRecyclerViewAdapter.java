@@ -1,12 +1,27 @@
 package es.elconfidencial.eleccionesec.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
+import org.apache.http.HttpStatus;
+
+import java.io.InputStream;
+import java.lang.ref.WeakReference;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 import es.elconfidencial.eleccionesec.R;
@@ -98,14 +113,12 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     /*** Funciones de configuracion de los ViewHolders ***/
-
     private void configureNoticiaViewHolder(NoticiaViewHolder vh1, int position) {
         Noticia noticia = (Noticia) items.get(position);
         if (noticia != null) {
-            vh1.titulo.setText(noticia.getTitulo());
-            vh1.decripcion.setText(noticia.getDescripcion());
+            vh1.titulo.setText(Html.fromHtml(noticia.getTitulo()));
             vh1.autor.setText(noticia.getAutor());
-            vh1.imagen.setImageResource(noticia.getImagen());
+            Picasso.with(context).load(noticia.getImagenUrl()).into(vh1.imagen);
         }
         vh1.autor.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
         vh1.titulo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
@@ -125,4 +138,5 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         vh3.contador.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
         vh3.label.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
     }
+
 }

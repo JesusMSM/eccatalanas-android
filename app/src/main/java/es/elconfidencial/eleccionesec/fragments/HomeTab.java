@@ -51,9 +51,9 @@ public class HomeTab extends Fragment {
     private ArrayList<Object> getSampleArrayList() {
         ArrayList<Object> items = new ArrayList<>();
         items.add("contador");
-        items.add(new Noticia("¿Qué pasará en Grecia el día después del referendum?", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. ", "AUTOR", R.drawable.imagequiz));
-        items.add(new Noticia("¿Qué pasará en Grecia el día después del referendum?", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.", "AUTOR", R.drawable.imagequiz));
-        items.add(new Noticia("¿Qué pasará en Grecia el día después del referendum?", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.", "AUTOR", R.drawable.imagequiz));
+        items.add(new Noticia("¿Qué pasará en Grecia el día después del referendum?", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. ", "AUTOR", "http://2www.ecestaticos.com/imagestatic/clipping/2e9/0ce/26a/2e90ce26a6d5a907bf57e76e559588a1.jpg?mtime=1438112368","",""));
+        items.add(new Noticia("¿Qué pasará en Grecia el día después del referendum?", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.", "AUTOR", "http://2www.ecestaticos.com/imagestatic/clipping/2e9/0ce/26a/2e90ce26a6d5a907bf57e76e559588a1.jpg?mtime=1438112368","",""));
+        items.add(new Noticia("¿Qué pasará en Grecia el día después del referendum?", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.", "AUTOR", "http://2www.ecestaticos.com/imagestatic/clipping/2e9/0ce/26a/2e90ce26a6d5a907bf57e76e559588a1.jpg?mtime=1438112368","",""));
         items.add(new Quiz(R.drawable.imagequiz,"Quiz 1","Descripcion 1"));
         items.add(new Quiz(R.drawable.imagequiz,"Quiz 2","Descripcion 2"));
         return items;

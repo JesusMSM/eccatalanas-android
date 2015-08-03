@@ -7,13 +7,21 @@ public class Noticia {
     private String titulo;
     private String descripcion;
     private String autor;
-    private int imagen;
+    private String imagenUrl;
+    private String link;
+    private String fecha;
 
-    public Noticia(String titulo, String descripcion, String autor, int imagen){
+    public Noticia(){
+        super();
+    }
+
+    public Noticia(String titulo, String descripcion, String autor, String imagenUrl, String link, String fecha){
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.autor = autor;
-        this.imagen = imagen;
+        this.imagenUrl = imagenUrl;
+        this.link = link;
+        this.fecha = fecha;
     }
 
     public String getTitulo() {
@@ -32,10 +40,6 @@ public class Noticia {
         this.descripcion = descripcion;
     }
 
-    public int getImagen() {
-        return imagen;
-    }
-
     public String getAutor() {
         return autor;
     }
@@ -44,7 +48,27 @@ public class Noticia {
         this.autor = autor;
     }
 
-    public void setImagen(int imagen) {
-        this.imagen = imagen;
+    public String getImagenUrl() {
+        return imagenUrl;
+    }
+
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 }
