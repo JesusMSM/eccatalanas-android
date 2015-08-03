@@ -1,4 +1,4 @@
-package es.elconfidencial.eleccionesec.activities.model;
+package es.elconfidencial.eleccionesec.model;
 
 /**
  * Created by Afll on 01/08/2015.

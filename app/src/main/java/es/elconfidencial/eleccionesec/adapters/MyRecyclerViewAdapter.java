@@ -1,4 +1,4 @@
-package es.elconfidencial.eleccionesec.activities.adapters;
+package es.elconfidencial.eleccionesec.adapters;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import es.elconfidencial.eleccionesec.R;
-import es.elconfidencial.eleccionesec.activities.model.Noticia;
-import es.elconfidencial.eleccionesec.activities.model.Quiz;
-import es.elconfidencial.eleccionesec.activities.viewholders.ContadorViewHolder;
-import es.elconfidencial.eleccionesec.activities.viewholders.NoticiaViewHolder;
-import es.elconfidencial.eleccionesec.activities.viewholders.QuizViewHolder;
+import es.elconfidencial.eleccionesec.model.Noticia;
+import es.elconfidencial.eleccionesec.model.Quiz;
+import es.elconfidencial.eleccionesec.viewholders.ContadorViewHolder;
+import es.elconfidencial.eleccionesec.viewholders.NoticiaViewHolder;
+import es.elconfidencial.eleccionesec.viewholders.QuizViewHolder;
 
 /**
  * Created by Afll on 01/08/2015.

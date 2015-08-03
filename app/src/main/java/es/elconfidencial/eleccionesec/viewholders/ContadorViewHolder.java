@@ -1,9 +1,8 @@
-package es.elconfidencial.eleccionesec.activities.viewholders;
+package es.elconfidencial.eleccionesec.viewholders;
 
 import android.os.CountDownTimer;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.ParseException;
