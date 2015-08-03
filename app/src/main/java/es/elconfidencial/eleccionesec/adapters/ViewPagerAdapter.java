@@ -26,10 +26,10 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
     CharSequence Titles[]; // This will Store the Titles of the Tabs which are Going to be passed when ViewPagerAdapter is created
     int NumbOfTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
     private int[] imageResId = {
-            R.drawable.ic_home,
-            R.drawable.ic_chart_pie,
-            R.drawable.ic_file_document,
-            R.drawable.ic_rss
+            R.drawable.tab_home,
+            R.drawable.tab_chart,
+            R.drawable.tab_document,
+            R.drawable.tab_rss
     };
 
 
@@ -79,6 +79,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
         sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         return sb;
         //return Titles[position];
+    }
+
+    public int getDrawableId(int position){
+        //Here is only example for getting tab drawables
+        return imageResId[position];
     }
 
 
