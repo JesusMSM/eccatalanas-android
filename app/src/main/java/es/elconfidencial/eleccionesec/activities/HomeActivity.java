@@ -1,7 +1,10 @@
 package es.elconfidencial.eleccionesec.activities;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -16,6 +19,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.arellomobile.android.push.BasePushMessageReceiver;
+import com.arellomobile.android.push.PushManager;
+import com.arellomobile.android.push.utils.RegisterBroadcastReceiver;
 
 import java.util.ArrayList;
 
@@ -42,6 +49,7 @@ public class HomeActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_home);
         this.context = getApplicationContext();
 
@@ -123,6 +131,4 @@ public class HomeActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }

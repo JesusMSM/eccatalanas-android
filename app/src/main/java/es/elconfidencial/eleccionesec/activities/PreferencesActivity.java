@@ -52,6 +52,7 @@ public class PreferencesActivity extends PreferenceActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), HomeActivity.class);
                 startActivity(intent);
+                finish();
             }});
 
         addPreferencesFromResource(R.xml.prefs);

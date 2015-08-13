@@ -24,7 +24,7 @@
                 android:layout_marginBottom="15dp"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
-                android:background="@color/material_blue_grey_800"
+                android:background="@color/md_material_blue_800"
                 android:textColor="@color/white"
                 android:paddingRight="5dp"
                 android:paddingLeft="5dp"/>
@@ -43,7 +43,8 @@
                 android:layout_width="fill_parent"
                 android:src="@drawable/imagequiz"
                 android:layout_height="wrap_content"
-                android:id="@+id/imagen"/>
+                android:id="@+id/imagen"
+                android:adjustViewBounds="true"/>
 
             <!--<TextView
                 android:id="@+id/descripcion"

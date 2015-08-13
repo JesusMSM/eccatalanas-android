@@ -1,6 +1,7 @@
 package es.elconfidencial.eleccionesec.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
@@ -25,6 +26,7 @@ import java.net.URL;
 import java.util.List;
 
 import es.elconfidencial.eleccionesec.R;
+import es.elconfidencial.eleccionesec.activities.NoticiaContentActivity;
 import es.elconfidencial.eleccionesec.model.Noticia;
 import es.elconfidencial.eleccionesec.model.Quiz;
 import es.elconfidencial.eleccionesec.viewholders.ContadorViewHolder;
@@ -113,8 +115,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     /*** Funciones de configuracion de los ViewHolders ***/
-    private void configureNoticiaViewHolder(NoticiaViewHolder vh1, int position) {
-        Noticia noticia = (Noticia) items.get(position);
+    private void configureNoticiaViewHolder(final NoticiaViewHolder vh1, int position) {
+        final Noticia noticia = (Noticia) items.get(position);
         if (noticia != null) {
             vh1.titulo.setText(Html.fromHtml(noticia.getTitulo()));
             vh1.autor.setText(noticia.getAutor());
@@ -122,6 +124,24 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
         vh1.autor.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
         vh1.titulo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
+
+        //onClickListenerNoticia
+        vh1.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Creamos un intent para llamar a NoticiasContentActivity con los extras de la noticia correspondiente
+                Intent intent = new Intent(context, NoticiaContentActivity.class);
+                intent.putExtra("titulo",noticia.getTitulo());
+                System.out.print("DESC" + noticia.getDescripcion());
+                intent.putExtra("descripcion", noticia.getDescripcion());
+                intent.putExtra("autor",noticia.getAutor());
+                intent.putExtra("fecha",noticia.getFecha());
+                intent.putExtra("link",noticia.getLink());
+                intent.putExtra("imagenUrl",noticia.getImagenUrl());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
     }
 
     private void configureQuizViewHolder(QuizViewHolder vh2,int position) {

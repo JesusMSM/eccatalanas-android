@@ -1,5 +1,7 @@
 package es.elconfidencial.eleccionesec.rss;
 
+import android.text.Html;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -42,11 +44,17 @@ public class RssHandler extends DefaultHandler {
             if (localName.equals("title") && (firstTime==true)) {
                 noticiaActual.setTitulo(sbTexto.toString());
                 firstTime = false;
+            } else if(localName.equals("content")){
+                //Comprobamos que no esta vacío
+                if(!sbTexto.toString().isEmpty()){
+                    noticiaActual.setDescripcion(sbTexto.toString());
+                    System.out.println(noticiaActual.getDescripcion().length());
+                }
             } else if (localName.equals("id")) {
                 noticiaActual.setLink(sbTexto.toString());
             } else if (localName.equals("published")) {
                 noticiaActual.setFecha(sbTexto.toString());
-            }else if (localName.equals("name")) {
+            } else if (localName.equals("name")) {
                 noticiaActual.setAutor(sbTexto.toString());
             } else if(localName.equals("entry")){
                 noticias.add(noticiaActual);}
