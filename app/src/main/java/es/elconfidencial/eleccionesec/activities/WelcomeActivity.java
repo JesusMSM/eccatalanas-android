@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.arellomobile.android.push.BasePushMessageReceiver;
 import com.arellomobile.android.push.PushManager;
 import com.arellomobile.android.push.utils.RegisterBroadcastReceiver;
+import com.parse.Parse;
 
 import java.util.Locale;
 
@@ -39,7 +40,7 @@ public class WelcomeActivity extends Activity {
         String idioma = prefs.getString("idioma", "ninguno"); //Si no existe, devuelve el segundo parametro
         setLocale(idioma); //Cambiamos el parametro de config locale
 
-        /**********INICIALIZAMOS PUSHWOOSH*******************/
+         /**********INICIALIZAMOS PUSHWOOSH*******************/
         //Register receivers for push notifications
         registerReceivers();
 
