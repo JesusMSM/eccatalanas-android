@@ -4,6 +4,7 @@ package es.elconfidencial.eleccionesec.fragments;
  * Created by MOONFISH on 14/07/2015.
  */
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,11 @@ import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -27,6 +33,8 @@ import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.activities.HomeActivity;
 import es.elconfidencial.eleccionesec.chart.BarChartItem;
 import es.elconfidencial.eleccionesec.chart.ChartItem;
+import es.elconfidencial.eleccionesec.chart.LineChartItem;
+import es.elconfidencial.eleccionesec.chart.PieChartItem;
 
 
 public class ChartTab extends Fragment {
@@ -41,6 +49,9 @@ public class ChartTab extends Fragment {
         lv = (ListView) v.findViewById(R.id.listView1);
         ArrayList<ChartItem> list = new ArrayList<ChartItem>();
         list.add(new BarChartItem(generateDataBar(3), HomeActivity.context));
+        list.add(new LineChartItem(generateDataLine(4), HomeActivity.context));
+        list.add(new PieChartItem(generateDataPie(5), HomeActivity.context));
+        list.add(new BarChartItem(generateDataBar(6), HomeActivity.context));
 
         ChartDataAdapter cda = new ChartDataAdapter(HomeActivity.context, list);
         lv.setAdapter(cda);
@@ -88,6 +99,70 @@ public class ChartTab extends Fragment {
         BarData cd = new BarData(getMonths(), d);
         return cd;
     }
+    private ArrayList<String> getQuarters() {
+
+        ArrayList<String> q = new ArrayList<String>();
+        q.add("PP");
+        q.add("PSOE");
+        q.add("Podemos");
+        q.add("Ciudadanos");
+
+        return q;
+    }
+    private PieData generateDataPie(int cnt) {
+
+        ArrayList<Entry> entries = new ArrayList<Entry>();
+
+        for (int i = 0; i < 4; i++) {
+            entries.add(new Entry((int) (Math.random() * 70) + 30, i));
+        }
+
+        PieDataSet d = new PieDataSet(entries, "");
+
+        // space between slices
+        d.setSliceSpace(2f);
+        d.setColors(ColorTemplate.VORDIPLOM_COLORS);
+        d.setValueTextColor(Color.BLACK);
+
+        PieData cd = new PieData(getQuarters(), d);
+        return cd;
+    }
+    private LineData generateDataLine(int cnt) {
+
+        ArrayList<Entry> e1 = new ArrayList<Entry>();
+
+        for (int i = 0; i < 12; i++) {
+            e1.add(new Entry((int) (Math.random() * 65) + 40, i));
+        }
+
+        LineDataSet d1 = new LineDataSet(e1, "New DataSet " + cnt + ", (1)");
+        d1.setLineWidth(2.5f);
+        d1.setCircleSize(4.5f);
+        d1.setHighLightColor(Color.rgb(244, 117, 117));
+        d1.setDrawValues(false);
+
+        ArrayList<Entry> e2 = new ArrayList<Entry>();
+
+        for (int i = 0; i < 12; i++) {
+            e2.add(new Entry(e1.get(i).getVal() - 30, i));
+        }
+
+        LineDataSet d2 = new LineDataSet(e2, "New DataSet " + cnt + ", (2)");
+        d2.setLineWidth(2.5f);
+        d2.setCircleSize(4.5f);
+        d2.setHighLightColor(Color.rgb(244, 117, 117));
+        d2.setColor(ColorTemplate.VORDIPLOM_COLORS[0]);
+        d2.setCircleColor(ColorTemplate.VORDIPLOM_COLORS[0]);
+        d2.setDrawValues(false);
+
+        ArrayList<LineDataSet> sets = new ArrayList<LineDataSet>();
+        sets.add(d1);
+        sets.add(d2);
+
+        LineData cd = new LineData(getMonths(), sets);
+        return cd;
+    }
+
     private ArrayList<String> getMonths() {
 
         ArrayList<String> m = new ArrayList<String>();

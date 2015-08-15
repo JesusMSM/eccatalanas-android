@@ -13,6 +13,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.arellomobile.android.push.BasePushMessageReceiver;
 import com.arellomobile.android.push.PushManager;
 import com.arellomobile.android.push.utils.RegisterBroadcastReceiver;
@@ -68,6 +69,51 @@ public class WelcomeActivity extends Activity {
         Intent intent = new Intent(this, PreferencesActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void idioma(View view) {
+        new MaterialDialog.Builder(this)
+                .title(R.string.seleccion_idioma)
+                .items(R.array.idioma)
+                .itemsCallbackSingleChoice(-1, new MaterialDialog.ListCallbackSingleChoice() {
+                    @Override
+                    public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                        //Cargamos la configuracion para cambiarla despues
+                        Resources standardResources = context.getResources();
+                        DisplayMetrics metrics = standardResources.getDisplayMetrics();
+                        Configuration config = new Configuration(standardResources.getConfiguration());
+
+                        //Cargamos las preferencias compartidas, es como la base de datos para guardarlas y que se recuerden mas tarde
+                        SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = prefs.edit();
+
+                        //Analizamos la opcion (idioma) elegida
+                        switch (which) {
+                            case 0:
+                                Locale espanol = new Locale("es", "ES");
+                                config.locale = espanol;
+                                editor.putString("idioma", "espanol"); //Lo guardamos para recordarlo
+                                break;
+                            case 1:
+                                Locale catalan = new Locale("ca", "ES");
+                                config.locale = catalan;
+                                editor.putString("idioma", "catalan"); //Lo guardamos para recordarlo
+                                break;
+                        }
+                        editor.commit(); //Guardamos las SharedPreferences
+                        //Actualizamos la configuracion
+                        standardResources.updateConfiguration(config, metrics);
+                        //Codigo para recargar la app con la nueva config
+                        finish();
+                        startActivity(getIntent());
+                        //Intent refresh = new Intent(HomeActivity.context, HomeActivity.class);
+                        // startActivity(refresh);
+                        return true;
+                    }
+                })
+                .positiveText(R.string.cambiar)
+                .show();
+
     }
 
     private void setLocale(String idioma){

@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BARRAS"
+        android:text="EVOLUCION"
         android:id="@+id/autor"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="5dp"
@@ -19,7 +19,7 @@
         android:paddingLeft="5dp"
         />
 
-    <com.github.mikephil.charting.charts.BarChart
+    <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chart"
         android:layout_width="match_parent"
         android:layout_height="300dp" />

@@ -7,10 +7,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BARRAS"
+        android:text="TARTA"
         android:id="@+id/autor"
         android:layout_marginBottom="15dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
         android:background="@color/md_material_blue_800"
@@ -19,9 +19,9 @@
         android:paddingLeft="5dp"
         />
 
-    <com.github.mikephil.charting.charts.BarChart
+    <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/chart"
         android:layout_width="match_parent"
-        android:layout_height="300dp" />
+        android:layout_height="345dp" />
 
 </LinearLayout>
