@@ -13,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -41,6 +43,7 @@ public class ChartTab extends Fragment {
 
     BarChart barChart;
     ListView lv;
+    PullRefreshLayout layout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -55,6 +58,21 @@ public class ChartTab extends Fragment {
 
         ChartDataAdapter cda = new ChartDataAdapter(HomeActivity.context, list);
         lv.setAdapter(cda);
+
+        layout = (PullRefreshLayout) v.findViewById(R.id.swipeRefreshLayout);
+
+        // listen refresh event
+        layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // start refresh
+                //Aquí se descargarían nuevos datos
+                Toast.makeText(HomeActivity.context, "Refrescado!",
+                        Toast.LENGTH_LONG).show();
+                // refresh complete
+                layout.setRefreshing(false);
+            }
+        });
        /* barChart = (BarChart) v.findViewById(R.id.barChart1);
 
         ArrayList<BarEntry> entries = new ArrayList<>();
