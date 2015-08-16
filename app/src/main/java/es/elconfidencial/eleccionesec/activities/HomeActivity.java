@@ -41,7 +41,7 @@ public class HomeActivity extends ActionBarActivity {
     ViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
-    int numbOfTabs =5;
+    int numbOfTabs =6;
     CharSequence[] Titles = new CharSequence[numbOfTabs];
 
 
@@ -84,6 +84,7 @@ public class HomeActivity extends ActionBarActivity {
         Titles[2] = "DOC";
         Titles[3] = "RSS";
         Titles[4] = "QUIZ";
+        Titles[5] = "PREFERENCIAS";
 
         // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
         adapter =  new ViewPagerAdapter(getSupportFragmentManager(),Titles,numbOfTabs);

@@ -18,6 +18,7 @@ import es.elconfidencial.eleccionesec.activities.HomeActivity;
 import es.elconfidencial.eleccionesec.fragments.ChartTab;
 import es.elconfidencial.eleccionesec.fragments.DocumentTab;
 import es.elconfidencial.eleccionesec.fragments.HomeTab;
+import es.elconfidencial.eleccionesec.fragments.PreferencesTab;
 import es.elconfidencial.eleccionesec.fragments.QuizTab;
 import es.elconfidencial.eleccionesec.fragments.RSSTab;
 
@@ -30,6 +31,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
             R.drawable.tab_home,
             R.drawable.tab_chart,
             R.drawable.tab_document,
+            R.drawable.tab_rss,
             R.drawable.tab_rss,
             R.drawable.tab_rss
     };
@@ -66,9 +68,13 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
             RSSTab rssTab = new RSSTab();
             return rssTab;
         }
-        else{
+        if(position ==4){
             QuizTab quizTab = new QuizTab();
             return quizTab;
+        }
+        else{
+            PreferencesTab prefTab = new PreferencesTab();
+            return prefTab;
         }
 
 
