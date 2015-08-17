@@ -16,10 +16,44 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/abc_list_item_padding_horizontal_material"
+        android:layout_marginTop="@dimen/abc_list_item_padding_horizontal_material"
+        android:layout_marginStart="@dimen/abc_list_item_padding_horizontal_material"
+        android:layout_below="@id/imageView"
+        android:textColor="@color/ColorPreferencias"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Prefs"
-        android:id="@+id/textView4"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:text="@string/idiomas"
+        android:id="@+id/textView4" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/abc_list_item_padding_horizontal_material"
+        android:layout_marginTop="@dimen/abc_list_item_padding_horizontal_material"
+        android:id="@+id/listViewIdiomas"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/ColorPreferencias"
+        android:layout_marginLeft="@dimen/abc_list_item_padding_horizontal_material"
+        android:layout_marginTop="@dimen/abc_list_item_padding_horizontal_material"
+        android:layout_below="@id/listViewIdiomas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/notificaciones"
+        android:id="@+id/textView5" />
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/abc_list_item_padding_horizontal_material"
+        android:layout_marginTop="@dimen/abc_list_item_padding_horizontal_material"
+        android:id="@+id/listViewPartidos"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>

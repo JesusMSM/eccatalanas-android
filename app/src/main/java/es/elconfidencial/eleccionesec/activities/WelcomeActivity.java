@@ -41,7 +41,7 @@ public class WelcomeActivity extends Activity {
         String idioma = prefs.getString("idioma", "ninguno"); //Si no existe, devuelve el segundo parametro
         setLocale(idioma); //Cambiamos el parametro de config locale
 
-         /**********INICIALIZAMOS PUSHWOOSH*******************/
+        /**********INICIALIZAMOS PUSHWOOSH*******************/
         //Register receivers for push notifications
         registerReceivers();
 
@@ -140,18 +140,18 @@ public class WelcomeActivity extends Activity {
     protected void onResume() {
         super.onResume();
         //Re-register receivers on resume
-        registerReceivers();
+      //  registerReceivers();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         //Unregister receivers on pause
-        unregisterReceivers();
+       // unregisterReceivers();
     }
 
     /***********************PUSHWOOSH*****************************/
-//Registration receiver
+    //Registration receiver
     BroadcastReceiver mBroadcastReceiver = new RegisterBroadcastReceiver()
     {
         @Override
