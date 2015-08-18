@@ -44,7 +44,7 @@ public class WelcomeActivity extends Activity {
         setLocale(idioma); //Cambiamos el parametro de config locale
 
         /**********INICIALIZAMOS PUSHWOOSH*******************/
-        //Register receivers for push notifications
+       /** //Register receivers for push notifications
         registerReceivers();
 
         //Create and start push manager
@@ -142,18 +142,18 @@ public class WelcomeActivity extends Activity {
     protected void onResume() {
         super.onResume();
         //Re-register receivers on resume
-        registerReceivers();
+       // registerReceivers();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         //Unregister receivers on pause
-        unregisterReceivers();
+     //   unregisterReceivers();
     }
 
     /***********************PUSHWOOSH*****************************/
-    //Registration receiver
+    /** //Registration receiver
     BroadcastReceiver mBroadcastReceiver = new BaseRegistrationReceiver()
     {
         @Override
@@ -238,7 +238,7 @@ public class WelcomeActivity extends Activity {
     /**
      * Will check main Activity intent and if it contains any PushWoosh data, will clear it
      */
-    private void resetIntentValues()
+ /**   private void resetIntentValues()
     {
         Intent mainAppIntent = getIntent();
 
@@ -278,5 +278,5 @@ public class WelcomeActivity extends Activity {
         setIntent(intent);
 
         checkMessage(intent);
-    }
+    } **/
 }

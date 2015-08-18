@@ -18,6 +18,7 @@ import es.elconfidencial.eleccionesec.activities.HomeActivity;
 import es.elconfidencial.eleccionesec.fragments.ChartTab;
 import es.elconfidencial.eleccionesec.fragments.DocumentTab;
 import es.elconfidencial.eleccionesec.fragments.HomeTab;
+import es.elconfidencial.eleccionesec.fragments.PartyFragment;
 import es.elconfidencial.eleccionesec.fragments.PreferencesTab;
 import es.elconfidencial.eleccionesec.fragments.RSSTab;
 
