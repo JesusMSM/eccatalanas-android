@@ -14,10 +14,12 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.arellomobile.android.push.BasePushMessageReceiver;
-import com.arellomobile.android.push.PushManager;
-import com.arellomobile.android.push.utils.RegisterBroadcastReceiver;
+
 import com.parse.Parse;
+import com.pushwoosh.BasePushMessageReceiver;
+import com.pushwoosh.BaseRegistrationReceiver;
+import com.pushwoosh.PushManager;
+
 
 import java.util.Locale;
 
@@ -140,19 +142,19 @@ public class WelcomeActivity extends Activity {
     protected void onResume() {
         super.onResume();
         //Re-register receivers on resume
-      //  registerReceivers();
+        registerReceivers();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         //Unregister receivers on pause
-       // unregisterReceivers();
+        unregisterReceivers();
     }
 
     /***********************PUSHWOOSH*****************************/
     //Registration receiver
-    BroadcastReceiver mBroadcastReceiver = new RegisterBroadcastReceiver()
+    BroadcastReceiver mBroadcastReceiver = new BaseRegistrationReceiver()
     {
         @Override
         public void onRegisterActionReceive(Context context, Intent intent)

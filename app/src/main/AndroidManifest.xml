@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="es.elconfidencial.eleccionesec" >
 
-    <!--Da permisos a la aplicación para conectarse a Internet-->
-    <uses-permission android:name="android.permission.INTERNET"/>
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
@@ -76,35 +74,39 @@
 
 
         <!--PUSHWOOSH-->
-        <activity android:name="com.arellomobile.android.push.PushWebview"/>
+        <activity android:name="com.pushwoosh.richpages.RichPageActivity" />
+        <activity android:name="com.pushwoosh.MessageActivity" />
+        <activity android:name="com.pushwoosh.PushHandlerActivity" />
 
-        <activity android:name="com.arellomobile.android.push.MessageActivity"/>
-
-        <activity android:name="com.arellomobile.android.push.PushHandlerActivity"/>
-
-        <!--
-          BroadcastReceiver that will receive intents from GCM
-          services and handle them to the custom IntentService.
-
-          The com.google.android.c2dm.permission.SEND permission is necessary
-          so only GCM services can send data messages for the app.
-        -->
         <receiver
-            android:name="com.google.android.gcm.GCMBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND">
+            android:name="com.pushwoosh.thirdparty.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
-                <!-- Receives the actual messages. -->
-                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
-                <!-- Receives the registration id. -->
-                <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
-                <category android:name="es.elconfidencial.eleccionesec"/>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="es.elconfidencial.eleccionesec" />
             </intent-filter>
         </receiver>
 
-        <!--
-          Application-specific subclass of PushGCMIntentService that will
-          handle received messages.
-        -->
-        <service android:name="com.arellomobile.android.push.PushGCMIntentService"/>
+        <service
+            android:name="com.pushwoosh.GCMListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.pushwoosh.GCMInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.pushwoosh.GCMRegistrationService"
+            android:exported="false">
+        </service>
     </application>
 </manifest>

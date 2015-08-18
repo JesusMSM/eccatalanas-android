@@ -20,10 +20,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.arellomobile.android.push.BasePushMessageReceiver;
-import com.arellomobile.android.push.PushManager;
-import com.arellomobile.android.push.utils.RegisterBroadcastReceiver;
-
 import java.util.ArrayList;
 
 import es.elconfidencial.eleccionesec.adapters.MyRecyclerViewAdapter;
