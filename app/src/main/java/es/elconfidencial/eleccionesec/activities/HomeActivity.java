@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import es.elconfidencial.eleccionesec.adapters.MyRecyclerViewAdapter;
 import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.adapters.ViewPagerAdapter;
 import es.elconfidencial.eleccionesec.model.Noticia;
