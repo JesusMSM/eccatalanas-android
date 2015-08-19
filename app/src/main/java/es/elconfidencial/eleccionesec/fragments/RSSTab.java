@@ -20,7 +20,7 @@ import es.elconfidencial.eleccionesec.model.Noticia;
 import es.elconfidencial.eleccionesec.rss.RssParser;
 
 /**
- * Created by Jes�sManuel on 03/08/2015.
+ * Created by MOONFISH on 03/08/2015.
  */
 public class RSSTab extends Fragment {
 

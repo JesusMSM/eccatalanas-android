@@ -27,6 +27,7 @@ import java.util.List;
 
 import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.activities.NoticiaContentActivity;
+import es.elconfidencial.eleccionesec.activities.PoliticianCardActivity;
 import es.elconfidencial.eleccionesec.model.Noticia;
 import es.elconfidencial.eleccionesec.model.Partido;
 import es.elconfidencial.eleccionesec.model.Politico;
@@ -199,14 +200,26 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     private void configurePoliticoViewHolder(PoliticoViewHolder vh5,int position) {
-        Politico politico = (Politico) items.get(position);
-        if(politico != null){
+        final Politico politico = (Politico) items.get(position);
+        if(politico != null) {
             vh5.nombre.setText(politico.getNombre());
             vh5.edad.setText(politico.getEdad());
             vh5.partido.setText(politico.getPartido());
             vh5.cargo.setText(politico.getCargo());
-            vh5.perfil.setText(politico.getPerfil());
         }
+            vh5.fab.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, PoliticianCardActivity.class);
+                    intent.putExtra("nombre", politico.getNombre());
+                    intent.putExtra("edad", politico.getEdad());
+                    intent.putExtra("partido", politico.getPartido());
+                    intent.putExtra("cargo", politico.getCargo());
+                    intent.putExtra("perfil", politico.getPerfil());
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            });
+
     }
 
 }

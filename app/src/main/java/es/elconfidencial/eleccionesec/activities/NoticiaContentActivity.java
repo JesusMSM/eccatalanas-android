@@ -23,7 +23,7 @@ import com.squareup.picasso.Picasso;
 import es.elconfidencial.eleccionesec.R;
 
 /**
- * Created by Afll on 13/08/2015.
+ * Created by MOONFISH on 13/08/2015.
  */
 public class NoticiaContentActivity extends ActionBarActivity {
 
@@ -33,7 +33,7 @@ public class NoticiaContentActivity extends ActionBarActivity {
         setContentView(R.layout.activity_content_noticia);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("El Confidencial");
-        //Extraemos el intent para leer los parámetros y rellenar los campos
+        //Extraemos el intent para leer los parï¿½metros y rellenar los campos
         Intent intent = getIntent();
 
         TextView titulo = (TextView) findViewById(R.id.titulo);
