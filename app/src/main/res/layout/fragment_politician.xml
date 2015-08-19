@@ -3,11 +3,9 @@
     android:layout_height="match_parent"
     tools:context="es.elconfidencial.eleccionesec.fragments.PoliticianFragment">
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/politicians_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Lista de políticos"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:textSize="36sp"/>
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

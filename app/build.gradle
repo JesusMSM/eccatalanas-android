@@ -36,4 +36,5 @@ dependencies {
     compile 'com.pushwoosh:pushwoosh:+'
     compile 'com.parse.bolts:bolts-android:1.+'
     compile 'com.baoyz.pullrefreshlayout:library:1.0.1'
+    compile 'com.android.support:design:22.2.0'
 }

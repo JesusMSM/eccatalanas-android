@@ -3,11 +3,8 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/parties_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Lista de Partidos"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:textSize="36sp"/>
-
+        android:layout_height="match_parent"/>
 </FrameLayout>

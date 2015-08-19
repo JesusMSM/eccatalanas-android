@@ -28,20 +28,24 @@ import java.util.List;
 import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.activities.NoticiaContentActivity;
 import es.elconfidencial.eleccionesec.model.Noticia;
+import es.elconfidencial.eleccionesec.model.Partido;
+import es.elconfidencial.eleccionesec.model.Politico;
 import es.elconfidencial.eleccionesec.model.Quiz;
 import es.elconfidencial.eleccionesec.viewholders.ContadorViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.NoticiaViewHolder;
+import es.elconfidencial.eleccionesec.viewholders.PartidoViewHolder;
+import es.elconfidencial.eleccionesec.viewholders.PoliticoViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.QuizViewHolder;
 
 /**
- * Created by Afll on 01/08/2015.
+ * Created by MOONFISH on 01/08/2015.
  */
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     // The items to display in your RecyclerView
     private List<Object> items;
     Context context;
-    private final int NOTICIA = 0, QUIZ = 1, CONTADOR = 2;
+    private final int NOTICIA = 0, QUIZ = 1, CONTADOR = 2, PARTIDO = 3, POLITICO = 4;
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyRecyclerViewAdapter(Context context, List<Object> items) {
@@ -64,6 +68,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             return QUIZ;
         }else if (items.get(position).equals("contador")) {
             return CONTADOR;
+        }else if (items.get(position) instanceof Partido) {
+            return PARTIDO;
+        }else if (items.get(position) instanceof Politico) {
+            return POLITICO;
         }
         return -1;
     }
@@ -87,6 +95,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 View v3 = inflater.inflate(R.layout.recyclerview_item_contador, viewGroup, false);
                 viewHolder = new ContadorViewHolder(v3);
                 break;
+            case PARTIDO:
+                View v4 = inflater.inflate(R.layout.recyclerview_item_partido, viewGroup, false);
+                viewHolder = new PartidoViewHolder(v4);
+                break;
+            case POLITICO:
+                View v5 = inflater.inflate(R.layout.recyclerview_item_politico, viewGroup, false);
+                viewHolder = new PoliticoViewHolder(v5);
+                break;
             default:
                 viewHolder = null;
                 break;
@@ -109,6 +125,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             case CONTADOR:
                 ContadorViewHolder vh3 = (ContadorViewHolder) viewHolder;
                 configureContadorViewHolder(vh3, position);
+                break;
+            case PARTIDO:
+                PartidoViewHolder vh4 = (PartidoViewHolder) viewHolder;
+                configurePartidoViewHolder(vh4, position);
+                break;
+            case POLITICO:
+                PoliticoViewHolder vh5 = (PoliticoViewHolder) viewHolder;
+                configurePoliticoViewHolder(vh5, position);
                 break;
             default:
         }
@@ -157,6 +181,32 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         vh3.showContador();
         vh3.contador.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
         vh3.label.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
+    }
+
+    private void configurePartidoViewHolder(PartidoViewHolder vh4,int position) {
+        Partido partido = (Partido) items.get(position);
+        if(partido != null){
+            vh4.nombre.setText(partido.getNombre());
+            vh4.presidente.setText(partido.getPresidente());
+            vh4.secGeneral.setText(partido.getSecGeneral());
+            vh4.portavozCongreso.setText(partido.getPortavozCongreso());
+            vh4.portavozSenado.setText(partido.getPortavozSenado());
+            vh4.fundacion.setText(partido.getFundacion());
+            vh4.ideologia.setText(partido.getIdeologia());
+            vh4.posicionEspecto.setText(partido.getPosicionEspectro());
+            vh4.sede.setText(partido.getSede());
+        }
+    }
+
+    private void configurePoliticoViewHolder(PoliticoViewHolder vh5,int position) {
+        Politico politico = (Politico) items.get(position);
+        if(politico != null){
+            vh5.nombre.setText(politico.getNombre());
+            vh5.edad.setText(politico.getEdad());
+            vh5.partido.setText(politico.getPartido());
+            vh5.cargo.setText(politico.getCargo());
+            vh5.perfil.setText(politico.getPerfil());
+        }
     }
 
 }

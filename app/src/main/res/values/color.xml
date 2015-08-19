@@ -7,4 +7,5 @@
     <color name="ColorPrimary">#0D3749</color>
     <color name="ColorPrimaryDark">#0c3140</color>
     <color name="ColorPreferencias">#165875</color>
+    <color name="ColorAccent">#165875</color>
 </resources>

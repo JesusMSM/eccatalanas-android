@@ -4,6 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="mp_colorAccent">#165875</item> <!--Color de los titulos de las preferencias -->
+        <item name="colorAccent">@color/ColorAccent</item>
         <item name="android:actionBarStyle">@style/MyActionBar</item>
     </style>
 

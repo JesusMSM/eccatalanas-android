@@ -1,7 +1,7 @@
 package es.elconfidencial.eleccionesec.model;
 
 /**
- * Created by Afll on 01/08/2015.
+ * Created by MOONFISH on 01/08/2015.
  */
 public class Noticia {
     private String titulo;
