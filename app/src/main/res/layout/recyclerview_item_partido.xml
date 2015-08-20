@@ -100,7 +100,6 @@
             app:layout_anchor="@id/fab"
             app:fabSize="normal"
             android:layout_gravity="bottom|right|end"
-            android:src="@drawable/ic_add_white"
             android:layout_margin="16dp"
             android:clickable="true"/>
 

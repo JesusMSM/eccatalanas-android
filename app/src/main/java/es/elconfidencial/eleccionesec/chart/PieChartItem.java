@@ -55,15 +55,15 @@ public class PieChartItem extends ChartItem {
         holder.chart.setDescription("");
         holder.chart.setHoleRadius(52f);
         holder.chart.setTransparentCircleRadius(57f);
-        holder.chart.setCenterText("MPChart\nAndroid");
+        holder.chart.setCenterText("Distribución\nhemiciclo");
         holder.chart.setCenterTextTypeface(mTf);
-        holder.chart.setCenterTextSize(18f);
-        holder.chart.setUsePercentValues(true);
+        holder.chart.setCenterTextSize(16f);
+        holder.chart.setTouchEnabled(false);
 
         mChartData.setValueFormatter(new PercentFormatter());
         mChartData.setValueTypeface(mTf);
         mChartData.setValueTextSize(11f);
-        mChartData.setValueTextColor(Color.WHITE);
+        mChartData.setValueTextColor(Color.BLACK);
         // set data
         holder.chart.setData((PieData) mChartData);
 
