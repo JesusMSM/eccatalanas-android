@@ -1,6 +1,7 @@
 package es.elconfidencial.eleccionesec.activities;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,15 +21,13 @@ public class PoliticianCardActivity extends ActionBarActivity {
         //Extraemos el intent para leer los par?metros y rellenar los campos
         Intent intent = getIntent();
 
+        ImageView imagen = (ImageView) findViewById(R.id.imagen);
         TextView nombre = (TextView) findViewById(R.id.nombre);
-        TextView edad = (TextView) findViewById(R.id.edad);
-        TextView partido = (TextView) findViewById(R.id.partido);
         TextView cargo = (TextView) findViewById(R.id.cargo);
         TextView perfil = (TextView) findViewById(R.id.perfil);
 
+        imagen.setImageResource(intent.getIntExtra("imagen", 0));
         nombre.setText(intent.getStringExtra("nombre"));
-        edad.setText(intent.getStringExtra("edad"));
-        partido.setText(intent.getStringExtra("partido"));
         cargo.setText(intent.getStringExtra("cargo"));
         perfil.setText(intent.getStringExtra("perfil"));
     }
