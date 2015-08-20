@@ -213,8 +213,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     Intent intent = new Intent(context, PoliticianCardActivity.class);
                     intent.putExtra("imagen",politico.getImagen());
                     intent.putExtra("nombre", politico.getNombre());
-                    intent.putExtra("edad", politico.getEdad());
-                    intent.putExtra("partido", politico.getPartido());
                     intent.putExtra("cargo", politico.getCargo());
                     intent.putExtra("perfil", politico.getPerfil());
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 import com.parse.GetCallback;
@@ -28,10 +29,11 @@ import es.elconfidencial.eleccionesec.R;
 public class DocumentTab extends Fragment {
 
     private FragmentTabHost mTabHost;
+    private boolean createdTab = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       // View v =inflater.inflate(R.layout.tab_document, container, false);
+        View v =inflater.inflate(R.layout.tab_document, container, false);
 
 
 /**
@@ -57,23 +59,31 @@ public class DocumentTab extends Fragment {
             }
         }); **/
 
-        mTabHost = new FragmentTabHost(getActivity());
-        mTabHost.setup(getActivity(), getChildFragmentManager(), R.layout.tab_document);
+        mTabHost = (FragmentTabHost) v.findViewById(android.R.id.tabhost);
+        mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.realtabcontent);
 
-        Bundle partyTab = new Bundle();
-        partyTab.putInt("Arg for PartyTab", 1);
-        mTabHost.addTab(mTabHost.newTabSpec("PartyTab").setIndicator("Partidos"),
-                PartyFragment.class, partyTab);
+        View tabquizs = LayoutInflater.from(getActivity()).inflate(R.layout.tab_indicator, mTabHost.getTabWidget(), false);
+        ((TextView) tabquizs.findViewById(R.id.tv_tab_txt)).setText("ENCUESTAS");
+        Bundle quizTab = new Bundle();
+        quizTab.putInt("Arg for quizTab", 1);
+        mTabHost.addTab(mTabHost.newTabSpec("QuizTab").setIndicator(tabquizs),
+                QuizFragment.class, quizTab);
 
+
+        View tabpoliticos = LayoutInflater.from(getActivity()).inflate(R.layout.tab_indicator, mTabHost.getTabWidget(), false);
+        ((TextView) tabpoliticos.findViewById(R.id.tv_tab_txt)).setText("POLÍTICOS");
         Bundle politicianTab = new Bundle();
         politicianTab.putInt("Arg for politicianTab", 2);
-        mTabHost.addTab(mTabHost.newTabSpec("PoliticianTab").setIndicator("Políticos"),
+        mTabHost.addTab(mTabHost.newTabSpec("PoliticianTab").setIndicator(tabpoliticos),
                 PoliticianFragment.class, politicianTab);
 
-        Bundle quizTab = new Bundle();
-        quizTab.putInt("Arg for quizTab", 2);
-        mTabHost.addTab(mTabHost.newTabSpec("QuizTab").setIndicator("Quizs"),
-                QuizFragment.class, quizTab);
+
+        View tabpartidos = LayoutInflater.from(getActivity()).inflate(R.layout.tab_indicator, mTabHost.getTabWidget(), false);
+        ((TextView) tabpartidos.findViewById(R.id.tv_tab_txt)).setText("PARTIDOS");
+        Bundle partyTab = new Bundle();
+        partyTab.putInt("Arg for PartyTab", 3);
+        mTabHost.addTab(mTabHost.newTabSpec("PartyTab").setIndicator(tabpartidos),
+                PartyFragment.class, partyTab);
 
         return mTabHost;
     }
