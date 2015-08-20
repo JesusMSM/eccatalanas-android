@@ -48,8 +48,9 @@ public class PoliticianFragment extends Fragment {
 
     private ArrayList<Object> getSampleArrayList() {
         ArrayList<Object> items = new ArrayList<>();
-        items.add(new Politico("Nombre", "Edad", "Partido", "Cargo", "Perfil"));
-        items.add(new Politico("Nombre", "Edad", "Partido", "Cargo", "Perfil"));
+        items.add(new Politico(R.drawable.artur_mas, getString(R.string.artur_mas_nombre), getString(R.string.artur_mas_edad), getString(R.string.artur_mas_partido), getString(R.string.artur_mas_cargo), getString(R.string.artur_mas_perfil)));
+        items.add(new Politico(R.drawable.miquel_iceta, getString(R.string.miquel_iceta_nombre), getString(R.string.miquel_iceta_edad), getString(R.string.miquel_iceta_partido), getString(R.string.miquel_iceta_cargo), getString(R.string.miquel_iceta_perfil)));
+        items.add(new Politico(R.drawable.antonio_banos, getString(R.string.antonio_banos_nombre), getString(R.string.antonio_banos_edad), getString(R.string.artur_mas_partido), getString(R.string.antonio_banos_cargo), getString(R.string.antonio_banos_perfil)));
         return items;
     }
 }

@@ -200,8 +200,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     private void configurePoliticoViewHolder(PoliticoViewHolder vh5,int position) {
-        final Politico politico = (Politico) items.get(position);
+       final Politico politico = (Politico) items.get(position);
         if(politico != null) {
+            vh5.imagen.setImageResource(politico.getImagen());
             vh5.nombre.setText(politico.getNombre());
             vh5.edad.setText(politico.getEdad());
             vh5.partido.setText(politico.getPartido());
@@ -210,6 +211,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh5.fab.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v) {
                     Intent intent = new Intent(context, PoliticianCardActivity.class);
+                    intent.putExtra("imagen",politico.getImagen());
                     intent.putExtra("nombre", politico.getNombre());
                     intent.putExtra("edad", politico.getEdad());
                     intent.putExtra("partido", politico.getPartido());

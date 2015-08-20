@@ -4,18 +4,28 @@ package es.elconfidencial.eleccionesec.model;
  * Created by MOONFISH on 19/08/2015.
  */
 public class Politico {
+    private int imagen;
     private String nombre;
     private String edad;
     private String partido;
     private String cargo;
     private String perfil;
 
-    public Politico(String nombre, String edad, String partido, String cargo, String perfil) {
+    public Politico(int imagen, String nombre, String edad, String partido, String cargo, String perfil) {
+        this.imagen = imagen;
         this.nombre = nombre;
         this.edad = edad;
         this.partido = partido;
         this.cargo = cargo;
         this.perfil = perfil;
+    }
+
+    public int getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(int imagen) {
+        this.imagen = imagen;
     }
 
     public String getNombre() {

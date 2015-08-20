@@ -21,15 +21,14 @@ public class PoliticoViewHolder extends RecyclerView.ViewHolder{
     public TextView nombre,edad, partido, cargo;
     public ImageView imagen;
     public FloatingActionButton fab;
-    Context context;
 
     public PoliticoViewHolder(View v) {
         super(v);
+        imagen = (ImageView) v.findViewById(R.id.imagen);
         nombre = (TextView) v.findViewById(R.id.nombre);
         edad = (TextView) v.findViewById(R.id.edad);
         partido = (TextView) v.findViewById(R.id.partido);
         cargo = (TextView) v.findViewById(R.id.cargo);
-        imagen = (ImageView) v.findViewById(R.id.imagen);
         fab = (FloatingActionButton) v.findViewById(R.id.fab);
     }
 }
