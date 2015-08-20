@@ -58,23 +58,4 @@ public class PoliticianFragment extends Fragment {
         return items;
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-
-        unbindDrawables(getView().findViewById(R.id.RootView));
-        System.gc();
-    }
-
-    private void unbindDrawables(View view) {
-        if (view.getBackground() != null) {
-            view.getBackground().setCallback(null);
-        }
-        if (view instanceof ViewGroup) {
-            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
-                unbindDrawables(((ViewGroup) view).getChildAt(i));
-            }
-            ((ViewGroup) view).removeAllViews();
-        }
-    }
 }
