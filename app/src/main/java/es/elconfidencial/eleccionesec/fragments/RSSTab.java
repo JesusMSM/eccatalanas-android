@@ -24,7 +24,7 @@ import es.elconfidencial.eleccionesec.rss.RssParser;
  */
 public class RSSTab extends Fragment {
 
-    private String rss_url = "http://rss.elconfidencial.com/tags/temas/elecciones-municipales-y-autonomicas-2015-11575/";
+    private String rss_url = "http://rss.elconfidencial.com/tags/temas/elecciones-cataluna-2015-6160/";
     List<Object> items = new ArrayList<>();
     List<Noticia> noticias = new ArrayList<>();
 
