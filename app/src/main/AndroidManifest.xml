@@ -3,7 +3,7 @@
     package="es.elconfidencial.eleccionesec" >
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"/>
     <!-- Permission to get DeviceId -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 

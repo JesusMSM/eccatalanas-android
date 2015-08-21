@@ -41,7 +41,6 @@
 
             <ImageView
                 android:layout_width="fill_parent"
-                android:src="@drawable/imagequiz"
                 android:layout_height="wrap_content"
                 android:id="@+id/imagen"
                 android:adjustViewBounds="true"/>

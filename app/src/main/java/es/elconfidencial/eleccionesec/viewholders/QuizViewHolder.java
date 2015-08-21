@@ -11,22 +11,14 @@ import es.elconfidencial.eleccionesec.R;
  * Created by Afll on 01/08/2015.
  */
 public class QuizViewHolder extends RecyclerView.ViewHolder{
-    public ImageView image;
-    public TextView title;
-    public TextView subtitle;
+    public ImageView imagen;
+    public TextView titulo;
+    public TextView autor;
 
     public QuizViewHolder(View v) {
         super(v);
-        image = (ImageView) v.findViewById(R.id.image);
-        title = (TextView) v.findViewById(R.id.title);
-        subtitle = (TextView) v.findViewById(R.id.subtitle);
-    }
-
-    public TextView getTitle() {
-        return title;
-    }
-
-    public void setTitle(TextView title) {
-        this.title = title;
+        imagen = (ImageView) v.findViewById(R.id.imagen_quiz);
+        titulo = (TextView) v.findViewById(R.id.titulo_quiz);
+        autor = (TextView) v.findViewById(R.id.autor_quiz);
     }
 }

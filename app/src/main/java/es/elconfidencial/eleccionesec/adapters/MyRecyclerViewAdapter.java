@@ -172,10 +172,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private void configureQuizViewHolder(QuizViewHolder vh2,int position) {
         Quiz quiz = (Quiz) items.get(position);
         if(quiz != null){
-            vh2.image.setImageResource(quiz.getImage());
-            vh2.title.setText(quiz.getTitle());
-            vh2.subtitle.setText(quiz.getSubtitle());
+            vh2.titulo.setText(Html.fromHtml(quiz.getTitulo()));
+            vh2.autor.setText(quiz.getAutor());
+            Picasso.with(context).load(quiz.getImagenUrl()).into(vh2.imagen);
         }
+
+        vh2.autor.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
+        vh2.titulo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
+
     }
 
     private void configureContadorViewHolder(ContadorViewHolder vh3,int position) {
