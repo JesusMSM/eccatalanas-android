@@ -28,12 +28,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
     CharSequence Titles[]; // This will Store the Titles of the Tabs which are Going to be passed when ViewPagerAdapter is created
     int NumbOfTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
     private int[] imageResId = {
+            R.drawable.tab_rss,
+            R.drawable.tab_document,
             R.drawable.tab_home,
             R.drawable.tab_chart,
-            R.drawable.tab_document,
-            R.drawable.tab_rss,
             R.drawable.tab_settings
-
     };
 
 
@@ -52,21 +51,22 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
 
         if(position == 0) // if the position is 0 we are returning the First tab
         {
-            HomeTab homeTab = new HomeTab();
-            return homeTab;
+            RSSTab rssTab = new RSSTab();
+            return rssTab;
         }
         if(position == 1)             // As we are having 2 tabs if the position is now 0 it must be 1 so we are returning second tab
         {
-            ChartTab chartTab = new ChartTab();
-            return chartTab;
-        }
-        if(position == 2){
             DocumentTab docTab = new DocumentTab();
             return docTab;
         }
+        if(position == 2){
+            HomeTab homeTab = new HomeTab();
+            return homeTab;
+
+        }
         if(position == 3){
-            RSSTab rssTab = new RSSTab();
-            return rssTab;
+            ChartTab chartTab = new ChartTab();
+            return chartTab;
         }
         else{
             PreferencesTab prefTab = new PreferencesTab();

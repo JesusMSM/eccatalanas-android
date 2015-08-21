@@ -74,10 +74,10 @@ public class HomeActivity extends ActionBarActivity {
 
 
         //Titulos, da igual lo que se ponga pero tienen que existir aunque no se vayan a ver despues
-        Titles[0] = "HOME";
-        Titles[1] = "CHART";
-        Titles[2] = "DOC";
-        Titles[3] = "RSS";
+        Titles[0] = "RSS";
+        Titles[1] = "DOC";
+        Titles[2] = "HOME";
+        Titles[3] = "CHART";
         Titles[4] = "PREFERENCIAS";
 
         // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
@@ -86,6 +86,7 @@ public class HomeActivity extends ActionBarActivity {
         // Assigning ViewPager View and setting the adapter
         pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(adapter);
+        pager.setCurrentItem(2);
 
         // Assiging the Sliding Tab Layout View
         tabs = (SlidingTabLayout) findViewById(R.id.tabs);
