@@ -48,7 +48,7 @@ public class PreferencesTab extends Fragment {
         header = (ImageView) v.findViewById(R.id.imageView);
         header.setImageResource(R.drawable.preferencias);
 
-        lvIdioma = (ListView) v.findViewById(R.id.listViewIdiomas);
+       /* lvIdioma = (ListView) v.findViewById(R.id.listViewIdiomas);
         lvPartidos = (ListView) v.findViewById(R.id.listViewPartidos);
 
         List<String> idioma = new ArrayList<>();
@@ -120,7 +120,7 @@ public class PreferencesTab extends Fragment {
                         .show();
 
             }
-        });
+        });*/
 
         Typeface tf = Typeface.createFromAsset(HomeActivity.context.getAssets(),
                 "Roboto-Medium.ttf");
