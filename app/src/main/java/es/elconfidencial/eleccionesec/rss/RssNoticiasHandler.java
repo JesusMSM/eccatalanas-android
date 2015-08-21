@@ -48,7 +48,6 @@ public class RssNoticiasHandler extends DefaultHandler {
                 //Comprobamos que no esta vacío
                 if(!sbTexto.toString().isEmpty()){
                     noticiaActual.setDescripcion(sbTexto.toString());
-                    System.out.println(noticiaActual.getDescripcion().length());
                 }
             } else if (localName.equals("id")) {
                 noticiaActual.setLink(sbTexto.toString());
