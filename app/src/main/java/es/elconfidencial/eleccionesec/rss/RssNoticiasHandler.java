@@ -14,7 +14,7 @@ import es.elconfidencial.eleccionesec.model.Noticia;
 /**
  * Created by Afll on 03/08/2015.
  */
-public class RssHandler extends DefaultHandler {
+public class RssNoticiasHandler extends DefaultHandler {
     private List<Noticia> noticias;
     private Noticia noticiaActual;
     private StringBuilder sbTexto;

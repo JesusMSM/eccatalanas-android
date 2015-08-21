@@ -14,11 +14,11 @@ import es.elconfidencial.eleccionesec.model.Noticia;
 /**
  * Created by Afll on 03/08/2015.
  */
-public class RssParser
+public class RssNoticiasParser
 {
     private URL rssUrl;
 
-    public RssParser(String url)
+    public RssNoticiasParser(String url)
     {
         try
         {
@@ -37,7 +37,7 @@ public class RssParser
         try
         {
             SAXParser parser = factory.newSAXParser();
-            RssHandler handler = new RssHandler();
+            RssNoticiasHandler handler = new RssNoticiasHandler();
             parser.parse(this.getInputStream(), handler);
             return handler.getNoticias();
         }

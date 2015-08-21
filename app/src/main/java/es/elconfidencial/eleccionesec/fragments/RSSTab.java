@@ -17,7 +17,7 @@ import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.activities.HomeActivity;
 import es.elconfidencial.eleccionesec.adapters.MyRecyclerViewAdapter;
 import es.elconfidencial.eleccionesec.model.Noticia;
-import es.elconfidencial.eleccionesec.rss.RssParser;
+import es.elconfidencial.eleccionesec.rss.RssNoticiasParser;
 
 /**
  * Created by MOONFISH on 03/08/2015.
@@ -58,8 +58,8 @@ public class RSSTab extends Fragment {
     private class CargarXmlTask extends AsyncTask<String,Integer,Boolean> {
 
         protected Boolean doInBackground(String... params) {
-            RssParser saxparser =
-                    new RssParser(params[0]);
+            RssNoticiasParser saxparser =
+                    new RssNoticiasParser(params[0]);
 
             noticias = saxparser.parse();
             return true;
