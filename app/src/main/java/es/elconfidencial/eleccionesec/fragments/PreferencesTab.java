@@ -38,9 +38,7 @@ import es.elconfidencial.eleccionesec.activities.HomeActivity;
 public class PreferencesTab extends Fragment {
 
     ImageView header;
-    ListView lvIdioma;
-    ListView lvPartidos;
-    Button button;
+    Button buttonIdiomas;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,35 +46,9 @@ public class PreferencesTab extends Fragment {
         header = (ImageView) v.findViewById(R.id.imageView);
         header.setImageResource(R.drawable.preferencias);
 
-       /* lvIdioma = (ListView) v.findViewById(R.id.listViewIdiomas);
-        lvPartidos = (ListView) v.findViewById(R.id.listViewPartidos);
-
-        List<String> idioma = new ArrayList<>();
-        idioma.add(getResources().getString(R.string.seleccion_idioma));
-
-        List<String> partidos = new ArrayList<>();
-        //idioma.add(getResources().getString(R.string.seleccion_idioma));
-        for(int i=0; i<10; i++){
-            partidos.add("Partido "+i);
-        }
-
-        ArrayAdapter<String> arrayAdapterIdioma = new ArrayAdapter<>(
-                HomeActivity.context,
-                R.layout.list_seleccion_idioma,
-                idioma );
-
-        ArrayAdapter<String> arrayAdapterPartidos = new ArrayAdapter<>(
-                HomeActivity.context,
-                R.layout.list_seleccion_idioma,
-                partidos );
-
-        lvIdioma.setAdapter(arrayAdapterIdioma);
-        lvPartidos.setAdapter(arrayAdapterPartidos);
-
-        lvIdioma.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-
+        buttonIdiomas = (Button) v.findViewById(R.id.idiomaButton);
+        buttonIdiomas.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 new MaterialDialog.Builder(getActivity())
                         .title(R.string.seleccion_idioma)
                         .items(R.array.idioma)
@@ -118,9 +90,9 @@ public class PreferencesTab extends Fragment {
                         })
                         .positiveText(R.string.cambiar)
                         .show();
-
             }
-        });*/
+        });
+
 
         Typeface tf = Typeface.createFromAsset(HomeActivity.context.getAssets(),
                 "Roboto-Medium.ttf");
