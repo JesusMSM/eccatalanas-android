@@ -1,7 +1,6 @@
 package es.elconfidencial.eleccionesec.activities;
 
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,35 +10,41 @@ import android.widget.TextView;
 
 import es.elconfidencial.eleccionesec.R;
 
-public class PoliticianCardActivity extends ActionBarActivity {
+public class PartyCardActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_politician_card);
+        setContentView(R.layout.activity_party_card);
 
         //Extraemos el intent para leer los par?metros y rellenar los campos
         Intent intent = getIntent();
 
         ImageView imagen = (ImageView) findViewById(R.id.imagen);
         TextView nombre = (TextView) findViewById(R.id.nombre);
-        TextView edad = (TextView) findViewById(R.id.edad);
-        TextView partido = (TextView) findViewById(R.id.partido);
-        TextView cargo = (TextView) findViewById(R.id.cargo);
+        TextView representantes = (TextView) findViewById(R.id.representantes);
+        TextView fundacion = (TextView) findViewById(R.id.fundacion);
+        TextView escanos = (TextView) findViewById(R.id.escanos);
+        TextView porcentajeVotos = (TextView) findViewById(R.id.porcentajeVotos);
+        TextView ideologia = (TextView) findViewById(R.id.ideologia);
+        TextView partidosRepresentados = (TextView) findViewById(R.id.partidosRepresentados);
         TextView perfil = (TextView) findViewById(R.id.perfil);
 
         imagen.setImageResource(intent.getIntExtra("imagen", 0));
         nombre.setText(intent.getStringExtra("nombre"));
-        edad.setText(intent.getStringExtra("edad"));
-        partido.setText(intent.getStringExtra("partido"));
-        cargo.setText(intent.getStringExtra("cargo"));
+        representantes.setText(intent.getStringExtra("representantes"));
+        fundacion.setText(intent.getStringExtra("fundacion"));
+        escanos.setText(intent.getStringExtra("escanos"));
+        porcentajeVotos.setText(intent.getStringExtra("porcentajeVotos"));
+        ideologia.setText(intent.getStringExtra("ideologia"));
+        partidosRepresentados.setText(intent.getStringExtra("partidosRepresentados"));
         perfil.setText(intent.getStringExtra("perfil"));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_politician_card, menu);
+        getMenuInflater().inflate(R.menu.menu_party_card, menu);
         return true;
     }
 

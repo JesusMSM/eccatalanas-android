@@ -27,6 +27,7 @@ import java.util.List;
 
 import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.activities.NoticiaContentActivity;
+import es.elconfidencial.eleccionesec.activities.PartyCardActivity;
 import es.elconfidencial.eleccionesec.activities.PoliticianCardActivity;
 import es.elconfidencial.eleccionesec.model.Noticia;
 import es.elconfidencial.eleccionesec.model.Partido;
@@ -189,7 +190,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     private void configurePartidoViewHolder(PartidoViewHolder vh4,int position) {
-        Partido partido = (Partido) items.get(position);
+        final Partido partido = (Partido) items.get(position);
         if(partido != null){
             vh4.imagen.setImageResource(partido.getImagen());
             vh4.nombre.setText(partido.getNombre());
@@ -200,6 +201,23 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh4.ideologia.setText(partido.getIdeologia());
             vh4.partidosRepresentados.setText(partido.getPartidosRepresentados());
         }
+
+        vh4.fab.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Intent intent = new Intent(context, PartyCardActivity.class);
+                intent.putExtra("imagen",partido.getImagen());
+                intent.putExtra("nombre", partido.getNombre());
+                intent.putExtra("representantes", partido.getRepresentantes());
+                intent.putExtra("fundacion", partido.getFundacion());
+                intent.putExtra("escanos", partido.getEscanos());
+                intent.putExtra("porcentajeVotos", partido.getPorcentajeVotos());
+                intent.putExtra("ideologia", partido.getIdeologia());
+                intent.putExtra("partidosRepresentados", partido.getPartidosRepresentados());
+                intent.putExtra("perfil", partido.getPerfil());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
     }
 
     private void configurePoliticoViewHolder(PoliticoViewHolder vh5,int position) {
@@ -216,6 +234,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     Intent intent = new Intent(context, PoliticianCardActivity.class);
                     intent.putExtra("imagen",politico.getImagen());
                     intent.putExtra("nombre", politico.getNombre());
+                    intent.putExtra("edad", politico.getEdad());
+                    intent.putExtra("partido", politico.getPartido());
                     intent.putExtra("cargo", politico.getCargo());
                     intent.putExtra("perfil", politico.getPerfil());
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
