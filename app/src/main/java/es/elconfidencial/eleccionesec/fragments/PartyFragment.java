@@ -44,7 +44,7 @@ public class PartyFragment extends Fragment {
 
     private ArrayList<Object> getSampleArrayList() {
         ArrayList<Object> items = new ArrayList<>();
-        items.add(new Partido("Partido", "Presidente", "Secretario General", "Portavoz en el Congreso", "Portavoz en el Senado", "Fundación", "Ideología", "Posición en el espectro", "Sede"));
+        items.add(new Partido( R.drawable.cdc, getString(R.string.cdc_nombre), getString(R.string.cdc_representantes), getString(R.string.cdc_fundacion), getString(R.string.cdc_escanos), getString(R.string.cdc_porcentajeVotos), getString(R.string.cdc_ideologia), getString(R.string.cdc_partidosRepresentados), getString(R.string.cdc_perfil)));
         return items;
     }
 }

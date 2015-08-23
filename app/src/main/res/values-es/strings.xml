@@ -14,6 +14,11 @@
     <string name="creditos">Créditos</string>
     <string name="notificaciones">Notificaciones</string>
 
+
+
+
+    <!-- ______________________________STRINGS FICHAS POLÍTICOS_______________________________ -->
+
     <!-- ARTUR MAS -->
     <string name="artur_mas_nombre">Artur Mas</string>
     <string name="artur_mas_edad">59</string>
@@ -21,23 +26,33 @@
     <string name="artur_mas_cargo">Presidente de la Generalidad de Cataluña</string>
     <string name="artur_mas_perfil">Artur Mas, heredero del "pactismo" de Jordi Pujol, se ha convertido hoy en el primer presidente catalán que convoca unas elecciones para intentar iniciar un proceso de secesión de España bajo las siglas de una nueva formación (Junts pel Sí) que aglutina a gran parte del independentismo catalán.
 El viejo timón que cuelga de su despacho en el Palau de la Generalitat, un regalo de su padre, se ha convertido en la metáfora de su particular "rumbo a Ítaca".
+
 Nacido en Barcelona en 1956, Artur Mas i Gavarró, hijo político de Pujol -quien le designó sucesor- se convirtió en el primer presidente que retó al Estado con un referendo independentista en Cataluña, que finalmente reconvirtió en una consulta alternativa el 9N de 2014 por la que la Fiscalía le acusa de varios delitos, junto a dos consellers más.
 Él se define como una persona discreta y trabajadora, que ni siquiera tenía previsto dedicarse a la política cuando se licenció en Ciencias Económicas y Empresariales.
+
 Mas llegó a la Generalitat a principios de los ochenta de la mano del primer conseller de Comercio, Francesc Sanuy, que le puso en primera instancia en Fira de Barcelona, para luego saltar a director general en el Departamento de Industria.
 Podría decirse que formaba parte de los que entonces se denominaban JASP, jóvenes aunque sobradamente preparados. Impecable en el vestir y cabellera siempre bien peinada que tapaba una marca de accidente de la infancia con una sartén hirviendo.
 Pero el tiempo puso en primera línea a este dirigente políglota -habla inglés y francés-, padre de tres hijos y casado con Helena Rakosnik, tras llegar a ser primero conseller de Obras Públicas y luego titular del importante departamento de Economía.
 En 2001 le llegó el gran trampolín: Pujol, que le hizo recitar las comarcas de Cataluña cuando lo fichó para Obras Públicas y le recomendó parar las obras de su cocina porque "le mirarían todo" cuando fuera conseller, lo eligió en detrimento de Josep Antoni Duran Lleida como conseller en cap y como su delfín para relevarlo.
+
 Aprovechó el cargo como lanzadera electoral y llegó a coger hasta 14 vuelos en menos de una semana -incluido sobrevolar el Aconcagua en avioneta- para recabar apoyos entre las colonias de catalanes que viven en países sudamericanos.
 Caricaturizado entonces por el actor Toni Albà como un robot en la televisión pública catalana, Mas se fue bregando poco a poco como líder en el particular oasis por el desierto que para él supuso los siete años del tripartito catalán (PSC, ERC e ICV-EUiA). Mas ganó las elecciones de 2003 y 2006, pero no pudo gobernar.
+
 Paciente y astuto, lidió con todo aquel que cuestionó su liderazgo y supo esperar su turno como jefe de la oposición, una oportunidad que finalmente llegó en 2010, cuando ganó claramente las elecciones con 62 diputados -la mayoría absoluta está en 68 en el Parlament- y se coronó por fin President.
+
 Se marcó entonces dos objetivos: el más acuciante, un nuevo sistema de financiación que denominó pacto fiscal y, más a largo plazo, el ejercicio del derecho a decidir. Es decir, concierto económico a la catalana y derecho de autodeterminación.
 El órdago al Estado estaba servido y sus apoyos con socialistas y populares sólo duraron unos meses, muy influido por un entorno netamente independentista.
+
 Su primera legislatura al frente de la Generalitat fue de sólo dos años (2010-2011), en la que persiguió un pacto fiscal para Cataluña que no convenció el presidente del Gobierno, Mariano Rajoy.
+
 De ahí derivó el primer golpe de timón de Mas tras la masiva manifestación del 11 de Septiembre de 2012 y ya apostó decididamente por celebrar una consulta independentista anticipando elecciones.
+
 Lo que no preveía Mas, ni tampoco las encuestas, es que CiU iba a perder 12 diputados en las urnas -se quedó con 50-, un batacazo del que se resarció pactando con una ERC que se hizo fuerte, mientras que CiU pagaba el precio de tener que gobernar solo.
 Todo ello sirvió para generar un escenario político de gran tensión, aderezado con otras inclemencias como duros recortes sociales, casos de espionaje político, crisis social y económica, dificultades de tesorería en la Generalitat, batallas por el objetivo de déficit, el "caso Palau" o el fallido concurso de privatización de la empresa pública de agua.
 Pero el más destacado revés, por su carga de profundidad, fue el "caso Pujol", la confesión de su padre político de que ocultó dinero en el extranjero.
+
 Sin embargo, y haciendo gala de su autocalificada astucia, Mas supo, en un contexto de descenso en las encuestas de los partidos soberanistas, convencer a ERC de forjar una lista conjunta con representantes de las entidades independentistas y encabezado por un ex ICV, como Raül Romeva.
+
 Con esta tripulación, y él de número 4, Mas ha dado hoy un nuevo paso en su particular "rumbo a Ítaca", haciendo suyo el metafórico viaje narrado por el poeta griego Constantino Cavafis.
 </string>
 
@@ -78,6 +93,7 @@ En respuesta a las declaraciones que anoche hizo el presidente del Gobierno, Mar
 El nuevo cabeza de lista en sustitución de David Fernàndez ha finalizado su intervención afirmando: "Los diputados que nos han precedido no han fallado y nosotros tampoco fallaremos"
 </string>
 
+
     <!-- RAUL ROMEVA -->
     <string name="raul_romeva_nombre">Raúl Romeva</string>
     <string name="raul_romeva_edad">44</string>
@@ -105,6 +121,7 @@ Respecto a su lema, García Albiol lo ha defendido pública y privadamente. “A
 Hubo más polémicas durante su mandato: el año pasado, convocó oposición para 12 plazas de la Policía local de Badalona. De los 497 aspirantes sólo superaron las pruebas 28, pero los seis mejor puntuados tenían vínculos familiares con escoltas del alcalde o con mandos de la Guardia Urbana, lo que provocó que otros cinco candidatos presentasen una denuncia.
 Esa dulce circunstancia contrasta con la apertura de juicio oral contra el número 5 de la lista del PP y concejal de Seguridad Ciudadana, Miguel Jurado, que está acusado de entrar a la fuerza en una entidad rociera en julio del año 2012. Su partido argumentó que entró en el local de la hermandad Virgen de la Esperanza a la fuerza porque hacía tres meses que le había pedido formalmente su desalojo. Para la oposición, eso fue una consecuencia de las “malas prácticas” del PP. Como cuando el propio García Albiol, en una visita de Ángel Acebes y Josep Piqué al Centro Cultural de Mataró, dio un puñetazo a un manifestante que tomaba parte en una cacerolada. Su desgracia fue que las cámaras lo captaron. ¡Y eso que era secretario ejecutivo de Organización del PP! Otro concejal de Badalona está también a la espera de un juicio porque unas empresas le reclaman al consistorio más de un millón de euros por unas obras ilegales que habría encargado el edil en nombre del ayuntamiento.</string>
 
+
     <!-- INÉS ARRIMADAS -->
     <string name="ines_arrimadas_nombre">Inés Arrimadas</string>
     <string name="ines_arrimadas_edad">34</string>
@@ -124,6 +141,7 @@ A nivel nacional, también arropó a algunos candidatos regionales en diferentes
 Aunque actualmente vive en Barcelona, ha residido en otros lugares como Niza o Sevilla. Una de sus grandes aficiones es viajar y, además del castellano y el catalán, habla inglés y francés, toda una rara avis en la escena política actual. “Me siento catalana y andaluza”, afirma. De ser elegida presidenta de la Generalitat, sería la cuarta persona de origen andaluz en lograrlo.
 Las elecciones catalanas se acercan y, por el momento, parece que Arrimadas tendrá que dejar a un lado su pasión viajera y realizar un trabajo ímprobo para preparar los próximos meses, una empresa que se revela como complicada a tenor de las últimas encuestas: si bien todo apunta a que Ciudadanos será la tercera fuerza en el Parlamento catalán, todavía son muchos los escaños que separan a Inés Arrimadas de ser la nueva molt honorable.</string>
 
+
     <!-- LLUIS RABELL -->
     <string name="lluis_rabell_nombre">Lluís Rabell</string>
     <string name="lluis_rabell_edad">61</string>
@@ -139,6 +157,79 @@ Hombre de acción social, también ha recordado hoy que el pasado 9 de noviembre
 Asimismo, en febrero de 2004, como presidente de la FAVB, firmó con la Asamblea Nacional Catalana (ANC) de Carme Forcadell -ahora en la adversaria lista independentista en las elecciones del 27 de septiembre- un convenio de colaboración para impulsar "el ejercicio del derecho de autodeterminación de Cataluña".
 Residente en el distrito barcelonés de L´Eixample, Josep Lluís Franco Rabell vivió en el barrio del Raval hasta los 14 años y por motivos laborales residió unos años en Francia.
 A su regreso a Barcelona en 1987 se integró en el movimiento asociativo vecinal, que llegó a liderar, y es habitual en sus discursos públicos el recurso a conceptos como "las clases populares" o la "pérdida de calidad democrática" asociada a la crisis y los recortes que ha combatido hasta hoy en las calles y que aspira a hacerlo como presidente de la Generalitat a partir del próximo mes de septiembre.</string>
+
+
+
+
+
+
+
+    <!-- ______________________________STRINGS FICHAS PARTIDOS_______________________________ -->
+
+    <!-- CDC -->
+    <string name="cdc_nombre">Convergència Democràtica de Catalunya CDC</string>
+    <string name="cdc_representantes">Artur Mas</string>
+    <string name="cdc_fundacion">1974</string>
+    <string name="cdc_escanos">37/135 (dentro de CiU)</string>
+    <string name="cdc_porcentajeVotos">30,7%</string>
+    <string name="cdc_ideologia">Nacionalista, Independentista</string>
+    <string name="cdc_partidosRepresentados">CDC</string>
+    <string name="cdc_perfil">Convergència participó desde las elecciones autonómicas catalanas de 1980 hasta el año 2015 junto a Unió Democràtica de Catalunya en la federación nacionalista Convergència i Unió.
+La formación gobernó Cataluña desde esas elecciones hasta el año 2003, en que la Generalidad de Cataluña fue a parar a manos de la alianza entre los tres partidos catalanes de izquierdas PSC-ERC-ICV (llamada informalmente el tripartito),
+ al no conseguir mayoría absoluta en el Parlamento. Tras la victoria de CiU en las elecciones autonómicas de 2010, Artur Mas fue elegido Presidente del gobierno de la Generalidad catalana.
+
+Más allá de su proyección catalanista, tiene presencia estatal, al haber colaborado tanto con los gobiernos socialistas (1982-1996) como en la etapa en que gobernó el PP (1996-2004),
+dando su apoyo a uno y otro partido para poder formar gobierno. Con el gobierno socialista de Felipe González se desarrolló el Estado autonómico y se iniciaron las bases de la financiación autonómica.
+También es de destacar su apoyo a las medidas liberalizadoras y de control presupuestario del Gobierno de José María Aznar, que permitieron la incorporación de España en la primera fase de adopción del euro.
+Asimismo, según se recoge en el Pacto del Majestic entre CiU y PP, se acordaron, entre otros asuntos, el desarrollo de la financiación autonómica ya iniciada en la etapa socialista, la supresión del servicio militar obligatorio
+y el traspaso de competencias.
+
+Desde la retirada política de Jordi Pujol en 2003, su dirigente ha sido Artur Mas, quien había sido mano derecha de Pujol y además ha encabezado la lista en las elecciones autonómicas por la coalición Convergència i Unió.
+Nueve años más tarde, en el XVI congreso de CDC en la ciudad de Reus el 24 de marzo de 2012, Oriol Pujol, hijo de Jordi Pujol, fue nombrado nuevo secretario general del partido, mientras que el anterior secretario, Artur Mas,
+asumió el cargo de presidente. Jordi Pujol recibió el título de presidente fundador del partido.4 En ese mismo congreso, sus dirigentes declararon abiertamente que el objetivo a medio plazo de CDC era la consecución del estado propio,
+es decir, la independencia de Cataluña.
+
+Desde el año 2012 el partido tiene su sede central de la calle Córcega de Barcelona embargada a raíz del escándalo de corrupción conocido como Caso Palau.</string>
+
+
+
+    <!-- PARTIDO SOCIALISTA DE CATALUÑA -->
+    <string name="psc_nombre">Partido Socialista de Cataluña</string>
+    <string name="psc_representantes">Àngel Ros</string>
+    <string name="psc_fundacion">1978</string>
+    <string name="psc_escanos">20/135</string>
+    <string name="psc_porcentajeVotos">14,43%</string>
+    <string name="psc_ideologia">Nacionalista</string>
+    <string name="psc_partidosRepresentados">PSOE de Cataluña</string>
+    <string name="psc_perfil">Tras la reinstauración en España del régimen democrático, en 1977, el socialismo catalán se hallaba escindido en varios partidos. Por un lado, había varios grupos de carácter nacionalista y progresista, como el Partit Socialista de Catalunya-Congrés (antigua Convergència Socialista de Catalunya) y el Partit Socialista de Catalunya-Reagrupament (ex Reagrupament Socialista i Democràtic de Catalunya, liderado por Josep Pallach y que se había presentado a las elecciones en coalición con otros partidos de Cataluña). Por otro, el PSOE contaba en Cataluña con una Federación Catalana que basaba su fuerza, sobre todo, en los trabajadores metropolitanos, la mayoría de origen inmigrante.
+A finales de 1976 Convergència Socialista de Catalunya había promovido un congreso de militancias socialistas dispersas que venía gestándose desde 1974 a fin de promover una reunificación, que culminó en 1977 cuando el PSC-C y la Federación Socialista Catalana del PSOE pactaron una candidatura única para las elecciones de junio. En 1978 las distintas fuerzas socialistas llegaron a un acuerdo que cristalizó en el Congreso de la Unidad Socialista. En este Congreso se fundó el Partit dels Socialistes de Catalunya (PSC-PSOE), resultado de la fusión entre los grupos catalanistas PSC-C, PSC-R y la Federación Catalana del PSOE. El nuevo partido aglutinaba a todo el espectro socialista catalán, y tenía una relación federal con el PSOE, a pesar de que formalmente era un partido diferente y autónomo al fundado por Pablo Iglesias.
+En las sucesivas convocatorias electorales, el PSC se reveló como la fuerza mayoritaria en Cataluña en las elecciones generales y europeas y municipales (la inmensa mayoría de las alcaldías metropolitanas han sido tradicionalmente gobernadas por dirigentes del PSC). En las elecciones autonómicas, sin embargo, la incapacidad de los líderes del PSC para movilizar a su electorado tradicional ha facilitado la hegemonía parlamentaria de los nacionalistas de Convergència i Unió, que gobernaron la Generalidad de Cataluña hasta 2003. Incluso en las elecciones de 2003, con un desgaste nacionalista sin precedentes tanto por el agotamiento del proyecto convergente como por la retirada del veterano líder Jordi Pujol, los socialistas se quedaron 4 escaños por debajo de la federación nacionalista, aunque la superaron en número de votos.
+En diciembre de 2003, el PSC de Pasqual Maragall firmó el llamado Pacto del Tinell, en el que se acordó que el Partit dels Socialistes presidiría la Generalidad con el apoyo de Esquerra Republicana de Catalunya y la formación ecosocialista Iniciativa per Catalunya Verds. Este pacto duró hasta el 11 de mayo de 2006 cuando el presidente de la Generalidad expulsó a los seis consejeros de ERC del Gobierno catalán; sin embargo, tras las siguientes elecciones se reeditó el pacto entre los tres partidos. El presidente, Pasqual Maragall, fue anteriormente alcalde socialista de Barcelona.
+En las últimas elecciones generales, el PSC obtuvo 25 escaños en el Congreso de los Diputados que comparten grupo con el PSOE en el Grupo Socialista. Tradicionalmente, dado que es un partido federado al PSOE, cuando éste ha gobernado España, el PSC siempre ha solido tener un representante en el Gobierno. Hasta septiembre de 2006, José Montilla, primer secretario del PSC, ex alcalde de Cornellá de Llobregat y ex presidente de la Generalidad de Cataluña, ejerció de Ministro de Industria del Gobierno de José Luis Rodríguez Zapatero, y después ocupó ese cargo Joan Clos, ex alcalde de Barcelona, hasta abril de 2008. Posteriormente, estuvo representado en el Gobierno de España mediante Carme Chacón, que fue Ministra de Vivienda entre 2007 y 2008 y Ministra de Defensa entre 2008 y 2011, así como por Celestino Corbacho, ex alcalde de Hospitalet de Llobregat (Barcelona) y ex presidente de la Diputación de Barcelona, como Ministro de Trabajo e Inmigración, entre 2008-2010.
+
+Situación actual
+Actualmente Miquel Iceta es el actual secretario general del PSC.
+Tras las elecciones generales de 2011, el PSC es el segundo partido catalán con más representación en el Congreso de los Diputados con 14 diputados (CiU con 16), integrados en el Grupo Socialista. Igualmente, desde el año 2000, el PSC se presenta a las elecciones al Senado dentro de la coalición Entesa Catalana de Progrés, junto a otros partidos nacionalistas de izquierda catalanes (ERC, ICV y EUiA); actualmente Entesa posee 16 senadores, de los cuales 10 pertenecen al PSC. En todas las elecciones en las que se ha presentado como tal, Entesa ha sido la lista mayoritaria en las cuatro circunscripciones catalanas.
+En las últimas elecciones autonómicas, celebradas en 2010 el PSC perdió 220.940 votos y 9 diputados en el Parlamento de Cataluña, a la vez que perdía el Gobierno de Cataluña al no poder reeditar el tripartito catalán (junto a ERC e ICV-EUiA) con el que gobernaba; el gobierno pasó a CiU gracias al apoyo del PP.
+Tras las elecciones municipales de 2011 el PSC sufrió un grave revés electoral, perdiendo el gobierno de Barcelona, la cual gobernaba desde las primeras elecciones democráticas, a manos de CiU, siendo Lérida y Tarragona las únicas capitales de provincia de Cataluña en manos de los socialistas catalanes tras dichas elecciones. También perdió la alcaldía de Gerona, pasando a ostentarla CiU también.
+Otra ciudad importante perdida por el PSC fue Badalona, ganada por el PP, e igualmente descendió en representación en el área metropolitana de Barcelona. Así, de las abultadas mayorías absolutas que tradicionalmente obtenía en esa área, sólo ha revalidado la de Cornellá de Llobregat, manteniéndose como primer partido pero sin mayoría absoluta en otras poblaciones cómo Hospitalet de Llobregat, Esplugas de Llobregat, Tarrasa o Sabadell, entre algunas pequeñas poblaciones más.
+Existe dentro del PSC un sector claramente catalanista o nacionalista catalán, representado por María Badía, Antoni Castells, Àngel Ros, Joaquim Nadal, Mónica Lafuente, Teresa Cunillera, Montserrat Tura, Marina Geli, Jordi Martí, Daniel Font, Martí Carnicer, Juan Manuel del Pozo, Antoni Siurana, Manuel Royes, Jordi William Carnes, Raimon Obiols, Pía Bosch, Martí Carnicer, Jordi Serra, Lluís Miquel Pérez, Joaquim Llera, Laia Bonet, Antoni Dalmau o Isidre Molas, favorable a ganar más autonomía para Cataluña y a reformular la relación de ésta con el resto de España. Algunos incluso se muestran contrarios a la vía federalista del partido, abogan incluso por el derecho de autodeterminación. A principios de octubre de 2012 dicho sector hizo público un manifiesto en el que demandaban un Estado propio para Cataluña y un referendum por la independencia de ésta.</string>
+
+
+
+    <!-- CUP -->
+    <string name="cup_nombre">CUP</string>
+    <string name="cup_representantes">David Fernàndez (portavoz)</string>
+    <string name="cup_fundacion">1991</string>
+    <string name="cup_escanos">3/135</string>
+    <string name="cup_porcentajeVotos">3,47%</string>
+    <string name="cup_ideologia">Independentista</string>
+    <string name="cup_partidosRepresentados">Se coordina con la Asamblea Municipal de la Izquierda Independentista</string>
+    <string name="cup_perfil"></string>
+
+
+
+
 
 
 </resources>

@@ -4,26 +4,34 @@ package es.elconfidencial.eleccionesec.model;
  * Created by MOONFISH on 19/08/2015.
  */
 public class Partido {
+    private int imagen;
     private String nombre;
-    private String presidente;
-    private String secGeneral;
-    private String portavozCongreso;
-    private String portavozSenado;
+    private String representantes;
     private String fundacion;
+    private String escanos;
+    private String porcentajeVotos;
     private String ideologia;
-    private String posicionEspectro;
-    private String sede;
+    private String partidosRepresentados;
+    private String perfil;
 
-    public Partido(String nombre, String presidente, String secGeneral, String portavozCongreso, String portavozSenado, String fundacion, String ideologia, String posicionEspectro, String sede) {
+    public Partido(int imagen, String nombre, String representantes, String fundacion, String escanos, String porcentajeVotos, String ideologia, String partidosRepresentados, String perfil) {
+        this.imagen = imagen;
         this.nombre = nombre;
-        this.presidente = presidente;
-        this.secGeneral = secGeneral;
-        this.portavozCongreso = portavozCongreso;
-        this.portavozSenado = portavozSenado;
+        this.representantes = representantes;
         this.fundacion = fundacion;
+        this.escanos = escanos;
+        this.porcentajeVotos = porcentajeVotos;
         this.ideologia = ideologia;
-        this.posicionEspectro = posicionEspectro;
-        this.sede = sede;
+        this.partidosRepresentados = partidosRepresentados;
+        this.perfil = perfil;
+    }
+
+    public int getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(int imagen) {
+        this.imagen = imagen;
     }
 
     public String getNombre() {
@@ -34,36 +42,12 @@ public class Partido {
         this.nombre = nombre;
     }
 
-    public String getPresidente() {
-        return presidente;
+    public String getRepresentantes() {
+        return representantes;
     }
 
-    public void setPresidente(String presidente) {
-        this.presidente = presidente;
-    }
-
-    public String getSecGeneral() {
-        return secGeneral;
-    }
-
-    public void setSecGeneral(String secGeneral) {
-        this.secGeneral = secGeneral;
-    }
-
-    public String getPortavozCongreso() {
-        return portavozCongreso;
-    }
-
-    public void setPortavozCongreso(String portavozCongreso) {
-        this.portavozCongreso = portavozCongreso;
-    }
-
-    public String getPortavozSenado() {
-        return portavozSenado;
-    }
-
-    public void setPortavozSenado(String portavozSenado) {
-        this.portavozSenado = portavozSenado;
+    public void setRepresentantes(String representantes) {
+        this.representantes = representantes;
     }
 
     public String getFundacion() {
@@ -74,6 +58,22 @@ public class Partido {
         this.fundacion = fundacion;
     }
 
+    public String getEscanos() {
+        return escanos;
+    }
+
+    public void setEscanos(String escanos) {
+        this.escanos = escanos;
+    }
+
+    public String getPorcentajeVotos() {
+        return porcentajeVotos;
+    }
+
+    public void setPorcentajeVotos(String porcentajeVotos) {
+        this.porcentajeVotos = porcentajeVotos;
+    }
+
     public String getIdeologia() {
         return ideologia;
     }
@@ -82,19 +82,19 @@ public class Partido {
         this.ideologia = ideologia;
     }
 
-    public String getPosicionEspectro() {
-        return posicionEspectro;
+    public String getPartidosRepresentados() {
+        return partidosRepresentados;
     }
 
-    public void setPosicionEspectro(String posicionEspectro) {
-        this.posicionEspectro = posicionEspectro;
+    public void setPartidosRepresentados(String partidosRepresentados) {
+        this.partidosRepresentados = partidosRepresentados;
     }
 
-    public String getSede() {
-        return sede;
+    public String getPerfil() {
+        return perfil;
     }
 
-    public void setSede(String sede) {
-        this.sede = sede;
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
     }
 }

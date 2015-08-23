@@ -1,110 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_marginLeft="@dimen/activity_horizontal_margin"
     android:layout_marginRight="@dimen/activity_horizontal_margin"
-    android:layout_marginTop="@dimen/activity_vertical_margin">
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="-15dp">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/cardview"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        card_view:cardCornerRadius="3dp">
+        android:layout_height="300dp"
+        android:layout_weight="1">
+
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="300dp"
+            android:layout_weight="1">
+
             <ImageView
-                android:id="@+id/image"
-                android:layout_width="fill_parent"
-                android:layout_height="1dp" />
+                android:id="@+id/imagen"
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+                android:gravity="left"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/nombre"
-                android:layout_width="fill_parent"
-                android:layout_height="70dp"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:textSize="@dimen/abc_text_size_headline_material" />
+                <TextView
+                    android:id="@+id/nombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_gravity="bottom"
+                    android:gravity="center_vertical"
+                    android:background="@color/ColorAccent"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textAllCaps="true"/>
 
-            <TextView
-                android:id="@+id/presidente"
-                android:layout_width="fill_parent"
-                android:layout_height="70dp"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:textSize="@dimen/abc_text_size_body_1_material" />
+                <TextView
+                    android:id="@+id/representantes"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="7dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="bottom"
+                    android:gravity="fill_horizontal"
+                    android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/secGeneral"
-                android:layout_width="fill_parent"
-                android:layout_height="70dp"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:textSize="@dimen/abc_text_size_body_1_material" />
+                <TextView
+                    android:id="@+id/fundacion"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="7dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="bottom"
+                    android:gravity="fill_horizontal"
+                    android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/portavozCongreso"
-                android:layout_width="fill_parent"
-                android:layout_height="70dp"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:textSize="@dimen/abc_text_size_body_1_material" />
+                <TextView
+                    android:id="@+id/escanos"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="7dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="bottom"
+                    android:gravity="fill_horizontal"
+                    android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/portavozSenado"
-                android:layout_width="fill_parent"
-                android:layout_height="70dp"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:textSize="@dimen/abc_text_size_body_1_material" />
+                <TextView
+                    android:id="@+id/porcentajeVotos"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="7dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="bottom"
+                    android:gravity="fill_horizontal"
+                    android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/fundacion"
-                android:layout_width="fill_parent"
-                android:layout_height="70dp"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:textSize="@dimen/abc_text_size_body_1_material" />
+                <TextView
+                    android:id="@+id/ideologia"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="7dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="bottom"
+                    android:gravity="fill_horizontal"
+                    android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/ideologia"
-                android:layout_width="fill_parent"
-                android:layout_height="70dp"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:textSize="@dimen/abc_text_size_body_1_material" />
+                <TextView
+                    android:id="@+id/partidosRepresentados"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="7dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="bottom"
+                    android:gravity="fill_horizontal"
+                    android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/posicionEspectro"
-                android:layout_width="fill_parent"
-                android:layout_height="70dp"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:textSize="@dimen/abc_text_size_body_1_material" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/sede"
-                android:layout_width="fill_parent"
-                android:layout_height="70dp"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:textSize="@dimen/abc_text_size_body_1_material" />
         </LinearLayout>
-        <android.support.design.widget.FloatingActionButton
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            app:layout_anchor="@id/fab"
-            app:fabSize="normal"
-            android:layout_gravity="bottom|right|end"
-            android:layout_margin="16dp"
-            android:clickable="true"/>
+
 
     </android.support.v7.widget.CardView>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_add_white"
+        app:fabSize="mini"
+        app:borderWidth="0dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginTop="-45dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginEnd="1dp"
+        android:clickable="true"
+        android:padding="-5dp" />
 
-
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

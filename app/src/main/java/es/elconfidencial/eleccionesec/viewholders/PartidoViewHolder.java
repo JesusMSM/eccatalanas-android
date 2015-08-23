@@ -12,20 +12,18 @@ import es.elconfidencial.eleccionesec.R;
  */
 public class PartidoViewHolder extends RecyclerView.ViewHolder{
 
-    public TextView nombre, presidente,secGeneral, portavozCongreso, portavozSenado, fundacion, ideologia, posicionEspecto, sede;
+    public TextView nombre, representantes,fundacion, escanos, porcentajeVotos, ideologia, partidosRepresentados;
     public ImageView imagen;
 
     public PartidoViewHolder(View v) {
         super(v);
         nombre = (TextView) v.findViewById(R.id.nombre);
-        presidente = (TextView) v.findViewById(R.id.presidente);
-        secGeneral = (TextView) v.findViewById(R.id.secGeneral);
-        portavozCongreso = (TextView) v.findViewById(R.id.portavozCongreso);
-        portavozSenado = (TextView) v.findViewById(R.id.portavozSenado);
+        representantes = (TextView) v.findViewById(R.id.representantes);
         fundacion = (TextView) v.findViewById(R.id.fundacion);
+        escanos = (TextView) v.findViewById(R.id.escanos);
+        porcentajeVotos = (TextView) v.findViewById(R.id.porcentajeVotos);
         ideologia = (TextView) v.findViewById(R.id.ideologia);
-        posicionEspecto = (TextView) v.findViewById(R.id.posicionEspectro);
-        sede = (TextView) v.findViewById(R.id.sede);
+        partidosRepresentados = (TextView) v.findViewById(R.id.partidosRepresentados);
         imagen = (ImageView) v.findViewById(R.id.imagen);
     }
 }

@@ -191,15 +191,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private void configurePartidoViewHolder(PartidoViewHolder vh4,int position) {
         Partido partido = (Partido) items.get(position);
         if(partido != null){
+            vh4.imagen.setImageResource(partido.getImagen());
             vh4.nombre.setText(partido.getNombre());
-            vh4.presidente.setText(partido.getPresidente());
-            vh4.secGeneral.setText(partido.getSecGeneral());
-            vh4.portavozCongreso.setText(partido.getPortavozCongreso());
-            vh4.portavozSenado.setText(partido.getPortavozSenado());
+            vh4.representantes.setText(partido.getRepresentantes());
             vh4.fundacion.setText(partido.getFundacion());
+            vh4.escanos.setText(partido.getEscanos());
+            vh4.porcentajeVotos.setText(partido.getPorcentajeVotos());
             vh4.ideologia.setText(partido.getIdeologia());
-            vh4.posicionEspecto.setText(partido.getPosicionEspectro());
-            vh4.sede.setText(partido.getSede());
+            vh4.partidosRepresentados.setText(partido.getPartidosRepresentados());
         }
     }
 
