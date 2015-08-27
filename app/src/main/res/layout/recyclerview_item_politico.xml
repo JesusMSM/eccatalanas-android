@@ -82,8 +82,6 @@
                     android:paddingLeft="9dp"
                     android:paddingRight="7dp"
                     android:textColor="@color/black"
-                    android:layout_gravity="bottom"
-                    android:gravity="fill_horizontal"
                     android:textSize="12sp" />
 
 

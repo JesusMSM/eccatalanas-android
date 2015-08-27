@@ -4,6 +4,7 @@ package es.elconfidencial.eleccionesec.model;
  * Created by MOONFISH on 19/08/2015.
  */
 public class Politico {
+    private int id;
     private int imagen;
     private String nombre;
     private String edad;

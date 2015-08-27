@@ -26,6 +26,7 @@ import es.elconfidencial.eleccionesec.rss.RssQuizsParser;
 public class QuizFragment extends Fragment {
 
     private String rss_url = "http://rss.elconfidencial.com/tags/temas/test-15238/";
+
     List<Object> items = new ArrayList<>();
     List<Quiz> quizs = new ArrayList<>();
 

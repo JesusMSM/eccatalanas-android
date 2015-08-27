@@ -139,7 +139,7 @@ public class ChartTab extends Fragment {
             pDialog.setMessage("Getting Data ...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
-            pDialog.show();
+          //  pDialog.show();
 
         }
 

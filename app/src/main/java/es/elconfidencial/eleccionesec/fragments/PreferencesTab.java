@@ -94,12 +94,12 @@ public class PreferencesTab extends Fragment {
         });
 
 
-        Typeface tf = Typeface.createFromAsset(HomeActivity.context.getAssets(),
+       /** Typeface tf = Typeface.createFromAsset(HomeActivity.context.getAssets(),
                 "Roboto-Medium.ttf");
         TextView tv = (TextView) v.findViewById(R.id.textView4);
         TextView tv1 = (TextView) v.findViewById(R.id.textView5);
         tv.setTypeface(tf);
-        tv1.setTypeface(tf);
+        tv1.setTypeface(tf);**/
 
 
 

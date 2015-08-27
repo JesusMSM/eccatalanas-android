@@ -41,7 +41,7 @@ public class RssNoticiasHandler extends DefaultHandler {
         super.endElement(uri, localName, name);
 
         if (this.noticiaActual != null) {
-            if (localName.equals("title") && (firstTime==true)) {
+            if (localName.equals("title") && (firstTime)) {
                 noticiaActual.setTitulo(sbTexto.toString());
                 firstTime = false;
             } else if(localName.equals("content")){
