@@ -139,7 +139,7 @@ public class ChartTab extends Fragment {
             pDialog.setMessage("Getting Data ...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
-          //  pDialog.show();
+            //  pDialog.show();
 
         }
 
@@ -217,7 +217,7 @@ public class ChartTab extends Fragment {
             q.add("ASD");
             q.add("SA");*/
 
-                //q.add(arrayPartidos[i].getAlias());
+        //q.add(arrayPartidos[i].getAlias());
                /* q.add("PP");
                 q.add("PSOE");
                 q.add("ASD");

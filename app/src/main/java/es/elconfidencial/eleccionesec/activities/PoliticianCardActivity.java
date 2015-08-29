@@ -2,10 +2,13 @@ package es.elconfidencial.eleccionesec.activities;
 
 import android.content.Intent;
 import android.media.Image;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,14 +29,36 @@ public class PoliticianCardActivity extends ActionBarActivity {
         TextView edad = (TextView) findViewById(R.id.edad);
         TextView partido = (TextView) findViewById(R.id.partido);
         TextView cargo = (TextView) findViewById(R.id.cargo);
-        TextView perfil = (TextView) findViewById(R.id.perfil);
+        WebView perfil = (WebView) findViewById(R.id.perfil);
 
         imagen.setImageResource(intent.getIntExtra("imagen", 0));
         nombre.setText(intent.getStringExtra("nombre"));
         edad.setText(intent.getStringExtra("edad"));
         partido.setText(intent.getStringExtra("partido"));
         cargo.setText(intent.getStringExtra("cargo"));
-        perfil.setText(intent.getStringExtra("perfil"));
+
+
+        //Insertamos la cabecera al html con el estilo
+        String head = "<head><style>@font-face {font-family: MilioHeavy;text-align:justify; src: url(\"file:///android_asset/Milio-Heavy.ttf\")}h2{font-family: MilioHeavy;}img{max-width: 100%; width:auto; height: auto;}</style></head>";
+        String htmlString ="<html>" + head + "<body style='text-align:justify;'>" + intent.getStringExtra("perfil") + "</body></html>";
+        System.out.println(intent.getStringExtra("perfil"));
+        perfil.getSettings().setJavaScriptEnabled(true);
+        perfil.loadDataWithBaseURL("", htmlString, "text/html", "charset=UTF-8", null);
+        perfil.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                //Abrimos los links siempre en el navegador
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+                return true;
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                view.loadUrl("javascript:");
+                super.onPageFinished(view, url);
+            }
+        });
     }
 
     @Override

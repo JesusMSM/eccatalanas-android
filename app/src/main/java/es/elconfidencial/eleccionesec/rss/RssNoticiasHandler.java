@@ -12,7 +12,7 @@ import java.util.List;
 import es.elconfidencial.eleccionesec.model.Noticia;
 
 /**
- * Created by Afll on 03/08/2015.
+ * Created by MOONFISH on 03/08/2015.
  */
 public class RssNoticiasHandler extends DefaultHandler {
     private List<Noticia> noticias;
