@@ -1,6 +1,7 @@
 package es.elconfidencial.eleccionesec.activities;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.media.Image;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
@@ -37,9 +38,17 @@ public class PoliticianCardActivity extends ActionBarActivity {
         partido.setText(intent.getStringExtra("partido"));
         cargo.setText(intent.getStringExtra("cargo"));
 
+        //Fonts
+        nombre.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Milio-Heavy-Italic.ttf"));
+        cargo.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Light.otf"));
 
         //Insertamos la cabecera al html con el estilo
-        String head = "<head><style>@font-face {font-family: MilioHeavy;text-align:justify; src: url(\"file:///android_asset/Milio-Heavy.ttf\")}h2{font-family: MilioHeavy;}img{max-width: 100%; width:auto; height: auto;}</style></head>";
+        String head = "<head><style>@font-face {font-family: MilioHeavy;text-align:justify; src: url(\"file:///android_asset/Milio-Heavy.ttf\")}" +
+                "@font-face {font-family: TitilliumLight;src: url(\"file:///android_asset/Titillium-Light.otf\")}" +
+                "@font-face {font-family: TitilliumSemibold;src: url(\"file:///android_asset/Titillium-Semibold.otf\")}" +
+                "body{font-family:TitilliumLight;}" +
+                "strong{font-family:TitilliumSemibold;}"+
+                "img{max-width: 100%; width:auto; height: auto;}</style></head>";
         String htmlString ="<html>" + head + "<body style='text-align:justify;'>" + intent.getStringExtra("perfil") + "</body></html>";
         System.out.println(intent.getStringExtra("perfil"));
         perfil.getSettings().setJavaScriptEnabled(true);

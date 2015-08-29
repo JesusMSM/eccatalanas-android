@@ -40,20 +40,28 @@ public class NoticiaContentActivity extends ActionBarActivity {
         ImageView imagen = (ImageView) findViewById(R.id.imagen);
         WebView descripcion = (WebView)findViewById(R.id.descripcion);
         TextView autor = (TextView) findViewById(R.id.autor);
-        titulo.setText(intent.getStringExtra("titulo"));
-        autor.setText(intent.getStringExtra("autor"));
+        titulo.setText(Html.fromHtml(intent.getStringExtra("titulo")));
+        autor.setText(Html.fromHtml(intent.getStringExtra("autor")));
 
         //Insertamos la cabecera al html con el estilo
-        String head = "<head><style>@font-face {font-family: MilioHeavy;src: url(\"file:///android_asset/Milio-Heavy.ttf\")}h2{font-family: MilioHeavy;}img{max-width: 100%; width:auto; height: auto;}</style></head>";
+        String head = "<head><style>@font-face {font-family: MilioItalic;src: url(\"file:///android_asset/Milio-Demibold-Italic.ttf\")}" +
+                "@font-face {font-family: TitilliumLight;src: url(\"file:///android_asset/Titillium-Light.otf\")}" +
+                "@font-face {font-family: TitilliumSemibold;src: url(\"file:///android_asset/Titillium-Semibold.otf\")}" +
+                "h2{font-family: MilioItalic;}" +
+                "img{max-width: 100%; width:auto; height: auto;}" +
+                "body{font-family:TitilliumLight;text-align:justify}" +
+                "a{text-decoration: none;color:black;} " +
+                "strong{font-family:TitilliumSemibold;}</style></head>";
+
         String htmlString ="<html>" + head + "<body>" + intent.getStringExtra("descripcion") + "</body></html>";
+
+        //Quitar links
         descripcion.getSettings().setJavaScriptEnabled(true);
         descripcion.loadDataWithBaseURL("", htmlString, "text/html", "charset=UTF-8", null);
         descripcion.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                //Abrimos los links siempre en el navegador
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(intent);
+                //Bloquear links
                 return true;
             }
 
@@ -72,7 +80,7 @@ public class NoticiaContentActivity extends ActionBarActivity {
         });
 
         //Estilo
-        titulo.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Milio-Heavy.ttf"));
+        titulo.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Milio-Heavy-Italic.ttf"));
         autor.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Milio-Heavy.ttf"));
         Picasso.with(getApplicationContext()).load(intent.getStringExtra("imagenUrl")).into(imagen);
     }
@@ -90,4 +98,5 @@ public class NoticiaContentActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

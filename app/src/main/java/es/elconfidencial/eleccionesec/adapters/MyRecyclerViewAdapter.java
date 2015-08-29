@@ -149,7 +149,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             Picasso.with(context).load(noticia.getImagenUrl()).into(vh1.imagen);
         }
         vh1.autor.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
-        vh1.titulo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
+        vh1.titulo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy-Italic.ttf"));
 
         //onClickListenerNoticia
         vh1.itemView.setOnClickListener(new View.OnClickListener() {
@@ -178,14 +178,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             Picasso.with(context).load(quiz.getImagenUrl()).into(vh2.imagen);
         }
 
+        //Fonts
         vh2.autor.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
-        vh2.titulo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
+        vh2.titulo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy-Italic.ttf"));
 
     }
 
     private void configureContadorViewHolder(ContadorViewHolder vh3,int position) {
         vh3.showContador();
-        vh3.contador.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
+        vh3.contador.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
         vh3.label.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
     }
 
@@ -229,10 +230,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh5.partido.setText(politico.getPartido());
             vh5.cargo.setText(politico.getCargo());
         }
-            vh5.fab.setOnClickListener(new View.OnClickListener(){
+            vh5.fab.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent(context, PoliticianCardActivity.class);
-                    intent.putExtra("imagen",politico.getImagen());
+                    intent.putExtra("imagen", politico.getImagen());
                     intent.putExtra("nombre", politico.getNombre());
                     intent.putExtra("edad", politico.getEdad());
                     intent.putExtra("partido", politico.getPartido());
@@ -242,6 +243,12 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     context.startActivity(intent);
                 }
             });
+        //Fonts
+        vh5.nombre.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
+        vh5.cargo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+        vh5.partido.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+        vh5.edad.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+
 
     }
 
