@@ -10,10 +10,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -73,50 +78,79 @@ public class ChartTab extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.tab_chart, container, false);
-        downloadData();
-        lv = (ListView) v.findViewById(R.id.listView1);
-
-
-        layout = (PullRefreshLayout) v.findViewById(R.id.swipeRefreshLayout);
-
-        // listen refresh event
-        layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                // start refresh
-                //Aquí se descargarían nuevos datos
-                downloadData();
-                Toast.makeText(HomeActivity.context, "Refrescado!",
-                        Toast.LENGTH_LONG).show();
-                // refresh complete
-                layout.setRefreshing(false);
-            }
-        });
-       /* barChart = (BarChart) v.findViewById(R.id.barChart1);
-
-        ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(4f, 0));
-        entries.add(new BarEntry(8f, 1));
-        entries.add(new BarEntry(6f, 2));
-        entries.add(new BarEntry(12f, 3));
-
-        BarDataSet dataset = new BarDataSet(entries, "Leyenda");
-
-        ArrayList<String> labels = new ArrayList<String>();
-        labels.add("PP");
-        labels.add("PSOE");
-        labels.add("Podemos");
-        labels.add("Ciudadanos");
-
-
-        BarData data = new BarData(labels, dataset);
-        barChart.setData(data);
-        barChart.setDescription("Ejemplo");
-        barChart.animateY(5000);
+        //downloadData();
 
 
 
-        //setContentView(chart);*/
+        //HEMICICLO
+
+        WebView webview1 = (WebView) v.findViewById(R.id.webView1);
+        String content1 = "<html>"
+                + "<meta charset='utf-8'>"
+                + "<script src='http://d3js.org/d3.v3.min.js'></script>"
+                + "<head>"
+                + "<meta name='viewport' content='width=device-width, initial-scale=1'>"
+                + "<style> "
+                + "body {"
+                + "  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;"
+                + "  margin: auto;"
+                + "  position: relative;"
+                + "}"
+                + "form {"
+                + "  position: absolute;"
+                + "  right: 10px;"
+                + "  top: 10px;"
+                + "}"
+                + "</style>"
+                + "</head>"
+                + "<body>"
+                + "<script>"
+                + "  var dataset = {"
+                + "  apples: [53245, 28479, 19697, 24037, 40245],"
+                + "  oranges: [53245, 28479, 19697, 24037, 40245],"
+                + "};"
+                + "var width = 460,"
+                + "    height = 300,"
+                + "    cwidth = 80;"
+                + "    r = 10;"
+                + "var color = d3.scale.ordinal()"
+                + "                   .range(['#0077a7', '#df2927', '#5e2b5e', '#df843d', '#24988b', '#e12893']);"
+                + "var pie = d3.layout.pie()"
+                + "    .sort(null)"
+                + "    .startAngle(3/2 * Math.PI)"
+                + "    .endAngle(5/2 * Math.PI);"
+                + "var arc = d3.svg.arc();"
+                + "var svg = d3.select('body').append('svg')"
+                + "    .attr('width', width)"
+                + "    .attr('height', height)"
+                + "    .append('g')"
+                + "    .attr('transform', 'translate(' + width / 2 + ',' + height + ')');"
+                + "var gs = svg.selectAll('g').data(d3.values(dataset)).enter().append('g');"
+                + "var path = gs.selectAll('path')"
+                + "    .data(pie(dataset.apples))"
+                + "  .enter().append('path')"
+                + "    .attr('fill', function(d, i) { return color(i); })"
+                + "    .attr('d', function(d, i, j) { return arc.innerRadius(30+cwidth*j).outerRadius(cwidth*(j+1))(d); });"
+                + "</script>"
+                + "</body>"
+                + "</html";
+
+
+        WebSettings webSettings1 = webview1.getSettings();
+        webSettings1.setJavaScriptEnabled(true);
+        //webview.requestFocusFromTouch();
+        webview1.setInitialScale(1);
+        webview1.getSettings().setJavaScriptEnabled(true);
+        webview1.getSettings().setLoadWithOverviewMode(true);
+        webview1.getSettings().setUseWideViewPort(true);
+        webview1.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        webview1.setScrollbarFadingEnabled(false);
+        webview1.getSettings().setLoadWithOverviewMode(true);
+        webview1.getSettings().setUseWideViewPort(true);
+        // disable scroll on touch
+
+        webview1.loadDataWithBaseURL("", content1 , "text/html", "charset=UTF-8", null);
+
 
         return v;
     }
@@ -340,5 +374,5 @@ public class ChartTab extends Fragment {
         public int getViewTypeCount() {
             return 3; // we have 3 different item-types
         }
-    }
+}
 }
