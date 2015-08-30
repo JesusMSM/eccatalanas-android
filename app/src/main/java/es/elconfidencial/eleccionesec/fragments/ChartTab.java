@@ -201,6 +201,7 @@ public class ChartTab extends Fragment {
                 //drawGraphics();
                 arrayPartidos2015 = arrayPartidos;
                 drawHemiciclo(getDataString(arrayPartidos2011,"res2011"),getDataString(arrayPartidos2015,"res2015"));
+                drawBar();
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -289,6 +290,71 @@ public class ChartTab extends Fragment {
         webview1.loadDataWithBaseURL("", content1 , "text/html", "charset=UTF-8", null);
 
         WebView webview2 = (WebView) v.findViewById(R.id.webView2);
+    }
+
+    public void drawBar(){
+        //GRAFICO BARRAS
+
+        WebView webview2 = (WebView) v.findViewById(R.id.webView2);
+        String content2 = "<!DOCTYPE html>"
+                + "<meta charset='utf-8'>"
+                + "<style>"
+                + ".chart rect {"
+                + "}"
+                + ".chart text{"
+                + "  fill: black;"
+                + "  background-color: #00ff00"
+                + "  font: 10px sans-serif;"
+                + "  text-anchor: end;"
+                + "}"
+                + ".chart text.name {"
+                + "  fill: #000;"
+                + "}"
+                + "</style>"
+                + "<svg class='chart'></svg>"
+                + "<script src='http://d3js.org/d3.v3.min.js'></script>"
+                + "<script>"
+                + "var data = [42, 28, 16, 10, 8, 4];"
+                + "var color = d3.scale.ordinal()"
+                + "                   .range(['#0077a7', '#df2927', '#5e2b5e', '#df843d', '#24988b', '#e12893']);"
+                + "var width = 860,"
+                + "    barHeight = 60;"
+                + "var x = d3.scale.linear()"
+                + "    .domain([0, d3.max(data)])"
+                + "    .range([50, width-50]);"
+                + "var chart = d3.select('.chart')"
+                + "    .attr('width', width)"
+                + "    .attr('height', barHeight * data.length);"
+                + "var bar = chart.selectAll('g')"
+                + "    .data(data)"
+                + "  .enter().append('g')"
+                + "    .attr('transform', function(d, i) { return 'translate(0,' + i * barHeight + ')'; });"
+                + "bar.append('rect')"
+                + "    .attr('width', x)"
+                + "    .attr('fill', function(d, i) { return color(i); })"
+                + "    .attr('height', barHeight - 30);"
+                + "bar.append('text')"
+                + "    .attr('x', width)"
+                + "    .attr('y', barHeight / 3)"
+                + "    .text(function(d) { return d; });"
+                + "</script>";
+
+
+        WebSettings webSettings2 = webview2.getSettings();
+        webSettings2.setJavaScriptEnabled(true);
+        //webview.requestFocusFromTouch();
+        webview2.setInitialScale(1);
+        webview2.getSettings().setJavaScriptEnabled(true);
+        webview2.getSettings().setLoadWithOverviewMode(true);
+        webview2.getSettings().setUseWideViewPort(true);
+        webview2.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        webview2.setScrollbarFadingEnabled(false);
+        webview2.getSettings().setLoadWithOverviewMode(true);
+        webview2.getSettings().setUseWideViewPort(true);
+        // disable scroll on touch
+
+        webview2.loadDataWithBaseURL("", content2 , "text/html", "charset=UTF-8", null);
+
     }
 
     private BarData generateDataBar(int cnt) {
