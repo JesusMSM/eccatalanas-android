@@ -45,9 +45,20 @@ public class PartidoEstadisticas {
         this.color = color;
     }
 
+    public String getElectedMembers() {
+        return electedMembers;
+    }
+
+    public void setElectedMembers(String electedMembers) {
+        this.electedMembers = electedMembers;
+    }
+
     private String comunidadAutonoma = "";
     private Double porcentajeObtenido = 0.0;
     private String nombre ="";
     private String alias ="";
     private String color ="";
+    private String electedMembers = "";
+
+
 }

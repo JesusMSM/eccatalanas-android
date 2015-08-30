@@ -62,7 +62,9 @@ public class ChartTab extends Fragment {
     ListView lv;
     View v;
     PullRefreshLayout layout;
-    private static String url = "http://api.elconfidencial.com/service/elections/place/3/7/99/9/";
+    private static String url_2015 = "http://api.elconfidencial.com/service/elections/place/3/7/99/9/";
+    private static String url_2011="http://api.elconfidencial.com/service/elections/place/1/7/99/9/";
+
     private static final String TAG_DATA = "data";
     private static final String TAG_RESULTS = "results";
     private static final String TAG_COM_AUT = "res_name";
@@ -71,17 +73,152 @@ public class ChartTab extends Fragment {
     private static final String TAG_NOMBRE = "par_name";
     private static final String TAG_ALIAS = "par_alias";
     private static final String TAG_COLOR = "par_color";
+    private static final String TAG_ELECTED_MEMBERS = "res_elected_members";
+
     private int numPartidos;
     private PartidoEstadisticas[] arrayPartidos;
+    private PartidoEstadisticas[] arrayPartidos2011;
+    private PartidoEstadisticas[] arrayPartidos2015;
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.tab_chart, container, false);
-        //downloadData();
+        downloadData();
 
+        return v;
+    }
 
+    public void downloadData(){
+        //Cargamos datos de 2011- Al terminar, cargamos los de 2015 - Al terminar dibujamos el chart
+       new JSONParse2011().execute(url_2011);
+    }
 
+    private class JSONParse2011 extends AsyncTask<String, String, JSONObject> {
+        private JSONObject data;
+        private JSONArray results;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... args) {
+            JSONParser jParser = new JSONParser();
+            // Getting JSON from URL
+            JSONObject json = jParser.getJSONFromUrl(args[0]);
+            return json;
+        }
+        @Override
+        protected void onPostExecute(JSONObject json) {
+            PartidoEstadisticas[] arrayPartidos;
+
+            try {
+                // Getting JSON Array
+                data = json.getJSONObject(TAG_DATA);
+                results = data.getJSONArray(TAG_RESULTS);
+                numPartidos = results.length();
+                arrayPartidos = new PartidoEstadisticas[numPartidos];
+
+                for(int i=0; i<numPartidos; i++){
+
+                    PartidoEstadisticas partido = new PartidoEstadisticas();
+
+                    JSONObject jsonEstadisticas = results.getJSONObject(i); //Vamos cargando cada partido
+
+                    partido.setComunidadAutonoma(jsonEstadisticas.getString(TAG_COM_AUT));
+
+                    partido.setPorcentajeObtenido(jsonEstadisticas.getDouble(TAG_PORCENTAJE));
+                    partido.setElectedMembers(jsonEstadisticas.getString(TAG_ELECTED_MEMBERS));
+
+                    JSONObject jsonPartido = jsonEstadisticas.getJSONObject(TAG_PARTIDO);
+                    partido.setNombre(jsonPartido.getString(TAG_NOMBRE));
+                    partido.setAlias(jsonPartido.getString(TAG_ALIAS));
+                    partido.setColor(jsonPartido.getString(TAG_COLOR));
+
+                    arrayPartidos[i]=partido;
+                }
+
+                //drawGraphics();
+                arrayPartidos2011 = arrayPartidos;
+                new JSONParse2015().execute(url_2015);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private class JSONParse2015 extends AsyncTask<String, String, JSONObject> {
+        private ProgressDialog pDialog;
+        private JSONObject data;
+        private JSONArray results;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... args) {
+            JSONParser jParser = new JSONParser();
+            // Getting JSON from URL
+            JSONObject json = jParser.getJSONFromUrl(args[0]);
+            return json;
+        }
+        @Override
+        protected void onPostExecute(JSONObject json) {
+            PartidoEstadisticas[] arrayPartidos;
+
+            //pDialog.dismiss();
+            try {
+                // Getting JSON Array
+                data = json.getJSONObject(TAG_DATA);
+                results = data.getJSONArray(TAG_RESULTS);
+                numPartidos = results.length();
+                arrayPartidos = new PartidoEstadisticas[numPartidos];
+
+                for(int i=0; i<numPartidos; i++){
+
+                    PartidoEstadisticas partido = new PartidoEstadisticas();
+
+                    JSONObject jsonEstadisticas = results.getJSONObject(i); //Vamos cargando cada partido
+
+                    partido.setComunidadAutonoma(jsonEstadisticas.getString(TAG_COM_AUT));
+
+                    partido.setPorcentajeObtenido(jsonEstadisticas.getDouble(TAG_PORCENTAJE));
+                    partido.setElectedMembers(jsonEstadisticas.getString(TAG_ELECTED_MEMBERS));
+
+                    JSONObject jsonPartido = jsonEstadisticas.getJSONObject(TAG_PARTIDO);
+                    partido.setNombre(jsonPartido.getString(TAG_NOMBRE));
+                    partido.setAlias(jsonPartido.getString(TAG_ALIAS));
+                    partido.setColor(jsonPartido.getString(TAG_COLOR));
+
+                    arrayPartidos[i]=partido;
+                }
+
+                //drawGraphics();
+                arrayPartidos2015 = arrayPartidos;
+                drawHemiciclo(getDataString(arrayPartidos2011,"res2011"),getDataString(arrayPartidos2015,"res2015"));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    private String getDataString(PartidoEstadisticas[] array,String title){
+        String result = "";
+        String [] resultArray = new String[array.length];
+        for(int i=0; i<array.length; i++){
+            result += array[i].getElectedMembers();
+            if(i != array.length-1){//No es el ultimo item
+                result += ",";
+            }
+        }
+        return title + ": [" + result + "],";
+    }
+    public void drawHemiciclo(String data2011,String data2015){
         //HEMICICLO
 
         WebView webview1 = (WebView) v.findViewById(R.id.webView1);
@@ -106,8 +243,8 @@ public class ChartTab extends Fragment {
                 + "<body>"
                 + "<script>"
                 + "  var dataset = {"
-                + "  apples: [53245, 28479, 19697, 24037, 40245],"
-                + "  oranges: [53245, 28479, 19697, 24037, 40245],"
+                + data2011
+                + data2015
                 + "};"
                 + "var width = 460,"
                 + "    height = 300,"
@@ -127,7 +264,7 @@ public class ChartTab extends Fragment {
                 + "    .attr('transform', 'translate(' + width / 2 + ',' + height + ')');"
                 + "var gs = svg.selectAll('g').data(d3.values(dataset)).enter().append('g');"
                 + "var path = gs.selectAll('path')"
-                + "    .data(pie(dataset.apples))"
+                + "    .data(function(d) { return pie(d); })"
                 + "  .enter().append('path')"
                 + "    .attr('fill', function(d, i) { return color(i); })"
                 + "    .attr('d', function(d, i, j) { return arc.innerRadius(30+cwidth*j).outerRadius(cwidth*(j+1))(d); });"
@@ -151,78 +288,8 @@ public class ChartTab extends Fragment {
 
         webview1.loadDataWithBaseURL("", content1 , "text/html", "charset=UTF-8", null);
 
-
-        return v;
+        WebView webview2 = (WebView) v.findViewById(R.id.webView2);
     }
-
-    public void downloadData(){
-
-        new JSONParse().execute();
-
-    }
-
-    private class JSONParse extends AsyncTask<String, String, JSONObject> {
-        private ProgressDialog pDialog;
-        private JSONObject data;
-        private JSONArray results;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Getting Data ...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            //  pDialog.show();
-
-        }
-
-        @Override
-        protected JSONObject doInBackground(String... args) {
-            JSONParser jParser = new JSONParser();
-
-            // Getting JSON from URL
-            JSONObject json = jParser.getJSONFromUrl(url);
-            return json;
-        }
-        @Override
-        protected void onPostExecute(JSONObject json) {
-            pDialog.dismiss();
-            try {
-                // Getting JSON Array
-                data = json.getJSONObject(TAG_DATA);
-                results = data.getJSONArray(TAG_RESULTS);
-                numPartidos = results.length();
-                arrayPartidos = new PartidoEstadisticas[numPartidos];
-
-                for(int i=0; i<numPartidos; i++){
-
-                    PartidoEstadisticas partido = new PartidoEstadisticas();
-
-                    JSONObject jsonEstadisticas = results.getJSONObject(i); //Vamos cargando cada partido
-
-                    partido.setComunidadAutonoma(jsonEstadisticas.getString(TAG_COM_AUT));
-
-                    partido.setPorcentajeObtenido(jsonEstadisticas.getDouble(TAG_PORCENTAJE));
-
-                    JSONObject jsonPartido = jsonEstadisticas.getJSONObject(TAG_PARTIDO);
-                    partido.setNombre(jsonPartido.getString(TAG_NOMBRE));
-                    partido.setAlias(jsonPartido.getString(TAG_ALIAS));
-                    partido.setColor(jsonPartido.getString(TAG_COLOR));
-
-                    arrayPartidos[i]=partido;
-
-                }
-
-                drawGraphics();
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
 
     private BarData generateDataBar(int cnt) {
 
@@ -284,7 +351,7 @@ public class ChartTab extends Fragment {
         for (int i = 0; i < numPartidos; i++) {
             float porcentaje = arrayPartidos[i].getPorcentajeObtenido().floatValue();
             Log.d("GRAFICOS", ""+porcentaje);
-            Log.d("GRAFICOS", ""+arrayPartidos[i].getPorcentajeObtenido());
+            Log.d("GRAFICOS", "" + arrayPartidos[i].getPorcentajeObtenido());
             entries.add(new Entry(porcentaje, i));
         }
 
