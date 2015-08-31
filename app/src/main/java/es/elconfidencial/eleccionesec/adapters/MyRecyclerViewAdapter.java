@@ -204,7 +204,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private void configurePartidoViewHolder(PartidoViewHolder vh4,int position) {
         final Partido partido = (Partido) items.get(position);
         if(partido != null){
-            vh4.imagen.setImageResource(partido.getImagen());
+            try {
+                Picasso.with(context).load(partido.getImagen()).fit().into(vh4.imagen);
+            }catch (Exception e){e.printStackTrace();}
             vh4.nombre.setText(partido.getNombre());
             vh4.representantes.setText(partido.getRepresentantes());
             vh4.fundacion.setText(partido.getFundacion());
@@ -230,6 +232,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 context.startActivity(intent);
             }
         });
+
+        //Fonts
+        vh4.nombre.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
+        vh4.representantes.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+        vh4.fundacion.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+        vh4.escanos.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+        vh4.porcentajeVotos.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+        vh4.ideologia.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+        vh4.partidosRepresentados.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
     }
 
     private void configurePoliticoViewHolder(PoliticoViewHolder vh5,int position) {
