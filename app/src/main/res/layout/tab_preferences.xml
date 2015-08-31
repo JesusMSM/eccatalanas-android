@@ -5,19 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:scaleType="centerCrop"
-        android:cropToPadding="true"
-        android:adjustViewBounds="true"
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
-        />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:scaleType="centerCrop"
+            android:cropToPadding="true"
+            android:adjustViewBounds="true"
+
+            />
+
+      <!--  <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GUARDAR"
+            android:id="@+id/guardar"
+            android:textColor="@color/white"
+            android:layout_gravity="end"
+            android:background="@android:color/transparent"
+            android:cropToPadding="true"
+            android:adjustViewBounds="true" /> -->
+
+
+    </FrameLayout>
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/scrollView">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,6 +46,7 @@
         <!-- ENCABEZADO -->
 
             <TextView
+                android:id="@+id/suscripcion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -34,7 +55,6 @@
                 android:textColor="@color/black"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/suscripcion"
-                android:textStyle="bold"
                 android:textSize="15sp"
                 android:textAllCaps="true"/>
 
@@ -49,6 +69,7 @@
                 android:background="@color/black"/>
 
             <TextView
+                android:id="@+id/suscripcion_descripcion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -64,10 +85,51 @@
 
 
         <!-- LISTA DE PARTIDOS CON SWITCHES -->
+
+        <!-- CDC -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/cdc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="13sp"
+                android:textColor="#212121"
+                android:text="CDC" />
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/convergencia_democratica_de_catalunya_cdc_6665" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="#E0E0E0"/>
+
+
+        <!-- PP Catalunya -->
                 <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/pp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
@@ -75,8 +137,8 @@
                         android:layout_marginLeft="30dp"
                         android:textSize="13sp"
                         android:textColor="#212121"
-                        android:text="PP" />
-                    <Switch
+                        android:text="PP Catalunya" />
+                    <android.support.v7.widget.SwitchCompat
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
@@ -84,7 +146,7 @@
                         android:layout_marginRight="30dp"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        android:id="@+id/switch_pp" />
+                        android:id="@+id/xavier_garcia_albiol_14516" />
 
                 </RelativeLayout>
 
@@ -98,10 +160,15 @@
             android:layout_marginEnd="30dp"
             android:background="#E0E0E0"/>
 
+
+
+        <!-- Cs Catalunya -->
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/cs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -109,8 +176,8 @@
                 android:layout_marginLeft="30dp"
                 android:textSize="13sp"
                 android:textColor="#212121"
-                android:text="PSOE" />
-            <Switch
+                android:text="Cs Catalunya" />
+            <android.support.v7.widget.SwitchCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -118,41 +185,7 @@
                 android:layout_marginRight="30dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:id="@+id/switch_psoe" />
-
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginEnd="30dp"
-            android:background="#E0E0E0"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:textSize="13sp"
-                android:textColor="#212121"
-                android:text="CIUDADANOS" />
-            <Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:id="@+id/switch_ciudadanos" />
+                android:id="@+id/ines_arrimadas_15503" />
 
         </RelativeLayout>
 
@@ -167,6 +200,223 @@
             android:background="#E0E0E0"/>
 
 
+
+        <!-- PSC -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/psc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="13sp"
+                android:textColor="#212121"
+                android:text="PSC" />
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/psc_6043" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="#E0E0E0"/>
+
+
+        <!-- UDC -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/udc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="13sp"
+                android:textColor="#212121"
+                android:text="UDC" />
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/unio_democratica_de_catalunya_udc_7522" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="#E0E0E0"/>
+
+        <!-- Catalunya si que es pot -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/csqep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="13sp"
+                android:textColor="#212121"
+                android:text="Catalunya si que es pot" />
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/cataluna_si_que_es_pot_15843" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="#E0E0E0"/>
+
+
+
+        <!-- Junts pel si -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/jps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="13sp"
+                android:textColor="#212121"
+                android:text="Junts pel si" />
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/junts_pel_si_15903" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="#E0E0E0"/>
+
+
+        <!-- CUP -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/cup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="13sp"
+                android:textColor="#212121"
+                android:text="CUP" />
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/cup_15022" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="#E0E0E0"/>
+
+        <!-- ¿Desea recibir notificaciones? -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/notificaciones_descripcion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="14sp"
+                android:textColor="@color/ColorAccent"
+                android:textStyle="bold"
+                android:text="¿Desea recibir notificaciones?" />
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/notificaciones" />
+
+        </RelativeLayout>
 
 
 
@@ -174,6 +424,7 @@
 
 
         <TextView
+                android:id="@+id/idioma"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -182,7 +433,6 @@
                 android:textColor="@color/black"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/idiomas"
-                android:textStyle="bold"
                 android:textSize="15sp"
                 android:textAllCaps="true"/>
 
@@ -208,11 +458,20 @@
                 />
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GUARDAR"
             android:id="@+id/guardar"
+            android:textColor="@color/ColorAccent"
+            android:textStyle="bold"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="end"
             android:cropToPadding="true"
+            android:textSize="15sp"
             android:adjustViewBounds="true" />
 
 

@@ -33,7 +33,7 @@ import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.activities.HomeActivity;
 
 /**
- * Created by JesúsManuel on 16/08/2015.
+ * Created by MOONFISH on 16/08/2015.
  */
 public class PreferencesTab extends Fragment {
 
@@ -94,16 +94,49 @@ public class PreferencesTab extends Fragment {
         });
 
 
-       /** Typeface tf = Typeface.createFromAsset(HomeActivity.context.getAssets(),
-                "Roboto-Medium.ttf");
-        TextView tv = (TextView) v.findViewById(R.id.textView4);
-        TextView tv1 = (TextView) v.findViewById(R.id.textView5);
-        tv.setTypeface(tf);
-        tv1.setTypeface(tf);**/
-
-
+        // --------- Ajuste de Fonts-----------
+        insertFonts(v);
 
         return v;
+    }
+
+    private void insertFonts(View v){
+        // --------- Ajuste de Fonts-----------
+
+        //Semibold(títulos)
+        Typeface ts = Typeface.createFromAsset(HomeActivity.context.getAssets(),
+                "Titillium-Semibold.otf");
+        TextView suscripcion = (TextView) v.findViewById(R.id.suscripcion);
+        TextView idioma = (TextView) v.findViewById(R.id.idioma);
+
+        suscripcion.setTypeface(ts);
+        idioma.setTypeface(ts);
+
+        //Regular(resto del contenido)
+        Typeface tr = Typeface.createFromAsset(HomeActivity.context.getAssets(),
+                "Titillium-Regular.otf");
+        TextView suscripcion_descripcion = (TextView) v.findViewById(R.id.suscripcion_descripcion);
+        TextView cdc = (TextView) v.findViewById(R.id.cdc);
+        TextView pp = (TextView) v.findViewById(R.id.pp);
+        TextView cs = (TextView) v.findViewById(R.id.cs);
+        TextView psc = (TextView) v.findViewById(R.id.psc);
+        TextView udc = (TextView) v.findViewById(R.id.udc);
+        TextView csqep = (TextView) v.findViewById(R.id.csqep);
+        TextView jps = (TextView) v.findViewById(R.id.jps);
+        TextView cup = (TextView) v.findViewById(R.id.cup);
+        TextView notificaciones_descripcion = (TextView) v.findViewById(R.id.notificaciones_descripcion);
+
+        suscripcion_descripcion.setTypeface(tr);
+        cdc.setTypeface(tr);
+        pp.setTypeface(tr);
+        cs.setTypeface(tr);
+        psc.setTypeface(tr);
+        udc.setTypeface(tr);
+        csqep.setTypeface(tr);
+        jps.setTypeface(tr);
+        cup.setTypeface(tr);
+        notificaciones_descripcion.setTypeface(tr);
+        buttonIdiomas.setTypeface(tr);
     }
 
 
