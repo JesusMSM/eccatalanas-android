@@ -1,9 +1,12 @@
 package es.elconfidencial.eleccionesec.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
@@ -46,9 +49,15 @@ public class PoliticianCardActivity extends ActionBarActivity {
             int width = size.x;
             int height = size.y;
 
-            int resid=intent.getIntExtra("imagen",0);
+            int resid=intent.getIntExtra("imagen", 0);
             //Load Image
-            Picasso.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpolitico).resize(width, height*2/3).centerCrop().into(imagen);
+            //Picasso.with(getApplicationContext()).load(R.drawable.artur_mas2).placeholder(R.drawable.nopicpolitico).resize(width, height*2/3).onlyScaleDown().centerCrop().into(imagen);
+            BitmapFactory.Options opts = new BitmapFactory.Options();
+            opts.inDither = true;
+            opts.inSampleSize = 3;
+
+            Bitmap bitmapImage = BitmapFactory.decodeResource(this.getResources(), resid, opts);
+            imagen.setImageBitmap(bitmapImage);
         }catch (Exception e){e.printStackTrace();}
 
         nombre.setText(intent.getStringExtra("nombre"));

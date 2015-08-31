@@ -4,15 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -180,7 +183,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh2.titulo.setText(Html.fromHtml(quiz.getTitulo()));
             vh2.autor.setText(quiz.getAutor());
             try {
-                Picasso.with(context).load(quiz.getImagenUrl()).placeholder(R.drawable.nopic).fit().into(vh2.imagen);
+                Picasso.with(context).load(quiz.getImagenUrl()).placeholder(R.drawable.nopic).into(vh2.imagen);
             }catch (Exception e){
                 e.printStackTrace();
             }

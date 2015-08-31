@@ -1,31 +1,16 @@
 package es.elconfidencial.eleccionesec.activities;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.drawable.ColorDrawable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.adapters.ViewPagerAdapter;
-import es.elconfidencial.eleccionesec.model.Noticia;
-import es.elconfidencial.eleccionesec.model.Quiz;
 import es.elconfidencial.eleccionesec.slidingtabfiles.SlidingTabLayout;
 
 
