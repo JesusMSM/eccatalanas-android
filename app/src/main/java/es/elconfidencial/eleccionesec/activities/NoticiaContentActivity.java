@@ -63,11 +63,10 @@ public class NoticiaContentActivity extends ActionBarActivity {
                 "a{text-decoration: none;color:black;} " +
                 "strong{font-family:TitilliumSemibold;}</style></head>";
 
-        String htmlString ="<html>" + head + "<body>" + intent.getStringExtra("descripcion") + "</body></html>";
+        String htmlString ="<html>" + head + "<body><div>" + intent.getStringExtra("descripcion") + "</div></body></html>";
 
-        htmlString = htmlString.replaceAll("\\<img src=\"http://b.*?\\>", "");
+        //String htmlStringFormatted = htmlString.replace("<img src[^>]*>", "");
         //Quitar la imagen del final
-        //htmlString = htmlString.replace("<img src=\"http://b.scorecardresearch.com/b?c1=2&amp;c2=7215267&amp;ns__t=1441033802&amp;ns_c=UTF-8&amp;c8=Elecciones+Catalu%C3%B1a+2015&amp;c7=http%3A%2F%2Frss.elconfidencial.com%2Ftags%2Ftemas%2Felecciones-cataluna-2015-6160%2F&amp;c9=http%3A%2F%2Fwww.elconfidencial.com%2F\" width=\"1\" height=\"1\">"," ");
 
         descripcion.getSettings().setJavaScriptEnabled(true);
         descripcion.loadDataWithBaseURL("", htmlString, "text/html", "charset=UTF-8", null);
@@ -80,7 +79,6 @@ public class NoticiaContentActivity extends ActionBarActivity {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                view.loadUrl("javascript:");
                 super.onPageFinished(view, url);
             }
         });
@@ -116,6 +114,12 @@ public class NoticiaContentActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
+
     public void shareAction(String url, String info){
         // Llama al sistema para que le muestre un diálogo al usuario con todas las aplicaciones que permitan compartir información
         Intent intent = new Intent();
@@ -135,9 +139,9 @@ public class NoticiaContentActivity extends ActionBarActivity {
 
         try{
             long epoch = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+02:00").parse(timeCTE).getTime();
-            time=epoch+2*C.HOUR_MILLIS;
+            time=epoch;
         }catch(Exception e){
-            Log.i("fichajes", e.toString());
+            e.printStackTrace();
         }
         final long now = System.currentTimeMillis();
         if (time > now || time <= 0) {

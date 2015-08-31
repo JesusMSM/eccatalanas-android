@@ -47,7 +47,7 @@ public class RssNoticiasHandler extends DefaultHandler {
             } else if(localName.equals("content")){
                 //Comprobamos que no esta vacío
                 if(!sbTexto.toString().isEmpty()){
-                    noticiaActual.setDescripcion(sbTexto.toString());
+                    noticiaActual.setDescripcion(sbTexto.toString().replaceAll("<img src[^>]*>", ""));
                 }
             } else if (localName.equals("id")) {
                 noticiaActual.setLink(sbTexto.toString());

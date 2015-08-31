@@ -1,11 +1,14 @@
 package es.elconfidencial.eleccionesec.activities;
 
 import android.content.Intent;
+import android.graphics.Point;
+import android.graphics.PointF;
 import android.graphics.Typeface;
 import android.media.Image;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
@@ -13,7 +16,10 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import es.elconfidencial.eleccionesec.R;
+import jp.wasabeef.picasso.transformations.gpu.VignetteFilterTransformation;
 
 public class PoliticianCardActivity extends ActionBarActivity {
 
@@ -32,7 +38,19 @@ public class PoliticianCardActivity extends ActionBarActivity {
         TextView cargo = (TextView) findViewById(R.id.cargo);
         WebView perfil = (WebView) findViewById(R.id.perfil);
 
-        imagen.setImageResource(intent.getIntExtra("imagen", 0));
+        try {
+            //Screen size
+            Display display = (this).getWindowManager().getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            int width = size.x;
+            int height = size.y;
+
+            int resid=intent.getIntExtra("imagen",0);
+            //Load Image
+            Picasso.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpolitico).resize(width, height*2/3).centerCrop().into(imagen);
+        }catch (Exception e){e.printStackTrace();}
+
         nombre.setText(intent.getStringExtra("nombre"));
         edad.setText(intent.getStringExtra("edad"));
         //partido.setText(intent.getStringExtra("partido"));

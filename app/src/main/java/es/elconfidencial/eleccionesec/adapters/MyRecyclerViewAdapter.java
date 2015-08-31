@@ -146,7 +146,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if (noticia != null) {
             vh1.titulo.setText(Html.fromHtml(noticia.getTitulo()));
             vh1.autor.setText(noticia.getAutor());
-            Picasso.with(context).load(noticia.getImagenUrl()).placeholder(R.drawable.nopic).fit().into(vh1.imagen);
+            try {
+                Picasso.with(context).load(noticia.getImagenUrl()).placeholder(R.drawable.nopic).fit().into(vh1.imagen);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
         vh1.autor.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
         vh1.titulo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy-Italic.ttf"));
@@ -175,7 +179,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if(quiz != null){
             vh2.titulo.setText(Html.fromHtml(quiz.getTitulo()));
             vh2.autor.setText(quiz.getAutor());
-            Picasso.with(context).load(quiz.getImagenUrl()).placeholder(R.drawable.nopic).fit().into(vh2.imagen);
+            try {
+                Picasso.with(context).load(quiz.getImagenUrl()).placeholder(R.drawable.nopic).fit().into(vh2.imagen);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
         //Fonts
@@ -187,7 +195,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private void configureContadorViewHolder(ContadorViewHolder vh3,int position) {
         vh3.showContador();
         vh3.contador.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
-        vh3.label.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
+        vh3.label.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
     }
 
     private void configurePartidoViewHolder(PartidoViewHolder vh4,int position) {
@@ -224,7 +232,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private void configurePoliticoViewHolder(PoliticoViewHolder vh5,int position) {
        final Politico politico = (Politico) items.get(position);
         if(politico != null) {
-            Picasso.with(context).load(politico.getImagen()).fit().into(vh5.imagen);
+            try {
+                Picasso.with(context).load(politico.getImagen()).fit().into(vh5.imagen);
+            }catch (Exception e){e.printStackTrace();}
             vh5.nombre.setText(politico.getNombre());
             vh5.edad.setText(politico.getEdad());
             vh5.partido.setText(politico.getPartido());

@@ -27,7 +27,8 @@
             android:background="@color/md_material_blue_800"
             android:textColor="@color/white"
             android:paddingRight="5dp"
-            android:paddingLeft="5dp"/>
+            android:paddingLeft="5dp"
+            android:textAllCaps="true"/>
 
         <TextView
             android:id="@+id/titulo_quiz"

@@ -13,6 +13,7 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
                 android:textColor="@color/white"
+                android:background="#FC5555"
                 android:paddingRight="5dp"
                 android:paddingLeft="5dp"/>
 

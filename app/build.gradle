@@ -38,6 +38,10 @@ dependencies {
     compile 'com.parse.bolts:bolts-android:1.+'*/
     compile 'com.baoyz.pullrefreshlayout:library:1.0.1'
     compile 'com.android.support:design:22.2.0'
+    //Picasso Transformations
+    compile 'jp.wasabeef:picasso-transformations:1.0.5'
+    // If you want to use the GPU Filters
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.2.3'
 
 
 }

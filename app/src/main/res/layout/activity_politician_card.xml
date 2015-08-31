@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="fill_parent"
     android:scrollbars="vertical"
     android:background="@color/white"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -13,7 +13,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:id="@+id/imagen" />
+            android:id="@+id/imagen"
+            android:scaleType="centerCrop"/>
 
         <TextView
             android:layout_width="wrap_content"
