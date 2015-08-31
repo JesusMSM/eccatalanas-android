@@ -146,7 +146,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if (noticia != null) {
             vh1.titulo.setText(Html.fromHtml(noticia.getTitulo()));
             vh1.autor.setText(noticia.getAutor());
-            Picasso.with(context).load(noticia.getImagenUrl()).placeholder(R.drawable.nopic).into(vh1.imagen);
+            Picasso.with(context).load(noticia.getImagenUrl()).placeholder(R.drawable.nopic).fit().into(vh1.imagen);
         }
         vh1.autor.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
         vh1.titulo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy-Italic.ttf"));
@@ -175,7 +175,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if(quiz != null){
             vh2.titulo.setText(Html.fromHtml(quiz.getTitulo()));
             vh2.autor.setText(quiz.getAutor());
-            Picasso.with(context).load(quiz.getImagenUrl()).placeholder(R.drawable.nopic).into(vh2.imagen);
+            Picasso.with(context).load(quiz.getImagenUrl()).placeholder(R.drawable.nopic).fit().into(vh2.imagen);
         }
 
         //Fonts

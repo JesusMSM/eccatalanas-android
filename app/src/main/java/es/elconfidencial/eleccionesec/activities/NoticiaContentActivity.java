@@ -65,7 +65,10 @@ public class NoticiaContentActivity extends ActionBarActivity {
 
         String htmlString ="<html>" + head + "<body>" + intent.getStringExtra("descripcion") + "</body></html>";
 
-        //Quitar links
+        htmlString = htmlString.replaceAll("\\<img src=\"http://b.*?\\>", "");
+        //Quitar la imagen del final
+        //htmlString = htmlString.replace("<img src=\"http://b.scorecardresearch.com/b?c1=2&amp;c2=7215267&amp;ns__t=1441033802&amp;ns_c=UTF-8&amp;c8=Elecciones+Catalu%C3%B1a+2015&amp;c7=http%3A%2F%2Frss.elconfidencial.com%2Ftags%2Ftemas%2Felecciones-cataluna-2015-6160%2F&amp;c9=http%3A%2F%2Fwww.elconfidencial.com%2F\" width=\"1\" height=\"1\">"," ");
+
         descripcion.getSettings().setJavaScriptEnabled(true);
         descripcion.loadDataWithBaseURL("", htmlString, "text/html", "charset=UTF-8", null);
         descripcion.setWebViewClient(new WebViewClient() {
