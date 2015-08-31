@@ -146,9 +146,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if (noticia != null) {
             vh1.titulo.setText(Html.fromHtml(noticia.getTitulo()));
             vh1.autor.setText(noticia.getAutor());
-            Picasso.with(context).load(noticia.getImagenUrl()).into(vh1.imagen);
+            Picasso.with(context).load(noticia.getImagenUrl()).placeholder(R.drawable.nopic).fit().into(vh1.imagen);
         }
-        vh1.autor.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
+        vh1.autor.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
         vh1.titulo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy-Italic.ttf"));
 
         //onClickListenerNoticia
@@ -157,13 +157,13 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             public void onClick(View v) {
                 //Creamos un intent para llamar a NoticiasContentActivity con los extras de la noticia correspondiente
                 Intent intent = new Intent(context, NoticiaContentActivity.class);
-                intent.putExtra("titulo",noticia.getTitulo());
+                intent.putExtra("titulo", noticia.getTitulo());
                 System.out.print("DESC" + noticia.getDescripcion());
                 intent.putExtra("descripcion", noticia.getDescripcion());
-                intent.putExtra("autor",noticia.getAutor());
-                intent.putExtra("fecha",noticia.getFecha());
-                intent.putExtra("link",noticia.getLink());
-                intent.putExtra("imagenUrl",noticia.getImagenUrl());
+                intent.putExtra("autor", noticia.getAutor());
+                intent.putExtra("fecha", noticia.getFecha());
+                intent.putExtra("link", noticia.getLink());
+                intent.putExtra("imagenUrl", noticia.getImagenUrl());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
@@ -175,11 +175,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if(quiz != null){
             vh2.titulo.setText(Html.fromHtml(quiz.getTitulo()));
             vh2.autor.setText(quiz.getAutor());
-            Picasso.with(context).load(quiz.getImagenUrl()).into(vh2.imagen);
+            Picasso.with(context).load(quiz.getImagenUrl()).placeholder(R.drawable.nopic).fit().into(vh2.imagen);
         }
 
         //Fonts
-        vh2.autor.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
+        vh2.autor.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
         vh2.titulo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy-Italic.ttf"));
 
     }
@@ -203,10 +203,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh4.partidosRepresentados.setText(partido.getPartidosRepresentados());
         }
 
-        vh4.fab.setOnClickListener(new View.OnClickListener(){
+        vh4.fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(context, PartyCardActivity.class);
-                intent.putExtra("imagen",partido.getImagen());
+                intent.putExtra("imagen", partido.getImagen());
                 intent.putExtra("nombre", partido.getNombre());
                 intent.putExtra("representantes", partido.getRepresentantes());
                 intent.putExtra("fundacion", partido.getFundacion());
