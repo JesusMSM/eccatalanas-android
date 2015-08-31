@@ -60,7 +60,7 @@ public class PreferencesActivity extends Activity {
         Button buttonIdiomas = (Button) findViewById(R.id.idiomaButton);
         buttonIdiomas.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                new MaterialDialog.Builder(context)
+                new MaterialDialog.Builder(v.getContext())
                         .title(R.string.seleccion_idioma)
                         .items(R.array.idioma)
                         .itemsCallbackSingleChoice(-1, new MaterialDialog.ListCallbackSingleChoice() {
