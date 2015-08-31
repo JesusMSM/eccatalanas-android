@@ -59,6 +59,4 @@ public class PartidoEstadisticas {
     private String alias ="";
     private String color ="";
     private String electedMembers = "";
-
-
 }
