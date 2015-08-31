@@ -28,19 +28,20 @@ public class PoliticianCardActivity extends ActionBarActivity {
         ImageView imagen = (ImageView) findViewById(R.id.imagen);
         TextView nombre = (TextView) findViewById(R.id.nombre);
         TextView edad = (TextView) findViewById(R.id.edad);
-        TextView partido = (TextView) findViewById(R.id.partido);
+        //TextView partido = (TextView) findViewById(R.id.partido);
         TextView cargo = (TextView) findViewById(R.id.cargo);
         WebView perfil = (WebView) findViewById(R.id.perfil);
 
         imagen.setImageResource(intent.getIntExtra("imagen", 0));
         nombre.setText(intent.getStringExtra("nombre"));
         edad.setText(intent.getStringExtra("edad"));
-        partido.setText(intent.getStringExtra("partido"));
+        //partido.setText(intent.getStringExtra("partido"));
         cargo.setText(intent.getStringExtra("cargo"));
 
         //Fonts
         nombre.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Milio-Heavy-Italic.ttf"));
-        cargo.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Light.otf"));
+        cargo.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Semibold.otf"));
+        edad.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Semibold.otf"));
 
         //Insertamos la cabecera al html con el estilo
         String head = "<head><style>@font-face {font-family: MilioHeavy;text-align:justify; src: url(\"file:///android_asset/Milio-Heavy.ttf\")}" +

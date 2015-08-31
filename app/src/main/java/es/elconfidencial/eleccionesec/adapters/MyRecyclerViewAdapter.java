@@ -224,7 +224,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private void configurePoliticoViewHolder(PoliticoViewHolder vh5,int position) {
        final Politico politico = (Politico) items.get(position);
         if(politico != null) {
-            vh5.imagen.setImageResource(politico.getImagen());
+            Picasso.with(context).load(politico.getImagen()).fit().into(vh5.imagen);
             vh5.nombre.setText(politico.getNombre());
             vh5.edad.setText(politico.getEdad());
             vh5.partido.setText(politico.getPartido());
@@ -244,7 +244,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 }
             });
         //Fonts
-        vh5.nombre.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Heavy.ttf"));
+        vh5.nombre.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
         vh5.cargo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
         vh5.partido.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
         vh5.edad.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
