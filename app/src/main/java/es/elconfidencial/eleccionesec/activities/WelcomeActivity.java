@@ -16,9 +16,9 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import com.parse.Parse;
-import com.pushwoosh.BasePushMessageReceiver;
+/*import com.pushwoosh.BasePushMessageReceiver;
 import com.pushwoosh.BaseRegistrationReceiver;
-import com.pushwoosh.PushManager;
+import com.pushwoosh.PushManager;*/
 
 
 import java.util.Locale;
