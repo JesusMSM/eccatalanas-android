@@ -94,7 +94,7 @@ public class NoticiaContentActivity extends ActionBarActivity {
         titulo.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Milio-Heavy-Italic.ttf"));
         autor.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Regular.otf"));
         fecha.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Regular.otf"));
-        Picasso.with(getApplicationContext()).load(intent.getStringExtra("imagenUrl")).into(imagen);
+        Picasso.with(getApplicationContext()).load(intent.getStringExtra("imagenUrl")).placeholder(R.drawable.nopic).into(imagen);
     }
 
     @Override

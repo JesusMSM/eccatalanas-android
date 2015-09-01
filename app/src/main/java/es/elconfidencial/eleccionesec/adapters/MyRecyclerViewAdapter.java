@@ -205,7 +205,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         final Partido partido = (Partido) items.get(position);
         if(partido != null){
             try {
-                Picasso.with(context).load(partido.getImagen()).fit().into(vh4.imagen);
+                Picasso.with(context).load(partido.getImagen()).placeholder(R.drawable.nopicpartido).fit().into(vh4.imagen);
             }catch (Exception e){e.printStackTrace();}
             vh4.nombre.setText(partido.getNombre());
             vh4.representantes.setText(partido.getRepresentantes());
@@ -247,7 +247,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
        final Politico politico = (Politico) items.get(position);
         if(politico != null) {
             try {
-                Picasso.with(context).load(politico.getImagen()).fit().into(vh5.imagen);
+                Picasso.with(context).load(politico.getImagen()).placeholder(R.drawable.nopicpolitico).fit().into(vh5.imagen);
             }catch (Exception e){e.printStackTrace();}
             vh5.nombre.setText(politico.getNombre());
             vh5.edad.setText(politico.getEdad());

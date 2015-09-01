@@ -220,11 +220,11 @@ Y no ha sido extraño que al argumentar este objetivo recordara a las alcaldesas
 
     <!-- CDC -->
     <string name="cdc_nombre">Convergència Democràtica de Catalunya CDC</string>
-    <string name="cdc_representantes">Artur Mas</string>
+    <string name="cdc_representantes">Representante: Artur Mas</string>
     <string name="cdc_fundacion">Fundación: 1974</string>
     <string name="cdc_escanos">Número de escaños: 37 / 135 (dentro de CiU)</string>
     <string name="cdc_porcentajeVotos">Porcentaje de votos 30,7%</string>
-    <string name="cdc_ideologia">Nacionalista, Independentista</string>
+    <string name="cdc_ideologia">Ideología: Nacionalista, Independentista</string>
     <string name="cdc_partidosRepresentados">Partidos representados: CDC</string>
     <string name="cdc_perfil"><![CDATA[<p><strong>Convergència</strong> participó desde las elecciones autonómicas catalanas de 1980 hasta el año 2015 junto a <strong>Unió Democràtica de Catalunya</strong> en la federación nacionalista <strong>Convergència i Unió</strong>.</p>
 
@@ -249,11 +249,11 @@ es decir, la independencia de Cataluña.</p>
 
     <!-- PARTIDO SOCIALISTA DE CATALUÑA -->
     <string name="psc_nombre">Partido Socialista de Cataluña</string>
-    <string name="psc_representantes">Àngel Ros</string>
-    <string name="psc_fundacion">Fundacion: 1978</string>
+    <string name="psc_representantes">Representante: Àngel Ros</string>
+    <string name="psc_fundacion">Fundación: 1978</string>
     <string name="psc_escanos">Número de escaños: 20 / 135</string>
     <string name="psc_porcentajeVotos">Porcentaje de votos: 14,43%</string>
-    <string name="psc_ideologia">Nacionalista</string>
+    <string name="psc_ideologia">Ideología: Nacionalista</string>
     <string name="psc_partidosRepresentados">Partidos representados: PSOE de Cataluña</string>
     <string name="psc_perfil"><![CDATA[<p>Tras la reinstauración en España del <strong>régimen democrático</strong>, en 1977, el socialismo catalán se hallaba escindido en varios partidos. Por un lado, había varios grupos de carácter nacionalista y progresista, como el <strong>Partit Socialista de Catalunya-Congrés</strong> (antigua Convergència Socialista de Catalunya) y el <strong>Partit Socialista de Catalunya-Reagrupament</strong> (ex Reagrupament Socialista i Democràtic de Catalunya, liderado por Josep Pallach y que se había presentado a las elecciones en coalición con otros partidos de Cataluña). Por otro, el PSOE contaba en Cataluña con una Federación Catalana que basaba su fuerza, sobre todo, en los trabajadores metropolitanos, la mayoría de origen inmigrante.</p>
 
@@ -283,21 +283,21 @@ es decir, la independencia de Cataluña.</p>
 
     <!-- CUP -->
     <string name="cup_nombre">CUP</string>
-    <string name="cup_representantes">David Fernàndez (portavoz)</string>
+    <string name="cup_representantes">Representante: David Fernàndez (portavoz)</string>
     <string name="cup_fundacion">Fundación: 1991</string>
     <string name="cup_escanos">Número de escaños: 3 / 135</string>
     <string name="cup_porcentajeVotos">Porcentaje de votos: 3,47%</string>
-    <string name="cup_ideologia">Independentista</string>
+    <string name="cup_ideologia">Ideología: Independentista</string>
     <string name="cup_partidosRepresentados">Partidos representados: CUP se coordina con la Asamblea Municipal de la Izquierda Independentista</string>
     <string name="cup_perfil">aaa</string>
 
     <!-- Junts pel si -->
     <string name="jps_nombre">Junts pel Sí</string>
-    <string name="jps_representantes">Raül Romeva, Carme Forcadell, Muriel Casals, Artur Mas, Oriol Junqueras</string>
+    <string name="jps_representantes">Representantes: Raül Romeva, Carme Forcadell, Muriel Casals, Artur Mas, Oriol Junqueras</string>
     <string name="jps_fundacion">Fundación: 2015</string>
     <string name="jps_escanos">Número de escaños: nd</string>
     <string name="jps_porcentajeVotos">Porcentaje de votos: nd</string>
-    <string name="jps_ideologia">Nacionalista, Independentista</string>
+    <string name="jps_ideologia">Ideología: Nacionalista, Independentista</string>
     <string name="jps_partidosRepresentados">Partidos representados: CDC, ERC y sociedad cívil</string>
     <string name="jps_perfil"><![CDATA[<p><strong>Inicios de la candidatura</strong></p>
 <p>Presentación de la coalición el <strong>20 de julio de 2015.</strong></p>
@@ -315,11 +315,11 @@ es decir, la independencia de Cataluña.</p>
 
     <!-- PP -->
     <string name="pp_nombre">Partido Popular</string>
-    <string name="pp_representantes">Xavier García Albiol</string>
+    <string name="pp_representantes">Representante: Xavier García Albiol</string>
     <string name="pp_fundacion">Fundación: 1989</string>
     <string name="pp_escanos">Número de escaños: 19 / 135</string>
     <string name="pp_porcentajeVotos">Porcentaje de votos: 12,97%</string>
-    <string name="pp_ideologia">Contrario a la independencia</string>
+    <string name="pp_ideologia">Ideología: Contrario a la independencia</string>
     <string name="pp_partidosRepresentados">Partidos representados: PP</string>
     <string name="pp_perfil"><![CDATA[<p>El <strong>Partido Popular de Cataluña</strong> nace como la refundación de Alianza Popular a nivel nacional en 1989, definiéndose a si mismo con una ideología de centro-derecha y constitucionalista, siendo el presidente de ambas formaciones Jorge Fernández Díaz (1983-1991).</p>
 
@@ -354,7 +354,7 @@ es decir, la independencia de Cataluña.</p>
     <string name="udc_fundacion">Fundación: 1991</string>
     <string name="udc_escanos">Número de escaños: 3 / 135</string>
     <string name="udc_porcentajeVotos">Porcentaje de votos: 3,47%</string>
-    <string name="udc_ideologia">Independentista</string>
+    <string name="udc_ideologia">Ideología: Independentista</string>
     <string name="udc_partidosRepresentados">Partidos representados: CUP se coordina con la Asamblea Municipal de la Izquierda Independentista</string>
     <string name="udc_perfil"><![CDATA[<p>La fundación de <strong>Unió Democràtica de Catalunya</strong> se produjo el 7 de noviembre de 1931, durante la Segunda República Española, como un partido de carácter catalanista y de inspiración cristiana, aunque de carácter no confesional, a raíz de un manifiesto aparecido en el diario conservador El Matí de Barcelona, firmado por Josep O. Anguera, Pere Arderiu, Xavier Aragó, Pere Aragai, Esteve Farré, Josep M. Farré, Àngel Grau, Joan Guinart, Josep M. Modolell, Jaume Morera Millaret, Àngel Morera, Manuel Pugués, Pau Romeva i Ferrer, Joan Baptista Roca i Caball, Maurici Serrahima i Bofill, Ramon Sunyer, Manuel Thió, Ramon Trinxet, Lluís Vila i d´Abadal y Josep Vilaplana. A mediados de 1932 se unieron al partido, entre otros, Manuel Carrasco Formiguera, antiguo militante de Acció Catalana, Miquel Coll i Alentorn, Josep Maria Trias i Peitx, Fèlix Duran i Cañameres y otros más.</p>
 
@@ -408,11 +408,11 @@ En junio de 2015, los tres consejeros de Unió abandonaron el gobierno catalán,
 
     <!-- CIUDADANOS -->
     <string name="cs_nombre">Ciudadanos</string>
-    <string name="cs_representantes">Inés Arrimadas</string>
+    <string name="cs_representantes">Representante: Inés Arrimadas</string>
     <string name="cs_fundacion">Fundación: 2006</string>
     <string name="cs_escanos">Número de escaños: 9 / 135</string>
     <string name="cs_porcentajeVotos">Porcentaje de votos: 7,56%</string>
-    <string name="cs_ideologia">Contrario a la independencia</string>
+    <string name="cs_ideologia">Ideología: Contrario a la independencia</string>
     <string name="cs_partidosRepresentados">Partidos representados: Ciudadanos</string>
     <string name="cs_perfil"><![CDATA[<p><strong>Ciudadanos</strong> nació a partir de la plataforma cívica <strong>Ciutadans de Catalunya</strong>, creada el 7 de junio de 2005 en Barcelona por un grupo de quince intelectuales, profesores universitarios y profesionales de diversos campos. El día 21 de ese mismo mes presentaron en el Centro de Cultura Contemporánea de Barcelona un manifiesto denominado Por la creación de un nuevo partido político en Cataluña, que también se presentó en Bilbao y en Madrid, en el que se comprometían a impulsar la constitución de una nueva fuerza política de ámbito catalán. Se declararon opuestos a lo que consideraban como la imposición del nacionalismo catalán desde diversos ámbitos del poder en Cataluña, lo que calificaron como «nacionalismo obligatorio».</p>
 
@@ -425,11 +425,11 @@ En junio de 2015, los tres consejeros de Unió abandonaron el gobierno catalán,
 
     <!-- Cataluña si que puede -->
     <string name="csqep_nombre">Catalunya si que es pot</string>
-    <string name="csqep_representantes">Lluís Rabell</string>
+    <string name="csqep_representantes">Representante: Lluís Rabell</string>
     <string name="csqep_fundacion">Fundación: 2015</string>
     <string name="csqep_escanos">Número de escaños: nd</string>
     <string name="csqep_porcentajeVotos">Porcentaje de votos: nd</string>
-    <string name="csqep_ideologia">Independencia republicana</string>
+    <string name="csqep_ideologia">Ideología: Independencia republicana</string>
     <string name="csqep_partidosRepresentados">Partidos representados: Podemos e ICV-EUiA</string>
     <string name="csqep_perfil"></string>
 

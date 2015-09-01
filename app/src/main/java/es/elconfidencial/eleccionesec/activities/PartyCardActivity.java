@@ -16,6 +16,8 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import es.elconfidencial.eleccionesec.R;
 
 public class PartyCardActivity extends ActionBarActivity {
@@ -29,6 +31,7 @@ public class PartyCardActivity extends ActionBarActivity {
         Intent intent = getIntent();
 
         ImageView imagen = (ImageView) findViewById(R.id.imagen);
+        ImageView imagenFondo = (ImageView) findViewById(R.id.imagenFondo);
         TextView nombre = (TextView) findViewById(R.id.nombre);
         TextView representantes = (TextView) findViewById(R.id.representantes);
         TextView fundacion = (TextView) findViewById(R.id.fundacion);
@@ -39,6 +42,10 @@ public class PartyCardActivity extends ActionBarActivity {
         WebView perfil = (WebView) findViewById(R.id.perfil);
 
 
+        try {
+            Picasso.with(getApplicationContext()).load(R.drawable.degradado_fondo).into(imagenFondo);
+            Picasso.with(getApplicationContext()).load(intent.getIntExtra("imagen", 0)).into(imagen);
+        }catch (Exception e){e.printStackTrace();}
         nombre.setText(intent.getStringExtra("nombre"));
         representantes.setText(intent.getStringExtra("representantes"));
         fundacion.setText(intent.getStringExtra("fundacion"));
@@ -47,7 +54,7 @@ public class PartyCardActivity extends ActionBarActivity {
         ideologia.setText(intent.getStringExtra("ideologia"));
         partidosRepresentados.setText(intent.getStringExtra("partidosRepresentados"));
 
-        try {
+       /** try {
             //Screen size
             Display display = (this).getWindowManager().getDefaultDisplay();
             Point size = new Point();
@@ -64,16 +71,16 @@ public class PartyCardActivity extends ActionBarActivity {
 
             Bitmap bitmapImage = BitmapFactory.decodeResource(this.getResources(), resid, opts);
             imagen.setImageBitmap(bitmapImage);
-        }catch (Exception e){e.printStackTrace();}
+        }catch (Exception e){e.printStackTrace();} **/
 
         //Fonts
         nombre.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Milio-Heavy-Italic.ttf"));
         representantes.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Semibold.otf"));
-        fundacion.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Semibold.otf"));
-        escanos.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Semibold.otf"));
-        porcentajeVotos.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Semibold.otf"));
-        ideologia.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Semibold.otf"));
-        partidosRepresentados.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Semibold.otf"));
+        fundacion.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Regular.otf"));
+        escanos.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Regular.otf"));
+        porcentajeVotos.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Regular.otf"));
+        ideologia.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Regular.otf"));
+        partidosRepresentados.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Regular.otf"));
 
         //Insertamos la cabecera al html con el estilo
         String head = "<head><style>@font-face {font-family: MilioHeavy;text-align:justify; src: url(\"file:///android_asset/Milio-Heavy.ttf\")}" +
