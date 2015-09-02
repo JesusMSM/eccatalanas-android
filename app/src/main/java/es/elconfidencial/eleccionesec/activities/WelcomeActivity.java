@@ -16,6 +16,9 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import com.parse.Parse;
+import com.pushwoosh.BasePushMessageReceiver;
+import com.pushwoosh.BaseRegistrationReceiver;
+import com.pushwoosh.PushManager;
 /*import com.pushwoosh.BasePushMessageReceiver;
 import com.pushwoosh.BaseRegistrationReceiver;
 import com.pushwoosh.PushManager;*/
@@ -35,16 +38,9 @@ public class WelcomeActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
-        this.context = getApplicationContext();
-
-        //Cargamos las preferencias sobre idiomas si las hay
-        SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-        String idioma = prefs.getString("idioma", "ninguno"); //Si no existe, devuelve el segundo parametro
-        setLocale(idioma); //Cambiamos el parametro de config locale
 
         /**********INICIALIZAMOS PUSHWOOSH*******************/
-       /** //Register receivers for push notifications
+        //Register receivers for push notifications
         registerReceivers();
 
         //Create and start push manager
@@ -63,7 +59,16 @@ public class WelcomeActivity extends Activity {
         pushManager.registerForPushNotifications();
 
         checkMessage(getIntent());
-        /*********************/
+
+        setContentView(R.layout.activity_welcome);
+        this.context = getApplicationContext();
+
+        //Cargamos las preferencias sobre idiomas si las hay
+        SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        String idioma = prefs.getString("idioma", "ninguno"); //Si no existe, devuelve el segundo parametro
+        setLocale(idioma); //Cambiamos el parametro de config locale
+
+
     }
 
     /** Called when the user clicks the Start button */
@@ -142,18 +147,18 @@ public class WelcomeActivity extends Activity {
     protected void onResume() {
         super.onResume();
         //Re-register receivers on resume
-       // registerReceivers();
+        registerReceivers();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         //Unregister receivers on pause
-     //   unregisterReceivers();
+        unregisterReceivers();
     }
 
     /***********************PUSHWOOSH*****************************/
-    /** //Registration receiver
+    //Registration receiver
     BroadcastReceiver mBroadcastReceiver = new BaseRegistrationReceiver()
     {
         @Override
@@ -170,7 +175,7 @@ public class WelcomeActivity extends Activity {
         protected void onMessageReceive(Intent intent)
         {
             //JSON_DATA_KEY contains JSON payload of push notification.
-            showMessage("push message is " + intent.getExtras().getString(JSON_DATA_KEY));
+            //showMessage("push message is " + intent.getExtras().getString(JSON_DATA_KEY));
         }
     };
 
@@ -205,30 +210,29 @@ public class WelcomeActivity extends Activity {
             //pass through
         }
     }
-
     private void checkMessage(Intent intent)
     {
         if (null != intent)
         {
             if (intent.hasExtra(PushManager.PUSH_RECEIVE_EVENT))
             {
-                showMessage("push message is " + intent.getExtras().getString(PushManager.PUSH_RECEIVE_EVENT));
+                //showMessage("push message is " + intent.getExtras().getString(PushManager.PUSH_RECEIVE_EVENT));
             }
             else if (intent.hasExtra(PushManager.REGISTER_EVENT))
             {
-                showMessage("Registrado en PushWoosh");
+                //showMessage("register");
             }
             else if (intent.hasExtra(PushManager.UNREGISTER_EVENT))
             {
-                showMessage("unregister");
+                //showMessage("unregister");
             }
             else if (intent.hasExtra(PushManager.REGISTER_ERROR_EVENT))
             {
-                showMessage("register error");
+                //showMessage("register error");
             }
             else if (intent.hasExtra(PushManager.UNREGISTER_ERROR_EVENT))
             {
-                showMessage("unregister error");
+                //showMessage("unregister error");
             }
 
             resetIntentValues();
@@ -238,7 +242,7 @@ public class WelcomeActivity extends Activity {
     /**
      * Will check main Activity intent and if it contains any PushWoosh data, will clear it
      */
- /**   private void resetIntentValues()
+    private void resetIntentValues()
     {
         Intent mainAppIntent = getIntent();
 
@@ -270,7 +274,6 @@ public class WelcomeActivity extends Activity {
     {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
-
     @Override
     protected void onNewIntent(Intent intent)
     {
@@ -278,5 +281,5 @@ public class WelcomeActivity extends Activity {
         setIntent(intent);
 
         checkMessage(intent);
-    } **/
+    }
 }

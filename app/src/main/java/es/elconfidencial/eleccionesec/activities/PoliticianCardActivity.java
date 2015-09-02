@@ -51,11 +51,10 @@ public class PoliticianCardActivity extends ActionBarActivity {
 
             int resid=intent.getIntExtra("imagen", 0);
             //Load Image
-            //Picasso.with(getApplicationContext()).load(R.drawable.artur_mas2).placeholder(R.drawable.nopicpolitico).resize(width, height*2/3).onlyScaleDown().centerCrop().into(imagen);
+            //Picasso.with(getApplicationContext()).load(R.drawable.artur_mas).placeholder(R.drawable.nopicpolitico).resize(width, height*2/3).onlyScaleDown().centerInside().into(imagen);
             BitmapFactory.Options opts = new BitmapFactory.Options();
             opts.inDither = true;
             opts.inSampleSize = 3;
-
             Bitmap bitmapImage = BitmapFactory.decodeResource(this.getResources(), resid, opts);
             imagen.setImageBitmap(bitmapImage);
         }catch (Exception e){e.printStackTrace();}
