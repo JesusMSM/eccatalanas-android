@@ -138,7 +138,6 @@ public class PreferencesActivity extends Activity {
         //Obtenemos las Tags de partidos que estan almacenadas en PW, almacenandolas en el ArrayList tagNames
         getTagsFromPushWoosh();
 
-
         //Listeners al modificar el estado de un switch
         SwitchCompat cdc = (SwitchCompat) findViewById(R.id.convergencia_democratica_de_catalunya_cdc_6665);
         SwitchCompat pp = (SwitchCompat) findViewById(R.id.xavier_garcia_albiol_14516);
