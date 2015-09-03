@@ -8,7 +8,7 @@
     <string name="preferencias_titulo">Preferències</string>
     <string name="idiomas">Idiomes</string>
     <string name="seleccion_idioma">Seleccioni el seu idioma</string>
-    <string name="introduce_tu_provincia">INTRODUEIX LA TEVA PROVINCIA</string>
+    <string name="introduce_tu_provincia">SELECCIONA LA TEVA PROVÍNCIA</string>
     <string name="recibir_notificaciones">Voleu rebre notificacions?</string>
     <string name="castellano">Castellà</string>
     <string name="catalan">Català</string>
@@ -20,9 +20,10 @@
     <string name="guardar">Acabar</string>
     <string name="notificaciones">Notificaciones</string>
     <string name="suscripcion">Subscripció</string>
-    <string name="suscripcion_descripcion">Vostè rebrà notificacions cada vegada que es publiquin articles relacionats amb les següents temàtiques.</string>
+    <string name="suscripcion_descripcion">Selecciona aquells partits dels que desitgi rebre notificacions cada vegada que es publiqui una nova notícia d\'ells</string>
     <string name="share">Compartir</string>
     <string name="cuenta_atras">Compte enrere</string>
+    <string name="empezar">COMENÇAR</string>
 
 
 <!-- ______________________________STRINGS FICHAS POLÍTICOS_______________________________ -->

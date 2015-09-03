@@ -6,6 +6,8 @@ package es.elconfidencial.eleccionesec.fragments;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -101,14 +103,31 @@ public class ChartTab extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.tab_chart, container, false);
-        downloadData();
+        if(haveNetworkConnection())downloadData();
 
         return v;
     }
 
+    private boolean haveNetworkConnection() {
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        return haveConnectedWifi || haveConnectedMobile;
+    }
+
     public void downloadData(){
         //Cargamos datos de 2011- Al terminar, cargamos los de 2015 - Al terminar dibujamos el chart
-       new JSONParse2011().execute(url_2011);
+      if(haveNetworkConnection()) new JSONParse2011().execute(url_2011);
     }
 
     private class JSONParse2011 extends AsyncTask<String, String, JSONObject> {

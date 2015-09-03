@@ -1,5 +1,8 @@
 package es.elconfidencial.eleccionesec.fragments;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -48,7 +51,7 @@ public class RSSTab extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         try {
-            new CargarXmlTask().execute(rss_url);
+           if(haveNetworkConnection()) new CargarXmlTask().execute(rss_url);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -60,7 +63,7 @@ public class RSSTab extends Fragment {
             @Override
             public void onRefresh() {
                 try {
-                    new CargarXmlTask().execute(rss_url);
+                    if(haveNetworkConnection())new CargarXmlTask().execute(rss_url);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -69,6 +72,23 @@ public class RSSTab extends Fragment {
         });
 
         return v;
+    }
+
+    private boolean haveNetworkConnection() {
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        return haveConnectedWifi || haveConnectedMobile;
     }
 
     /*Permite gestionar de forma asincrona el RSS */
