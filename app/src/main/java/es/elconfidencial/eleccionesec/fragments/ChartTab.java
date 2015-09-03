@@ -24,6 +24,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.achartengine.ChartFactory;
+import org.achartengine.model.CategorySeries;
+import org.achartengine.renderer.DefaultRenderer;
+import org.achartengine.renderer.SimpleSeriesRenderer;
+
+import android.app.Activity;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
+
 
 import com.baoyz.widget.PullRefreshLayout;
 import com.github.mikephil.charting.charts.BarChart;
@@ -55,12 +68,15 @@ import es.elconfidencial.eleccionesec.json.JSONParser;
 import es.elconfidencial.eleccionesec.model.PartidoEstadisticas;
 
 
+
+
 public class ChartTab extends Fragment {
 
     BarChart barChart;
     ChartItem pie;
     ListView lv;
     View v;
+    private View mChart;
     PullRefreshLayout layout;
     private static String url_2015 = "http://api.elconfidencial.com/service/elections/place/3/7/99/9/";
     private static String url_2011="http://api.elconfidencial.com/service/elections/place/1/7/99/9/";
@@ -200,8 +216,8 @@ public class ChartTab extends Fragment {
 
                 //drawGraphics();
                 arrayPartidos2015 = arrayPartidos;
-                drawHemiciclo(getDataString(arrayPartidos2011,"res2011"),getDataString(arrayPartidos2015,"res2015"));
-                drawBar();
+             //   drawHemiciclo(getDataString(arrayPartidos2011,"res2011"),getDataString(arrayPartidos2015,"res2015"));
+                drawHalfDonut();
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -219,7 +235,7 @@ public class ChartTab extends Fragment {
         }
         return title + ": [" + result + "],";
     }
-    public void drawHemiciclo(String data2011,String data2015){
+ /**   public void drawHemiciclo(String data2011,String data2015){
         //HEMICICLO
 
         WebView webview1 = (WebView) v.findViewById(R.id.webView1);
@@ -354,6 +370,65 @@ public class ChartTab extends Fragment {
         // disable scroll on touch
 
         webview2.loadDataWithBaseURL("", content2 , "text/html", "charset=UTF-8", null);
+
+    } **/
+
+    public void drawHalfDonut(){
+        // Pie Chart Section Names
+        String[] code = new String[] { "Froyo", "Gingerbread",
+                "IceCream Sandwich", "Jelly Bean", "KitKat" };
+
+        // Pie Chart Section Value
+        double[] distribution = { 0.5, 9.1, 7.8, 45.5, 33.9 };
+
+        // Color of each Pie Chart Sections
+        int[] colors = { Color.BLUE, Color.MAGENTA, Color.GREEN, Color.CYAN,
+                Color.RED };
+
+        // Instantiating CategorySeries to plot Pie Chart
+        CategorySeries distributionSeries = new CategorySeries(
+                " Android version distribution as on October 1, 2012");
+        for (int i = 0; i < distribution.length; i++) {
+            // Adding a slice with its values and name to the Pie Chart
+            distributionSeries.add(code[i], distribution[i]);
+        }
+
+        // Instantiating a renderer for the Pie Chart
+        DefaultRenderer defaultRenderer = new DefaultRenderer();
+        for (int i = 0; i < distribution.length; i++) {
+            SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();
+            seriesRenderer.setColor(colors[i]);
+            seriesRenderer.setDisplayChartValues(true);
+//Adding colors to the chart
+            defaultRenderer.setBackgroundColor(getResources().getColor(R.color.white));
+            defaultRenderer.setApplyBackgroundColor(true);
+            // Adding a renderer for a slice
+            defaultRenderer.addSeriesRenderer(seriesRenderer);
+        }
+
+        //defaultRenderer.setChartTitle("Android version distribution as on December 1, 2014. ");
+        //defaultRenderer.setChartTitleTextSize(20);
+        defaultRenderer.setZoomButtonsVisible(false);
+        defaultRenderer.setPanEnabled(false);
+        defaultRenderer.setZoomEnabled(false);
+
+        // this part is used to display graph on the xml
+        // Creating an intent to plot bar chart using dataset and
+        // multipleRenderer
+        // Intent intent = ChartFactory.getPieChartIntent(getBaseContext(),
+        // distributionSeries , defaultRenderer, "AChartEnginePieChartDemo");
+
+        // Start Activity
+        // startActivity(intent);
+
+        LinearLayout chartContainer = (LinearLayout) v.findViewById(R.id.chart);
+        // remove any views before u paint the chart
+       // chartContainer.removeAllViews();
+        // drawing pie chart
+        mChart = ChartFactory.getPieChartView(v.getContext().getApplicationContext(),
+                distributionSeries, defaultRenderer);
+        // adding the view to the linearlayout
+        chartContainer.addView(mChart);
 
     }
 
