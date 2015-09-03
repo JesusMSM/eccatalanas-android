@@ -52,7 +52,7 @@
             android:value="A8965404761" />
 
         <activity
-            android:name=".activities.WelcomeActivity"
+            android:name=".activities.ChooseActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="es.elconfidencial.eleccionesec.MESSAGE" />
@@ -64,6 +64,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.WelcomeActivity"
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".activities.PreferencesActivity"

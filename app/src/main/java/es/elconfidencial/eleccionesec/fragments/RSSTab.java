@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.baoyz.widget.PullRefreshLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +27,8 @@ import es.elconfidencial.eleccionesec.rss.RssNoticiasParser;
 public class RSSTab extends Fragment {
 
     private String rss_url = "http://rss.elconfidencial.com/tags/temas/elecciones-cataluna-2015-6160/";
-    List<Object> items = new ArrayList<>();
-    List<Noticia> noticias = new ArrayList<>();
+
+    PullRefreshLayout layout;
 
     //RecyclerView atributtes
     private RecyclerView mRecyclerView;
@@ -51,11 +53,29 @@ public class RSSTab extends Fragment {
             e.printStackTrace();
         }
 
+        layout = (PullRefreshLayout) v.findViewById(R.id.swipeRefreshLayout);
+
+        // listen refresh event
+        layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                try {
+                    new CargarXmlTask().execute(rss_url);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
         return v;
     }
 
     /*Permite gestionar de forma asincrona el RSS */
     private class CargarXmlTask extends AsyncTask<String,Integer,Boolean> {
+
+        List<Object> items = new ArrayList<>();
+        List<Noticia> noticias = new ArrayList<>();
 
         protected Boolean doInBackground(String... params) {
             RssNoticiasParser saxparser =
@@ -71,6 +91,7 @@ public class RSSTab extends Fragment {
             }
             mAdapter = new MyRecyclerViewAdapter(HomeActivity.context,items);
             mRecyclerView.setAdapter(mAdapter);
+            if(layout!=null) layout.setRefreshing(false);
         }
     }
 }

@@ -1,6 +1,7 @@
 package es.elconfidencial.eleccionesec.activities;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -57,6 +58,10 @@ public class HomeActivity extends ActionBarActivity {
         actionBar.setCustomView(mCustomView);
         actionBar.setDisplayShowCustomEnabled(true);*/
 
+        SharedPreferences prefs = context.getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firstTime", false);
+        editor.apply();
 
         //Titulos, da igual lo que se ponga pero tienen que existir aunque no se vayan a ver despues
         Titles[0] = "RSS";
