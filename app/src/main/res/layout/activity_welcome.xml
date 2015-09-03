@@ -23,7 +23,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="INTRODUCE TU PROVINCIA"
+        android:hint="@string/introduce_tu_provincia"
         android:textColorHint="@color/white"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
@@ -31,6 +31,7 @@
         android:id="@+id/provincia"
         android:backgroundTint="@color/white"
         android:layout_marginTop="50dp"
+        android:textAllCaps="true"
         />
     <Spinner
         android:layout_width="wrap_content"

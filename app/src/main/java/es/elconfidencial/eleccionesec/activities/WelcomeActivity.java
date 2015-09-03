@@ -12,6 +12,7 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatSpinner;
+import android.text.InputFilter;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;

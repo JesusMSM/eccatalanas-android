@@ -64,7 +64,7 @@ public class DocumentTab extends Fragment {
         mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.realtabcontent);
 
         View tabquizs = LayoutInflater.from(getActivity()).inflate(R.layout.tab_indicator, mTabHost.getTabWidget(), false);
-        ((TextView) tabquizs.findViewById(R.id.tv_tab_txt)).setText("ENCUESTAS");
+        ((TextView) tabquizs.findViewById(R.id.tv_tab_txt)).setText(R.string.encuestas);
         ((TextView) tabquizs.findViewById(R.id.tv_tab_txt)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "Titillium-Semibold.otf"));
         Bundle quizTab = new Bundle();
         quizTab.putInt("Arg for quizTab", 1);
@@ -73,7 +73,7 @@ public class DocumentTab extends Fragment {
 
 
         View tabpoliticos = LayoutInflater.from(getActivity()).inflate(R.layout.tab_indicator, mTabHost.getTabWidget(), false);
-        ((TextView) tabpoliticos.findViewById(R.id.tv_tab_txt)).setText("POLÍTICOS");
+        ((TextView) tabpoliticos.findViewById(R.id.tv_tab_txt)).setText(R.string.politicos);
         ((TextView) tabpoliticos.findViewById(R.id.tv_tab_txt)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "Titillium-Semibold.otf"));
         Bundle politicianTab = new Bundle();
         politicianTab.putInt("Arg for politicianTab", 2);
@@ -82,7 +82,7 @@ public class DocumentTab extends Fragment {
 
 
         View tabpartidos = LayoutInflater.from(getActivity()).inflate(R.layout.tab_indicator, mTabHost.getTabWidget(), false);
-        ((TextView) tabpartidos.findViewById(R.id.tv_tab_txt)).setText("PARTIDOS");
+        ((TextView) tabpartidos.findViewById(R.id.tv_tab_txt)).setText(R.string.partidos);
         ((TextView) tabpartidos.findViewById(R.id.tv_tab_txt)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "Titillium-Semibold.otf"));
         Bundle partyTab = new Bundle();
         partyTab.putInt("Arg for PartyTab", 3);
