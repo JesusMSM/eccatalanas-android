@@ -88,10 +88,12 @@ public class PartyCardActivity extends ActionBarActivity {
                 "@font-face {font-family: TitilliumSemibold;src: url(\"file:///android_asset/Titillium-Semibold.otf\")}" +
                 "body{font-family:TitilliumLight;}" +
                 "strong{font-family:TitilliumSemibold;}"+
+                "@media (max-width: 1280px) {html { font-size: 25px;}} @media (max-width: 720px) { html { font-size: 18px;}} @media (max-width: 480px) { html { font-size: 16px; }}" +
                 "img{max-width: 100%; width:auto; height: auto;}</style></head>";
         String htmlString ="<html>" + head + "<body style='text-align:justify;'>" + intent.getStringExtra("perfil") + "</body></html>";
         System.out.println(intent.getStringExtra("perfil"));
         perfil.getSettings().setJavaScriptEnabled(true);
+        perfil.getSettings().setDefaultTextEncodingName("utf-8");
         perfil.loadDataWithBaseURL("", htmlString, "text/html", "charset=UTF-8", null);
         perfil.setWebViewClient(new WebViewClient() {
             @Override

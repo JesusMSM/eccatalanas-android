@@ -72,6 +72,7 @@ public class NoticiaContentActivity extends ActionBarActivity {
                 "img{max-width: 100%; width:auto; height: auto;}" +
                 "body{font-family:TitilliumLight;text-align:justify}" +
                 "a{text-decoration: none;color:black;} " +
+                "@media (max-width: 1280px) {html { font-size: 25px;}} @media (max-width: 720px) { html { font-size: 18px;}} @media (max-width: 480px) { html { font-size: 16px; }}" +
                 "strong{font-family:TitilliumSemibold;}</style></head>";
 
         String htmlString ="<html>" + head + "<body><div>" + intent.getStringExtra("descripcion") + "</div></body></html>";
@@ -80,6 +81,7 @@ public class NoticiaContentActivity extends ActionBarActivity {
         //Quitar la imagen del final
 
         descripcion.getSettings().setJavaScriptEnabled(true);
+        descripcion.getSettings().setDefaultTextEncodingName("utf-8");
         descripcion.loadDataWithBaseURL("", htmlString, "text/html", "charset=UTF-8", null);
         descripcion.setWebViewClient(new WebViewClient() {
             @Override
