@@ -13,8 +13,8 @@
                 android:top="15dp"
                 android:right="10dp"
                 android:bottom="15dp" />
-            <stroke android:width="2dp" android:color="@color/ColorPrimary" />
-            <solid android:color="@color/ColorPrimary" />
+            <stroke android:width="2dp" android:color="@color/tabsScrollColor" />
+            <solid android:color="@color/tabsScrollColor" />
         </shape>
     </item>
 </layer-list>
