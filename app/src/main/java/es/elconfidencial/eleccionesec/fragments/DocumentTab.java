@@ -3,6 +3,7 @@ package es.elconfidencial.eleccionesec.fragments;
 /**
  * Created by JesúsManuel on 14/07/2015.
  */
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -64,6 +65,7 @@ public class DocumentTab extends Fragment {
 
         View tabquizs = LayoutInflater.from(getActivity()).inflate(R.layout.tab_indicator, mTabHost.getTabWidget(), false);
         ((TextView) tabquizs.findViewById(R.id.tv_tab_txt)).setText("ENCUESTAS");
+        ((TextView) tabquizs.findViewById(R.id.tv_tab_txt)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "Titillium-Semibold.otf"));
         Bundle quizTab = new Bundle();
         quizTab.putInt("Arg for quizTab", 1);
         mTabHost.addTab(mTabHost.newTabSpec("QuizTab").setIndicator(tabquizs),
@@ -72,6 +74,7 @@ public class DocumentTab extends Fragment {
 
         View tabpoliticos = LayoutInflater.from(getActivity()).inflate(R.layout.tab_indicator, mTabHost.getTabWidget(), false);
         ((TextView) tabpoliticos.findViewById(R.id.tv_tab_txt)).setText("POLÍTICOS");
+        ((TextView) tabpoliticos.findViewById(R.id.tv_tab_txt)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "Titillium-Semibold.otf"));
         Bundle politicianTab = new Bundle();
         politicianTab.putInt("Arg for politicianTab", 2);
         mTabHost.addTab(mTabHost.newTabSpec("PoliticianTab").setIndicator(tabpoliticos),
@@ -80,6 +83,7 @@ public class DocumentTab extends Fragment {
 
         View tabpartidos = LayoutInflater.from(getActivity()).inflate(R.layout.tab_indicator, mTabHost.getTabWidget(), false);
         ((TextView) tabpartidos.findViewById(R.id.tv_tab_txt)).setText("PARTIDOS");
+        ((TextView) tabpartidos.findViewById(R.id.tv_tab_txt)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "Titillium-Semibold.otf"));
         Bundle partyTab = new Bundle();
         partyTab.putInt("Arg for PartyTab", 3);
         mTabHost.addTab(mTabHost.newTabSpec("PartyTab").setIndicator(tabpartidos),

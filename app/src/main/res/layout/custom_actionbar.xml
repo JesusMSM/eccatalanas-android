@@ -5,6 +5,6 @@
     android:layout_height="wrap_content"
     android:textSize="12sp"
 
-    android:background="?android:selectableItemBackground"
+    android:background="@drawable/tab_bg_selector"
     android:padding="16dp"
     />

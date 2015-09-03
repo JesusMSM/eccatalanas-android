@@ -11,8 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
-    android:theme="@style/Base.ThemeOverlay.AppCompat.Dark"
-    android:background="@color/actionBar_color" />
+    android:theme="@style/Base.ThemeOverlay.AppCompat.Dark" />
 
 <android.support.v4.view.ViewPager
     android:id="@+id/pager"
