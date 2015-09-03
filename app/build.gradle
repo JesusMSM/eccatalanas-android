@@ -27,6 +27,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('libs/mpandroidchartlibrary-2-1-3.jar')
     compile files('libs.achartengine-1.1.0.jar')
+    compile "com.android.support:support-v4:21.0.+"
     compile 'com.google.android.gms:play-services:+'
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.android.support:cardview-v7:21.0.+'
@@ -41,6 +42,4 @@ dependencies {
     compile 'jp.wasabeef:picasso-transformations:1.0.5'
     // If you want to use the GPU Filters
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.2.3'
-
-
 }

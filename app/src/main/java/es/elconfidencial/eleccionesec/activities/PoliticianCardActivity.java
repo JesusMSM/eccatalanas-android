@@ -51,12 +51,13 @@ public class PoliticianCardActivity extends ActionBarActivity {
 
             int resid=intent.getIntExtra("imagen", 0);
             //Load Image
-            //Picasso.with(getApplicationContext()).load(R.drawable.artur_mas).placeholder(R.drawable.nopicpolitico).resize(width, height*2/3).onlyScaleDown().centerInside().into(imagen);
-            BitmapFactory.Options opts = new BitmapFactory.Options();
+            Picasso.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).resize(width, height * 2 / 3).centerInside().transform(new VignetteFilterTransformation(getApplicationContext(),
+                    new PointF(0.5f, 0.5f), new float[]{0.0f, 0.0f, 0.0f}, 0f, 0.75f)).into(imagen);
+            /*BitmapFactory.Options opts = new BitmapFactory.Options();
             opts.inDither = true;
             opts.inSampleSize = 3;
             Bitmap bitmapImage = BitmapFactory.decodeResource(this.getResources(), resid, opts);
-            imagen.setImageBitmap(bitmapImage);
+            imagen.setImageBitmap(bitmapImage);*/
         }catch (Exception e){e.printStackTrace();}
 
         nombre.setText(intent.getStringExtra("nombre"));
@@ -117,5 +118,11 @@ public class PoliticianCardActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        System.gc();
+        super.onBackPressed();
     }
 }

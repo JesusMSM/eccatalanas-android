@@ -133,4 +133,10 @@ public class PartyCardActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        System.gc();
+        super.onBackPressed();
+    }
 }

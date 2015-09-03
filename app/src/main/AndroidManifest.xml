@@ -50,6 +50,7 @@
         <meta-data
             android:name="PW_PROJECT_ID"
             android:value="A8965404761" />
+        <meta-data android:name="PW_LOG_LEVEL" android:value="ERROR" />
 
         <activity
             android:name=".activities.ChooseActivity"

@@ -127,6 +127,7 @@ public class NoticiaContentActivity extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
+        System.gc();
         finish();
         super.onBackPressed();
     }

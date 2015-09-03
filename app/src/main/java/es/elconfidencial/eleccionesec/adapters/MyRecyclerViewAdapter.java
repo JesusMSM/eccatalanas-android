@@ -150,6 +150,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh1.titulo.setText(Html.fromHtml(noticia.getTitulo()));
             vh1.autor.setText(noticia.getAutor());
             try {
+                System.gc();
                 Picasso.with(context).load(noticia.getImagenUrl()).placeholder(R.drawable.nopic).fit().into(vh1.imagen);
             }catch (Exception e){
                 e.printStackTrace();
@@ -183,6 +184,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh2.titulo.setText(Html.fromHtml(quiz.getTitulo()));
             vh2.autor.setText(quiz.getAutor());
             try {
+                System.gc();
                 Picasso.with(context).load(quiz.getImagenUrl()).placeholder(R.drawable.nopic).into(vh2.imagen);
             }catch (Exception e){
                 e.printStackTrace();
@@ -205,7 +207,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         final Partido partido = (Partido) items.get(position);
         if(partido != null){
             try {
-                Picasso.with(context).load(partido.getImagen()).placeholder(R.drawable.nopicpartido).fit().into(vh4.imagen);
+                System.gc();
+                Picasso.with(context).load(partido.getImagen()).resize(450, 450).placeholder(R.drawable.nopicpartidolow).into(vh4.imagen);
             }catch (Exception e){e.printStackTrace();}
             vh4.nombre.setText(partido.getNombre());
             vh4.representantes.setText(partido.getRepresentantes());
@@ -247,7 +250,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
        final Politico politico = (Politico) items.get(position);
         if(politico != null) {
             try {
-                Picasso.with(context).load(politico.getImagen()).placeholder(R.drawable.nopicpolitico).fit().into(vh5.imagen);
+                System.gc();
+                Picasso.with(context).load(politico.getImagen()).resize(450, 450).placeholder(R.drawable.nopicpoliticolow).centerInside().into(vh5.imagen);
             }catch (Exception e){e.printStackTrace();}
             vh5.nombre.setText(politico.getNombre());
             vh5.edad.setText(politico.getEdad());

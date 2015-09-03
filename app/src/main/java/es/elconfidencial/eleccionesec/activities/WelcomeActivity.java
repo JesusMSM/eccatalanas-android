@@ -54,7 +54,7 @@ public class WelcomeActivity extends Activity {
 
         /**********INICIALIZAMOS PUSHWOOSH*******************/
         //Register receivers for push notifications
- /*       registerReceivers();
+        /*registerReceivers();
 
         //Create and start push manager
         PushManager pushManager = PushManager.getInstance(this);
@@ -71,8 +71,8 @@ public class WelcomeActivity extends Activity {
         //Register for push!
         pushManager.registerForPushNotifications();
 
-        checkMessage(getIntent());
-*/
+        checkMessage(getIntent());*/
+
         setContentView(R.layout.activity_welcome);
         this.context = getApplicationContext();
 
@@ -233,14 +233,14 @@ public class WelcomeActivity extends Activity {
     protected void onResume() {
         super.onResume();
         //Re-register receivers on resume
-      //  registerReceivers();
+        //registerReceivers();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         //Unregister receivers on pause
-     //   unregisterReceivers();
+        //unregisterReceivers();
     }
 
     /***********************PUSHWOOSH*****************************/
@@ -328,7 +328,7 @@ public class WelcomeActivity extends Activity {
     /**
      * Will check main Activity intent and if it contains any PushWoosh data, will clear it
      */
-   /* private void resetIntentValues()
+   /*private void resetIntentValues()
     {
         Intent mainAppIntent = getIntent();
 
