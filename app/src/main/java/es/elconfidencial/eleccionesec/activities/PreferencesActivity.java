@@ -43,13 +43,13 @@ public class PreferencesActivity extends Activity {
 
     Context context;
     ImageView header;
-    ProgressDialog pd;
+
 
     private PushManager pushManager ;
     public final String NAME_TAGS = "PARTIDOS_TAGS";
     public String[] empty = {};
     public String[] tagPartidos = {"convergencia-democratica-de-catalunya-cdc-6665","xavier-garcia-albiol-14516","ines-arrimadas-15503","psc-6043","unio-democratica-de-catalunya-udc-7522","cataluna-si-que-es-pot-15843","junts-pel-si-15903","cup-15022"};
-    public ArrayList<String> tagNames;
+    public ArrayList<String> tagNames = new ArrayList<String>(Arrays.asList(empty));
     public ArrayList<String> switchTags = new ArrayList<>(Arrays.asList(tagPartidos));
 
 
@@ -64,14 +64,12 @@ public class PreferencesActivity extends Activity {
         header = (ImageView) findViewById(R.id.imageView);
         header.setImageResource(R.drawable.preferencias);
 
-        pd = ProgressDialog.show(PreferencesActivity.this, "", "Cargando...", true);
-
         Button saveButton = (Button) findViewById(R.id.guardar);
         saveButton.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Guardar en Pushwoosh los switch activados
-                sendTagsToPushWoosh();
+                sendTagsToPushWoosh(tagNames);
 
                 Intent intent = new Intent(view.getContext(), HomeActivity.class);
                 startActivity(intent);
@@ -135,9 +133,6 @@ public class PreferencesActivity extends Activity {
                 "Titillium-Regular.otf");
         buttonIdiomas.setTypeface(tr);
 
-        //Obtenemos las Tags de partidos que estan almacenadas en PW, almacenandolas en el ArrayList tagNames
-        getTagsFromPushWoosh();
-
         //Listeners al modificar el estado de un switch
         SwitchCompat cdc = (SwitchCompat) findViewById(R.id.convergencia_democratica_de_catalunya_cdc_6665);
         SwitchCompat pp = (SwitchCompat) findViewById(R.id.xavier_garcia_albiol_14516);
@@ -159,76 +154,11 @@ public class PreferencesActivity extends Activity {
 
     }
 
-    //Comunicacion con Pushwoosh GET
-    private void getTagsFromPushWoosh(){
-        pd.show();
-        pushManager.getTagsAsync(getApplicationContext(), new PushManager.GetTagsListener() {
-            @Override
-            public void onTagsReceived(Map<String, Object> map) {
-                //Primera vez. No exista la TAG. Mandamos a PW un array vacío sin tags
-                if(!map.containsKey(NAME_TAGS)){
-                    pd.dismiss();
-                    Log.i("elecciones", "EsNull");
-                    Object obj = empty;
-                    Map<String,Object> tags = new HashMap<>();
-                    tags.put(NAME_TAGS,obj);
-                    pushManager.sendTags(getApplicationContext(), tags, new SendPushTagsCallBack() {
-                        @Override
-                        public void taskStarted() {
-
-                        }
-
-                        @Override
-                        public void onSentTagsSuccess(Map<String, String> map) {
-                            tagNames = new ArrayList<String>(Arrays.asList(empty));
-                            pd.dismiss();
-                        }
-
-                        @Override
-                        public void onSentTagsError(Exception e) {
-                            Toast.makeText(PreferencesActivity.this, "No es posible contactar con el servicio de notificaciones, intentelo de nuevo en unos minutos", Toast.LENGTH_SHORT).show();
-                            pd.dismiss();
-                        }
-                    });
-                //Existe la TAG. Descargamos el contenido del array de PW y rellenamos los switchs
-                }else{
-                    pd.dismiss();
-                    Log.i("elecciones","NotNull");
-                    ArrayList<String> partidos = new ArrayList<String>();
-                    String[] arrayTags=map.get(NAME_TAGS).toString().split("\"");
-                    for(String partidoTag :arrayTags) {
-                        if(!(partidoTag.contains("[")||partidoTag.contains("]")||partidoTag.contains(","))){
-                            partidos.add(partidoTag);
-                            //Toast.makeText(ControlNotificacionesActivity.this, pep, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    tagNames = partidos;
-                    //Activamos o desactivamos los switches en caso de encontrar la tag correspondiente.
-                    for (String tag: tagNames){
-                        SwitchCompat sc = (SwitchCompat) findViewById(getResources().getIdentifier(tag.replace("-","_"),"id",getPackageName()));
-                        if(sc != null){
-                            sc.setChecked(true);
-                        }
-                    }
-                }
-                pd.dismiss();
-            }
-
-            @Override
-            public void onError(Exception e) {
-                Toast.makeText(PreferencesActivity.this, "No es posible contactar con el servicio de notificaciones, reinicie la aplicación", Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
-                pd.dismiss();
-            }
-        });
-
-    }
-
     //Comunicacion con PushWoosh SET
-    private void sendTagsToPushWoosh(){
+    private void sendTagsToPushWoosh(ArrayList<String> partidos){
         Map<String,Object> tags = new HashMap<>();
 
-        tags.put(NAME_TAGS, tagNames.toArray());
+        tags.put(NAME_TAGS, partidos.toArray());
         pushManager.sendTags(getApplicationContext(), tags, new SendPushTagsCallBack() {
             @Override
             public void taskStarted() {

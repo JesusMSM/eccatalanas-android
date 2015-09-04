@@ -56,7 +56,7 @@ public class PreferencesTab extends Fragment {
     public final String NAME_TAGS = "PARTIDOS_TAGS";
     public String[] empty = {};
     public String[] tagPartidos = {"convergencia-democratica-de-catalunya-cdc-6665","xavier-garcia-albiol-14516","ines-arrimadas-15503","psc-6043","unio-democratica-de-catalunya-udc-7522","cataluna-si-que-es-pot-15843","junts-pel-si-15903","cup-15022"};
-    public ArrayList<String> tagNames;
+    public ArrayList<String> tagNames = new ArrayList<String>(Arrays.asList(empty));
     public ArrayList<String> switchTags = new ArrayList<>(Arrays.asList(tagPartidos));
 
     @Override

@@ -133,19 +133,19 @@ public class ChooseActivity extends Activity {
             }
             else if (intent.hasExtra(PushManager.REGISTER_EVENT))
             {
-                showMessage("register");
+                //showMessage("register");
             }
             else if (intent.hasExtra(PushManager.UNREGISTER_EVENT))
             {
-                showMessage("unregister");
+                //showMessage("unregister");
             }
             else if (intent.hasExtra(PushManager.REGISTER_ERROR_EVENT))
             {
-                showMessage("register error");
+                //showMessage("register error");
             }
             else if (intent.hasExtra(PushManager.UNREGISTER_ERROR_EVENT))
             {
-                showMessage("unregister error");
+                //showMessage("unregister error");
             }
 
             resetIntentValues();
