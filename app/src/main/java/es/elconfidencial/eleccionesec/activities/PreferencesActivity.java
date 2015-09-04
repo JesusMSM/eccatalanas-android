@@ -63,15 +63,15 @@ public class PreferencesActivity extends Activity {
 
         header = (ImageView) findViewById(R.id.imageView);
         header.setImageResource(R.drawable.preferencias);
-       // pushManager = PushManager.getInstance(this);
-       // pd = ProgressDialog.show(PreferencesActivity.this, "", "Cargando...", true);
+
+        pd = ProgressDialog.show(PreferencesActivity.this, "", "Cargando...", true);
 
         Button saveButton = (Button) findViewById(R.id.guardar);
         saveButton.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Guardar en Pushwoosh los switch activados
-                //sendTagsToPushWoosh();
+                sendTagsToPushWoosh();
 
                 Intent intent = new Intent(view.getContext(), HomeActivity.class);
                 startActivity(intent);
@@ -136,10 +136,10 @@ public class PreferencesActivity extends Activity {
         buttonIdiomas.setTypeface(tr);
 
         //Obtenemos las Tags de partidos que estan almacenadas en PW, almacenandolas en el ArrayList tagNames
-       // getTagsFromPushWoosh();
+        getTagsFromPushWoosh();
 
         //Listeners al modificar el estado de un switch
-       /* SwitchCompat cdc = (SwitchCompat) findViewById(R.id.convergencia_democratica_de_catalunya_cdc_6665);
+        SwitchCompat cdc = (SwitchCompat) findViewById(R.id.convergencia_democratica_de_catalunya_cdc_6665);
         SwitchCompat pp = (SwitchCompat) findViewById(R.id.xavier_garcia_albiol_14516);
         SwitchCompat cs = (SwitchCompat) findViewById(R.id.ines_arrimadas_15503);
         SwitchCompat psc = (SwitchCompat) findViewById(R.id.psc_6043);
@@ -155,7 +155,7 @@ public class PreferencesActivity extends Activity {
         udc.setOnCheckedChangeListener(new OnChangeSwitchListener());
         catsiqueespot.setOnCheckedChangeListener(new OnChangeSwitchListener());
         junts.setOnCheckedChangeListener(new OnChangeSwitchListener());
-        cup.setOnCheckedChangeListener(new OnChangeSwitchListener());*/
+        cup.setOnCheckedChangeListener(new OnChangeSwitchListener());
 
     }
 
@@ -167,6 +167,7 @@ public class PreferencesActivity extends Activity {
             public void onTagsReceived(Map<String, Object> map) {
                 //Primera vez. No exista la TAG. Mandamos a PW un array vacío sin tags
                 if(!map.containsKey(NAME_TAGS)){
+                    pd.dismiss();
                     Log.i("elecciones", "EsNull");
                     Object obj = empty;
                     Map<String,Object> tags = new HashMap<>();
@@ -191,6 +192,7 @@ public class PreferencesActivity extends Activity {
                     });
                 //Existe la TAG. Descargamos el contenido del array de PW y rellenamos los switchs
                 }else{
+                    pd.dismiss();
                     Log.i("elecciones","NotNull");
                     ArrayList<String> partidos = new ArrayList<String>();
                     String[] arrayTags=map.get(NAME_TAGS).toString().split("\"");
@@ -223,7 +225,7 @@ public class PreferencesActivity extends Activity {
     }
 
     //Comunicacion con PushWoosh SET
-    /*private void sendTagsToPushWoosh(){
+    private void sendTagsToPushWoosh(){
         Map<String,Object> tags = new HashMap<>();
 
         tags.put(NAME_TAGS, tagNames.toArray());
@@ -243,10 +245,10 @@ public class PreferencesActivity extends Activity {
 
             }
         });
-    }*/
+    }
 
     //Listener al cambiar el estado de un switch
-  /*  private class OnChangeSwitchListener implements CompoundButton.OnCheckedChangeListener {
+    private class OnChangeSwitchListener implements CompoundButton.OnCheckedChangeListener {
 
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -263,7 +265,7 @@ public class PreferencesActivity extends Activity {
                 }
             }
         }
-    }*/
+    }
     private void insertFonts(){
         // --------- Ajuste de Fonts-----------
 
