@@ -1,46 +1,50 @@
 package es.elconfidencial.eleccionesec.adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Point;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
-import android.support.v7.widget.RecyclerView;
-import android.text.Html;
-import android.util.Log;
-import android.view.Display;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.ImageView;
+        import android.content.Intent;
+        import android.graphics.Bitmap;
+        import android.graphics.BitmapFactory;
+        import android.graphics.Point;
+        import android.graphics.Typeface;
+        import android.graphics.drawable.Drawable;
+        import android.os.AsyncTask;
+        import android.support.v7.widget.RecyclerView;
+        import android.text.Html;
+        import android.util.Log;
+        import android.view.Display;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.view.WindowManager;
+        import android.widget.ImageView;
 
-import com.squareup.picasso.Picasso;
+        import com.squareup.picasso.Picasso;
 
-import org.apache.http.HttpStatus;
+        import org.apache.http.HttpStatus;
 
-import java.io.InputStream;
-import java.lang.ref.WeakReference;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.List;
+        import java.io.InputStream;
+        import java.lang.ref.WeakReference;
+        import java.net.HttpURLConnection;
+        import java.net.URL;
+        import java.util.List;
 
-import es.elconfidencial.eleccionesec.R;
-import es.elconfidencial.eleccionesec.activities.NoticiaContentActivity;
-import es.elconfidencial.eleccionesec.activities.PartyCardActivity;
-import es.elconfidencial.eleccionesec.activities.PoliticianCardActivity;
-import es.elconfidencial.eleccionesec.model.Noticia;
-import es.elconfidencial.eleccionesec.model.Partido;
-import es.elconfidencial.eleccionesec.model.Politico;
-import es.elconfidencial.eleccionesec.model.Quiz;
-import es.elconfidencial.eleccionesec.viewholders.ContadorViewHolder;
-import es.elconfidencial.eleccionesec.viewholders.NoticiaViewHolder;
-import es.elconfidencial.eleccionesec.viewholders.PartidoViewHolder;
-import es.elconfidencial.eleccionesec.viewholders.PoliticoViewHolder;
-import es.elconfidencial.eleccionesec.viewholders.QuizViewHolder;
+        import es.elconfidencial.eleccionesec.R;
+        import es.elconfidencial.eleccionesec.activities.NoticiaContentActivity;
+        import es.elconfidencial.eleccionesec.activities.PartyCardActivity;
+        import es.elconfidencial.eleccionesec.activities.PoliticianCardActivity;
+        import es.elconfidencial.eleccionesec.model.Mensaje;
+        import es.elconfidencial.eleccionesec.model.Noticia;
+        import es.elconfidencial.eleccionesec.model.Partido;
+        import es.elconfidencial.eleccionesec.model.Politico;
+        import es.elconfidencial.eleccionesec.model.Quiz;
+        import es.elconfidencial.eleccionesec.model.Title;
+        import es.elconfidencial.eleccionesec.viewholders.ContadorViewHolder;
+        import es.elconfidencial.eleccionesec.viewholders.MensajeViewHolder;
+        import es.elconfidencial.eleccionesec.viewholders.NoticiaViewHolder;
+        import es.elconfidencial.eleccionesec.viewholders.PartidoViewHolder;
+        import es.elconfidencial.eleccionesec.viewholders.PoliticoViewHolder;
+        import es.elconfidencial.eleccionesec.viewholders.QuizViewHolder;
+        import es.elconfidencial.eleccionesec.viewholders.TitleViewHolder;
 
 /**
  * Created by MOONFISH on 01/08/2015.
@@ -50,7 +54,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     // The items to display in your RecyclerView
     private List<Object> items;
     Context context;
-    private final int NOTICIA = 0, QUIZ = 1, CONTADOR = 2, PARTIDO = 3, POLITICO = 4;
+    private final int NOTICIA = 0, QUIZ = 1, CONTADOR = 2, PARTIDO = 3, POLITICO = 4, TITULO = 5, MENSAJE = 6;
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyRecyclerViewAdapter(Context context, List<Object> items) {
@@ -77,6 +81,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             return PARTIDO;
         }else if (items.get(position) instanceof Politico) {
             return POLITICO;
+        } else if (items.get(position) instanceof Title) {
+            return TITULO;
+        }else if (items.get(position) instanceof Mensaje) {
+            return MENSAJE;
         }
         return -1;
     }
@@ -108,6 +116,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 View v5 = inflater.inflate(R.layout.recyclerview_item_politico, viewGroup, false);
                 viewHolder = new PoliticoViewHolder(v5);
                 break;
+            case TITULO:
+                View v6 = inflater.inflate(R.layout.recyclerview_item_title, viewGroup, false);
+                viewHolder = new TitleViewHolder(v6);
+                break;
+            case MENSAJE:
+                View v7 = inflater.inflate(R.layout.recyclerview_item_mensaje, viewGroup, false);
+                viewHolder = new MensajeViewHolder(v7);
+                break;
             default:
                 viewHolder = null;
                 break;
@@ -138,6 +154,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             case POLITICO:
                 PoliticoViewHolder vh5 = (PoliticoViewHolder) viewHolder;
                 configurePoliticoViewHolder(vh5, position);
+                break;
+            case TITULO:
+                TitleViewHolder vh6 = (TitleViewHolder) viewHolder;
+                configureTitleViewHolder(vh6, position);
+                break;
+            case MENSAJE:
+                MensajeViewHolder vh7 = (MensajeViewHolder) viewHolder;
+                configureMensajeViewHolder(vh7, position);
                 break;
             default:
         }
@@ -247,7 +271,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     private void configurePoliticoViewHolder(PoliticoViewHolder vh5,int position) {
-       final Politico politico = (Politico) items.get(position);
+        final Politico politico = (Politico) items.get(position);
         if(politico != null) {
             try {
                 System.gc();
@@ -258,25 +282,46 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh5.partido.setText(politico.getPartido());
             vh5.cargo.setText(politico.getCargo());
         }
-            vh5.fab.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, PoliticianCardActivity.class);
-                    intent.putExtra("imagen", politico.getImagen());
-                    intent.putExtra("nombre", politico.getNombre());
-                    intent.putExtra("edad", politico.getEdad());
-                    intent.putExtra("partido", politico.getPartido());
-                    intent.putExtra("cargo", politico.getCargo());
-                    intent.putExtra("perfil", politico.getPerfil());
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-                }
-            });
+        vh5.fab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(context, PoliticianCardActivity.class);
+                intent.putExtra("imagen", politico.getImagen());
+                intent.putExtra("nombre", politico.getNombre());
+                intent.putExtra("edad", politico.getEdad());
+                intent.putExtra("partido", politico.getPartido());
+                intent.putExtra("cargo", politico.getCargo());
+                intent.putExtra("perfil", politico.getPerfil());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
         //Fonts
         vh5.nombre.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
         vh5.cargo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
         vh5.partido.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
         vh5.edad.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
 
+
+    }
+
+    private void configureTitleViewHolder(TitleViewHolder vh6,int position) {
+        final Title title = (Title) items.get(position);
+        if(title != null) {
+            vh6.title.setText(title.getTitle());
+        }
+        //Fonts
+        vh6.title.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
+
+
+    }
+
+    private void configureMensajeViewHolder(MensajeViewHolder vh7,int position) {
+        final Mensaje mensaje = (Mensaje) items.get(position);
+        if(mensaje != null) {
+            vh7.mensaje.setText(mensaje.getMensaje());
+        }
+        //Fonts
+        vh7.mensaje.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
 
     }
 

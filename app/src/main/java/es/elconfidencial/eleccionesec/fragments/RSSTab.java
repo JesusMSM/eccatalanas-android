@@ -21,7 +21,9 @@ import java.util.List;
 import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.activities.HomeActivity;
 import es.elconfidencial.eleccionesec.adapters.MyRecyclerViewAdapter;
+import es.elconfidencial.eleccionesec.model.Mensaje;
 import es.elconfidencial.eleccionesec.model.Noticia;
+import es.elconfidencial.eleccionesec.model.Title;
 import es.elconfidencial.eleccionesec.rss.RssNoticiasParser;
 
 /**
@@ -50,11 +52,7 @@ public class RSSTab extends Fragment {
         mLayoutManager = new LinearLayoutManager(HomeActivity.context);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        try {
-           if(haveNetworkConnection()) new CargarXmlTask().execute(rss_url);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        new CargarXmlTask().execute(rss_url);
 
         layout = (PullRefreshLayout) v.findViewById(R.id.swipeRefreshLayout);
 
@@ -62,11 +60,7 @@ public class RSSTab extends Fragment {
         layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                try {
-                    if(haveNetworkConnection())new CargarXmlTask().execute(rss_url);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+                new CargarXmlTask().execute(rss_url);
 
             }
         });
@@ -98,22 +92,38 @@ public class RSSTab extends Fragment {
         List<Noticia> noticias = new ArrayList<>();
 
         protected Boolean doInBackground(String... params) {
-            RssNoticiasParser saxparser =
-                    new RssNoticiasParser(params[0]);
+            try {
+                if(haveNetworkConnection()) {
+                    RssNoticiasParser saxparser =
+                            new RssNoticiasParser(params[0]);
 
-            noticias = saxparser.parse();
+                    noticias = saxparser.parse();
+
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             return true;
         }
         protected void onPostExecute(Boolean result) {
-            if (isAdded()) {
-                //Tratamos la lista de noticias.
-                for (Noticia noticia : noticias) {
+
+            //Insertamos título del tab
+            items.add(new Title(getString(R.string.titulo_noticias)));
+
+
+            //Tratamos la lista de noticias.
+            //En caso de sin conexión, se muestra mensaje de alerta
+            if(haveNetworkConnection()) {
+                for (Noticia noticia : noticias){
                     items.add(noticia);
                 }
-                mAdapter = new MyRecyclerViewAdapter(HomeActivity.context, items);
-                mRecyclerView.setAdapter(mAdapter);
-                if (layout != null) layout.setRefreshing(false);
+            } else{
+                items.add(new Mensaje(getString(R.string.alerta_conexion_noticias)));
             }
+
+            mAdapter = new MyRecyclerViewAdapter(HomeActivity.context,items);
+            mRecyclerView.setAdapter(mAdapter);
+            if(layout!=null) layout.setRefreshing(false);
         }
     }
 }
