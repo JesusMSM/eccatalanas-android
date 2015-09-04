@@ -66,6 +66,7 @@ import es.elconfidencial.eleccionesec.chart.BarChartItem;
 import es.elconfidencial.eleccionesec.chart.ChartItem;
 import es.elconfidencial.eleccionesec.chart.LineChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem;
+import es.elconfidencial.eleccionesec.chart.PieChartItem2011;
 import es.elconfidencial.eleccionesec.json.JSONParser;
 import es.elconfidencial.eleccionesec.model.PartidoEstadisticas;
 
@@ -94,16 +95,42 @@ public class ChartTab extends Fragment {
     private static final String TAG_ELECTED_MEMBERS = "res_elected_members";
 
     private int numPartidos;
+    private int numPartidos2011;
     private PartidoEstadisticas[] arrayPartidos;
     private PartidoEstadisticas[] arrayPartidos2011;
-    private PartidoEstadisticas[] arrayPartidos2015;
 
+    private int numConvocatorias = 10;
+    private String[] partidosHistoricos = { "CiU", "Ciudadanos", "CUP", "ERC", "ICV" , "PP", "PSC"};
+    private double[][] historicoCataluña = {
+            {27.83,46.8,45.72,46.19,40.95,37.7,30.94,31.52,38.43,30.68},
+            {0,0,0,0,0,0,0,3.03,3.39,7.58},
+            {0,0,0,0,0,0,0,0,0,3.48},
+            {8.9,4.41,4.14,7.96,9.49,8.67,16.44,14.03,7,13.69},
+            {0,0,7.76,6.5,9.71,2.51,7.28,9.52,7.37,10},
+            {0,7.7,5.31,5.97,13.08,9.51,11.89,10.65,12.37,13},
+            {22.43,30.11,30,27.55,24.8,30.33,31.16,26.82,18.38,14.44}
+    };
+    private String[] historicoColors = {"#18307B","#EF7A36", "#FFED00", "#FFB232", "#80A233", "#0BB2FF", "#E20A16"};
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.tab_chart, container, false);
-        if(haveNetworkConnection())downloadData();
+        downloadData();
+        lv = (ListView) v.findViewById(R.id.listView1);
+
+
+        layout = (PullRefreshLayout) v.findViewById(R.id.swipeRefreshLayout);
+
+        // listen refresh event
+        layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                downloadData();
+
+            }
+        });
+
 
         return v;
     }
@@ -127,68 +154,74 @@ public class ChartTab extends Fragment {
 
     public void downloadData(){
         //Cargamos datos de 2011- Al terminar, cargamos los de 2015 - Al terminar dibujamos el chart
-      if(haveNetworkConnection()) new JSONParse2011().execute(url_2011);
+        if(haveNetworkConnection()) new JSONParse2015().execute();
+
+    }
+
+
+    private class JSONParse2015 extends AsyncTask<String, String, JSONObject> {
+
+        private JSONObject data;
+        private JSONArray results;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... args) {
+            JSONParser jParser = new JSONParser();
+
+            // Getting JSON from URL
+            JSONObject json = jParser.getJSONFromUrl(url_2015);
+            return json;
+        }
+        @Override
+        protected void onPostExecute(JSONObject json) {
+
+            try {
+                // Getting JSON Array
+                data = json.getJSONObject(TAG_DATA);
+                results = data.getJSONArray(TAG_RESULTS);
+                numPartidos = results.length();
+                arrayPartidos = new PartidoEstadisticas[numPartidos];
+
+                for(int i=0; i<numPartidos; i++){
+
+                    PartidoEstadisticas partido = new PartidoEstadisticas();
+
+                    JSONObject jsonEstadisticas = results.getJSONObject(i); //Vamos cargando cada partido
+
+                    partido.setComunidadAutonoma(jsonEstadisticas.getString(TAG_COM_AUT));
+
+                    partido.setPorcentajeObtenido(jsonEstadisticas.getDouble(TAG_PORCENTAJE));
+
+                    JSONObject jsonPartido = jsonEstadisticas.getJSONObject(TAG_PARTIDO);
+                    partido.setNombre(jsonPartido.getString(TAG_NOMBRE));
+                    partido.setAlias(jsonPartido.getString(TAG_ALIAS));
+                    partido.setColor(jsonPartido.getString(TAG_COLOR));
+
+                    arrayPartidos[i]=partido;
+
+                }
+                new JSONParse2011().execute();
+
+               // drawGraphics();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 
     private class JSONParse2011 extends AsyncTask<String, String, JSONObject> {
+
         private JSONObject data;
         private JSONArray results;
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
 
-        @Override
-        protected JSONObject doInBackground(String... args) {
-            JSONParser jParser = new JSONParser();
-            // Getting JSON from URL
-            JSONObject json = jParser.getJSONFromUrl(args[0]);
-            return json;
-        }
-        @Override
-        protected void onPostExecute(JSONObject json) {
-            PartidoEstadisticas[] arrayPartidos;
-
-            try {
-                // Getting JSON Array
-                data = json.getJSONObject(TAG_DATA);
-                results = data.getJSONArray(TAG_RESULTS);
-                numPartidos = results.length();
-                arrayPartidos = new PartidoEstadisticas[numPartidos];
-
-                for(int i=0; i<numPartidos; i++){
-
-                    PartidoEstadisticas partido = new PartidoEstadisticas();
-
-                    JSONObject jsonEstadisticas = results.getJSONObject(i); //Vamos cargando cada partido
-
-                    partido.setComunidadAutonoma(jsonEstadisticas.getString(TAG_COM_AUT));
-
-                    partido.setPorcentajeObtenido(jsonEstadisticas.getDouble(TAG_PORCENTAJE));
-                    partido.setElectedMembers(jsonEstadisticas.getString(TAG_ELECTED_MEMBERS));
-
-                    JSONObject jsonPartido = jsonEstadisticas.getJSONObject(TAG_PARTIDO);
-                    partido.setNombre(jsonPartido.getString(TAG_NOMBRE));
-                    partido.setAlias(jsonPartido.getString(TAG_ALIAS));
-                    partido.setColor(jsonPartido.getString(TAG_COLOR));
-
-                    arrayPartidos[i]=partido;
-                }
-
-                //drawGraphics();
-                arrayPartidos2011 = arrayPartidos;
-                new JSONParse2015().execute(url_2015);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private class JSONParse2015 extends AsyncTask<String, String, JSONObject> {
-        private ProgressDialog pDialog;
-        private JSONObject data;
-        private JSONArray results;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -198,23 +231,22 @@ public class ChartTab extends Fragment {
         @Override
         protected JSONObject doInBackground(String... args) {
             JSONParser jParser = new JSONParser();
+
             // Getting JSON from URL
-            JSONObject json = jParser.getJSONFromUrl(args[0]);
+            JSONObject json = jParser.getJSONFromUrl(url_2011);
             return json;
         }
         @Override
         protected void onPostExecute(JSONObject json) {
-            PartidoEstadisticas[] arrayPartidos;
 
-            //pDialog.dismiss();
             try {
                 // Getting JSON Array
                 data = json.getJSONObject(TAG_DATA);
                 results = data.getJSONArray(TAG_RESULTS);
-                numPartidos = results.length();
-                arrayPartidos = new PartidoEstadisticas[numPartidos];
+                numPartidos2011 = results.length();
+                arrayPartidos2011 = new PartidoEstadisticas[numPartidos2011];
 
-                for(int i=0; i<numPartidos; i++){
+                for(int i=0; i<numPartidos2011; i++){
 
                     PartidoEstadisticas partido = new PartidoEstadisticas();
 
@@ -223,359 +255,151 @@ public class ChartTab extends Fragment {
                     partido.setComunidadAutonoma(jsonEstadisticas.getString(TAG_COM_AUT));
 
                     partido.setPorcentajeObtenido(jsonEstadisticas.getDouble(TAG_PORCENTAJE));
-                    partido.setElectedMembers(jsonEstadisticas.getString(TAG_ELECTED_MEMBERS));
 
                     JSONObject jsonPartido = jsonEstadisticas.getJSONObject(TAG_PARTIDO);
                     partido.setNombre(jsonPartido.getString(TAG_NOMBRE));
                     partido.setAlias(jsonPartido.getString(TAG_ALIAS));
                     partido.setColor(jsonPartido.getString(TAG_COLOR));
 
-                    arrayPartidos[i]=partido;
-                }
+                    arrayPartidos2011[i]=partido;
 
-                //drawGraphics();
-                arrayPartidos2015 = arrayPartidos;
-             //   drawHemiciclo(getDataString(arrayPartidos2011,"res2011"),getDataString(arrayPartidos2015,"res2015"));
-                drawHalfDonut();
+                }
+                if (layout != null) layout.setRefreshing(false);
+                 drawGraphics();
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
         }
     }
-    private String getDataString(PartidoEstadisticas[] array,String title){
-        String result = "";
-        String [] resultArray = new String[array.length];
-        for(int i=0; i<array.length; i++){
-            result += array[i].getElectedMembers();
-            if(i != array.length-1){//No es el ultimo item
-                result += ",";
+
+
+    private ArrayList<String> getQuarters(String ano) {
+
+        if(ano.equals("2015")) {
+            ArrayList<String> q = new ArrayList<String>();
+
+
+            for (int i = 0; i < numPartidos - 6; i++) {   //OJOOOOOOOO HAY QUE BORRAR EL 6
+                q.add(arrayPartidos[i].getAlias());
+                //if(arrayPartidos[i].getAlias()!=null &&arrayPartidos[i]!= null && arrayPartidos!=null) Log.d("GRAFICOS", arrayPartidos[i].getAlias());
             }
+
+            return q;
+        }else{
+            ArrayList<String> q = new ArrayList<String>();
+            Log.d("GRAFICOS", "" + numPartidos2011);
+
+            for (int i = 0; i < numPartidos2011 - 6; i++) {   //OJOOOOOOOO HAY QUE BORRAR EL 6
+                q.add(arrayPartidos2011[i].getAlias());
+                //if(arrayPartidos[i].getAlias()!=null &&arrayPartidos[i]!= null && arrayPartidos!=null) Log.d("GRAFICOS", arrayPartidos[i].getAlias());
+            }
+            return q;
         }
-        return title + ": [" + result + "],";
-    }
- /**   public void drawHemiciclo(String data2011,String data2015){
-        //HEMICICLO
-
-        WebView webview1 = (WebView) v.findViewById(R.id.webView1);
-        String content1 = "<html>"
-                + "<meta charset='utf-8'>"
-                + "<script src='http://d3js.org/d3.v3.min.js'></script>"
-                + "<head>"
-                + "<meta name='viewport' content='width=device-width, initial-scale=1'>"
-                + "<style> "
-                + "body {"
-                + "  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;"
-                + "  margin: auto;"
-                + "  position: relative;"
-                + "}"
-                + "form {"
-                + "  position: absolute;"
-                + "  right: 10px;"
-                + "  top: 10px;"
-                + "}"
-                + "</style>"
-                + "</head>"
-                + "<body>"
-                + "<script>"
-                + "  var dataset = {"
-                + data2011
-                + data2015
-                + "};"
-                + "var width = 460,"
-                + "    height = 300,"
-                + "    cwidth = 80;"
-                + "    r = 10;"
-                + "var color = d3.scale.ordinal()"
-                + "                   .range(['#0077a7', '#df2927', '#5e2b5e', '#df843d', '#24988b', '#e12893']);"
-                + "var pie = d3.layout.pie()"
-                + "    .sort(null)"
-                + "    .startAngle(3/2 * Math.PI)"
-                + "    .endAngle(5/2 * Math.PI);"
-                + "var arc = d3.svg.arc();"
-                + "var svg = d3.select('body').append('svg')"
-                + "    .attr('width', width)"
-                + "    .attr('height', height)"
-                + "    .append('g')"
-                + "    .attr('transform', 'translate(' + width / 2 + ',' + height + ')');"
-                + "var gs = svg.selectAll('g').data(d3.values(dataset)).enter().append('g');"
-                + "var path = gs.selectAll('path')"
-                + "    .data(function(d) { return pie(d); })"
-                + "  .enter().append('path')"
-                + "    .attr('fill', function(d, i) { return color(i); })"
-                + "    .attr('d', function(d, i, j) { return arc.innerRadius(30+cwidth*j).outerRadius(cwidth*(j+1))(d); });"
-                + "</script>"
-                + "</body>"
-                + "</html";
-
-
-        WebSettings webSettings1 = webview1.getSettings();
-        webSettings1.setJavaScriptEnabled(true);
-        //webview.requestFocusFromTouch();
-        webview1.setInitialScale(1);
-        webview1.getSettings().setJavaScriptEnabled(true);
-        webview1.getSettings().setLoadWithOverviewMode(true);
-        webview1.getSettings().setUseWideViewPort(true);
-        webview1.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-        webview1.setScrollbarFadingEnabled(false);
-        webview1.getSettings().setLoadWithOverviewMode(true);
-        webview1.getSettings().setUseWideViewPort(true);
-        // disable scroll on touch
-
-        webview1.loadDataWithBaseURL("", content1 , "text/html", "charset=UTF-8", null);
-
-        WebView webview2 = (WebView) v.findViewById(R.id.webView2);
-    }
-
-    public void drawBar(){
-        //GRAFICO BARRAS
-
-        WebView webview2 = (WebView) v.findViewById(R.id.webView2);
-        String content2 = "<!DOCTYPE html>"
-                + "<meta charset='utf-8'>"
-                + "<style>"
-                + ".chart rect {"
-                + "}"
-                + ".chart text{"
-                + "  fill: black;"
-                + "  background-color: #00ff00"
-                + "  font: 10px sans-serif;"
-                + "  text-anchor: end;"
-                + "}"
-                + ".chart text.name {"
-                + "  fill: #000;"
-                + "}"
-                + "</style>"
-                + "<svg class='chart'></svg>"
-                + "<script src='http://d3js.org/d3.v3.min.js'></script>"
-                + "<script>"
-                + "var data = [42, 28, 16, 10, 8, 4];"
-                + "var color = d3.scale.ordinal()"
-                + "                   .range(['#0077a7', '#df2927', '#5e2b5e', '#df843d', '#24988b', '#e12893']);"
-                + "var width = 860,"
-                + "    barHeight = 60;"
-                + "var x = d3.scale.linear()"
-                + "    .domain([0, d3.max(data)])"
-                + "    .range([50, width-50]);"
-                + "var chart = d3.select('.chart')"
-                + "    .attr('width', width)"
-                + "    .attr('height', barHeight * data.length);"
-                + "var bar = chart.selectAll('g')"
-                + "    .data(data)"
-                + "  .enter().append('g')"
-                + "    .attr('transform', function(d, i) { return 'translate(0,' + i * barHeight + ')'; });"
-                + "bar.append('rect')"
-                + "    .attr('width', x)"
-                + "    .attr('fill', function(d, i) { return color(i); })"
-                + "    .attr('height', barHeight - 30);"
-                + "bar.append('text')"
-                + "    .attr('x', width)"
-                + "    .attr('y', barHeight / 3)"
-                + "    .text(function(d) { return d; });"
-                + "</script>";
-
-
-        WebSettings webSettings2 = webview2.getSettings();
-        webSettings2.setJavaScriptEnabled(true);
-        //webview.requestFocusFromTouch();
-        webview2.setInitialScale(1);
-        webview2.getSettings().setJavaScriptEnabled(true);
-        webview2.getSettings().setLoadWithOverviewMode(true);
-        webview2.getSettings().setUseWideViewPort(true);
-        webview2.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-        webview2.setScrollbarFadingEnabled(false);
-        webview2.getSettings().setLoadWithOverviewMode(true);
-        webview2.getSettings().setUseWideViewPort(true);
-        // disable scroll on touch
-
-        webview2.loadDataWithBaseURL("", content2 , "text/html", "charset=UTF-8", null);
-
-    } **/
-
-    public void drawHalfDonut(){
-        // Pie Chart Section Names
-        String[] code = new String[] { "Froyo", "Gingerbread",
-                "IceCream Sandwich", "Jelly Bean", "KitKat" };
-
-        // Pie Chart Section Value
-        double[] distribution = { 0.5, 9.1, 7.8, 45.5, 33.9 };
-
-        // Color of each Pie Chart Sections
-        int[] colors = { Color.BLUE, Color.MAGENTA, Color.GREEN, Color.CYAN,
-                Color.RED };
-
-        // Instantiating CategorySeries to plot Pie Chart
-        CategorySeries distributionSeries = new CategorySeries(
-                " Android version distribution as on October 1, 2012");
-        for (int i = 0; i < distribution.length; i++) {
-            // Adding a slice with its values and name to the Pie Chart
-            distributionSeries.add(code[i], distribution[i]);
-        }
-
-        // Instantiating a renderer for the Pie Chart
-        DefaultRenderer defaultRenderer = new DefaultRenderer();
-        for (int i = 0; i < distribution.length; i++) {
-            SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();
-            seriesRenderer.setColor(colors[i]);
-            seriesRenderer.setDisplayChartValues(true);
-//Adding colors to the chart
-            defaultRenderer.setBackgroundColor(getResources().getColor(R.color.white));
-            defaultRenderer.setApplyBackgroundColor(true);
-            // Adding a renderer for a slice
-            defaultRenderer.addSeriesRenderer(seriesRenderer);
-        }
-
-        //defaultRenderer.setChartTitle("Android version distribution as on December 1, 2014. ");
-        //defaultRenderer.setChartTitleTextSize(20);
-        defaultRenderer.setZoomButtonsVisible(false);
-        defaultRenderer.setPanEnabled(false);
-        defaultRenderer.setZoomEnabled(false);
-
-        // this part is used to display graph on the xml
-        // Creating an intent to plot bar chart using dataset and
-        // multipleRenderer
-        // Intent intent = ChartFactory.getPieChartIntent(getBaseContext(),
-        // distributionSeries , defaultRenderer, "AChartEnginePieChartDemo");
-
-        // Start Activity
-        // startActivity(intent);
-
-        LinearLayout chartContainer = (LinearLayout) v.findViewById(R.id.chart);
-        // remove any views before u paint the chart
-       // chartContainer.removeAllViews();
-        // drawing pie chart
-        mChart = ChartFactory.getPieChartView(v.getContext().getApplicationContext(),
-                distributionSeries, defaultRenderer);
-        // adding the view to the linearlayout
-        chartContainer.addView(mChart);
-
-    }
-
-    private BarData generateDataBar(int cnt) {
-
-        ArrayList<BarEntry> entries = new ArrayList<BarEntry>();
-
-        for (int i = 0; i < 12; i++) {
-            entries.add(new BarEntry((int) (Math.random() * 70) + 30, i));
-        }
-
-        BarDataSet d = new BarDataSet(entries, "New DataSet " + cnt);
-        d.setBarSpacePercent(20f);
-        d.setColors(ColorTemplate.VORDIPLOM_COLORS);
-        d.setHighLightAlpha(255);
-
-        BarData cd = new BarData(getMonths(), d);
-        return cd;
-    }
-    private ArrayList<String> getQuarters() {
-
-        ArrayList<String> q = new ArrayList<String>();
-        Log.d("GRAFICOS", ""+numPartidos);
-
-
-           /* q.add("PP");
-            q.add("PSOE");
-            q.add("ASD");
-            q.add("SA");*/
-
-        //q.add(arrayPartidos[i].getAlias());
-               /* q.add("PP");
-                q.add("PSOE");
-                q.add("ASD");
-                q.add("SA");*/
-        for(int i=0; i<numPartidos; i++){
-            q.add(arrayPartidos[i].getAlias());
-            //if(arrayPartidos[i].getAlias()!=null &&arrayPartidos[i]!= null && arrayPartidos!=null) Log.d("GRAFICOS", arrayPartidos[i].getAlias());
-        }
-
-
-
-        return q;
     }
     private void drawGraphics(){
         ArrayList<ChartItem> list = new ArrayList<>();
-        list.add(new BarChartItem(generateDataBar(3), HomeActivity.context));
-        list.add(new LineChartItem(generateDataLine(4), HomeActivity.context));
-        pie = new PieChartItem(generateDataPie(), HomeActivity.context);
-        list.add(pie);
-        list.add(new BarChartItem(generateDataBar(6), HomeActivity.context));
+
+        list.add(new PieChartItem(generateDataPie("2015"), HomeActivity.context));
+        list.add(new PieChartItem2011(generateDataPie("2011"), HomeActivity.context));
+        //list.add(new BarChartItem(generateDataBar(3), HomeActivity.context));
+        list.add(new LineChartItem(generateDataLine(), HomeActivity.context));
+
+       // list.add(new BarChartItem(generateDataBar(6), HomeActivity.context));
 
         ChartDataAdapter cda = new ChartDataAdapter(HomeActivity.context, list);
         lv.setAdapter(cda);
 
     }
-    private PieData generateDataPie() {
+    private PieData generateDataPie(String ano) {
 
-        ArrayList<Entry> entries = new ArrayList<>();
+        if(ano.equals("2015")) {
+            ArrayList<Entry> entries = new ArrayList<>();
+            int[] colores = new int[numPartidos - 6]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
 
-        for (int i = 0; i < numPartidos; i++) {
-            float porcentaje = arrayPartidos[i].getPorcentajeObtenido().floatValue();
-            Log.d("GRAFICOS", ""+porcentaje);
-            Log.d("GRAFICOS", "" + arrayPartidos[i].getPorcentajeObtenido());
-            entries.add(new Entry(porcentaje, i));
+            for (int i = 0; i < numPartidos - 6; i++) {
+                float porcentaje = arrayPartidos[i].getPorcentajeObtenido().floatValue();
+                entries.add(new Entry(porcentaje, i));
+                colores[i] = Color.parseColor(colorNotNull(arrayPartidos[i].getColor()));
+            }
+
+            PieDataSet d = new PieDataSet(entries, "");
+
+            // space between slices
+            d.setSliceSpace(2f);
+            d.setColors(colores);
+            d.setValueTextColor(Color.BLACK);
+
+            PieData cd = new PieData(getQuarters("2015"), d);
+            return cd;
+        }else{
+            ArrayList<Entry> entries = new ArrayList<>();
+            int[] colores = new int[numPartidos2011 - 6]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
+
+            for (int i = 0; i < numPartidos2011 - 6; i++) {
+                float porcentaje = arrayPartidos2011[i].getPorcentajeObtenido().floatValue();
+                Log.d("GRAFICOS", "" + porcentaje);
+                Log.d("GRAFICOS", "" + arrayPartidos2011[i].getPorcentajeObtenido());
+                entries.add(new Entry(porcentaje, i));
+                colores[i] = Color.parseColor(colorNotNull(arrayPartidos2011[i].getColor()));
+            }
+
+            PieDataSet d = new PieDataSet(entries, "");
+
+            // space between slices
+            d.setSliceSpace(2f);
+            d.setColors(colores);
+            d.setValueTextColor(Color.BLACK);
+
+            PieData cd = new PieData(getQuarters("2011"), d);
+            return cd;
         }
-
-        PieDataSet d = new PieDataSet(entries, "");
-
-        // space between slices
-        d.setSliceSpace(2f);
-        d.setColors(ColorTemplate.VORDIPLOM_COLORS);
-        d.setValueTextColor(Color.BLACK);
-
-        PieData cd = new PieData(getQuarters(), d);
-        return cd;
-    }
-    private LineData generateDataLine(int cnt) {
-
-        ArrayList<Entry> e1 = new ArrayList<Entry>();
-
-        for (int i = 0; i < 12; i++) {
-            e1.add(new Entry((int) (Math.random() * 65) + 40, i));
-        }
-
-        LineDataSet d1 = new LineDataSet(e1, "New DataSet " + cnt + ", (1)");
-        d1.setLineWidth(2.5f);
-        d1.setCircleSize(4.5f);
-        d1.setHighLightColor(Color.rgb(244, 117, 117));
-        d1.setDrawValues(false);
-
-        ArrayList<Entry> e2 = new ArrayList<Entry>();
-
-        for (int i = 0; i < 12; i++) {
-            e2.add(new Entry(e1.get(i).getVal() - 30, i));
-        }
-
-        LineDataSet d2 = new LineDataSet(e2, "New DataSet " + cnt + ", (2)");
-        d2.setLineWidth(2.5f);
-        d2.setCircleSize(4.5f);
-        d2.setHighLightColor(Color.rgb(244, 117, 117));
-        d2.setColor(ColorTemplate.VORDIPLOM_COLORS[0]);
-        d2.setCircleColor(ColorTemplate.VORDIPLOM_COLORS[0]);
-        d2.setDrawValues(false);
-
-        ArrayList<LineDataSet> sets = new ArrayList<LineDataSet>();
-        sets.add(d1);
-        sets.add(d2);
-
-        LineData cd = new LineData(getMonths(), sets);
-        return cd;
     }
 
-    private ArrayList<String> getMonths() {
+    private String colorNotNull(String color){
+        if (color==null || color.equals("")) return "#9b9999";
+        else return color;
+    }
+    private LineData generateDataLine() {
+        ArrayList<LineDataSet> sets = new ArrayList<>();
+
+        for (int i= 0; i< partidosHistoricos.length; i++) {
+
+            ArrayList<Entry> e1 = new ArrayList<>();
+            for (int j = 0; j < numConvocatorias; j++) {
+                int valor = (int) historicoCataluña[i][j];
+                e1.add(new Entry(valor, j));
+            }
+
+            LineDataSet d1 = new LineDataSet(e1, partidosHistoricos[i]);
+            d1.setLineWidth(2.5f);
+            d1.setCircleSize(4.0f);
+            d1.setColor(Color.parseColor(historicoColors[i]));
+            d1.setCircleColor(Color.parseColor(historicoColors[i]));
+            d1.setCircleColorHole(Color.parseColor(historicoColors[i]));
+            d1.setDrawValues(false);
+            sets.add(d1);
+        }
+
+
+        LineData cd = new LineData(getYears(), sets);
+        return cd;
+    }
+
+    private ArrayList<String> getYears() {
 
         ArrayList<String> m = new ArrayList<String>();
-        m.add("Jan");
-        m.add("Feb");
-        m.add("Mar");
-        m.add("Apr");
-        m.add("May");
-        m.add("Jun");
-        m.add("Jul");
-        m.add("Aug");
-        m.add("Sep");
-        m.add("Okt");
-        m.add("Nov");
-        m.add("Dec");
+        m.add("1980");
+        m.add("1984");
+        m.add("1988");
+        m.add("1992");
+        m.add("1995");
+        m.add("1999");
+        m.add("2003");
+        m.add("2006");
+        m.add("2010");
+        m.add("2012");
 
         return m;
     }
@@ -601,5 +425,5 @@ public class ChartTab extends Fragment {
         public int getViewTypeCount() {
             return 3; // we have 3 different item-types
         }
-}
+    }
 }

@@ -15,13 +15,13 @@ import com.github.mikephil.charting.utils.PercentFormatter;
 import es.elconfidencial.eleccionesec.R;
 
 /**
- * Created by JesúsManuel on 15/08/2015.
+ * Created by JesúsManuel on 04/09/2015.
  */
-public class PieChartItem extends ChartItem {
+public class PieChartItem2011 extends ChartItem {
 
     private Typeface mTf;
 
-    public PieChartItem(ChartData<?> cd, Context c) {
+    public PieChartItem2011(ChartData<?> cd, Context c) {
         super(cd);
 
         mTf = Typeface.createFromAsset(c.getAssets(), "OpenSans-Regular.ttf");
@@ -42,7 +42,7 @@ public class PieChartItem extends ChartItem {
             holder = new ViewHolder();
 
             convertView = LayoutInflater.from(c).inflate(
-                    R.layout.chart_pie, null);
+                    R.layout.chart_pie2011, null);
             holder.chart = (PieChart) convertView.findViewById(R.id.chart);
 
             convertView.setTag(holder);
@@ -55,7 +55,7 @@ public class PieChartItem extends ChartItem {
         holder.chart.setDescription("");
         holder.chart.setHoleRadius(52f);
         holder.chart.setTransparentCircleRadius(57f);
-        holder.chart.setCenterText("Distribución\nhemiciclo");
+        holder.chart.setCenterText("Distribución\nhemiciclo 2011");
         holder.chart.setCenterTextTypeface(mTf);
         holder.chart.setCenterTextSize(16f);
         holder.chart.setTouchEnabled(false);

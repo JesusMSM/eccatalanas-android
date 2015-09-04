@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DISTRIBUCIÓN PARLAMENTO 2015"
+        android:text="DISTRIBUCIÓN PARLAMENTO 2011"
         android:id="@+id/autor"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="13dp"
