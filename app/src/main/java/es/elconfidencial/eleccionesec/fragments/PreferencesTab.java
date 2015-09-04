@@ -67,7 +67,7 @@ public class PreferencesTab extends Fragment {
 
         header = (ImageView) v.findViewById(R.id.imageView);
         header.setImageResource(R.drawable.preferencias);
-       // pushManager = PushManager.getInstance(getActivity());
+        pushManager = PushManager.getInstance(getActivity());
 
         //Escondemos el boton guardar (Tab)
         Button save = (Button) v.findViewById(R.id.guardar);
@@ -125,10 +125,10 @@ public class PreferencesTab extends Fragment {
         insertFonts(v);
 
         //Obtenemos las Tags de partidos que estan almacenadas en PW, almacenandolas en el ArrayList tagNames
-       // getTagsFromPushWoosh();
+        getTagsFromPushWoosh();
 
         //Listeners al modificar el estado de un switch
-      /**  SwitchCompat cdc = (SwitchCompat) v.findViewById(R.id.convergencia_democratica_de_catalunya_cdc_6665);
+        SwitchCompat cdc = (SwitchCompat) v.findViewById(R.id.convergencia_democratica_de_catalunya_cdc_6665);
         SwitchCompat pp = (SwitchCompat) v.findViewById(R.id.xavier_garcia_albiol_14516);
         SwitchCompat cs = (SwitchCompat) v.findViewById(R.id.ines_arrimadas_15503);
         SwitchCompat psc = (SwitchCompat) v.findViewById(R.id.psc_6043);
@@ -144,7 +144,7 @@ public class PreferencesTab extends Fragment {
         udc.setOnCheckedChangeListener(new OnChangeSwitchListener());
         catsiqueespot.setOnCheckedChangeListener(new OnChangeSwitchListener());
         junts.setOnCheckedChangeListener(new OnChangeSwitchListener());
-        cup.setOnCheckedChangeListener(new OnChangeSwitchListener()); **/
+        cup.setOnCheckedChangeListener(new OnChangeSwitchListener());
 
         return v;
     }

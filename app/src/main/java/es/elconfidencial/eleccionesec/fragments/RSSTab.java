@@ -105,13 +105,15 @@ public class RSSTab extends Fragment {
             return true;
         }
         protected void onPostExecute(Boolean result) {
-            //Tratamos la lista de noticias.
-            for (Noticia noticia : noticias){
-                items.add(noticia);
+            if (isAdded()) {
+                //Tratamos la lista de noticias.
+                for (Noticia noticia : noticias) {
+                    items.add(noticia);
+                }
+                mAdapter = new MyRecyclerViewAdapter(HomeActivity.context, items);
+                mRecyclerView.setAdapter(mAdapter);
+                if (layout != null) layout.setRefreshing(false);
             }
-            mAdapter = new MyRecyclerViewAdapter(HomeActivity.context,items);
-            mRecyclerView.setAdapter(mAdapter);
-            if(layout!=null) layout.setRefreshing(false);
         }
     }
 }

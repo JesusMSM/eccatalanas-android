@@ -88,11 +88,15 @@ public class QuizFragment extends Fragment {
         }
         protected void onPostExecute(Boolean result) {
             //Tratamos la lista de quizs.
-            for (Quiz quiz : quizs){
-                items.add(quiz);
+            if (isAdded()) {
+
+
+                for (Quiz quiz : quizs) {
+                    items.add(quiz);
+                }
+                mAdapter = new MyRecyclerViewAdapter(HomeActivity.context, items);
+                mRecyclerView.setAdapter(mAdapter);
             }
-            mAdapter = new MyRecyclerViewAdapter(HomeActivity.context,items);
-            mRecyclerView.setAdapter(mAdapter);
         }
     }
 }
