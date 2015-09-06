@@ -426,7 +426,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         mChartData.setValueFormatter(new PercentFormatter());
         mChartData.setValueTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
         mChartData.setValueTextSize(11f);
-        mChartData.setValueTextColor(Color.BLACK);
+        mChartData.setValueTextColor(Color.WHITE);
 
         if(grafico != null) {
             // apply styling
