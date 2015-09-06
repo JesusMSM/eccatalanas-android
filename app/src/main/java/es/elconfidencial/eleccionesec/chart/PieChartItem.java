@@ -20,16 +20,21 @@ import es.elconfidencial.eleccionesec.R;
 public class PieChartItem extends ChartItem {
 
     private Typeface mTf;
+    private ChartData<?> mChartData1;
 
     public PieChartItem(ChartData<?> cd, Context c) {
         super(cd);
-
-        mTf = Typeface.createFromAsset(c.getAssets(), "OpenSans-Regular.ttf");
+        this.mChartData1 = cd;
+        mTf = Typeface.createFromAsset(c.getAssets(), "Titillium-Light.otf");
     }
 
     @Override
     public int getItemType() {
         return TYPE_PIECHART;
+    }
+
+    public ChartData<?> getItemData() {
+        return mChartData1;
     }
 
     @Override

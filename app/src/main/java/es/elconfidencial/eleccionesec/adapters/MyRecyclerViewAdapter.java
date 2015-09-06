@@ -12,7 +12,10 @@ import android.view.LayoutInflater;
         import android.view.ViewGroup;
 
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.ChartData;
+import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.utils.PercentFormatter;
 import com.squareup.picasso.Picasso;
@@ -24,6 +27,8 @@ import es.elconfidencial.eleccionesec.activities.HomeActivity;
 import es.elconfidencial.eleccionesec.activities.NoticiaContentActivity;
         import es.elconfidencial.eleccionesec.activities.PartyCardActivity;
         import es.elconfidencial.eleccionesec.activities.PoliticianCardActivity;
+import es.elconfidencial.eleccionesec.chart.LineChartItem;
+import es.elconfidencial.eleccionesec.chart.PieChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem2012;
 import es.elconfidencial.eleccionesec.model.Mensaje;
         import es.elconfidencial.eleccionesec.model.Noticia;
@@ -33,6 +38,8 @@ import es.elconfidencial.eleccionesec.model.Mensaje;
         import es.elconfidencial.eleccionesec.model.Title;
         import es.elconfidencial.eleccionesec.viewholders.ContadorViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.Grafico2012ViewHolder;
+import es.elconfidencial.eleccionesec.viewholders.Grafico2015ViewHolder;
+import es.elconfidencial.eleccionesec.viewholders.GraficoLineasViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.MensajeViewHolder;
         import es.elconfidencial.eleccionesec.viewholders.NoticiaViewHolder;
         import es.elconfidencial.eleccionesec.viewholders.PartidoViewHolder;
@@ -48,7 +55,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     // The items to display in your RecyclerView
     private List<Object> items;
     Context context;
-    private final int NOTICIA = 0, QUIZ = 1, CONTADOR = 2, PARTIDO = 3, POLITICO = 4, TITULO = 5, MENSAJE = 6, GRAFICO2012 = 7;
+    private final int NOTICIA = 0, QUIZ = 1, CONTADOR = 2, PARTIDO = 3, POLITICO = 4, TITULO = 5, MENSAJE = 6, GRAFICO2012 = 7, GRAFICO2015 = 8, GRAFICOLINEAS = 9;
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyRecyclerViewAdapter(Context context, List<Object> items) {
@@ -81,6 +88,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             return MENSAJE;
         }else if (items.get(position) instanceof PieChartItem2012) {
             return GRAFICO2012;
+        }else if (items.get(position) instanceof PieChartItem) {
+            return GRAFICO2015;
+        }else if (items.get(position) instanceof LineChartItem) {
+            return GRAFICOLINEAS;
         }
         return -1;
     }
@@ -124,6 +135,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 View v8 = inflater.inflate(R.layout.chart_pie2012, viewGroup, false);
                 viewHolder = new Grafico2012ViewHolder(v8);
                 break;
+            case GRAFICO2015:
+                View v9 = inflater.inflate(R.layout.chart_pie, viewGroup, false);
+                viewHolder = new Grafico2015ViewHolder(v9);
+                break;
+            case GRAFICOLINEAS:
+                View v10 = inflater.inflate(R.layout.chart_line, viewGroup, false);
+                viewHolder = new GraficoLineasViewHolder(v10);
+                break;
             default:
                 viewHolder = null;
                 break;
@@ -166,6 +185,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             case GRAFICO2012:
                 Grafico2012ViewHolder vh8 = (Grafico2012ViewHolder) viewHolder;
                 configureGrafico2012ViewHolder(vh8, position);
+                break;
+            case GRAFICO2015:
+                Grafico2015ViewHolder vh9 = (Grafico2015ViewHolder) viewHolder;
+                configureGrafico2015ViewHolder(vh9, position);
+                break;
+            case GRAFICOLINEAS:
+                GraficoLineasViewHolder vh10 = (GraficoLineasViewHolder) viewHolder;
+                configureGraficoLineasViewHolder(vh10, position);
                 break;
             default:
         }
@@ -317,7 +344,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             public void onClick(View v) {
                 try {
                     String nombreTitulo = title.getTitle();
-                    if (nombreTitulo.equals(context.getResources().getString(R.string.titulo_resultados))) {
+                    if (nombreTitulo.equals(context.getResources().getString(R.string.titulo_resultados_2012))) {
                         HomeActivity.switchFragment(3);
                     } else if (nombreTitulo.equals(context.getResources().getString(R.string.titulo_noticias))) {
                         HomeActivity.switchFragment(0);
@@ -380,6 +407,77 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             // do not forget to refresh the chart
             // holder.chart.invalidate();
             vh8.grafico.animateXY(900, 900);
+        }
+
+    }
+
+    private void configureGrafico2015ViewHolder(Grafico2015ViewHolder vh9,int position) {
+        final PieChartItem grafico = (PieChartItem) items.get(position);
+        ChartData<?> mChartData =  grafico.getItemData();
+
+        mChartData.setValueFormatter(new PercentFormatter());
+        mChartData.setValueTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+        mChartData.setValueTextSize(11f);
+        mChartData.setValueTextColor(Color.BLACK);
+
+        if(grafico != null) {
+            // apply styling
+            vh9.grafico.setDescription("");
+            vh9.grafico.setHoleRadius(52f);
+            vh9.grafico.setTransparentCircleRadius(53f);
+            vh9.grafico.setCenterText("Distribución\nhemiciclo 2012");
+            vh9.grafico.setCenterTextTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            vh9.grafico.setCenterTextSize(16f);
+            vh9.grafico.setTouchEnabled(false);
+            vh9.grafico.setDrawSliceText(false);
+            vh9.grafico.setRotationAngle(180f);
+
+            vh9.grafico.setData((PieData) mChartData);
+
+            Legend l = vh9.grafico.getLegend();
+            l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
+            l.setYEntrySpace(0f);
+            l.setYOffset(0f);
+            l.setWordWrapEnabled(true);
+
+            // do not forget to refresh the chart
+            // holder.chart.invalidate();
+            vh9.grafico.animateXY(900, 900);
+        }
+
+    }
+
+    private void configureGraficoLineasViewHolder(GraficoLineasViewHolder vh10,int position) {
+        final LineChartItem grafico = (LineChartItem) items.get(position);
+        ChartData<?> mChartData =  grafico.getItemData();
+
+
+        if(grafico != null) {
+            // apply styling
+            vh10.grafico.setDescription("");
+            vh10.grafico.setDrawGridBackground(false);
+
+            XAxis xAxis = vh10.grafico.getXAxis();
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+            xAxis.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            xAxis.setDrawGridLines(false);
+            xAxis.setDrawAxisLine(true);
+
+            YAxis leftAxis = vh10.grafico.getAxisLeft();
+            leftAxis.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            leftAxis.setLabelCount(5, false);
+
+            YAxis rightAxis = vh10.grafico.getAxisRight();
+            rightAxis.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            rightAxis.setLabelCount(5, false);
+            rightAxis.setDrawGridLines(false);
+
+            //Set data
+            vh10.grafico.setData((LineData) mChartData);
+
+            vh10.grafico.animateX(750);
+
+
         }
 
     }

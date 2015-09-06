@@ -257,7 +257,7 @@ public class HomeTab extends Fragment {
             items.add("contador");
 
             //Título del grafico
-            items.add(new Title(getString(R.string.titulo_resultados)));
+            items.add(new Title(getString(R.string.titulo_resultados_2012)));
 
             //Insertamos gráfico PIE CHART 2012
             items.add(new PieChartItem2012(generateDataPie("2012"), HomeActivity.context));

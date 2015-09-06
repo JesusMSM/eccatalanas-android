@@ -11,6 +11,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,26 +38,34 @@ import java.util.List;
 
 import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.activities.HomeActivity;
+import es.elconfidencial.eleccionesec.adapters.MyRecyclerViewAdapter;
 import es.elconfidencial.eleccionesec.chart.ChartItem;
 import es.elconfidencial.eleccionesec.chart.LineChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem2012;
 import es.elconfidencial.eleccionesec.json.JSONParser;
+import es.elconfidencial.eleccionesec.model.Noticia;
 import es.elconfidencial.eleccionesec.model.PartidoEstadisticas;
-
-
+import es.elconfidencial.eleccionesec.model.Title;
 
 
 public class ChartTab extends Fragment {
 
     BarChart barChart;
     ChartItem pie;
-    ListView lv;
     View v;
     private View mChart;
     PullRefreshLayout layout;
+
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
+    List<Object> items = new ArrayList<>();
+    List<Noticia> noticias = new ArrayList<>();
+
     private static String url_2015 = "http://api.elconfidencial.com/service/elections/place/3/7/99/9/";
-    private static String url_2011="http://api.elconfidencial.com/service/elections/place/1/7/99/9/";
+    private static String url_2012 = "http://api.elconfidencial.com/service/elections/place/1/7/99/9/";
 
     private static final String TAG_DATA = "data";
     private static final String TAG_RESULTS = "results";
@@ -68,30 +78,40 @@ public class ChartTab extends Fragment {
     private static final String TAG_ELECTED_MEMBERS = "res_elected_members";
 
     private int numPartidos;
-    private int numPartidos2011;
+    private int numPartidos2012;
     private PartidoEstadisticas[] arrayPartidos;
-    private PartidoEstadisticas[] arrayPartidos2011;
+    private PartidoEstadisticas[] arrayPartidos2012;
+
+
+    private String[] partidos2012 = {"CiU", "PSC", "PP", "ERC", "ICV", "Ciudadanos", "CUP"};
+    private double[] porcentajes2012 = {30.68,14.44,13,13.69,9.9,7.58,3.48};
+    private String[] colores2012 = {"#18307B","#EF7A36", "#FFED00", "#FFB232", "#80A233", "#0BB2FF", "#E20A16"};
 
     private int numConvocatorias = 10;
-    private String[] partidosHistoricos = { "CiU", "Ciudadanos", "CUP", "ERC", "ICV" , "PP", "PSC"};
+    private String[] partidosHistoricos = {"CiU", "Ciudadanos", "CUP", "ERC", "ICV", "PP", "PSC"};
     private double[][] historicoCataluña = {
-            {27.83,46.8,45.72,46.19,40.95,37.7,30.94,31.52,38.43,30.68},
-            {0,0,0,0,0,0,0,3.03,3.39,7.58},
-            {0,0,0,0,0,0,0,0,0,3.48},
-            {8.9,4.41,4.14,7.96,9.49,8.67,16.44,14.03,7,13.69},
-            {0,0,7.76,6.5,9.71,2.51,7.28,9.52,7.37,10},
-            {0,7.7,5.31,5.97,13.08,9.51,11.89,10.65,12.37,13},
-            {22.43,30.11,30,27.55,24.8,30.33,31.16,26.82,18.38,14.44}
+            {27.83, 46.8, 45.72, 46.19, 40.95, 37.7, 30.94, 31.52, 38.43, 30.68},
+            {0, 0, 0, 0, 0, 0, 0, 3.03, 3.39, 7.58},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 3.48},
+            {8.9, 4.41, 4.14, 7.96, 9.49, 8.67, 16.44, 14.03, 7, 13.69},
+            {0, 0, 7.76, 6.5, 9.71, 2.51, 7.28, 9.52, 7.37, 10},
+            {0, 7.7, 5.31, 5.97, 13.08, 9.51, 11.89, 10.65, 12.37, 13},
+            {22.43, 30.11, 30, 27.55, 24.8, 30.33, 31.16, 26.82, 18.38, 14.44}
     };
-    private String[] historicoColors = {"#18307B","#EF7A36", "#FFED00", "#FFB232", "#80A233", "#0BB2FF", "#E20A16"};
+    private String[] historicoColors = {"#18307B", "#EF7A36", "#FFED00", "#FFB232", "#80A233", "#0BB2FF", "#E20A16"};
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.tab_chart, container, false);
-        downloadData();
-        lv = (ListView) v.findViewById(R.id.listView1);
 
+        //RecyclerView
+        mRecyclerView = (RecyclerView) v.findViewById(R.id.chart_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(HomeActivity.context);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        downloadData();
 
         layout = (PullRefreshLayout) v.findViewById(R.id.swipeRefreshLayout);
 
@@ -125,14 +145,15 @@ public class ChartTab extends Fragment {
         return haveConnectedWifi || haveConnectedMobile;
     }
 
-    public void downloadData(){
-        //Cargamos datos de 2011- Al terminar, cargamos los de 2015 - Al terminar dibujamos el chart
-        if(haveNetworkConnection()) new JSONParse2015().execute();
+    public void downloadData() {
+
+         new JSONParse2015().execute();
 
     }
 
 
     private class JSONParse2015 extends AsyncTask<String, String, JSONObject> {
+
 
         private JSONObject data;
         private JSONArray results;
@@ -151,6 +172,7 @@ public class ChartTab extends Fragment {
             JSONObject json = jParser.getJSONFromUrl(url_2015);
             return json;
         }
+
         @Override
         protected void onPostExecute(JSONObject json) {
 
@@ -161,7 +183,7 @@ public class ChartTab extends Fragment {
                 numPartidos = results.length();
                 arrayPartidos = new PartidoEstadisticas[numPartidos];
 
-                for(int i=0; i<numPartidos; i++){
+                for (int i = 0; i < numPartidos; i++) {
 
                     PartidoEstadisticas partido = new PartidoEstadisticas();
 
@@ -176,12 +198,12 @@ public class ChartTab extends Fragment {
                     partido.setAlias(jsonPartido.getString(TAG_ALIAS));
                     partido.setColor(jsonPartido.getString(TAG_COLOR));
 
-                    arrayPartidos[i]=partido;
+                    arrayPartidos[i] = partido;
 
                 }
-                new JSONParse2011().execute();
+                //new JSONParse2012().execute();
 
-               // drawGraphics();
+                 addItems();
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -190,67 +212,32 @@ public class ChartTab extends Fragment {
         }
     }
 
-    private class JSONParse2011 extends AsyncTask<String, String, JSONObject> {
 
-        private JSONObject data;
-        private JSONArray results;
+    private void addItems() {
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
+        //Grafico de 2015
+        items.add(new Title(getString(R.string.titulo_resultados_2015)));
+        items.add(new PieChartItem(generateDataPie2015("2015"), HomeActivity.context));
 
-        }
+        //Grafico de 2012
+        items.add(new Title(getString(R.string.titulo_resultados_2012)));
+        items.add(new PieChartItem(generateDataPie2012(), HomeActivity.context));
 
-        @Override
-        protected JSONObject doInBackground(String... args) {
-            JSONParser jParser = new JSONParser();
+        //Grafico de líneas
+        items.add(new Title(getString(R.string.titulo_evolucion)));
+        items.add(new LineChartItem(generateDataLine(), HomeActivity.context));
 
-            // Getting JSON from URL
-            JSONObject json = jParser.getJSONFromUrl(url_2011);
-            return json;
-        }
-        @Override
-        protected void onPostExecute(JSONObject json) {
+        mAdapter = new MyRecyclerViewAdapter(HomeActivity.context,items);
+        mRecyclerView.setAdapter(mAdapter);
+        if(layout!=null) layout.setRefreshing(false);
 
-            try {
-                // Getting JSON Array
-                data = json.getJSONObject(TAG_DATA);
-                results = data.getJSONArray(TAG_RESULTS);
-                numPartidos2011 = results.length();
-                arrayPartidos2011 = new PartidoEstadisticas[numPartidos2011];
 
-                for(int i=0; i<numPartidos2011; i++){
-
-                    PartidoEstadisticas partido = new PartidoEstadisticas();
-
-                    JSONObject jsonEstadisticas = results.getJSONObject(i); //Vamos cargando cada partido
-
-                    partido.setComunidadAutonoma(jsonEstadisticas.getString(TAG_COM_AUT));
-
-                    partido.setPorcentajeObtenido(jsonEstadisticas.getDouble(TAG_PORCENTAJE));
-
-                    JSONObject jsonPartido = jsonEstadisticas.getJSONObject(TAG_PARTIDO);
-                    partido.setNombre(jsonPartido.getString(TAG_NOMBRE));
-                    partido.setAlias(jsonPartido.getString(TAG_ALIAS));
-                    partido.setColor(jsonPartido.getString(TAG_COLOR));
-
-                    arrayPartidos2011[i]=partido;
-
-                }
-                if (layout != null) layout.setRefreshing(false);
-                 drawGraphics();
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        }
     }
+
 
 
     private ArrayList<String> getQuarters(String ano) {
 
-        if(ano.equals("2015")) {
             ArrayList<String> q = new ArrayList<String>();
 
 
@@ -260,34 +247,13 @@ public class ChartTab extends Fragment {
             }
 
             return q;
-        }else{
-            ArrayList<String> q = new ArrayList<String>();
-            Log.d("GRAFICOS", "" + numPartidos2011);
-
-            for (int i = 0; i < numPartidos2011 - 6; i++) {   //OJOOOOOOOO HAY QUE BORRAR EL 6
-                q.add(arrayPartidos2011[i].getAlias());
-                //if(arrayPartidos[i].getAlias()!=null &&arrayPartidos[i]!= null && arrayPartidos!=null) Log.d("GRAFICOS", arrayPartidos[i].getAlias());
-            }
-            return q;
-        }
-    }
-    private void drawGraphics(){
-        ArrayList<ChartItem> list = new ArrayList<>();
-
-        list.add(new PieChartItem(generateDataPie("2015"), HomeActivity.context));
-        list.add(new PieChartItem2012(generateDataPie("2011"), HomeActivity.context));
-        //list.add(new BarChartItem(generateDataBar(3), HomeActivity.context));
-        list.add(new LineChartItem(generateDataLine(), HomeActivity.context));
-
-       // list.add(new BarChartItem(generateDataBar(6), HomeActivity.context));
-
-        ChartDataAdapter cda = new ChartDataAdapter(HomeActivity.context, list);
-        lv.setAdapter(cda);
 
     }
-    private PieData generateDataPie(String ano) {
 
-        if(ano.equals("2015")) {
+
+
+    private PieData generateDataPie2015(String ano) {
+
             ArrayList<Entry> entries = new ArrayList<>();
             int[] colores = new int[numPartidos - 6]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
             for (int i = 0; i < numPartidos - 6; i++) {
@@ -305,38 +271,46 @@ public class ChartTab extends Fragment {
 
             PieData cd = new PieData(getQuarters("2015"), d);
             return cd;
-        }else{
-            ArrayList<Entry> entries = new ArrayList<>();
-            int[] colores = new int[numPartidos2011 - 6]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
-
-            for (int i = 0; i < numPartidos2011 - 6; i++) {
-                float porcentaje = arrayPartidos2011[i].getPorcentajeObtenido().floatValue();
-                Log.d("GRAFICOS", "" + porcentaje);
-                Log.d("GRAFICOS", "" + arrayPartidos2011[i].getPorcentajeObtenido());
-                entries.add(new Entry(porcentaje, i));
-                colores[i] = Color.parseColor(colorNotNull(arrayPartidos2011[i].getColor()));
-            }
-
-            PieDataSet d = new PieDataSet(entries, "");
-
-            // space between slices
-            d.setSliceSpace(0.5f);
-            d.setColors(colores);
-            d.setValueTextColor(Color.BLACK);
-
-            PieData cd = new PieData(getQuarters("2011"), d);
-            return cd;
-        }
     }
 
-    private String colorNotNull(String color){
-        if (color==null || color.equals("")) return "#9b9999";
+    private String colorNotNull(String color) {
+        if (color == null || color.equals("")) return "#9b9999";
         else return color;
     }
+
+    private PieData generateDataPie2012 () {
+
+        ArrayList<Entry> entries = new ArrayList<>();
+
+        int[] colores = new int[partidos2012.length];
+        for (int i = 0; i < partidos2012.length; i++) {
+            int porcentaje = (int) porcentajes2012[i];
+            entries.add(new Entry(porcentaje, i));
+            colores[i] = Color.parseColor(colorNotNull(colores2012[i]));
+        }
+
+        PieDataSet d = new PieDataSet(entries, "");
+
+        // space between slices
+        d.setSliceSpace(0.5f);
+        d.setColors(colores);
+        d.setValueTextColor(Color.BLACK);
+
+        ArrayList<String> q = new ArrayList<String>();
+
+        for (int i = 0; i < partidos2012.length; i++) {
+            q.add(partidos2012[i]);
+        }
+
+        PieData cd = new PieData(q, d);
+        return cd;
+    }
+
+
     private LineData generateDataLine() {
         ArrayList<LineDataSet> sets = new ArrayList<>();
 
-        for (int i= 0; i< partidosHistoricos.length; i++) {
+        for (int i = 0; i < partidosHistoricos.length; i++) {
 
             ArrayList<Entry> e1 = new ArrayList<>();
             for (int j = 0; j < numConvocatorias; j++) {
@@ -374,28 +348,5 @@ public class ChartTab extends Fragment {
         m.add("2012");
 
         return m;
-    }
-    /** adapter that supports 3 different item types */
-    private class ChartDataAdapter extends ArrayAdapter<ChartItem> {
-
-        public ChartDataAdapter(Context context, List<ChartItem> objects) {
-            super(context, 0, objects);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            return getItem(position).getView(position, convertView, getContext());
-        }
-
-        @Override
-        public int getItemViewType(int position) {
-            // return the views type
-            return getItem(position).getItemType();
-        }
-
-        @Override
-        public int getViewTypeCount() {
-            return 3; // we have 3 different item-types
-        }
     }
 }

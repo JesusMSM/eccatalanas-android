@@ -25,7 +25,9 @@
     <string name="cuenta_atras">Compte enrere</string>
     <string name="empezar">COMENÇAR</string>
 
-    <string name="titulo_resultados">Resultados Elecciones 2012</string>
+    <string name="titulo_resultados_2015">Resultados Elecciones 2015</string>
+    <string name="titulo_resultados_2012">Resultados Elecciones 2012</string>
+    <string name="titulo_evolucion">Evolución histórica</string>
     <string name="titulo_noticias">últimas noticias</string>
     <string name="titulo_fichas">Fichas</string>
     <string name="alerta_conexion_noticias">Conéctese a Internet para recibir las ultimas noticias sobre las Elecciones</string>

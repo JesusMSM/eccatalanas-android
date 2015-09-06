@@ -19,16 +19,21 @@ import es.elconfidencial.eleccionesec.R;
 public class LineChartItem extends ChartItem {
 
     private Typeface mTf;
+    private ChartData<?> mChartData1;
 
     public LineChartItem(ChartData<?> cd, Context c) {
         super(cd);
-
+        this.mChartData1 = cd;
         mTf = Typeface.createFromAsset(c.getAssets(), "OpenSans-Regular.ttf");
     }
 
     @Override
     public int getItemType() {
         return TYPE_LINECHART;
+    }
+
+    public ChartData<?> getItemData() {
+        return mChartData1;
     }
 
     @Override
