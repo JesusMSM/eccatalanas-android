@@ -85,7 +85,7 @@ public class ChartTab extends Fragment {
 
     private String[] partidos2012 = {"CiU", "PSC", "PP", "ERC", "ICV", "Ciudadanos", "CUP"};
     private double[] porcentajes2012 = {30.68,14.44,13,13.69,9.9,7.58,3.48};
-    private String[] colores2012 = {"#18307B","#EF7A36", "#FFED00", "#FFB232", "#80A233", "#0BB2FF", "#E20A16"};
+    private String[] colores2012 = {"#002060", "#DF2927","#0077A7" ,"#FFC53F" ,"#C0D52E" ,"#DF843D" ,"#DFD717" };
 
     private int numConvocatorias = 10;
     private String[] partidosHistoricos = {"CiU", "Ciudadanos", "CUP", "ERC", "ICV", "PP", "PSC"};
@@ -98,7 +98,7 @@ public class ChartTab extends Fragment {
             {0, 7.7, 5.31, 5.97, 13.08, 9.51, 11.89, 10.65, 12.37, 13},
             {22.43, 30.11, 30, 27.55, 24.8, 30.33, 31.16, 26.82, 18.38, 14.44}
     };
-    private String[] historicoColors = {"#18307B", "#EF7A36", "#FFED00", "#FFB232", "#80A233", "#0BB2FF", "#E20A16"};
+    private String[] historicoColors = {"#002060", "#DF843D", "#DFD717", "#FFC53F", "#C0D52E", "#0077A7", "#DF2927"};
 
 
     @Override
