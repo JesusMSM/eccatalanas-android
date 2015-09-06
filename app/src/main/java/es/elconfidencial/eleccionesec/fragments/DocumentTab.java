@@ -89,6 +89,8 @@ public class DocumentTab extends Fragment {
         mTabHost.addTab(mTabHost.newTabSpec("PartyTab").setIndicator(tabpartidos),
                 PartyFragment.class, partyTab);
 
+        mTabHost.setCurrentTab(1);
+
         return mTabHost;
     }
 

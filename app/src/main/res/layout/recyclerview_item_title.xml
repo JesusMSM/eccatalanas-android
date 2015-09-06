@@ -6,7 +6,9 @@
     android:background="@drawable/title_attribute"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    android:layout_marginTop="16dp">
+    android:layout_marginTop="16dp"
+    android:id="@+id/title_layout"
+    android:clickable="true">
 
     <TextView
         android:id="@+id/title"

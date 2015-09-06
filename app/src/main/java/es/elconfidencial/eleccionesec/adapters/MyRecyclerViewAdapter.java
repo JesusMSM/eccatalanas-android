@@ -8,7 +8,9 @@ import android.content.Context;
         import android.graphics.Typeface;
         import android.graphics.drawable.Drawable;
         import android.os.AsyncTask;
-        import android.support.v7.widget.RecyclerView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.RecyclerView;
         import android.text.Html;
         import android.util.Log;
         import android.view.Display;
@@ -29,7 +31,8 @@ import android.content.Context;
         import java.util.List;
 
         import es.elconfidencial.eleccionesec.R;
-        import es.elconfidencial.eleccionesec.activities.NoticiaContentActivity;
+import es.elconfidencial.eleccionesec.activities.HomeActivity;
+import es.elconfidencial.eleccionesec.activities.NoticiaContentActivity;
         import es.elconfidencial.eleccionesec.activities.PartyCardActivity;
         import es.elconfidencial.eleccionesec.activities.PoliticianCardActivity;
         import es.elconfidencial.eleccionesec.model.Mensaje;
@@ -309,6 +312,25 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if(title != null) {
             vh6.title.setText(title.getTitle());
         }
+        vh6.link.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                try{
+                    String nombreTitulo = title.getTitle();
+                    if(nombreTitulo.equals(context.getResources().getString(R.string.titulo_resultados))){
+                        HomeActivity.switchFragment(3);
+                    } else if (nombreTitulo.equals(context.getResources().getString(R.string.titulo_noticias))){
+                        HomeActivity.switchFragment(0);
+                    } else {
+                        HomeActivity.switchFragment(1);
+                    }
+                } catch (Exception e){
+                    Log.e("MyTag", "Object title not exists");
+                }
+
+
+            }
+        });
+
         //Fonts
         vh6.title.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
 

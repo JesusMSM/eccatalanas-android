@@ -10,11 +10,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,12 +30,14 @@ import java.util.List;
 import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.activities.HomeActivity;
 import es.elconfidencial.eleccionesec.adapters.MyRecyclerViewAdapter;
+import es.elconfidencial.eleccionesec.adapters.ViewPagerAdapter;
 import es.elconfidencial.eleccionesec.model.Mensaje;
 import es.elconfidencial.eleccionesec.model.Noticia;
 import es.elconfidencial.eleccionesec.model.Partido;
 import es.elconfidencial.eleccionesec.model.Politico;
 import es.elconfidencial.eleccionesec.model.Title;
 import es.elconfidencial.eleccionesec.rss.RssNoticiasParser;
+import es.elconfidencial.eleccionesec.viewholders.TitleViewHolder;
 
 
 public class HomeTab extends Fragment {
@@ -42,6 +48,8 @@ public class HomeTab extends Fragment {
     TextView tiempo;
     TextView label;
     PullRefreshLayout layout;
+    LinearLayout ll;
+    RecyclerView.ViewHolder viewHolder;
 
 
     //RecyclerView atributtes
@@ -55,11 +63,16 @@ public class HomeTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v =inflater.inflate(R.layout.tab_home,container,false);
 
+
         //RecyclerView
         mRecyclerView = (RecyclerView) v.findViewById(R.id.home_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(HomeActivity.context);
         mRecyclerView.setLayoutManager(mLayoutManager);
+
+
+
+
 
         new CargarXmlTask().execute(rss_url);
 
@@ -74,7 +87,6 @@ public class HomeTab extends Fragment {
 
             }
         });
-
 
 
 
@@ -102,6 +114,8 @@ public class HomeTab extends Fragment {
 
         List<Object> items = new ArrayList<>();
         List<Noticia> noticias = new ArrayList<>();
+        ViewGroup container;
+        LayoutInflater inflater;
 
         protected Boolean doInBackground(String... params) {
             try {
@@ -119,14 +133,23 @@ public class HomeTab extends Fragment {
         }
         protected void onPostExecute(Boolean result) {
 
+
             //Primero insertamos el contador
             items.add("contador");
 
             //Título del grafico
             items.add(new Title(getString(R.string.titulo_resultados)));
+        /**    .setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View arg0) {
+                    ((HomeActivity) context).switchFragment(1);
+                }
+            });**/
 
             //Título de noticias
             items.add(new Title(getString(R.string.titulo_noticias)));
+
+
 
             //Después tratamos la lista de noticias, elegimos únicamente las 3 primeras (más recientes).
             //Si no tiene conexión mostramos en su lugar el mensaje de alerta
@@ -140,11 +163,12 @@ public class HomeTab extends Fragment {
             }
 
             //Títulos
-            items.add(new Title(getString(R.string.titulo_fichas)));
+            Title titulo =new Title(getString(R.string.titulo_fichas));
+            items.add(titulo);
+
 
             //Añadimos una ficha de un partido y de un político aleatoria
             int randomNumber = (int) (Math.random()*7+1);
-            System.out.println(randomNumber);
 
 
             //Hacemos un switch para que se muestre el partido asociado al número aleatorio
@@ -180,7 +204,7 @@ public class HomeTab extends Fragment {
 
             //Refrescamos el número aleatorio, para que cambie su valor
             randomNumber = (int) (Math.random()*7+1);
-            System.out.println(randomNumber);
+
 
 
             //Hacemos un switch para que se muestre el político asociado al número aleatorio

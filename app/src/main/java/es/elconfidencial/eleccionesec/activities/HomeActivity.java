@@ -27,7 +27,7 @@ public class HomeActivity extends ActionBarActivity {
 
     public static Context context;
     ActionBar actionBar;
-    ViewPager pager;
+    static ViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
     int numbOfTabs =5;
@@ -283,6 +283,10 @@ public class HomeActivity extends ActionBarActivity {
         setIntent(intent);
 
         checkMessage(intent);
+    }
+
+    public static void switchFragment(int target){
+        pager.setCurrentItem(target);
     }
 
 }
