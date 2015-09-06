@@ -107,12 +107,13 @@ public class RSSTab extends Fragment {
         }
         protected void onPostExecute(Boolean result) {
 
-            //Insertamos título del tab
+            if(isAdded()){
+            //Insertamos tï¿½tulo del tab
             items.add(new Title(getString(R.string.titulo_noticias)));
 
 
             //Tratamos la lista de noticias.
-            //En caso de sin conexión, se muestra mensaje de alerta
+            //En caso de sin conexiï¿½n, se muestra mensaje de alerta
             if(haveNetworkConnection()) {
                 for (Noticia noticia : noticias){
                     items.add(noticia);
@@ -125,5 +126,6 @@ public class RSSTab extends Fragment {
             mRecyclerView.setAdapter(mAdapter);
             if(layout!=null) layout.setRefreshing(false);
         }
+    }
     }
 }

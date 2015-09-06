@@ -19,7 +19,7 @@
         android:paddingLeft="5dp"
         />
 
-    <com.github.mikephil.charting.charts.PieChart
+    <es.elconfidencial.eleccionesec.chart.PieChartEC
         android:id="@+id/chart"
         android:layout_width="match_parent"
         android:layout_height="345dp"

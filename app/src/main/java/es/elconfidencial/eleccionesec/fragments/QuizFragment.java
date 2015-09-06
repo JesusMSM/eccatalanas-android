@@ -83,7 +83,7 @@ public class QuizFragment extends Fragment {
             RssQuizsParser saxparser =
                     new RssQuizsParser(params[0]);
 
-            quizs = saxparser.parse();
+            if(haveNetworkConnection())quizs = saxparser.parse();
             return true;
         }
         protected void onPostExecute(Boolean result) {

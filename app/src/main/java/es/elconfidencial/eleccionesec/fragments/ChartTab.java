@@ -317,7 +317,6 @@ public class ChartTab extends Fragment {
         if(ano.equals("2015")) {
             ArrayList<Entry> entries = new ArrayList<>();
             int[] colores = new int[numPartidos - 6]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
-
             for (int i = 0; i < numPartidos - 6; i++) {
                 float porcentaje = arrayPartidos[i].getPorcentajeObtenido().floatValue();
                 entries.add(new Entry(porcentaje, i));
@@ -327,7 +326,7 @@ public class ChartTab extends Fragment {
             PieDataSet d = new PieDataSet(entries, "");
 
             // space between slices
-            d.setSliceSpace(2f);
+            d.setSliceSpace(0.5f);
             d.setColors(colores);
             d.setValueTextColor(Color.BLACK);
 
@@ -348,7 +347,7 @@ public class ChartTab extends Fragment {
             PieDataSet d = new PieDataSet(entries, "");
 
             // space between slices
-            d.setSliceSpace(2f);
+            d.setSliceSpace(0.5f);
             d.setColors(colores);
             d.setValueTextColor(Color.BLACK);
 

@@ -43,7 +43,7 @@ public class PieChartItem2011 extends ChartItem {
 
             convertView = LayoutInflater.from(c).inflate(
                     R.layout.chart_pie2011, null);
-            holder.chart = (PieChart) convertView.findViewById(R.id.chart);
+            holder.chart = (PieChartEC) convertView.findViewById(R.id.chart);
 
             convertView.setTag(holder);
 
@@ -59,11 +59,13 @@ public class PieChartItem2011 extends ChartItem {
         holder.chart.setCenterTextTypeface(mTf);
         holder.chart.setCenterTextSize(16f);
         holder.chart.setTouchEnabled(false);
+        holder.chart.setDrawSliceText(false);
+        holder.chart.setRotationAngle(180f);
 
         mChartData.setValueFormatter(new PercentFormatter());
         mChartData.setValueTypeface(mTf);
         mChartData.setValueTextSize(11f);
-        mChartData.setValueTextColor(Color.WHITE);
+        mChartData.setValueTextColor(Color.BLACK);
         // set data
         holder.chart.setData((PieData) mChartData);
 
@@ -81,6 +83,6 @@ public class PieChartItem2011 extends ChartItem {
     }
 
     private static class ViewHolder {
-        PieChart chart;
+        PieChartEC chart;
     }
 }

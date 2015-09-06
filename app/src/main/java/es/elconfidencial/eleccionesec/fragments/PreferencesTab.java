@@ -150,67 +150,69 @@ public class PreferencesTab extends Fragment {
     }
     //Comunicacion con Pushwoosh GET
     private void getTagsFromPushWoosh(){
+        if(isAdded()) {
+            pushManager.getTagsAsync(context, new PushManager.GetTagsListener() {
+                @Override
+                public void onTagsReceived(Map<String, Object> map) {
+                    //Primera vez. No exista la TAG. Mandamos a PW un array vacío sin tags
+                    if (!map.containsKey(NAME_TAGS)) {
+                        Log.i("elecciones", "EsNull");
+                        Object obj = empty;
+                        Map<String, Object> tags = new HashMap<>();
+                        tags.put(NAME_TAGS, obj);
+                        pushManager.sendTags(context, tags, new SendPushTagsCallBack() {
+                            @Override
+                            public void taskStarted() {
 
-        pushManager.getTagsAsync(context, new PushManager.GetTagsListener() {
-            @Override
-            public void onTagsReceived(Map<String, Object> map) {
-                //Primera vez. No exista la TAG. Mandamos a PW un array vacío sin tags
-                if(!map.containsKey(NAME_TAGS)){
-                    Log.i("elecciones", "EsNull");
-                    Object obj = empty;
-                    Map<String,Object> tags = new HashMap<>();
-                    tags.put(NAME_TAGS,obj);
-                    pushManager.sendTags(context, tags, new SendPushTagsCallBack() {
-                        @Override
-                        public void taskStarted() {
+                            }
 
-                        }
+                            @Override
+                            public void onSentTagsSuccess(Map<String, String> map) {
+                                tagNames = new ArrayList<String>(Arrays.asList(empty));
+                            }
 
-                        @Override
-                        public void onSentTagsSuccess(Map<String, String> map) {
-                            tagNames = new ArrayList<String>(Arrays.asList(empty));
-                        }
-
-                        @Override
-                        public void onSentTagsError(Exception e) {
-                            Toast.makeText(activity, "No es posible contactar con el servicio de notificaciones, intentelo de nuevo en unos minutos", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                    //Existe la TAG. Descargamos el contenido del array de PW y rellenamos los switchs
-                }else{
-                    Log.i("elecciones","NotNull");
-                    ArrayList<String> partidos = new ArrayList<String>();
-                    String[] arrayTags=map.get(NAME_TAGS).toString().split("\"");
-                    for(String partidoTag :arrayTags) {
-                        if(!(partidoTag.contains("[")||partidoTag.contains("]")||partidoTag.contains(","))){
-                            partidos.add(partidoTag);
-                            //Toast.makeText(ControlNotificacionesActivity.this, pep, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    tagNames = partidos;
-                    //Activamos o desactivamos los switches en caso de encontrar la tag correspondiente.
-                    for (String tag: tagNames){
-                        SwitchCompat sc = (SwitchCompat) v.findViewById(getResources().getIdentifier(tag.replace("-", "_"), "id", activity.getPackageName()));
-                        if(sc != null){
-                            sc.setChecked(true);
+                            @Override
+                            public void onSentTagsError(Exception e) {
+                                Toast.makeText(activity, "No es posible contactar con el servicio de notificaciones, intentelo de nuevo en unos minutos", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        //Existe la TAG. Descargamos el contenido del array de PW y rellenamos los switchs
+                    } else {
+                        if(isAdded()) {
+                            Log.i("elecciones", "NotNull");
+                            ArrayList<String> partidos = new ArrayList<String>();
+                            String[] arrayTags = map.get(NAME_TAGS).toString().split("\"");
+                            for (String partidoTag : arrayTags) {
+                                if (!(partidoTag.contains("[") || partidoTag.contains("]") || partidoTag.contains(","))) {
+                                    partidos.add(partidoTag);
+                                    //Toast.makeText(ControlNotificacionesActivity.this, pep, Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            tagNames = partidos;
+                            //Activamos o desactivamos los switches en caso de encontrar la tag correspondiente.
+                            for (String tag : tagNames) {
+                                SwitchCompat sc = (SwitchCompat) v.findViewById(getResources().getIdentifier(tag.replace("-", "_"), "id", activity.getPackageName()));
+                                if (sc != null) {
+                                    sc.setChecked(true);
+                                }
+                            }
                         }
                     }
                 }
-            }
 
-            @Override
-            public void onError(Exception e) {
-                Toast.makeText(activity, "No es posible contactar con el servicio de notificaciones, reinicie la aplicación", Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
-            }
-        });
-
+                @Override
+                public void onError(Exception e) {
+                    Toast.makeText(activity, "No es posible contactar con el servicio de notificaciones, reinicie la aplicación", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            });
+        }
     }
 
     //Comunicacion con PushWoosh SET
     private void sendTagsToPushWoosh(){
         Map<String,Object> tags = new HashMap<>();
-
+        if(isAdded()){
         tags.put(NAME_TAGS, tagNames.toArray());
         pushManager.sendTags(context, tags, new SendPushTagsCallBack() {
             @Override
@@ -228,26 +230,28 @@ public class PreferencesTab extends Fragment {
 
             }
         });
-    }
+    }}
 
     //Listener al cambiar el estado de un switch
     private class OnChangeSwitchListener implements CompoundButton.OnCheckedChangeListener {
 
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-            String tagIdChanged = getResources().getResourceEntryName(compoundButton.getId()).replace("_","-");
-            if(isChecked){
-                //Añadirlo a la lista
-                if(!tagNames.contains(tagIdChanged)){
-                    tagNames.add(tagIdChanged);
+            if (isAdded()) {
+                String tagIdChanged = getResources().getResourceEntryName(compoundButton.getId()).replace("_", "-");
+                if (isChecked) {
+                    //Añadirlo a la lista
+                    if (!tagNames.contains(tagIdChanged)) {
+                        tagNames.add(tagIdChanged);
+                    }
+                } else {
+                    //Eliminarlo de la lista
+                    if (tagNames.contains(tagIdChanged)) {
+                        tagNames.remove(tagIdChanged);
+                    }
                 }
-            }else{
-                //Eliminarlo de la lista
-                if(tagNames.contains(tagIdChanged)) {
-                    tagNames.remove(tagIdChanged);
-                }
+                sendTagsToPushWoosh();
             }
-            sendTagsToPushWoosh();
         }
     }
     private void insertFonts(View v){
