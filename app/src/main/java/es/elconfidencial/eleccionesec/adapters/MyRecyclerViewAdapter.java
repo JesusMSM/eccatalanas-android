@@ -448,6 +448,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             l.setYOffset(0f);
             l.setWordWrapEnabled(true);
             l.setCustom(mChartData.getColors(), createLegend(mChartData));
+            l.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
 
             // do not forget to refresh the chart
             // holder.chart.invalidate();
