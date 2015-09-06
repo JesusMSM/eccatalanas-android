@@ -277,10 +277,6 @@ public class HomeTab extends Fragment {
             //Insertamos grafico PIECHART 2012
             items.add(new PieChartItem2012(cargarDatos2012(), HomeActivity.context));
 
-            //Insertamos gráfico PIE CHART 2015
-            items.add(new PieChartItem2012(generateDataPie("2012"), HomeActivity.context));
-
-
             //Título de noticias
             items.add(new Title(getString(R.string.titulo_noticias)));
 

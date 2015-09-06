@@ -113,7 +113,7 @@ public class ChartTab extends Fragment {
 
         downloadData();
 
-        layout = (PullRefreshLayout) v.findViewById(R.id.swipeRefreshLayout);
+        layout = (PullRefreshLayout) v.findViewById(R.id.swipeRefreshLayoutChart);
 
         // listen refresh event
         layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
@@ -201,9 +201,9 @@ public class ChartTab extends Fragment {
                     arrayPartidos[i] = partido;
 
                 }
-                //new JSONParse2012().execute();
+                if(layout!=null) layout.setRefreshing(false);
 
-                 addItems();
+                addItems();
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -221,7 +221,7 @@ public class ChartTab extends Fragment {
 
         //Grafico de 2012
         items.add(new Title(getString(R.string.titulo_resultados_2012)));
-        items.add(new PieChartItem(generateDataPie2012(), HomeActivity.context));
+        items.add(new PieChartItem2012(generateDataPie2012(), HomeActivity.context));
 
         //Grafico de líneas
         items.add(new Title(getString(R.string.titulo_evolucion)));
@@ -230,7 +230,6 @@ public class ChartTab extends Fragment {
         mAdapter = new MyRecyclerViewAdapter(HomeActivity.context,items);
         mRecyclerView.setAdapter(mAdapter);
         if(layout!=null) layout.setRefreshing(false);
-
 
     }
 
@@ -264,9 +263,9 @@ public class ChartTab extends Fragment {
 
             PieDataSet d = new PieDataSet(entries, "");
 
-            // space between slices
-            d.setSliceSpace(0.5f);
-            d.setColors(colores);
+        // space between slices
+        d.setSliceSpace(0.5f);
+        d.setColors(colores);
             d.setValueTextColor(Color.BLACK);
 
             PieData cd = new PieData(getQuarters("2015"), d);

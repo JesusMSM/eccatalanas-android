@@ -85,7 +85,8 @@ public class PieChartRendererEC extends PieChartRenderer {
         PointF center = mChart.getCenterCircleBox();
 
         // get whole the radius
-        float r = mChart.getRadius() + mChart.getRadius()/2;
+        //float r = mChart.getRadius() + mChart.getRadius()/2;
+        float r = mChart.getRadius();
         float rotationAngle = mChart.getRotationAngle();
         float[] drawAngles = mChart.getDrawAngles();
         float[] absoluteAngles = mChart.getAbsoluteAngles();
@@ -133,7 +134,11 @@ public class PieChartRendererEC extends PieChartRenderer {
                 float value = mChart.isUsePercentValuesEnabled() ? entries.get(j).getVal()
                         / mChart.getYValueSum() * 100f : entries.get(j).getVal();
 
+                //Ocultamos los % muy pequeños
                 String val = dataSet.getValueFormatter().getFormattedValue(value);
+                if (Integer.parseInt(val.split(",")[0]) <= 1){
+                    val = "";
+                }
 
                 float lineHeight = Utils.calcTextHeight(mValuePaint, val)
                         + Utils.convertDpToPixel(4f);

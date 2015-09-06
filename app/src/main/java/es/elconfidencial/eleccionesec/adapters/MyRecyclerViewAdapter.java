@@ -18,8 +18,11 @@ import com.github.mikephil.charting.data.ChartData;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.utils.PercentFormatter;
+import com.google.android.gms.fitness.data.DataSet;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
         import es.elconfidencial.eleccionesec.R;
@@ -382,19 +385,22 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         mChartData.setValueFormatter(new PercentFormatter());
         mChartData.setValueTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
         mChartData.setValueTextSize(11f);
-        mChartData.setValueTextColor(Color.BLACK);
+        mChartData.setValueTextColor(Color.WHITE);
 
         if(grafico != null) {
             // apply styling
             vh8.grafico.setDescription("");
             vh8.grafico.setHoleRadius(52f);
             vh8.grafico.setTransparentCircleRadius(53f);
-            vh8.grafico.setCenterText("Distribución\nhemiciclo 2012");
+            vh8.grafico.setCenterText("2012");
             vh8.grafico.setCenterTextTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
-            vh8.grafico.setCenterTextSize(16f);
+            vh8.grafico.setCenterTextSize(18f);
             vh8.grafico.setTouchEnabled(false);
             vh8.grafico.setDrawSliceText(false);
             vh8.grafico.setRotationAngle(180f);
+
+            //Offset de top
+            vh8.grafico.setExtraTopOffset(30f);
 
             vh8.grafico.setData((PieData) mChartData);
 
@@ -403,6 +409,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             l.setYEntrySpace(0f);
             l.setYOffset(0f);
             l.setWordWrapEnabled(true);
+            l.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            l.setCustom(mChartData.getColors(), createLegend(mChartData));
 
             // do not forget to refresh the chart
             // holder.chart.invalidate();
@@ -425,9 +433,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh9.grafico.setDescription("");
             vh9.grafico.setHoleRadius(52f);
             vh9.grafico.setTransparentCircleRadius(53f);
-            vh9.grafico.setCenterText("Distribución\nhemiciclo 2012");
+            vh9.grafico.setCenterText("2015");
             vh9.grafico.setCenterTextTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
-            vh9.grafico.setCenterTextSize(16f);
+            vh9.grafico.setCenterTextSize(18f);
             vh9.grafico.setTouchEnabled(false);
             vh9.grafico.setDrawSliceText(false);
             vh9.grafico.setRotationAngle(180f);
@@ -439,6 +447,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             l.setYEntrySpace(0f);
             l.setYOffset(0f);
             l.setWordWrapEnabled(true);
+            l.setCustom(mChartData.getColors(), createLegend(mChartData));
 
             // do not forget to refresh the chart
             // holder.chart.invalidate();
@@ -449,10 +458,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private void configureGraficoLineasViewHolder(GraficoLineasViewHolder vh10,int position) {
         final LineChartItem grafico = (LineChartItem) items.get(position);
-        ChartData<?> mChartData =  grafico.getItemData();
+        ChartData<?> mChartData = grafico.getItemData();
 
 
-        if(grafico != null) {
+        if (grafico != null) {
             // apply styling
             vh10.grafico.setDescription("");
             vh10.grafico.setDrawGridBackground(false);
@@ -482,4 +491,23 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     }
 
+    public String [] createLegend(ChartData<?> mChartData){
+        //Datos de alias de partidos.
+        List<String> alias = mChartData.getXVals();
+        //Datos de porcentaje
+        com.github.mikephil.charting.data.DataSet myDataSet = mChartData.getDataSetByLabel("",true);
+        String element = "";
+        List<String> elements = new ArrayList<String>(Arrays.asList(new String[] {}));
+        //Creamos cada string
+        for (int i = 0;i< myDataSet.getEntryCount(); i++){
+            String nombre = alias.get(i);
+            if(nombre.equals("PARTIDO ANIMALISTA CONTRA EL MALTRATO ANIMAL")){
+                nombre = "PACMA";
+            }
+            element = nombre + " (" + (myDataSet.getEntryForXIndex(i).getVal()) + "%) ";
+            elements.add(element);
+            System.out.println(element);
+        }
+        return elements.toArray(new String[elements.size()]);
+    }
 }
