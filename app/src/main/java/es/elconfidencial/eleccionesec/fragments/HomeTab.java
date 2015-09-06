@@ -35,6 +35,7 @@ import java.util.List;
 import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.activities.HomeActivity;
 import es.elconfidencial.eleccionesec.adapters.MyRecyclerViewAdapter;
+import es.elconfidencial.eleccionesec.chart.PieChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem2012;
 import es.elconfidencial.eleccionesec.json.JSONParser;
 import es.elconfidencial.eleccionesec.model.Mensaje;
@@ -66,7 +67,7 @@ public class HomeTab extends Fragment {
 
 
     //CONSTANTES GRAFICOS
-    private static String url_2012="http://api.elconfidencial.com/service/elections/place/1/7/99/9/";
+    private static String url_2015="http://api.elconfidencial.com/service/elections/place/3/7/99/9/";
 
     private static final String TAG_DATA = "data";
     private static final String TAG_RESULTS = "results";
@@ -78,8 +79,12 @@ public class HomeTab extends Fragment {
     private static final String TAG_COLOR = "par_color";
     private static final String TAG_ELECTED_MEMBERS = "res_elected_members";
 
-    private int numPartidos2012;
-    private PartidoEstadisticas[] arrayPartidos2012;
+    private int numPartidos2015;
+    private PartidoEstadisticas[] arrayPartidos2015;
+
+    private String[] partidos2012 = {"CiU", "PSC", "PP", "ERC", "ICV", "Ciudadanos", "CUP"};
+    private double[] porcentajes2012 = {30.68,14.44,13,13.69,9.9,7.58,3.48};
+    private String[] colores2012 = {"#18307B","#EF7A36", "#FFED00", "#FFB232", "#80A233", "#0BB2FF", "#E20A16"};
 
 
     @Override
@@ -134,8 +139,8 @@ public class HomeTab extends Fragment {
     }
 
     public void downloadDataCharts(){
-        //Cargamos datos de 2012 del grafico
-        if(haveNetworkConnection()) new JSONParse2012().execute();
+         //Cargamos datos de 2015 del grafico
+         new JSONParse2015().execute();
 
     }
 
@@ -148,7 +153,7 @@ public class HomeTab extends Fragment {
 
     //------------------TAREA-------------BAJAR DATOS DE GRAFICOS---------------------------------
 
-    private class JSONParse2012 extends AsyncTask<String, String, JSONObject> {
+    private class JSONParse2015 extends AsyncTask<String, String, JSONObject> {
 
         private JSONObject data;
         private JSONArray results;
@@ -162,46 +167,56 @@ public class HomeTab extends Fragment {
         @Override
         protected JSONObject doInBackground(String... args) {
             JSONParser jParser = new JSONParser();
-
-            // Getting JSON from URL
-            JSONObject json = jParser.getJSONFromUrl(url_2012);
+            JSONObject json;
+            try {
+                if(haveNetworkConnection()) {
+                    // Getting JSON from URL
+                    json = jParser.getJSONFromUrl(url_2015);
+                }else{
+                    json = null;
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+                json = null;
+            }
             return json;
         }
         @Override
         protected void onPostExecute(JSONObject json) {
+            if (json != null) {
+                try {
+                    // Getting JSON Array
+                    data = json.getJSONObject(TAG_DATA);
+                    results = data.getJSONArray(TAG_RESULTS);
+                    numPartidos2015 = results.length();
+                    arrayPartidos2015 = new PartidoEstadisticas[numPartidos2015];
 
-            try {
-                // Getting JSON Array
-                data = json.getJSONObject(TAG_DATA);
-                results = data.getJSONArray(TAG_RESULTS);
-                numPartidos2012 = results.length();
-                arrayPartidos2012 = new PartidoEstadisticas[numPartidos2012];
+                    for (int i = 0; i < numPartidos2015; i++) {
 
-                for(int i=0; i< numPartidos2012; i++){
+                        PartidoEstadisticas partido = new PartidoEstadisticas();
 
-                    PartidoEstadisticas partido = new PartidoEstadisticas();
+                        JSONObject jsonEstadisticas = results.getJSONObject(i); //Vamos cargando cada partido
 
-                    JSONObject jsonEstadisticas = results.getJSONObject(i); //Vamos cargando cada partido
+                        partido.setComunidadAutonoma(jsonEstadisticas.getString(TAG_COM_AUT));
 
-                    partido.setComunidadAutonoma(jsonEstadisticas.getString(TAG_COM_AUT));
+                        partido.setPorcentajeObtenido(jsonEstadisticas.getDouble(TAG_PORCENTAJE));
 
-                    partido.setPorcentajeObtenido(jsonEstadisticas.getDouble(TAG_PORCENTAJE));
+                        JSONObject jsonPartido = jsonEstadisticas.getJSONObject(TAG_PARTIDO);
+                        partido.setNombre(jsonPartido.getString(TAG_NOMBRE));
+                        partido.setAlias(jsonPartido.getString(TAG_ALIAS));
+                        partido.setColor(jsonPartido.getString(TAG_COLOR));
 
-                    JSONObject jsonPartido = jsonEstadisticas.getJSONObject(TAG_PARTIDO);
-                    partido.setNombre(jsonPartido.getString(TAG_NOMBRE));
-                    partido.setAlias(jsonPartido.getString(TAG_ALIAS));
-                    partido.setColor(jsonPartido.getString(TAG_COLOR));
+                        arrayPartidos2015[i] = partido;
 
-                    arrayPartidos2012[i]=partido;
+                    }
+                    if (layout != null) layout.setRefreshing(false);
+                    new CargarXmlTask().execute(rss_url); //Se han terminado de cargar gráficos, ahora empezamos a bajar las noticias
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                if (layout != null) layout.setRefreshing(false);
-                new CargarXmlTask().execute(rss_url); //Se han terminado de cargar gráficos, ahora empezamos a bajar las noticias
 
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
-
         }
     }
 
@@ -213,14 +228,14 @@ public class HomeTab extends Fragment {
     private ArrayList<String> getQuarters(String ano) {
 
         ArrayList<String> q = new ArrayList<String>();
-        Log.d("GRAFICOS", "" + numPartidos2012);
 
-        for (int i = 0; i < numPartidos2012 - 6; i++) {   //OJOOOOOOOO HAY QUE BORRAR EL 6
-            q.add(arrayPartidos2012[i].getAlias());
+        for (int i = 0; i < numPartidos2015 - 6; i++) {   //OJOOOOOOOO HAY QUE BORRAR EL 6
+            q.add(arrayPartidos2015[i].getAlias());
             //if(arrayPartidos[i].getAlias()!=null &&arrayPartidos[i]!= null && arrayPartidos!=null) Log.d("GRAFICOS", arrayPartidos[i].getAlias());
         }
         return q;
     }
+
 
 
 
@@ -259,7 +274,10 @@ public class HomeTab extends Fragment {
             //Título del grafico
             items.add(new Title(getString(R.string.titulo_resultados_2012)));
 
-            //Insertamos gráfico PIE CHART 2012
+            //Insertamos grafico PIECHART 2012
+            items.add(new PieChartItem2012(cargarDatos2012(), HomeActivity.context));
+
+            //Insertamos gráfico PIE CHART 2015
             items.add(new PieChartItem2012(generateDataPie("2012"), HomeActivity.context));
 
 
@@ -358,17 +376,47 @@ public class HomeTab extends Fragment {
         }
     }
 
+    private PieData cargarDatos2012 (){
+
+        ArrayList<Entry> entries = new ArrayList<>();
+
+        int[] colores = new int[partidos2012.length];
+        for (int i = 0; i < partidos2012.length; i++) {
+            int porcentaje = (int)porcentajes2012[i];
+            entries.add(new Entry(porcentaje, i));
+            colores[i] = Color.parseColor(colorNotNull(colores2012[i]));
+        }
+
+        PieDataSet d = new PieDataSet(entries, "");
+
+        // space between slices
+        d.setSliceSpace(0.5f);
+        d.setColors(colores);
+        d.setValueTextColor(Color.BLACK);
+
+        ArrayList<String> q = new ArrayList<String>();
+
+        for(int i=0; i<partidos2012.length; i++){
+            q.add(partidos2012[i]);
+        }
+
+        PieData cd = new PieData(q, d);
+        return cd;
+
+
+    }
+
     private PieData generateDataPie(String ano) {
 
             ArrayList<Entry> entries = new ArrayList<>();
-            int[] colores = new int[numPartidos2012 - 6]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
+            int[] colores = new int[numPartidos2015 - 6]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
 
-            for (int i = 0; i < numPartidos2012 - 6; i++) {
-                float porcentaje = arrayPartidos2012[i].getPorcentajeObtenido().floatValue();
+            for (int i = 0; i < numPartidos2015 - 6; i++) {
+                float porcentaje = arrayPartidos2015[i].getPorcentajeObtenido().floatValue();
                 Log.d("GRAFICOS", "" + porcentaje);
-                Log.d("GRAFICOS", "" + arrayPartidos2012[i].getPorcentajeObtenido());
+                Log.d("GRAFICOS", "" + arrayPartidos2015[i].getPorcentajeObtenido());
                 entries.add(new Entry(porcentaje, i));
-                colores[i] = Color.parseColor(colorNotNull(arrayPartidos2012[i].getColor()));
+                colores[i] = Color.parseColor(colorNotNull(arrayPartidos2015[i].getColor()));
             }
 
             PieDataSet d = new PieDataSet(entries, "");
@@ -378,7 +426,7 @@ public class HomeTab extends Fragment {
             d.setColors(colores);
             d.setValueTextColor(Color.BLACK);
 
-            PieData cd = new PieData(getQuarters("2012"), d);
+            PieData cd = new PieData(getQuarters("2015"), d);
             return cd;
     }
 
