@@ -3,7 +3,6 @@ package es.elconfidencial.eleccionesec.fragments;
 /**
  * Created by MOONFISH on 14/07/2015.
  */
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
@@ -12,46 +11,21 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.Html;
 import android.util.Log;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import org.achartengine.ChartFactory;
-import org.achartengine.model.CategorySeries;
-import org.achartengine.renderer.DefaultRenderer;
-import org.achartengine.renderer.SimpleSeriesRenderer;
-
-import android.app.Activity;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.LinearLayout;
 
 
 import com.baoyz.widget.PullRefreshLayout;
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,11 +36,10 @@ import java.util.List;
 
 import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.activities.HomeActivity;
-import es.elconfidencial.eleccionesec.chart.BarChartItem;
 import es.elconfidencial.eleccionesec.chart.ChartItem;
 import es.elconfidencial.eleccionesec.chart.LineChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem;
-import es.elconfidencial.eleccionesec.chart.PieChartItem2011;
+import es.elconfidencial.eleccionesec.chart.PieChartItem2012;
 import es.elconfidencial.eleccionesec.json.JSONParser;
 import es.elconfidencial.eleccionesec.model.PartidoEstadisticas;
 
@@ -302,7 +275,7 @@ public class ChartTab extends Fragment {
         ArrayList<ChartItem> list = new ArrayList<>();
 
         list.add(new PieChartItem(generateDataPie("2015"), HomeActivity.context));
-        list.add(new PieChartItem2011(generateDataPie("2011"), HomeActivity.context));
+        list.add(new PieChartItem2012(generateDataPie("2011"), HomeActivity.context));
         //list.add(new BarChartItem(generateDataBar(3), HomeActivity.context));
         list.add(new LineChartItem(generateDataLine(), HomeActivity.context));
 

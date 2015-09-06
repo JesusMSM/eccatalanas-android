@@ -6,7 +6,6 @@ import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.ChartData;
 import com.github.mikephil.charting.data.PieData;
@@ -15,21 +14,26 @@ import com.github.mikephil.charting.utils.PercentFormatter;
 import es.elconfidencial.eleccionesec.R;
 
 /**
- * Created by JesúsManuel on 04/09/2015.
+ * Created by MOONFISH on 04/09/2015.
  */
-public class PieChartItem2011 extends ChartItem {
+public class PieChartItem2012 extends ChartItem {
 
     private Typeface mTf;
+    private ChartData<?> mChartData1;
 
-    public PieChartItem2011(ChartData<?> cd, Context c) {
+    public PieChartItem2012(ChartData<?> cd, Context c) {
         super(cd);
-
-        mTf = Typeface.createFromAsset(c.getAssets(), "OpenSans-Regular.ttf");
+        this.mChartData1 = cd;
+        mTf = Typeface.createFromAsset(c.getAssets(), "Titillium-Light.otf");
     }
 
     @Override
     public int getItemType() {
         return TYPE_PIECHART;
+    }
+
+    public ChartData<?> getItemData() {
+        return mChartData1;
     }
 
     @Override
@@ -42,7 +46,7 @@ public class PieChartItem2011 extends ChartItem {
             holder = new ViewHolder();
 
             convertView = LayoutInflater.from(c).inflate(
-                    R.layout.chart_pie2011, null);
+                    R.layout.chart_pie2012, null);
             holder.chart = (PieChartEC) convertView.findViewById(R.id.chart);
 
             convertView.setTag(holder);
