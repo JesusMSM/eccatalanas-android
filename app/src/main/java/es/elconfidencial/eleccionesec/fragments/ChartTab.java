@@ -167,47 +167,59 @@ public class ChartTab extends Fragment {
         @Override
         protected JSONObject doInBackground(String... args) {
             JSONParser jParser = new JSONParser();
-
-            // Getting JSON from URL
-            JSONObject json = jParser.getJSONFromUrl(url_2015);
+            JSONObject json;
+            try {
+                if(haveNetworkConnection()) {
+                    // Getting JSON from URL
+                    json = jParser.getJSONFromUrl(url_2015);
+                }else{
+                    json = null;
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+                json = null;
+            }
             return json;
         }
 
         @Override
         protected void onPostExecute(JSONObject json) {
+            if (json != null) {
+                try {
+                    // Getting JSON Array
+                    data = json.getJSONObject(TAG_DATA);
+                    results = data.getJSONArray(TAG_RESULTS);
+                    numPartidos = results.length();
+                    arrayPartidos = new PartidoEstadisticas[numPartidos];
 
-            try {
-                // Getting JSON Array
-                data = json.getJSONObject(TAG_DATA);
-                results = data.getJSONArray(TAG_RESULTS);
-                numPartidos = results.length();
-                arrayPartidos = new PartidoEstadisticas[numPartidos];
+                    for (int i = 0; i < numPartidos; i++) {
 
-                for (int i = 0; i < numPartidos; i++) {
+                        PartidoEstadisticas partido = new PartidoEstadisticas();
 
-                    PartidoEstadisticas partido = new PartidoEstadisticas();
+                        JSONObject jsonEstadisticas = results.getJSONObject(i); //Vamos cargando cada partido
 
-                    JSONObject jsonEstadisticas = results.getJSONObject(i); //Vamos cargando cada partido
+                        partido.setComunidadAutonoma(jsonEstadisticas.getString(TAG_COM_AUT));
 
-                    partido.setComunidadAutonoma(jsonEstadisticas.getString(TAG_COM_AUT));
+                        partido.setPorcentajeObtenido(jsonEstadisticas.getDouble(TAG_PORCENTAJE));
 
-                    partido.setPorcentajeObtenido(jsonEstadisticas.getDouble(TAG_PORCENTAJE));
+                        JSONObject jsonPartido = jsonEstadisticas.getJSONObject(TAG_PARTIDO);
+                        partido.setNombre(jsonPartido.getString(TAG_NOMBRE));
+                        partido.setAlias(jsonPartido.getString(TAG_ALIAS));
+                        partido.setColor(jsonPartido.getString(TAG_COLOR));
 
-                    JSONObject jsonPartido = jsonEstadisticas.getJSONObject(TAG_PARTIDO);
-                    partido.setNombre(jsonPartido.getString(TAG_NOMBRE));
-                    partido.setAlias(jsonPartido.getString(TAG_ALIAS));
-                    partido.setColor(jsonPartido.getString(TAG_COLOR));
+                        arrayPartidos[i] = partido;
 
-                    arrayPartidos[i] = partido;
+                    }
+                    if (layout != null) layout.setRefreshing(false);
 
+                    
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                if(layout!=null) layout.setRefreshing(false);
 
-                addItems();
-
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
+                addItems();
 
         }
     }
@@ -215,9 +227,13 @@ public class ChartTab extends Fragment {
 
     private void addItems() {
 
-        //Grafico de 2015
-        items.add(new Title(getString(R.string.titulo_resultados_2015)));
-        items.add(new PieChartItem(generateDataPie2015("2015"), HomeActivity.context));
+        if(items.size()>0) items.clear();
+
+        if(arrayPartidos!=null) {
+            //Grafico de 2015
+            items.add(new Title(getString(R.string.titulo_resultados_2015)));
+            items.add(new PieChartItem(generateDataPie2015("2015"), HomeActivity.context));
+        }
 
         //Grafico de 2012
         items.add(new Title(getString(R.string.titulo_resultados_2012)));
