@@ -61,7 +61,7 @@ public class PieChartItem2012 extends ChartItem {
         holder.chart.setTransparentCircleRadius(57f);
         holder.chart.setCenterText("Distribución\nhemiciclo 2011");
         holder.chart.setCenterTextTypeface(mTf);
-        holder.chart.setCenterTextSize(16f);
+        holder.chart.setCenterTextSize(25f);
         holder.chart.setTouchEnabled(false);
         holder.chart.setDrawSliceText(false);
         holder.chart.setRotationAngle(180f);

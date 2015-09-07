@@ -3,13 +3,16 @@ package es.elconfidencial.eleccionesec.adapters;
 import android.content.Context;
         import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
         import android.text.Html;
         import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -18,6 +21,7 @@ import com.github.mikephil.charting.data.ChartData;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.utils.PercentFormatter;
+import com.github.mikephil.charting.utils.Utils;
 import com.google.android.gms.fitness.data.DataSet;
 import com.squareup.picasso.Picasso;
 
@@ -384,27 +388,56 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         mChartData.setValueFormatter(new PercentFormatter());
         mChartData.setValueTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
-        mChartData.setValueTextSize(11f);
-        mChartData.setValueTextColor(Color.WHITE);
+
+        if(getScreenWidth()>720){
+            mChartData.setValueTextSize(25f);
+        }else if(getScreenWidth()>480){
+            mChartData.setValueTextSize(15f);
+        } else{
+            mChartData.setValueTextSize(11f);
+        }
+
+        mChartData.setValueTextColor(Color.BLACK);
 
         if(grafico != null) {
             // apply styling
+
+            if(getScreenWidth()>720){
+                vh8.grafico.setCenterTextSize(40f);
+            }else if(getScreenWidth()>480){
+                vh8.grafico.setCenterTextSize(26f);
+            } else{
+                vh8.grafico.setCenterTextSize(17f);
+            }
+
             vh8.grafico.setDescription("");
             vh8.grafico.setHoleRadius(52f);
-            vh8.grafico.setTransparentCircleRadius(53f);
+            vh8.grafico.setTransparentCircleRadius(57f);
             vh8.grafico.setCenterText("2012");
-            vh8.grafico.setCenterTextTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
-            vh8.grafico.setCenterTextSize(18f);
+            vh8.grafico.setCenterTextTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
+            vh8.grafico.setCenterTextColor(context.getResources().getColor(R.color.ColorAccent));
             vh8.grafico.setTouchEnabled(false);
             vh8.grafico.setDrawSliceText(false);
             vh8.grafico.setRotationAngle(180f);
 
             //Offset de top
-            vh8.grafico.setExtraTopOffset(30f);
+            vh8.grafico.setExtraTopOffset(10f);
 
             vh8.grafico.setData((PieData) mChartData);
 
             Legend l = vh8.grafico.getLegend();
+
+            if(getScreenWidth()>720){
+                l.setTextSize(30f);
+                l.setFormSize(30f);
+            }else if(getScreenWidth()>480){
+                l.setTextSize(15f);
+                l.setFormSize(15f);
+            } else{
+                l.setTextSize(11f);
+                l.setFormSize(11f);
+            }
+
             l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
             l.setYEntrySpace(0f);
             l.setYOffset(0f);
@@ -425,17 +458,32 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         mChartData.setValueFormatter(new PercentFormatter());
         mChartData.setValueTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
-        mChartData.setValueTextSize(11f);
-        mChartData.setValueTextColor(Color.WHITE);
+        if(getScreenWidth()>720){
+            mChartData.setValueTextSize(25f);
+        }else if(getScreenWidth()>480){
+            mChartData.setValueTextSize(15f);
+        } else{
+            mChartData.setValueTextSize(11f);
+        }
+        mChartData.setValueTextColor(Color.BLACK);
 
         if(grafico != null) {
             // apply styling
+
+            if(getScreenWidth()>720){
+                vh9.grafico.setCenterTextSize(40f);
+            }else if(getScreenWidth()>480){
+                vh9.grafico.setCenterTextSize(26f);
+            } else{
+                vh9.grafico.setCenterTextSize(17f);
+            }
+
             vh9.grafico.setDescription("");
             vh9.grafico.setHoleRadius(52f);
-            vh9.grafico.setTransparentCircleRadius(53f);
+            vh9.grafico.setTransparentCircleRadius(57f);
             vh9.grafico.setCenterText("2015");
-            vh9.grafico.setCenterTextTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
-            vh9.grafico.setCenterTextSize(18f);
+            vh9.grafico.setCenterTextTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
+            vh9.grafico.setCenterTextColor(context.getResources().getColor(R.color.ColorAccent));
             vh9.grafico.setTouchEnabled(false);
             vh9.grafico.setDrawSliceText(false);
             vh9.grafico.setRotationAngle(180f);
@@ -443,6 +491,18 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh9.grafico.setData((PieData) mChartData);
 
             Legend l = vh9.grafico.getLegend();
+
+            if(getScreenWidth()>720){
+                l.setTextSize(30f);
+                l.setFormSize(30f);
+            }else if(getScreenWidth()>480){
+                l.setTextSize(15f);
+                l.setFormSize(15f);
+            } else{
+                l.setTextSize(11f);
+                l.setFormSize(11f);
+            }
+
             l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
             l.setYEntrySpace(0f);
             l.setYOffset(0f);
@@ -464,8 +524,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         if (grafico != null) {
             // apply styling
+
+
             vh10.grafico.setDescription("");
             vh10.grafico.setDrawGridBackground(false);
+            vh10.grafico.setTouchEnabled(false);
 
             XAxis xAxis = vh10.grafico.getXAxis();
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -482,14 +545,55 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             rightAxis.setLabelCount(5, false);
             rightAxis.setDrawGridLines(false);
 
+            if(getScreenWidth()>720){
+                xAxis.setTextSize(20f);
+                leftAxis.setTextSize(20f);
+                rightAxis.setTextSize(20f);
+            }else if(getScreenWidth()>480){
+                xAxis.setTextSize(11f);
+                leftAxis.setTextSize(11f);
+                rightAxis.setTextSize(11f);
+            } else{
+                xAxis.setTextSize(8f);
+                leftAxis.setTextSize(8f);
+                rightAxis.setTextSize(8f);
+            }
+
             //Set data
             vh10.grafico.setData((LineData) mChartData);
 
             vh10.grafico.animateX(750);
 
+            //Legend
+            Legend l = vh10.grafico.getLegend();
+            l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
+            l.setYEntrySpace(0f);
+            l.setYOffset(0f);
+            l.setWordWrapEnabled(true);
+           // l.setCustom(mChartData.getColors(), createLegendLines(mChartData));
+            l.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+
+            if(getScreenWidth()>720){
+                l.setTextSize(30f);
+                l.setFormSize(30f);
+            }else if(getScreenWidth()>480){
+                l.setTextSize(15f);
+                l.setFormSize(15f);
+            } else{
+                l.setTextSize(11f);
+                l.setFormSize(11f);
+            }
 
         }
 
+    }
+
+    public int getScreenWidth(){
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        return size.x;
     }
 
     public String [] createLegend(ChartData<?> mChartData){
@@ -505,10 +609,32 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             if(nombre.equals("PARTIDO ANIMALISTA CONTRA EL MALTRATO ANIMAL")){
                 nombre = "PACMA";
             }
-            element = nombre + " (" + (myDataSet.getEntryForXIndex(i).getVal()) + "%) ";
+            element = nombre + " (" + (myDataSet.getEntryForXIndex(i).getVal()) + "%)";
             elements.add(element);
             System.out.println(element);
         }
         return elements.toArray(new String[elements.size()]);
     }
+
+
+   /** public String [] createLegendLines(ChartData<?> mChartData){
+
+        //Datos de alias de partidos.
+        com.github.mikephil.charting.data.DataSet myDataSet = mChartData.getDataSetByLabel("",true);
+
+        String element = "";
+        List<String> elements = new ArrayList<String>(Arrays.asList(new String[] {}));
+        //Creamos cada string
+        for (int i = 0;i<myDataSet.getEntryCount(); i++){
+            String nombre =(String) myDataSet.getEntryForXIndex(i).getData();
+            Log.i("MyTag", nombre);
+            if(nombre.equals("PARTIDO ANIMALISTA CONTRA EL MALTRATO ANIMAL")){
+                nombre = "PACMA";
+            }
+            element = nombre + "     ";
+            elements.add(element);
+            System.out.println(element);
+        }
+        return elements.toArray(new String[elements.size()]);
+    }**/
 }

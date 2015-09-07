@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="36dp"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="35sp"
             android:gravity="center" />
 
         <View

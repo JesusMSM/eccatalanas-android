@@ -70,11 +70,11 @@ public class PieChartRendererEC extends PieChartRenderer {
 
         mCenterTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         mCenterTextPaint.setColor(Color.BLACK);
-        mCenterTextPaint.setTextSize(Utils.convertDpToPixel(12f));
+        mCenterTextPaint.setTextSize(Utils.convertDpToPixel(25f));
         mCenterTextPaint.setTextAlign(Paint.Align.CENTER);
 
-        mValuePaint.setTextSize(Utils.convertDpToPixel(13f));
-        mValuePaint.setColor(Color.WHITE);
+        mValuePaint.setTextSize(Utils.convertDpToPixel(25f));
+        mValuePaint.setColor(Color.BLACK);
         mValuePaint.setTextAlign(Paint.Align.CENTER);
     }
 

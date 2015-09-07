@@ -13,13 +13,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        card_view:contentPaddingBottom="5dp"
+        card_view:contentPadding="@dimen/activity_horizontal_margin"
         card_view:cardCornerRadius="3dp">
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chartLine"
             android:layout_width="match_parent"
-            android:layout_height="300dp" />
+            android:layout_height="450dp" />
     </android.support.v7.widget.CardView>
 
 </LinearLayout>

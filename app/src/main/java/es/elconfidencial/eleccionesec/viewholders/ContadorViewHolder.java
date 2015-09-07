@@ -1,5 +1,7 @@
 package es.elconfidencial.eleccionesec.viewholders;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.CountDownTimer;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import es.elconfidencial.eleccionesec.R;
+import es.elconfidencial.eleccionesec.activities.HomeActivity;
 
 /**
  * Created by Afll on 01/08/2015.
@@ -51,7 +54,8 @@ public class ContadorViewHolder extends RecyclerView.ViewHolder{
                 long minutes = (millisUntilFinished - days*(1000*60*60*24) - hours*(1000*60*60))/ (1000 * 60); //for counting minutes
                 long seconds = (millisUntilFinished - days*(1000*60*60*24) - hours*(1000*60*60) - minutes*(1000*60)) / (1000); //for counting seconds
 
-                contador.setText( days +" dias " +hours + " horas "+ minutes +" minutos " + seconds + " segundos ");
+
+                contador.setText( days + " " + HomeActivity.resources.getString(R.string.dias) + "  " + hours + " h  "+ minutes +" min  " + seconds + " segs ");
             }
 
             public void onFinish() {

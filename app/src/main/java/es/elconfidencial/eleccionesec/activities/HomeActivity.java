@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -26,6 +27,7 @@ import es.elconfidencial.eleccionesec.slidingtabfiles.SlidingTabLayout;
 public class HomeActivity extends ActionBarActivity {
 
     public static Context context;
+    public static Resources resources;
     ActionBar actionBar;
     static ViewPager pager;
     ViewPagerAdapter adapter;
@@ -38,6 +40,8 @@ public class HomeActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        resources = getResources();
 
         /**********INICIALIZAMOS PUSHWOOSH*******************/
         //Register receivers for push notifications

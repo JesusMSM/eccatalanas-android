@@ -6,8 +6,8 @@
     android:background="@drawable/title_attribute"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    android:layout_marginTop="20dp"
-    android:layout_marginBottom="-5dp"
+    android:layout_marginTop="30dp"
+    android:layout_marginBottom="-6dp"
     android:id="@+id/title_layout"
     android:clickable="true">
 
@@ -17,9 +17,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/white"
-        android:textSize="17sp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
+        android:textSize="24sp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:textAllCaps="true"/>
 
 

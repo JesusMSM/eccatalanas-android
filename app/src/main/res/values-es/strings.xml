@@ -23,13 +23,14 @@
     <string name="suscripcion_descripcion">Usted recibirá notificaciones push cada vez que se publiquen artículos relacionados con las siguientes temáticas.</string>
     <string name="share">Compartir</string>
     <string name="cuenta_atras">Cuenta atrás</string>
+    <string name="dias">días</string>
     <string name="empezar">EMPEZAR</string>
 
-    <string name="titulo_resultados_2015">Resultados Elecciones 2015</string>
-    <string name="titulo_resultados_2012">Resultados Elecciones 2012</string>
+    <string name="titulo_resultados_2015">Resultados 2015</string>
+    <string name="titulo_resultados_2012">Resultados 2012</string>
     <string name="titulo_evolucion">Evolución histórica</string>
     <string name="titulo_noticias">últimas noticias</string>
-    <string name="titulo_fichas">Fichas</string>
+    <string name="titulo_fichas">Fichas informativas</string>
     <string name="alerta_conexion_noticias">Conéctese a Internet para recibir las ultimas noticias sobre las Elecciones</string>
 
 

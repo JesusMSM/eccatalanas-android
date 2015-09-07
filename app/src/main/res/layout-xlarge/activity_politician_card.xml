@@ -9,46 +9,50 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:id="@+id/imagen"
-            android:scaleType="centerCrop"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/nombre"
-            android:layout_gravity="fill_horizontal"
-            android:textColor="@color/white"
-            android:layout_marginTop="-195dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginStart="30dp"
-            android:textSize="45sp"
-            />
-
-        <TextView
-            android:id="@+id/cargo"
-            android:textColor="@color/white"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_gravity="fill_horizontal"
-            android:layout_marginTop="3dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginStart="30dp"
-            android:textSize="23sp"/>
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:id="@+id/imagen"
+                android:scaleType="centerCrop"/>
 
-        <TextView
-            android:id="@+id/edad"
-            android:textColor="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="3dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_gravity="fill_horizontal"
-            android:textSize="23sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nombre"
+                android:layout_gravity="bottom"
+                android:textColor="@color/white"
+                android:layout_marginBottom="105dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:textSize="60sp"
+                />
+
+            <TextView
+                android:id="@+id/cargo"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="60dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:textSize="23sp"/>
+
+            <TextView
+                android:id="@+id/edad"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_gravity="bottom"
+                android:textSize="23sp"/>
+        </FrameLayout>
 
 
         <WebView
