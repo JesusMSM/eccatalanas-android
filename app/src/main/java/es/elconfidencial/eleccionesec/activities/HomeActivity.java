@@ -164,6 +164,14 @@ public class HomeActivity extends ActionBarActivity {
         //Unregister receivers on pause
         unregisterReceivers();
     }
+
+    @Override
+    public void onBackPressed() {
+        System.gc();
+        finish();
+        super.onBackPressed();
+        System.exit(0);
+    }
     /***********************PUSHWOOSH*****************************/
     //Registration receiver
     BroadcastReceiver mBroadcastReceiver = new BaseRegistrationReceiver()
