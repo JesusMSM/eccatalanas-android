@@ -16,7 +16,7 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import es.elconfidencial.eleccionesec.R;
 
@@ -43,8 +43,8 @@ public class PartyCardActivity extends ActionBarActivity {
 
 
         try {
-            Picasso.with(getApplicationContext()).load(R.drawable.degradado_fondo).into(imagenFondo);
-            Picasso.with(getApplicationContext()).load(intent.getIntExtra("imagen", 0)).into(imagen);
+            Glide.with(getApplicationContext()).load(R.drawable.degradado_fondo).into(imagenFondo);
+            Glide.with(getApplicationContext()).load(intent.getIntExtra("imagen", 0)).into(imagen);
         }catch (Exception e){e.printStackTrace();}
         nombre.setText(intent.getStringExtra("nombre"));
         representantes.setText(intent.getStringExtra("representantes"));

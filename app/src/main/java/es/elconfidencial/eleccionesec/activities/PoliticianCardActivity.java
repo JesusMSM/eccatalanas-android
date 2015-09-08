@@ -20,10 +20,11 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import es.elconfidencial.eleccionesec.R;
-import jp.wasabeef.picasso.transformations.gpu.VignetteFilterTransformation;
+import jp.wasabeef.glide.transformations.ColorFilterTransformation;
+import jp.wasabeef.glide.transformations.gpu.VignetteFilterTransformation;
 
 public class PoliticianCardActivity extends ActionBarActivity {
 
@@ -52,8 +53,15 @@ public class PoliticianCardActivity extends ActionBarActivity {
 
             int resid=intent.getIntExtra("imagen", 0);
             //Load Image
-            Picasso.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).resize(width, height * 2 / 3).centerInside().transform(new VignetteFilterTransformation(getApplicationContext(),
-                    new PointF(0.5f, 0.5f), new float[]{0.0f, 0.0f, 0.0f}, 0f, 0.75f)).into(imagen);
+            int currentapiVersion = android.os.Build.VERSION.SDK_INT;
+
+
+            if (currentapiVersion >= 19) {
+                Glide.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).bitmapTransform(new VignetteFilterTransformation(getApplicationContext())).into(imagen);
+            } else {
+                Glide.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).into(imagen);
+            }
+
             /*BitmapFactory.Options opts = new BitmapFactory.Options();
             opts.inDither = true;
             opts.inSampleSize = 3;

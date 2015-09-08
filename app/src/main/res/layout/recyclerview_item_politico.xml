@@ -12,26 +12,26 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardview"
-        android:layout_width="fill_parent"
-        android:layout_height="200dp"
-        android:layout_weight="1">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_weight="1">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imagen"
-                android:layout_width="160dp"
-                android:layout_height="match_parent"
-                android:gravity="left"/>
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:adjustViewBounds="true"
+                android:layout_gravity="clip_vertical"/>
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_weight="1">
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4">
 
                 <TextView
                     android:id="@+id/nombre"
@@ -47,7 +47,7 @@
                     android:gravity="center_vertical"
                     android:background="@color/ColorAccent"
                     android:textColor="@color/white"
-                    android:textSize="13sp"
+                    android:textSize="7pt"
                     android:textAllCaps="true"/>
 
                 <TextView
@@ -60,7 +60,7 @@
                     android:textColor="@color/black"
                     android:layout_gravity="bottom"
                     android:gravity="fill_horizontal"
-                    android:textSize="12sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:id="@+id/partido"
@@ -72,7 +72,7 @@
                     android:textColor="@color/black"
                     android:layout_gravity="bottom"
                     android:gravity="fill_horizontal"
-                    android:textSize="12sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:id="@+id/cargo"
@@ -82,7 +82,7 @@
                     android:paddingLeft="9dp"
                     android:paddingRight="7dp"
                     android:textColor="@color/black"
-                    android:textSize="12sp" />
+                    android:textSize="6pt" />
 
 
             </LinearLayout>

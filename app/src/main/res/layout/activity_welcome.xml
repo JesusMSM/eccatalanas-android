@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:text="ELECCIONES GENERALES 2015"
+        android:text="ELECCIONES CATALUÑA 2015"
         android:id="@+id/eg2015"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/ec_logo"
