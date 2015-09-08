@@ -280,8 +280,8 @@ public class ChartTab extends Fragment {
             PieDataSet d = new PieDataSet(entries, "");
 
         // space between slices
-        d.setSliceSpace(0.5f);
-        d.setColors(colores);
+            d.setSliceSpace(0.5f);
+            d.setColors(colores);
             d.setValueTextColor(Color.BLACK);
 
             PieData cd = new PieData(getQuarters("2015"), d);

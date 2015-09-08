@@ -21,7 +21,7 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import es.elconfidencial.eleccionesec.R;
 
@@ -107,7 +107,7 @@ public class NoticiaContentActivity extends ActionBarActivity {
         titulo.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Milio-Heavy-Italic.ttf"));
         autor.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Regular.otf"));
         fecha.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Regular.otf"));
-        Picasso.with(getApplicationContext()).load(intent.getStringExtra("imagenUrl")).placeholder(R.drawable.nopic).into(imagen);
+        Glide.with(getApplicationContext()).load(intent.getStringExtra("imagenUrl")).placeholder(R.drawable.nopic).into(imagen);
     }
 
     @Override

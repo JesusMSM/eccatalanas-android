@@ -3,6 +3,7 @@ package es.elconfidencial.eleccionesec.adapters;
 import android.content.Context;
         import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
         import android.view.ViewGroup;
 import android.view.WindowManager;
 
+import com.bumptech.glide.Glide;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -24,8 +26,6 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.utils.PercentFormatter;
 import com.github.mikephil.charting.utils.Utils;
 import com.google.android.gms.fitness.data.DataSet;
-import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -216,7 +216,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh1.autor.setText(noticia.getAutor());
             try {
                 System.gc();
-                Picasso.with(context).load(noticia.getImagenUrl()).placeholder(R.drawable.nopic).fit().into(vh1.imagen);
+                Glide.with(context).load(noticia.getImagenUrl()).placeholder(R.drawable.nopic).into(vh1.imagen);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -250,7 +251,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh2.autor.setText(quiz.getAutor());
             try {
                 System.gc();
-                Picasso.with(context).load(quiz.getImagenUrl()).placeholder(R.drawable.nopic).into(vh2.imagen);
+                Glide.with(context).load(quiz.getImagenUrl()).placeholder(R.drawable.nopic).into(vh2.imagen);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -273,7 +274,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if (partido != null) {
             try {
                 System.gc();
-                Picasso.with(context).load(partido.getImagen()).resize(450, 450).placeholder(R.drawable.nopicpartidolow).into(vh4.imagen);
+                Glide.with(context).load(partido.getImagen()).placeholder(R.drawable.nopicpartidolow).into(vh4.imagen);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -318,7 +319,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if (politico != null) {
             try {
                 System.gc();
-                Picasso.with(context).load(politico.getImagen()).resize(450, 450).placeholder(R.drawable.nopicpoliticolow).centerInside().into(vh5.imagen);
+                Glide.with(context).load(politico.getImagen()).placeholder(R.drawable.nopicpoliticolow).into(vh5.imagen);
             } catch (Exception e) {
                 e.printStackTrace();
             }
