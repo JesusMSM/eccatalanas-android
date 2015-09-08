@@ -29,7 +29,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import es.elconfidencial.eleccionesec.R;
@@ -66,6 +68,7 @@ public class HomeTab extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private static String LOG_TAG = "HomeTab";
+    private String fechaElecciones = "27/09/2015";
 
 
     //CONSTANTES GRAFICOS
@@ -219,6 +222,7 @@ public class HomeTab extends Fragment {
                 }
 
             } else{
+                new CargarXmlTask().execute(rss_url); //Para que cargue las noticias aunque el json de graficos sea null
                 addItems();
             }
         }
@@ -279,8 +283,40 @@ public class HomeTab extends Fragment {
 
         if(items.size()>0) items.clear(); //Evitar duplicados
 
-        //Primero insertamos el contador
-        items.add("contador");
+        Date today = new Date();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date electionsDate;
+        try {
+            electionsDate = sdf.parse(fechaElecciones);
+        }catch (Exception e){
+            e.printStackTrace();
+            electionsDate =null;
+        }
+
+        int comparacion = today.compareTo(electionsDate);
+        boolean isElectionDay = false;
+        if(comparacion>=0) isElectionDay = true;
+
+        if(isElectionDay){
+           if(numPartidos2015>0){
+               items.add(new Title(getString(R.string.titulo_resultados_2015)));
+               items.add(new PieChartItem(generateDataPie("2015"), HomeActivity.context));
+           }else{
+               items.add(new Mensaje(getString(R.string.alerta_espera_datos)));
+           }
+        }else{
+            items.add("contador");
+        }
+       /* //Primero insertamos el contador
+        if(numPartidos2015<=0 || !isElectionDay) items.add("contador");
+        if (numPartidos2015<=0 && isElectionDay){
+            items.add(new Mensaje(getString(R.string.alerta_conexion_noticias)));
+        }
+        if(numPartidos2015>0){
+            items.add(new Title(getString(R.string.titulo_resultados_2015)));
+            items.add(new PieChartItem(generateDataPie("2015"), HomeActivity.context));
+        }*/
 
         //Título del grafico
         items.add(new Title(getString(R.string.titulo_resultados_2012)));
@@ -295,7 +331,7 @@ public class HomeTab extends Fragment {
 
         //Después tratamos la lista de noticias, elegimos únicamente las 3 primeras (más recientes).
         //Si no tiene conexión mostramos en su lugar el mensaje de alerta
-        if(haveNetworkConnection()) {
+        if(haveNetworkConnection() && noticias.size()>0) {
             int listLength = 3; //número de noticias que deben aparecer
             for (int i = 0; i < listLength; i++) {
                 items.add(noticias.get(i));

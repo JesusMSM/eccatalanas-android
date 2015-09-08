@@ -212,7 +212,7 @@ public class ChartTab extends Fragment {
                     }
                     if (layout != null) layout.setRefreshing(false);
 
-                    
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
