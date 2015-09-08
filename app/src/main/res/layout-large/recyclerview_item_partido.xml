@@ -21,16 +21,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageView
                 android:id="@+id/imagen"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="5dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:src="@drawable/cs"
-                android:layout_gravity="top"
-                android:adjustViewBounds="true"/>
+                android:adjustViewBounds="true"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="top"/>
+
 
             <LinearLayout
                 android:orientation="vertical"
@@ -51,11 +51,10 @@
                     android:layout_marginStart="9dp"
                     android:layout_marginRight="4dp"
                     android:layout_marginEnd="4dp"
-                    android:text="CUP"
                     android:gravity="center_vertical"
                     android:background="@color/ColorAccent"
                     android:textColor="@color/white"
-                    android:textSize="7pt"
+                    android:textSize="9pt"
                     android:textAllCaps="true"/>
 
                 <TextView
@@ -66,9 +65,9 @@
                     android:paddingLeft="9dp"
                     android:paddingRight="3dp"
                     android:textColor="@color/black"
-                    android:text="Representante: David Fernàndez (portavoz)"
                     android:gravity="fill_horizontal"
-                    android:textSize="6pt" />
+                    android:textSize="8pt" />
+
                 <TextView
                     android:id="@+id/fundacion"
                     android:layout_width="fill_parent"
@@ -77,9 +76,8 @@
                     android:paddingLeft="9dp"
                     android:paddingRight="3dp"
                     android:textColor="@color/black"
-                    android:text="Fundación: 1991"
                     android:gravity="fill_horizontal"
-                    android:textSize="6pt" />
+                    android:textSize="8pt" />
 
                 <TextView
                     android:id="@+id/escanos"
@@ -89,9 +87,8 @@
                     android:paddingLeft="9dp"
                     android:paddingRight="3dp"
                     android:textColor="@color/black"
-                    android:text="Número de escaños actuales: 3 / 135"
                     android:gravity="fill_horizontal"
-                    android:textSize="6pt" />
+                    android:textSize="8pt" />
 
                 <TextView
                     android:id="@+id/porcentajeVotos"
@@ -100,10 +97,9 @@
                     android:layout_marginTop="10dp"
                     android:paddingLeft="9dp"
                     android:paddingRight="3dp"
-                    android:text="% de votos en las últimas elecciones: 3,47%"
                     android:textColor="@color/black"
                     android:gravity="fill_horizontal"
-                    android:textSize="6pt" />
+                    android:textSize="8pt" />
 
                 <TextView
                     android:id="@+id/ideologia"
@@ -113,9 +109,8 @@
                     android:paddingLeft="9dp"
                     android:paddingRight="3dp"
                     android:textColor="@color/black"
-                    android:text="Ideología sobre Cataluña: Independentista"
                     android:gravity="fill_horizontal"
-                    android:textSize="6pt" />
+                    android:textSize="8pt" />
 
                 <TextView
                     android:id="@+id/partidosRepresentados"
@@ -124,11 +119,10 @@
                     android:layout_marginTop="10dp"
                     android:paddingLeft="9dp"
                     android:paddingRight="7dp"
+                    android:paddingBottom="30dp"
                     android:textColor="@color/black"
-                    android:text="Partidos representados: CUP se coordina con la Asamblea Municipal de la Izquierda Independentista"
                     android:gravity="fill_horizontal"
-                    android:textSize="6pt"
-                    android:paddingBottom="30dp"/>
+                    android:textSize="8pt" />
 
             </LinearLayout>
 

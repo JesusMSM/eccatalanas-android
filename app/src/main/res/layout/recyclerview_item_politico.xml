@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageView
                 android:id="@+id/imagen"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
                     android:gravity="center_vertical"
                     android:background="@color/ColorAccent"
                     android:textColor="@color/white"
-                    android:textSize="7pt"
+                    android:textSize="6pt"
                     android:textAllCaps="true"/>
 
                 <TextView
@@ -60,7 +60,7 @@
                     android:textColor="@color/black"
                     android:layout_gravity="bottom"
                     android:gravity="fill_horizontal"
-                    android:textSize="6pt" />
+                    android:textSize="5pt" />
 
                 <TextView
                     android:id="@+id/partido"
@@ -72,7 +72,7 @@
                     android:textColor="@color/black"
                     android:layout_gravity="bottom"
                     android:gravity="fill_horizontal"
-                    android:textSize="6pt" />
+                    android:textSize="5pt" />
 
                 <TextView
                     android:id="@+id/cargo"
@@ -81,8 +81,9 @@
                     android:layout_marginTop="10dp"
                     android:paddingLeft="9dp"
                     android:paddingRight="7dp"
+                    android:paddingBottom="30dp"
                     android:textColor="@color/black"
-                    android:textSize="6pt" />
+                    android:textSize="5pt" />
 
 
             </LinearLayout>
