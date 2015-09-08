@@ -46,7 +46,7 @@ public class IdiomaSpinnerAdapter extends ArrayAdapter<String>{
 
         public View getCustomView(int position, View convertView, ViewGroup parent) {
 
-            View row = inflater.inflate(R.layout.row_custom_spinner, parent, false);
+            View row = inflater.inflate(R.layout.row_custom_spinner_idioma, parent, false);
 
             idioma = (IdiomaSpinnerModel) data.get(position);
 

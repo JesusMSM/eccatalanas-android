@@ -1,42 +1,33 @@
 package es.elconfidencial.eleccionesec.activities;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatSpinner;
-import android.text.InputFilter;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.afollestad.materialdialogs.MaterialDialog;
-
-import com.pushwoosh.BasePushMessageReceiver;
-import com.pushwoosh.BaseRegistrationReceiver;
-import com.pushwoosh.PushManager;
 /*import com.pushwoosh.BasePushMessageReceiver;
 import com.pushwoosh.BaseRegistrationReceiver;
 import com.pushwoosh.PushManager;*/
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.adapters.IdiomaSpinnerAdapter;
+import es.elconfidencial.eleccionesec.adapters.ProvinciaSpinnerAdapter;
 import es.elconfidencial.eleccionesec.model.IdiomaSpinnerModel;
 
 /**
@@ -65,35 +56,47 @@ public class WelcomeActivity extends Activity {
         titulo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Semibold.otf"));
 
         //Provincia
-        EditText chooseProvincia = (EditText) findViewById(R.id.provincia);
-        chooseProvincia.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+        Spinner spinnerProvincia = (Spinner) findViewById(R.id.spinnerProvincia);
+        List<String> spinnerArray =  new ArrayList<String>();
+        spinnerArray.add(getResources().getString(R.string.barcelona));
+        spinnerArray.add(getResources().getString(R.string.gerona));
+        spinnerArray.add(getResources().getString(R.string.lerida));
+        spinnerArray.add(getResources().getString(R.string.tarragona));
+
+        ProvinciaSpinnerAdapter adapter = new ProvinciaSpinnerAdapter(
+                this, R.layout.row_custom_spinner_provincia, spinnerArray);
+
+        spinnerProvincia.setAdapter(adapter);
+        String selectedProvincia = spinnerProvincia.getSelectedItem().toString();
+
 
         //Empezar Button
         Button empezar = (Button) findViewById(R.id.start);
         empezar.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Semibold.otf"));;
 
         //Spinner
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerIdioma);
+        Spinner spinnerIdioma = (Spinner) findViewById(R.id.spinnerIdioma);
         IdiomaSpinnerModel españolRow = new IdiomaSpinnerModel(getResources().getStringArray(R.array.idioma)[0],"(ES)",R.drawable.spainflag);
         IdiomaSpinnerModel catalanRow = new IdiomaSpinnerModel(getResources().getStringArray(R.array.idioma)[1],"(CA)",R.drawable.cataloniaflag);
         arrayIdiomasSpinner.add(españolRow);
         arrayIdiomasSpinner.add(catalanRow);
 
-        idiomaAdapter = new IdiomaSpinnerAdapter(this,R.layout.row_custom_spinner,arrayIdiomasSpinner);
-        spinner.setAdapter(idiomaAdapter);
+        idiomaAdapter = new IdiomaSpinnerAdapter(this,R.layout.row_custom_spinner_idioma,arrayIdiomasSpinner);
+        spinnerIdioma.setAdapter(idiomaAdapter);
         if(idioma.equals("catalan")){
-            spinner.setSelection(1);
+            spinnerIdioma.setSelection(1);
         }else{
-            spinner.setSelection(0);
+            spinnerIdioma.setSelection(0);
         }
         //Listener Spinner Idioma
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerIdioma.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             private boolean initializing = true;
+
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 if (initializing) {
                     initializing = false;
-                }else {
+                } else {
                     //Cargamos la configuracion para cambiarla despues
                     Resources standardResources = context.getResources();
                     DisplayMetrics metrics = standardResources.getDisplayMetrics();

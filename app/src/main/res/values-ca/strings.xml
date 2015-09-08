@@ -33,6 +33,12 @@
     <string name="titulo_fichas">Fichas</string>
     <string name="alerta_conexion_noticias">Conéctese a Internet para recibir las ultimas noticias sobre las Elecciones</string>
 
+    <string name="barcelona">Barcelona</string>
+    <string name="gerona">Girona</string>
+    <string name="lerida">Lleida</string>
+    <string name="tarragona">Tarragona</string>
+    <string name="welcome_string">ELECCIONS CATALUNYA 2015</string>
+
 
 <!-- ______________________________STRINGS FICHAS POLÍTICOS_______________________________ -->
 

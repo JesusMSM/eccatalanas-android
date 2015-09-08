@@ -14,35 +14,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:text="ELECCIONES CATALUÑA 2015"
+        android:text="@string/welcome_string"
         android:id="@+id/eg2015"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/ec_logo"
         />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/introduce_tu_provincia"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/eg2015"
-        android:id="@+id/provincia"
-        android:backgroundTint="@color/white"
-        android:layout_marginTop="50dp"
-        android:textAllCaps="true"
-        />
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:paddingLeft="@dimen/abc_button_padding_horizontal_material"
         android:paddingRight="20dp"
         android:paddingTop="@dimen/abc_button_padding_vertical_material"
         android:paddingBottom="@dimen/abc_button_padding_vertical_material"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/provincia"
+        android:layout_below="@+id/eg2015"
         android:id="@+id/spinnerIdioma"
+        android:layout_marginBottom="10dp"/>
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingTop="@dimen/abc_button_padding_vertical_material"
+        android:paddingBottom="@dimen/abc_button_padding_vertical_material"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/spinnerIdioma"
+        android:id="@+id/spinnerProvincia"
         android:layout_marginBottom="20dp"/>
     <Button
         android:layout_width="wrap_content"
@@ -57,7 +55,7 @@
         android:paddingRight="60dp"
         android:paddingTop="@dimen/abc_button_padding_vertical_material"
         android:paddingBottom="@dimen/abc_button_padding_vertical_material"
-        android:layout_below="@+id/spinnerIdioma"
+        android:layout_below="@+id/spinnerProvincia"
         android:layout_centerHorizontal="true"
         android:id="@+id/start" />
 
