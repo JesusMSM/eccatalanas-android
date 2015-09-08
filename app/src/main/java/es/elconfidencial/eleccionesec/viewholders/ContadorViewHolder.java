@@ -55,7 +55,7 @@ public class ContadorViewHolder extends RecyclerView.ViewHolder{
                 long seconds = (millisUntilFinished - days*(1000*60*60*24) - hours*(1000*60*60) - minutes*(1000*60)) / (1000); //for counting seconds
 
 
-                contador.setText( days + " " + HomeActivity.resources.getString(R.string.dias) + "  " + hours + " h  "+ minutes +" min  " + seconds + " segs ");
+                contador.setText( days + " " + HomeActivity.resources.getString(R.string.dias) + "  " + hours + " horas  \n"+ minutes +" minutos  " + seconds + " segundos ");
             }
 
             public void onFinish() {

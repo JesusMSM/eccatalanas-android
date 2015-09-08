@@ -20,6 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cuenta_atras"
+                android:textSize="8pt"
                 android:id="@+id/label"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="15dp"

@@ -265,7 +265,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private void configureContadorViewHolder(ContadorViewHolder vh3, int position) {
         vh3.showContador();
-        vh3.contador.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+        vh3.contador.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Bold.ttf"));
         vh3.label.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
     }
 
@@ -439,6 +439,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             //Offset de top
             vh8.grafico.setExtraTopOffset(10f);
 
+
             vh8.grafico.setData((PieData) mChartData);
 
             Legend l = vh8.grafico.getLegend();
@@ -459,7 +460,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
             l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
             l.setYEntrySpace(0f);
-            l.setYOffset(0f);
+            l.setYOffset(10f);
             l.setWordWrapEnabled(true);
             l.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
             l.setCustom(mChartData.getColors(), createLegend(mChartData));
@@ -531,7 +532,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
             l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
             l.setYEntrySpace(0f);
-            l.setYOffset(0f);
+            l.setYOffset(10f);
             l.setWordWrapEnabled(true);
             l.setCustom(mChartData.getColors(), createLegend(mChartData));
             l.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
@@ -598,7 +599,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             Legend l = vh10.grafico.getLegend();
             l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
             l.setYEntrySpace(0f);
-            l.setYOffset(0f);
+            l.setYOffset(10f);
             l.setWordWrapEnabled(true);
             // l.setCustom(mChartData.getColors(), createLegendLines(mChartData));
             l.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
