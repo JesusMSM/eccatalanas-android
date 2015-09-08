@@ -42,7 +42,7 @@ public class ContadorViewHolder extends RecyclerView.ViewHolder{
         }
 
         //Iniciamos una cuenta atras, empezando por los milisegundos que quedan (tiempoRestante) hasta alcanzar 1 segundo.
-        //Mostramos los milisegundos en formato: D dias H horas M minutos S segundos.
+        //Mostramos los milisegundos en formato: D dias H h M mins S segs.
         new CountDownTimer(tiempoRestante, 1000) {
 
             StringBuilder time = new StringBuilder();

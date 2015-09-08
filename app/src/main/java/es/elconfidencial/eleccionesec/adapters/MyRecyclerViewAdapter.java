@@ -2,6 +2,7 @@ package es.elconfidencial.eleccionesec.adapters;
 
 import android.content.Context;
         import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
@@ -83,21 +84,21 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             return NOTICIA;
         } else if (items.get(position) instanceof Quiz) {
             return QUIZ;
-        }else if (items.get(position).equals("contador")) {
+        } else if (items.get(position).equals("contador")) {
             return CONTADOR;
-        }else if (items.get(position) instanceof Partido) {
+        } else if (items.get(position) instanceof Partido) {
             return PARTIDO;
-        }else if (items.get(position) instanceof Politico) {
+        } else if (items.get(position) instanceof Politico) {
             return POLITICO;
         } else if (items.get(position) instanceof Title) {
             return TITULO;
-        }else if (items.get(position) instanceof Mensaje) {
+        } else if (items.get(position) instanceof Mensaje) {
             return MENSAJE;
-        }else if (items.get(position) instanceof PieChartItem2012) {
+        } else if (items.get(position) instanceof PieChartItem2012) {
             return GRAFICO2012;
-        }else if (items.get(position) instanceof PieChartItem) {
+        } else if (items.get(position) instanceof PieChartItem) {
             return GRAFICO2015;
-        }else if (items.get(position) instanceof LineChartItem) {
+        } else if (items.get(position) instanceof LineChartItem) {
             return GRAFICOLINEAS;
         }
         return -1;
@@ -205,7 +206,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
     }
 
-    /*** Funciones de configuracion de los ViewHolders ***/
+    /**
+     * Funciones de configuracion de los ViewHolders **
+     */
     private void configureNoticiaViewHolder(final NoticiaViewHolder vh1, int position) {
         final Noticia noticia = (Noticia) items.get(position);
         if (noticia != null) {
@@ -214,7 +217,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             try {
                 System.gc();
                 Picasso.with(context).load(noticia.getImagenUrl()).placeholder(R.drawable.nopic).fit().into(vh1.imagen);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -240,15 +243,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         });
     }
 
-    private void configureQuizViewHolder(QuizViewHolder vh2,int position) {
+    private void configureQuizViewHolder(QuizViewHolder vh2, int position) {
         Quiz quiz = (Quiz) items.get(position);
-        if(quiz != null){
+        if (quiz != null) {
             vh2.titulo.setText(Html.fromHtml(quiz.getTitulo()));
             vh2.autor.setText(quiz.getAutor());
             try {
                 System.gc();
                 Picasso.with(context).load(quiz.getImagenUrl()).placeholder(R.drawable.nopic).into(vh2.imagen);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -259,19 +262,21 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     }
 
-    private void configureContadorViewHolder(ContadorViewHolder vh3,int position) {
+    private void configureContadorViewHolder(ContadorViewHolder vh3, int position) {
         vh3.showContador();
         vh3.contador.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
         vh3.label.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
     }
 
-    private void configurePartidoViewHolder(PartidoViewHolder vh4,int position) {
+    private void configurePartidoViewHolder(PartidoViewHolder vh4, int position) {
         final Partido partido = (Partido) items.get(position);
-        if(partido != null){
+        if (partido != null) {
             try {
                 System.gc();
                 Picasso.with(context).load(partido.getImagen()).resize(450, 450).placeholder(R.drawable.nopicpartidolow).into(vh4.imagen);
-            }catch (Exception e){e.printStackTrace();}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             vh4.nombre.setText(partido.getNombre());
             vh4.representantes.setText(partido.getRepresentantes());
             vh4.fundacion.setText(partido.getFundacion());
@@ -308,13 +313,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         vh4.partidosRepresentados.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
     }
 
-    private void configurePoliticoViewHolder(PoliticoViewHolder vh5,int position) {
+    private void configurePoliticoViewHolder(PoliticoViewHolder vh5, int position) {
         final Politico politico = (Politico) items.get(position);
-        if(politico != null) {
+        if (politico != null) {
             try {
                 System.gc();
                 Picasso.with(context).load(politico.getImagen()).resize(450, 450).placeholder(R.drawable.nopicpoliticolow).centerInside().into(vh5.imagen);
-            }catch (Exception e){e.printStackTrace();}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             vh5.nombre.setText(politico.getNombre());
             vh5.edad.setText(politico.getEdad());
             vh5.partido.setText(politico.getPartido());
@@ -342,9 +349,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     }
 
-    private void configureTitleViewHolder(TitleViewHolder vh6,int position) {
+    private void configureTitleViewHolder(TitleViewHolder vh6, int position) {
         final Title title = (Title) items.get(position);
-        if(title != null) {
+        if (title != null) {
             vh6.title.setText(title.getTitle());
         }
         vh6.link.setOnClickListener(new View.OnClickListener() {
@@ -355,6 +362,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                         HomeActivity.switchFragment(3);
                     } else if (nombreTitulo.equals(context.getResources().getString(R.string.titulo_noticias))) {
                         HomeActivity.switchFragment(0);
+                    } else if (nombreTitulo.equals(context.getResources().getString(R.string.titulo_resultados_2015))) {
+                        HomeActivity.switchFragment(3);
+                    } else if (nombreTitulo.equals(context.getResources().getString(R.string.titulo_evolucion))) {
+                        HomeActivity.switchFragment(3);
                     } else {
                         HomeActivity.switchFragment(1);
                     }
@@ -372,9 +383,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     }
 
-    private void configureMensajeViewHolder(MensajeViewHolder vh7,int position) {
+    private void configureMensajeViewHolder(MensajeViewHolder vh7, int position) {
         final Mensaje mensaje = (Mensaje) items.get(position);
-        if(mensaje != null) {
+        if (mensaje != null) {
             vh7.mensaje.setText(mensaje.getMensaje());
         }
         //Fonts
@@ -382,31 +393,35 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     }
 
-    private void configureGrafico2012ViewHolder(Grafico2012ViewHolder vh8,int position) {
+    private void configureGrafico2012ViewHolder(Grafico2012ViewHolder vh8, int position) {
         final PieChartItem2012 grafico = (PieChartItem2012) items.get(position);
-        ChartData<?> mChartData =  grafico.getItemData();
+        ChartData<?> mChartData = grafico.getItemData();
 
         mChartData.setValueFormatter(new PercentFormatter());
         mChartData.setValueTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
 
-        if(getScreenWidth()>720){
+        if (getSizeName(context).equals("xlarge")) {
             mChartData.setValueTextSize(25f);
-        }else if(getScreenWidth()>480){
+        } else if (getSizeName(context).equals("large")) {
+            mChartData.setValueTextSize(17f);
+        } else if (getSizeName(context).equals("normal")) {
             mChartData.setValueTextSize(15f);
-        } else{
+        }else {
             mChartData.setValueTextSize(11f);
         }
 
         mChartData.setValueTextColor(Color.BLACK);
 
-        if(grafico != null) {
+        if (grafico != null) {
             // apply styling
 
-            if(getScreenWidth()>720){
+            if (getSizeName(context).equals("xlarge")) {
                 vh8.grafico.setCenterTextSize(40f);
-            }else if(getScreenWidth()>480){
+            } else if (getSizeName(context).equals("large")) {
+                vh8.grafico.setCenterTextSize(29f);
+            } else if (getSizeName(context).equals("normal")) {
                 vh8.grafico.setCenterTextSize(26f);
-            } else{
+            }else {
                 vh8.grafico.setCenterTextSize(17f);
             }
 
@@ -427,13 +442,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
             Legend l = vh8.grafico.getLegend();
 
-            if(getScreenWidth()>720){
+            if (getSizeName(context).equals("xlarge")) {
                 l.setTextSize(30f);
                 l.setFormSize(30f);
-            }else if(getScreenWidth()>480){
+            } else if (getSizeName(context).equals("large")) {
+                l.setTextSize(17f);
+                l.setFormSize(17f);
+            } else if (getSizeName(context).equals("normal")) {
                 l.setTextSize(15f);
                 l.setFormSize(15f);
-            } else{
+            }else {
                 l.setTextSize(11f);
                 l.setFormSize(11f);
             }
@@ -452,29 +470,33 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     }
 
-    private void configureGrafico2015ViewHolder(Grafico2015ViewHolder vh9,int position) {
+    private void configureGrafico2015ViewHolder(Grafico2015ViewHolder vh9, int position) {
         final PieChartItem grafico = (PieChartItem) items.get(position);
-        ChartData<?> mChartData =  grafico.getItemData();
+        ChartData<?> mChartData = grafico.getItemData();
 
         mChartData.setValueFormatter(new PercentFormatter());
         mChartData.setValueTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
-        if(getScreenWidth()>720){
+        if (getSizeName(context).equals("xlarge")) {
             mChartData.setValueTextSize(25f);
-        }else if(getScreenWidth()>480){
+        } else if (getSizeName(context).equals("large")) {
+            mChartData.setValueTextSize(17f);
+        } else if (getSizeName(context).equals("normal")) {
             mChartData.setValueTextSize(15f);
-        } else{
+        }else {
             mChartData.setValueTextSize(11f);
         }
         mChartData.setValueTextColor(Color.BLACK);
 
-        if(grafico != null) {
+        if (grafico != null) {
             // apply styling
 
-            if(getScreenWidth()>720){
+            if (getSizeName(context).equals("xlarge")) {
                 vh9.grafico.setCenterTextSize(40f);
-            }else if(getScreenWidth()>480){
+            } else if (getSizeName(context).equals("large")) {
+                vh9.grafico.setCenterTextSize(29f);
+            } else if (getSizeName(context).equals("normal")) {
                 vh9.grafico.setCenterTextSize(26f);
-            } else{
+            }else {
                 vh9.grafico.setCenterTextSize(17f);
             }
 
@@ -492,13 +514,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
             Legend l = vh9.grafico.getLegend();
 
-            if(getScreenWidth()>720){
+            if (getSizeName(context).equals("xlarge")) {
                 l.setTextSize(30f);
                 l.setFormSize(30f);
-            }else if(getScreenWidth()>480){
+            } else if (getSizeName(context).equals("large")) {
+                l.setTextSize(18f);
+                l.setFormSize(18f);
+            } else if (getSizeName(context).equals("normal")) {
                 l.setTextSize(15f);
                 l.setFormSize(15f);
-            } else{
+            }else {
                 l.setTextSize(11f);
                 l.setFormSize(11f);
             }
@@ -517,7 +542,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     }
 
-    private void configureGraficoLineasViewHolder(GraficoLineasViewHolder vh10,int position) {
+    private void configureGraficoLineasViewHolder(GraficoLineasViewHolder vh10, int position) {
         final LineChartItem grafico = (LineChartItem) items.get(position);
         ChartData<?> mChartData = grafico.getItemData();
 
@@ -545,15 +570,19 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             rightAxis.setLabelCount(5, false);
             rightAxis.setDrawGridLines(false);
 
-            if(getScreenWidth()>720){
+            if (getSizeName(context).equals("xlarge")) {
                 xAxis.setTextSize(20f);
                 leftAxis.setTextSize(20f);
                 rightAxis.setTextSize(20f);
-            }else if(getScreenWidth()>480){
+            } else if (getSizeName(context).equals("large")) {
+                xAxis.setTextSize(13f);
+                leftAxis.setTextSize(13f);
+                rightAxis.setTextSize(13f);
+            } else if (getSizeName(context).equals("normal")) {
                 xAxis.setTextSize(11f);
                 leftAxis.setTextSize(11f);
                 rightAxis.setTextSize(11f);
-            } else{
+            }else {
                 xAxis.setTextSize(8f);
                 leftAxis.setTextSize(8f);
                 rightAxis.setTextSize(8f);
@@ -570,16 +599,19 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             l.setYEntrySpace(0f);
             l.setYOffset(0f);
             l.setWordWrapEnabled(true);
-           // l.setCustom(mChartData.getColors(), createLegendLines(mChartData));
+            // l.setCustom(mChartData.getColors(), createLegendLines(mChartData));
             l.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
 
-            if(getScreenWidth()>720){
+            if (getSizeName(context).equals("xlarge")) {
                 l.setTextSize(30f);
                 l.setFormSize(30f);
-            }else if(getScreenWidth()>480){
+            } else if (getSizeName(context).equals("large")) {
+                l.setTextSize(18f);
+                l.setFormSize(18f);
+            } else if (getSizeName(context).equals("normal")) {
                 l.setTextSize(15f);
                 l.setFormSize(15f);
-            } else{
+            }else {
                 l.setTextSize(11f);
                 l.setFormSize(11f);
             }
@@ -588,13 +620,24 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     }
 
-    public int getScreenWidth(){
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        Display display = wm.getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        return size.x;
+    private static String getSizeName(Context context) {
+        int screenLayout = context.getResources().getConfiguration().screenLayout;
+        screenLayout &= Configuration.SCREENLAYOUT_SIZE_MASK;
+
+        switch (screenLayout) {
+            case Configuration.SCREENLAYOUT_SIZE_SMALL:
+                return "small";
+            case Configuration.SCREENLAYOUT_SIZE_NORMAL:
+                return "normal";
+            case Configuration.SCREENLAYOUT_SIZE_LARGE:
+                return "large";
+            case 4: // Configuration.SCREENLAYOUT_SIZE_XLARGE is API >= 9
+                return "xlarge";
+            default:
+                return "undefined";
+        }
     }
+
 
     public String [] createLegend(ChartData<?> mChartData){
         //Datos de alias de partidos.

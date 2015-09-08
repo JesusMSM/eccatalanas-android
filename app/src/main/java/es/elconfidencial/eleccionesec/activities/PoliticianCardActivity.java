@@ -52,8 +52,16 @@ public class PoliticianCardActivity extends ActionBarActivity {
 
             int resid=intent.getIntExtra("imagen", 0);
             //Load Image
-            Picasso.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).resize(width, height * 2 / 3).centerInside().transform(new VignetteFilterTransformation(getApplicationContext(),
-                    new PointF(0.5f, 0.5f), new float[]{0.0f, 0.0f, 0.0f}, 0f, 0.75f)).into(imagen);
+            int currentapiVersion = android.os.Build.VERSION.SDK_INT;
+
+
+            if (currentapiVersion >= 19) {
+                Picasso.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).centerInside().transform(new VignetteFilterTransformation(getApplicationContext(),
+                        new PointF(0.5f, 0.5f), new float[]{0.0f, 0.0f, 0.0f}, 0f, 0.75f)).into(imagen);
+            } else {
+                Picasso.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).centerInside().into(imagen);
+            }
+
             /*BitmapFactory.Options opts = new BitmapFactory.Options();
             opts.inDither = true;
             opts.inSampleSize = 3;
