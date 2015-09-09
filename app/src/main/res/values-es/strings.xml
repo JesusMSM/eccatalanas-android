@@ -403,7 +403,7 @@ es decir, la independencia de Cataluña.</p>
 
     <!-- UDC -->
     <string name="udc_nombre">Unió Democràtica de Catalunya</string>
-    <string name="udc_representantes">Ramon Espadaler</string>
+    <string name="udc_representantes">Representante: Ramón Espadaler</string>
     <string name="udc_fundacion">Fundación: 1931</string>
     <string name="udc_escanos">Número de escaños actuales: 37 / 135 (dentro de CiU)</string>
     <string name="udc_porcentajeVotos">% de votos en las últimas elecciones: 30,70%</string>

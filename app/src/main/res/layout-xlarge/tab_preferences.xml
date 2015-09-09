@@ -1,32 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:id="@+id/scrollView">
+    <LinearLayout
+        android:id="@+id/tab_preferences"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+        android:background="@color/black">
+
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/imageView"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/huawei_logo"
             android:scaleType="centerCrop"
             android:cropToPadding="true"
-            android:adjustViewBounds="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:alpha="0.5"
 
             />
-</FrameLayout>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView">
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:id="@+id/preferencias"
+            android:text="@string/action_settings"
+            android:textSize="24pt"
+            android:textColor="@color/white"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAllCaps="true"/>
+
+        <!--  <Button
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="GUARDAR"
+              android:id="@+id/guardar"
+              android:textColor="@color/white"
+              android:layout_gravity="end"
+              android:background="@android:color/transparent"
+              android:cropToPadding="true"
+              android:adjustViewBounds="true" /> -->
+
+
+    </FrameLayout>
+
 
             <!-- ENCABEZADO -->
 
@@ -462,12 +492,5 @@
                 android:adjustViewBounds="true" />
 
 
-
-
-        </LinearLayout>
-
-    </ScrollView>
-
-
-
 </LinearLayout>
+</ScrollView>

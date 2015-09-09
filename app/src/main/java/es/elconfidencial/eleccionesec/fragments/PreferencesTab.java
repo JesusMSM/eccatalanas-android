@@ -61,12 +61,12 @@ public class PreferencesTab extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v =inflater.inflate(R.layout.tab_preferences,container,false);
+        v =inflater.inflate(R.layout.tab_preferences, container, false);
         context = getActivity().getApplicationContext();
         activity = getActivity();
 
-        header = (ImageView) v.findViewById(R.id.imageView);
-        header.setImageResource(R.drawable.preferencias);
+       // header = (ImageView) v.findViewById(R.id.imageView);
+       // header.setImageResource(R.drawable.preferencias);
         pushManager = PushManager.getInstance(getActivity());
 
         //Escondemos el boton guardar (Tab)
@@ -256,6 +256,12 @@ public class PreferencesTab extends Fragment {
     }
     private void insertFonts(View v){
         // --------- Ajuste de Fonts-----------
+
+        //Título
+        Typeface mb = Typeface.createFromAsset(context.getAssets(),
+                "Milio-Bold.ttf");
+        TextView preferencias = (TextView) v.findViewById(R.id.preferencias);
+        preferencias.setTypeface(mb);
 
         //Semibold(títulos)
         Typeface ts = Typeface.createFromAsset(HomeActivity.context.getAssets(),

@@ -61,8 +61,6 @@ public class PreferencesActivity extends Activity {
 
         setContentView(R.layout.tab_preferences);
 
-        header = (ImageView) findViewById(R.id.imageView);
-        header.setImageResource(R.drawable.preferencias);
 
         Button saveButton = (Button) findViewById(R.id.guardar);
         saveButton.setOnClickListener(new Button.OnClickListener() {
@@ -198,10 +196,16 @@ public class PreferencesActivity extends Activity {
     }
     private void insertFonts(){
         // --------- Ajuste de Fonts-----------
+        //Título
+        Typeface mb = Typeface.createFromAsset(context.getAssets(),
+                "Milio-Bold.ttf");
+        TextView preferencias = (TextView) findViewById(R.id.preferencias);
+        preferencias.setTypeface(mb);
 
         //Semibold(títulos)
         Typeface ts = Typeface.createFromAsset(context.getAssets(),
                 "Titillium-Semibold.otf");
+
         TextView suscripcion = (TextView) findViewById(R.id.suscripcion);
         TextView idioma = (TextView) findViewById(R.id.idioma);
 

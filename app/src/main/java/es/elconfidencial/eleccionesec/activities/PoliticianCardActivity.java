@@ -1,6 +1,8 @@
 package es.elconfidencial.eleccionesec.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -27,6 +29,8 @@ import jp.wasabeef.glide.transformations.ColorFilterTransformation;
 import jp.wasabeef.glide.transformations.gpu.VignetteFilterTransformation;
 
 public class PoliticianCardActivity extends ActionBarActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,13 +83,25 @@ public class PoliticianCardActivity extends ActionBarActivity {
         cargo.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Semibold.otf"));
         edad.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Semibold.otf"));
 
+        //Obtenemos el tamaño de letra del contenido dependiendo del tamaño de pantalla
+        String textSize= "";
+        if (getSizeName().equals("xlarge")) {
+            textSize="25px";
+        } else if (getSizeName().equals("large")) {
+            textSize="18px";
+        } else if (getSizeName().equals("normal")) {
+            textSize="16px";
+        }else {
+            textSize="14px";
+        }
+
         //Insertamos la cabecera al html con el estilo
         String head = "<head><style>@font-face {font-family: MilioHeavy;text-align:justify; src: url(\"file:///android_asset/Milio-Heavy.ttf\")}" +
                 "@font-face {font-family: TitilliumLight;src: url(\"file:///android_asset/Titillium-Light.otf\")}" +
                 "@font-face {font-family: TitilliumSemibold;src: url(\"file:///android_asset/Titillium-Semibold.otf\")}" +
                 "body{font-family:TitilliumLight;}" +
                 "strong{font-family:TitilliumSemibold;}"+
-                "@media (max-width: 1280px) {html { font-size: 25px;}} @media (max-width: 720px) { html { font-size: 18px;}} @media (max-width: 480px) { html { font-size: 16px; }}" +
+                "html { font-size: " + textSize + ";}" +
                 "img{max-width: 100%; width:auto; height: auto;}</style></head>";
         String htmlString ="<html>" + head + "<body style='text-align:justify;'>" + intent.getStringExtra("perfil") + "</body></html>";
         System.out.println(intent.getStringExtra("perfil"));
@@ -129,6 +145,24 @@ public class PoliticianCardActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private String getSizeName() {
+        int screenLayout = getResources().getConfiguration().screenLayout;
+        screenLayout &= Configuration.SCREENLAYOUT_SIZE_MASK;
+
+        switch (screenLayout) {
+            case Configuration.SCREENLAYOUT_SIZE_SMALL:
+                return "small";
+            case Configuration.SCREENLAYOUT_SIZE_NORMAL:
+                return "normal";
+            case Configuration.SCREENLAYOUT_SIZE_LARGE:
+                return "large";
+            case 4: // Configuration.SCREENLAYOUT_SIZE_XLARGE is API >= 9
+                return "xlarge";
+            default:
+                return "undefined";
+        }
     }
 
     @Override

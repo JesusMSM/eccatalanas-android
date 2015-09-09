@@ -1,6 +1,8 @@
 package es.elconfidencial.eleccionesec.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -64,6 +66,20 @@ public class NoticiaContentActivity extends ActionBarActivity {
         titulo.setText(Html.fromHtml(intent.getStringExtra("titulo")));
         autor.setText(Html.fromHtml(intent.getStringExtra("autor")));
         fecha.setText(getTimeAgo(intent.getStringExtra("fecha")));
+
+        //Obtenemos el tamaño de letra del contenido dependiendo del tamaño de pantalla
+        String textSize= "";
+        if (getSizeName().equals("xlarge")) {
+            textSize="25px";
+        } else if (getSizeName().equals("large")) {
+            textSize="18px";
+        } else if (getSizeName().equals("normal")) {
+            textSize="16px";
+        }else {
+            textSize="14px";
+        }
+
+
         //Insertamos la cabecera al html con el estilo
         String head = "<head><style>@font-face {font-family: MilioHeavy;src: url(\"file:///android_asset/Milio-Heavy.ttf\")}" +
                 "@font-face {font-family: TitilliumLight;src: url(\"file:///android_asset/Titillium-Light.otf\")}" +
@@ -72,7 +88,7 @@ public class NoticiaContentActivity extends ActionBarActivity {
                 "img{max-width: 100%; width:auto; height: auto;}" +
                 "body{font-family:TitilliumLight;text-align:justify}" +
                 "a{text-decoration: none;color:black;} " +
-                "@media (max-width: 1280px) {html { font-size: 25px;}} @media (max-width: 720px) { html { font-size: 18px;}} @media (max-width: 480px) { html { font-size: 16px; }}" +
+                "html { font-size: " + textSize + "}" +
                 "strong{font-family:TitilliumSemibold;}</style></head>";
 
         String htmlString ="<html>" + head + "<body><div>" + intent.getStringExtra("descripcion") + "</div></body></html>";
@@ -132,6 +148,24 @@ public class NoticiaContentActivity extends ActionBarActivity {
         System.gc();
         finish();
         super.onBackPressed();
+    }
+
+    private String getSizeName() {
+        int screenLayout = getResources().getConfiguration().screenLayout;
+        screenLayout &= Configuration.SCREENLAYOUT_SIZE_MASK;
+
+        switch (screenLayout) {
+            case Configuration.SCREENLAYOUT_SIZE_SMALL:
+                return "small";
+            case Configuration.SCREENLAYOUT_SIZE_NORMAL:
+                return "normal";
+            case Configuration.SCREENLAYOUT_SIZE_LARGE:
+                return "large";
+            case 4: // Configuration.SCREENLAYOUT_SIZE_XLARGE is API >= 9
+                return "xlarge";
+            default:
+                return "undefined";
+        }
     }
 
     public void shareAction(String url, String info){

@@ -411,7 +411,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             mChartData.setValueTextSize(11f);
         }
 
-        mChartData.setValueTextColor(Color.BLACK);
+        mChartData.setValueTextColor(Color.WHITE);
 
         if (grafico != null) {
             // apply styling
@@ -487,7 +487,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }else {
             mChartData.setValueTextSize(11f);
         }
-        mChartData.setValueTextColor(Color.BLACK);
+        mChartData.setValueTextColor(Color.WHITE);
 
         if (grafico != null) {
             // apply styling
