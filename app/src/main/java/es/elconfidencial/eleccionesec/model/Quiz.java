@@ -5,20 +5,28 @@ package es.elconfidencial.eleccionesec.model;
  * Created by MOONFISH on 01/08/2015.
  */
 public class Quiz {
+    private int imagen;
     private String titulo;
     private String autor;
-    private String imagenUrl;
     private String link;
 
     public Quiz(){
         super();
     }
 
-    public Quiz(String titulo, String autor, String imagenUrl, String link) {
+    public Quiz(int imagen, String titulo, String autor, String link) {
+        this.imagen = imagen;
         this.titulo = titulo;
         this.autor = autor;
-        this.imagenUrl = imagenUrl;
         this.link = link;
+    }
+
+    public int getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(int imagen) {
+        this.imagen = imagen;
     }
 
     public String getTitulo() {
@@ -35,14 +43,6 @@ public class Quiz {
 
     public void setAutor(String autor) {
         this.autor = autor;
-    }
-
-    public String getImagenUrl() {
-        return imagenUrl;
-    }
-
-    public void setImagenUrl(String imagenUrl) {
-        this.imagenUrl = imagenUrl;
     }
 
     public String getLink() {

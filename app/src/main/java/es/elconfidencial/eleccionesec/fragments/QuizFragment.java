@@ -3,10 +3,6 @@ package es.elconfidencial.eleccionesec.fragments;
 /**
  * Created by MOONFISH on 14/07/2015.
  */
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.annotation.Nullable;
@@ -23,7 +19,6 @@ import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.activities.HomeActivity;
 import es.elconfidencial.eleccionesec.adapters.MyRecyclerViewAdapter;
 import es.elconfidencial.eleccionesec.model.Quiz;
-import es.elconfidencial.eleccionesec.rss.RssQuizsParser;
 
 
 public class QuizFragment extends Fragment {
@@ -45,58 +40,25 @@ public class QuizFragment extends Fragment {
 
         //RecyclerView
         mRecyclerView = (RecyclerView) v.findViewById(R.id.quiz_recycler_view);
-        //mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(HomeActivity.context);
         mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new MyRecyclerViewAdapter(HomeActivity.context, getSampleArrayList());
+        mRecyclerView.setAdapter(mAdapter);
 
-
-        try {
-            if(haveNetworkConnection())new CargarXmlTask().execute(rss_url);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        
 
         return v;
     }
 
-    private boolean haveNetworkConnection() {
-        boolean haveConnectedWifi = false;
-        boolean haveConnectedMobile = false;
 
-        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
-        for (NetworkInfo ni : netInfo) {
-            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
-                if (ni.isConnected())
-                    haveConnectedWifi = true;
-            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
-                if (ni.isConnected())
-                    haveConnectedMobile = true;
-        }
-        return haveConnectedWifi || haveConnectedMobile;
-    }
-
-    /*Permite gestionar de forma asincrona el RSS */
-    private class CargarXmlTask extends AsyncTask<String,Integer,Boolean> {
-
-        protected Boolean doInBackground(String... params) {
-            RssQuizsParser saxparser =
-                    new RssQuizsParser(params[0]);
-
-            if(haveNetworkConnection())quizs = saxparser.parse();
-            return true;
-        }
-        protected void onPostExecute(Boolean result) {
-            //Tratamos la lista de quizs.
-            if (isAdded()) {
-
-
-                for (Quiz quiz : quizs) {
-                    items.add(quiz);
-                }
-                mAdapter = new MyRecyclerViewAdapter(HomeActivity.context, items);
-                mRecyclerView.setAdapter(mAdapter);
-            }
-        }
+    private ArrayList<Object> getSampleArrayList() {
+        ArrayList<Object> items = new ArrayList<>();
+        items.add(new Quiz(R.drawable.nopic, getString(R.string.alerta_conexion_noticias), getString(R.string.autor_quiz), "http://datos.elconfidencial.com/quizcat1/"));
+        items.add(new Quiz(R.drawable.nopic, getString(R.string.alerta_conexion_noticias), getString(R.string.autor_quiz), "http://datos.elconfidencial.com/quizcat2/"));
+        items.add(new Quiz(R.drawable.nopic, getString(R.string.alerta_conexion_noticias), getString(R.string.autor_quiz), "http://datos.elconfidencial.com/quizcat3/"));
+        items.add(new Quiz(R.drawable.nopic, getString(R.string.alerta_conexion_noticias), getString(R.string.autor_quiz), "http://datos.elconfidencial.com/quizcat4/"));
+        items.add(new Quiz(R.drawable.nopic, getString(R.string.alerta_conexion_noticias), getString(R.string.autor_quiz), "http://datos.elconfidencial.com/quizcat5/"));
+        return items;
     }
 }

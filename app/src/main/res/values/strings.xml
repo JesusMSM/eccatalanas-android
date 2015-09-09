@@ -20,4 +20,5 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_party_card">PartyCardActivity</string>
+    <string name="title_activity_quiz_content">QuizContentActivity</string>
 </resources>

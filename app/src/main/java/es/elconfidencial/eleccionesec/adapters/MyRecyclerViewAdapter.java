@@ -35,6 +35,7 @@ import es.elconfidencial.eleccionesec.activities.HomeActivity;
 import es.elconfidencial.eleccionesec.activities.NoticiaContentActivity;
         import es.elconfidencial.eleccionesec.activities.PartyCardActivity;
         import es.elconfidencial.eleccionesec.activities.PoliticianCardActivity;
+import es.elconfidencial.eleccionesec.activities.QuizContentActivity;
 import es.elconfidencial.eleccionesec.chart.LineChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem2012;
@@ -245,17 +246,29 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     private void configureQuizViewHolder(QuizViewHolder vh2, int position) {
-        Quiz quiz = (Quiz) items.get(position);
+        final Quiz quiz = (Quiz) items.get(position);
         if (quiz != null) {
             vh2.titulo.setText(Html.fromHtml(quiz.getTitulo()));
             vh2.autor.setText(quiz.getAutor());
             try {
                 System.gc();
-                Glide.with(context).load(quiz.getImagenUrl()).placeholder(R.drawable.nopic).into(vh2.imagen);
+                Glide.with(context).load(quiz.getImagen()).placeholder(R.drawable.nopic).into(vh2.imagen);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
+        //onClickListenerNoticia
+        vh2.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Creamos un intent para llamar a QuizContentActivity con los extras del quiz correspondiente
+                Intent intent = new Intent(context, QuizContentActivity.class);
+                intent.putExtra("link", quiz.getLink());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
 
         //Fonts
         vh2.autor.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
