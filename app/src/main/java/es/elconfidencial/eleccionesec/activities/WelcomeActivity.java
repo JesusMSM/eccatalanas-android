@@ -21,6 +21,12 @@ import com.pushwoosh.BaseRegistrationReceiver;
 import com.pushwoosh.PushManager;*/
 
 
+import com.parse.GetCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -38,6 +44,7 @@ public class WelcomeActivity extends Activity {
     public static Context context;
     public ArrayList<IdiomaSpinnerModel> arrayIdiomasSpinner = new ArrayList<IdiomaSpinnerModel>();
     private IdiomaSpinnerAdapter idiomaAdapter;
+    String selectedProvincia = "Barcelona";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,20 +62,40 @@ public class WelcomeActivity extends Activity {
         TextView titulo = (TextView) findViewById(R.id.eg2015);
         titulo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Semibold.otf"));
 
-        //Provincia
+        //Introduce Provincia
+        TextView introduce = (TextView) findViewById(R.id.introduzcaProvincia);
+        introduce.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+
+        //Provincia Spinner
         Spinner spinnerProvincia = (Spinner) findViewById(R.id.spinnerProvincia);
         List<String> spinnerArray =  new ArrayList<String>();
         spinnerArray.add(getResources().getString(R.string.barcelona));
         spinnerArray.add(getResources().getString(R.string.gerona));
         spinnerArray.add(getResources().getString(R.string.lerida));
         spinnerArray.add(getResources().getString(R.string.tarragona));
+        spinnerArray.add(getResources().getString(R.string.otra_provincia));
 
         ProvinciaSpinnerAdapter adapter = new ProvinciaSpinnerAdapter(
                 this, R.layout.row_custom_spinner_provincia, spinnerArray);
 
         spinnerProvincia.setAdapter(adapter);
-        String selectedProvincia = spinnerProvincia.getSelectedItem().toString();
+        spinnerProvincia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                switch (position){
+                    case 0: selectedProvincia = "Barcelona";break;
+                    case 1: selectedProvincia = "Gerona";break;
+                    case 2: selectedProvincia = "Lerida";break;
+                    case 3: selectedProvincia = "Tarragona";break;
+                    case 4: selectedProvincia = "OtraProvincia";break;
+                }
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         //Empezar Button
         Button empezar = (Button) findViewById(R.id.start);
@@ -141,6 +168,28 @@ public class WelcomeActivity extends Activity {
 
     /** Called when the user clicks the Start button */
     public void start(View view) {
+        // Enviar provincia a parse
+        try {
+            Parse.enableLocalDatastore(this);
+            //Autenticacion con Parse
+            Parse.initialize(this, "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        //Comunicacion con Parse.com
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Provincia");
+        query.whereEqualTo("Nombre",selectedProvincia);
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            public void done(ParseObject object, ParseException e) {
+                if (e == null) {
+                    object.increment("Valor");
+                    object.saveInBackground();
+                } else {
+                    // something went wrong
+                }
+            }
+        });
+
         Intent intent = new Intent(this, PreferencesActivity.class);
         startActivity(intent);
         finish();

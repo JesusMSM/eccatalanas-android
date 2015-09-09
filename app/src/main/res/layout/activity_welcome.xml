@@ -31,7 +31,17 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/eg2015"
         android:id="@+id/spinnerIdioma"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="10pt"
+        android:text="@string/introduce_tu_provincia"
+        android:id="@+id/introduzcaProvincia"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/spinnerIdioma"
+        />
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +49,7 @@
         android:paddingTop="@dimen/abc_button_padding_vertical_material"
         android:paddingBottom="@dimen/abc_button_padding_vertical_material"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/spinnerIdioma"
+        android:layout_below="@+id/introduzcaProvincia"
         android:id="@+id/spinnerProvincia"
         android:layout_marginBottom="20dp"/>
     <Button

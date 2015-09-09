@@ -393,7 +393,7 @@
 
         <!-- ¿Desea recibir notificaciones? -->
 
-        <RelativeLayout
+        <!--<RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -417,7 +417,7 @@
                 android:layout_alignParentEnd="true"
                 android:id="@+id/notificaciones" />
 
-        </RelativeLayout>
+        </RelativeLayout>-->
 
 
 

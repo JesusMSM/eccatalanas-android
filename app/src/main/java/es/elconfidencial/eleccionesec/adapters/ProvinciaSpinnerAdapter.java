@@ -47,7 +47,7 @@ public class ProvinciaSpinnerAdapter extends ArrayAdapter<String> {
 
         View row = inflater.inflate(R.layout.row_custom_spinner_provincia, parent, false);
 
-        TextView nombre        = (TextView)row.findViewById(R.id.nombreProvincia);
+        TextView nombre = (TextView)row.findViewById(R.id.nombreProvincia);
 
         // Set values for spinner each row
         nombre.setText(data.get(position));

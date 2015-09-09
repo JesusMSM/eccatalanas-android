@@ -289,7 +289,7 @@ public class PreferencesTab extends Fragment {
         csqep.setTypeface(tr);
         jps.setTypeface(tr);
         cup.setTypeface(tr);
-        notificaciones_descripcion.setTypeface(tr);
+        //notificaciones_descripcion.setTypeface(tr);
         buttonIdiomas.setTypeface(tr);
     }
 

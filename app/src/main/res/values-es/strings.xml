@@ -38,6 +38,8 @@
     <string name="lerida">Lérida</string>
     <string name="gerona">Gerona</string>
     <string name="tarragona">Tarragona</string>
+    <string name="otra_provincia">Otra provincia</string>
+
     <string name="welcome_string">ELECCIONES CATALUÑA 2015</string>
 
     <!-- ______________________________STRINGS FICHAS POLÍTICOS_______________________________ -->

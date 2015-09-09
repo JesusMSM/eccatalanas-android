@@ -231,7 +231,7 @@ public class PreferencesActivity extends Activity {
         csqep.setTypeface(tr);
         jps.setTypeface(tr);
         cup.setTypeface(tr);
-        notificaciones_descripcion.setTypeface(tr);
+        //notificaciones_descripcion.setTypeface(tr);
 
     }
 }
