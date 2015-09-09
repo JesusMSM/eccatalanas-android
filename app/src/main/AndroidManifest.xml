@@ -45,13 +45,12 @@
 
         <!-- Datos necesarios para comunicarse con PushWoosh. ATENCION: Cambiarlos por los de EC -->
         <!--datos ec-->
-        <!--PROJECT ID A807286549465-->
         <meta-data
             android:name="PW_APPID"
-            android:value="A94E0-35179" />
+            android:value="0ADCC-0C2A4" />
         <meta-data
             android:name="PW_PROJECT_ID"
-            android:value="A8965404761" />
+            android:value="A807286549465" />
         <meta-data android:name="PW_LOG_LEVEL" android:value="ERROR" />
 
         <activity
