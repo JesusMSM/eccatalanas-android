@@ -32,6 +32,7 @@
     <string name="titulo_noticias">últimas noticias</string>
     <string name="titulo_fichas">Fichas</string>
     <string name="alerta_conexion_noticias">Conéctese a Internet para recibir las ultimas noticias sobre las Elecciones</string>
+    <string name="alerta_espera_datos">Esperant dades d\'escrutini</string>
 
     <string name="barcelona">Barcelona</string>
     <string name="gerona">Girona</string>
