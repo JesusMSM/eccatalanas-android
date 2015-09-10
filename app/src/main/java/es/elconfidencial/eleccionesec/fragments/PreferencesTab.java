@@ -259,7 +259,7 @@ public class PreferencesTab extends Fragment {
 
         //Título
         Typeface mb = Typeface.createFromAsset(context.getAssets(),
-                "Milio-Bold.ttf");
+                "Titillium-Regular.otf");
         TextView preferencias = (TextView) v.findViewById(R.id.preferencias);
         preferencias.setTypeface(mb);
 
@@ -284,7 +284,6 @@ public class PreferencesTab extends Fragment {
         TextView csqep = (TextView) v.findViewById(R.id.csqep);
         TextView jps = (TextView) v.findViewById(R.id.jps);
         TextView cup = (TextView) v.findViewById(R.id.cup);
-        TextView notificaciones_descripcion = (TextView) v.findViewById(R.id.notificaciones_descripcion);
 
         suscripcion_descripcion.setTypeface(tr);
         cdc.setTypeface(tr);
@@ -295,7 +294,6 @@ public class PreferencesTab extends Fragment {
         csqep.setTypeface(tr);
         jps.setTypeface(tr);
         cup.setTypeface(tr);
-        //notificaciones_descripcion.setTypeface(tr);
         buttonIdiomas.setTypeface(tr);
     }
 
