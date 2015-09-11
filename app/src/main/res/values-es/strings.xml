@@ -52,7 +52,55 @@
     <string name="lerida">Lérida</string>
     <string name="gerona">Gerona</string>
     <string name="tarragona">Tarragona</string>
-    <string name="otra_provincia">Otra provincia</string>
+
+    <string name="alava">Álava</string>
+    <string name="albacete">Albacete</string>
+    <string name="alicante">Alicante</string>
+    <string name="almeria">Almería</string>
+    <string name="asturias">Asturias</string>
+    <string name="avila">Ávila</string>
+    <string name="badajoz">Badajoz</string>
+    <string name="burgos">Burgos</string>
+    <string name="caceres">Cáceres</string>
+    <string name="cadiz">Cádiz</string>
+    <string name="cantabria">Cantabria</string>
+    <string name="castellon">Castellón</string>
+    <string name="ciudad_real">Ciudad Real</string>
+    <string name="cordoba">Córdoba</string>
+    <string name="coruña">La Coruña</string>
+    <string name="cuenca">Cuenca</string>
+    <string name="granada">Granada</string>
+    <string name="guadalajara">Guadalajara</string>
+    <string name="guipuzcoa">Guipúzcoa</string>
+    <string name="huelva">Huelva</string>
+    <string name="baleares">Islas Baleares</string>
+    <string name="jaen">Jaén</string>
+    <string name="leon">León</string>
+    <string name="lugo">Lugo</string>
+    <string name="madrid">Madrid</string>
+    <string name="malaga">Málaga</string>
+    <string name="murcia">Murcia</string>
+    <string name="navarra">Navarra</string>
+    <string name="orense">Orense</string>
+    <string name="huesca">Huesca</string>
+    <string name="palencia">Palencia</string>
+    <string name="laspalmas">Las Palmas</string>
+    <string name="pontevedra">Pontevedra</string>
+    <string name="larioja">La Rioja</string>
+    <string name="salamanca">Salamanca</string>
+    <string name="segovia">Segovia</string>
+    <string name="sevilla">Sevilla</string>
+    <string name="soria">Soria</string>
+    <string name="tenerife">Tenerife</string>
+    <string name="teruel">Teruel</string>
+    <string name="toledo">Toledo</string>
+    <string name="valencia">Valencia</string>
+    <string name="valladolid">Valladolid</string>
+    <string name="vizcaya">Vizcaya</string>
+    <string name="zamora">Zamora</string>
+    <string name="zaragoza">Zaragoza</string>
+    <string name="error_provincia">Por favor, introduzca su provincia</string>
+
 
     <string name="welcome_string">ELECCIONES CATALUÑA 2015</string>
 

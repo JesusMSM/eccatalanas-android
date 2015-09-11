@@ -4,4 +4,56 @@
         <item>@string/castellano</item>
         <item>@string/catalan</item>
     </string-array>
+    <string-array name="provincias">
+        <item>@string/barcelona</item>
+        <item>@string/lerida</item>
+        <item>@string/gerona</item>
+        <item>@string/tarragona</item>
+        <item>@string/alava</item>
+        <item>@string/albacete</item>
+        <item>@string/alicante</item>
+        <item>@string/almeria</item>
+        <item>@string/asturias</item>
+        <item>@string/avila</item>
+        <item>@string/badajoz</item>
+        <item>@string/burgos</item>
+        <item>@string/caceres</item>
+        <item>@string/cadiz</item>
+        <item>@string/cantabria</item>
+        <item>@string/castellon</item>
+        <item>@string/ciudad_real</item>
+        <item>@string/cordoba</item>
+        <item>@string/coruña</item>
+        <item>@string/cuenca</item>
+        <item>@string/granada</item>
+        <item>@string/guadalajara</item>
+        <item>@string/guipuzcoa</item>
+        <item>@string/huelva</item>
+        <item>@string/huesca</item>
+        <item>@string/baleares</item>
+        <item>@string/jaen</item>
+        <item>@string/leon</item>
+        <item>@string/lugo</item>
+        <item>@string/madrid</item>
+        <item>@string/malaga</item>
+        <item>@string/murcia</item>
+        <item>@string/navarra</item>
+        <item>@string/orense</item>
+        <item>@string/palencia</item>
+        <item>@string/laspalmas</item>
+        <item>@string/pontevedra</item>
+        <item>@string/larioja</item>
+        <item>@string/salamanca</item>
+        <item>@string/segovia</item>
+        <item>@string/sevilla</item>
+        <item>@string/soria</item>
+        <item>@string/tenerife</item>
+        <item>@string/teruel</item>
+        <item>@string/toledo</item>
+        <item>@string/valencia</item>
+        <item>@string/valladolid</item>
+        <item>@string/vizcaya</item>
+        <item>@string/zamora</item>
+        <item>@string/zaragoza</item>
+    </string-array>
 </resources>

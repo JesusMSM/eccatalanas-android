@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /*import com.pushwoosh.BasePushMessageReceiver;
 import com.pushwoosh.BaseRegistrationReceiver;
@@ -68,12 +69,15 @@ public class WelcomeActivity extends Activity {
 
         //Provincia Spinner
         Spinner spinnerProvincia = (Spinner) findViewById(R.id.spinnerProvincia);
+        String[] arrayProvincias = getResources().getStringArray(R.array.provincias);
         List<String> spinnerArray =  new ArrayList<String>();
-        spinnerArray.add(getResources().getString(R.string.barcelona));
-        spinnerArray.add(getResources().getString(R.string.gerona));
-        spinnerArray.add(getResources().getString(R.string.lerida));
-        spinnerArray.add(getResources().getString(R.string.tarragona));
-        spinnerArray.add(getResources().getString(R.string.otra_provincia));
+
+        //Default value
+        spinnerArray.add("-");
+
+        for (int i = 0; i<arrayProvincias.length;i++){
+            spinnerArray.add(arrayProvincias[i]);
+        }
 
         ProvinciaSpinnerAdapter adapter = new ProvinciaSpinnerAdapter(
                 this, R.layout.row_custom_spinner_provincia, spinnerArray);
@@ -83,11 +87,57 @@ public class WelcomeActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 switch (position){
-                    case 0: selectedProvincia = "Barcelona";break;
-                    case 1: selectedProvincia = "Gerona";break;
-                    case 2: selectedProvincia = "Lerida";break;
-                    case 3: selectedProvincia = "Tarragona";break;
-                    case 4: selectedProvincia = "OtraProvincia";break;
+                    case 0: selectedProvincia = "-";break;
+                    case 1: selectedProvincia = "Barcelona";break;
+                    case 2: selectedProvincia = "Gerona";break;
+                    case 3: selectedProvincia = "Lerida";break;
+                    case 4: selectedProvincia = "Tarragona";break;
+                    case 5: selectedProvincia = "Alava";break;
+                    case 6: selectedProvincia = "Albacete";break;
+                    case 7: selectedProvincia = "Alicante";break;
+                    case 8: selectedProvincia = "Almeria";break;
+                    case 9: selectedProvincia = "Asturias";break;
+                    case 10: selectedProvincia = "Avila";break;
+                    case 11: selectedProvincia = "Badajoz";break;
+                    case 12: selectedProvincia = "Burgos";break;
+                    case 13: selectedProvincia = "Caceres";break;
+                    case 14: selectedProvincia = "Cadiz";break;
+                    case 15: selectedProvincia = "Cantabria";break;
+                    case 16: selectedProvincia = "Castellon";break;
+                    case 17: selectedProvincia = "Ciudad Real";break;
+                    case 18: selectedProvincia = "Cordoba";break;
+                    case 19: selectedProvincia = "La Coruña";break;
+                    case 20: selectedProvincia = "Cuenca";break;
+                    case 21: selectedProvincia = "Granada";break;
+                    case 22: selectedProvincia = "Guadalajara";break;
+                    case 23: selectedProvincia = "Guipuzcoa";break;
+                    case 24: selectedProvincia = "Huelva";break;
+                    case 25: selectedProvincia = "Huesca";break;
+                    case 26: selectedProvincia = "Islas Baleares";break;
+                    case 27: selectedProvincia = "Jaen";break;
+                    case 28: selectedProvincia = "Leon";break;
+                    case 29: selectedProvincia = "Lugo";break;
+                    case 30: selectedProvincia = "Madrid";break;
+                    case 31: selectedProvincia = "Malaga";break;
+                    case 32: selectedProvincia = "Murcia";break;
+                    case 33: selectedProvincia = "Navarra";break;
+                    case 34: selectedProvincia = "Orense";break;
+                    case 35: selectedProvincia = "Palencia";break;
+                    case 36: selectedProvincia = "Las Palmas";break;
+                    case 37: selectedProvincia = "Pontevedra";break;
+                    case 38: selectedProvincia = "La Rioja";break;
+                    case 39: selectedProvincia = "Salamanca";break;
+                    case 40: selectedProvincia = "Segovia";break;
+                    case 41: selectedProvincia = "Sevilla";break;
+                    case 42: selectedProvincia = "Soria";break;
+                    case 43: selectedProvincia = "Tenerife";break;
+                    case 44: selectedProvincia = "Teruel";break;
+                    case 45: selectedProvincia = "Toledo";break;
+                    case 46: selectedProvincia = "Valencia";break;
+                    case 47: selectedProvincia = "Valladolid";break;
+                    case 48: selectedProvincia = "Vizcaya";break;
+                    case 49: selectedProvincia = "Zamora";break;
+                    case 50: selectedProvincia = "Zaragoza";break;
                 }
             }
 
@@ -168,31 +218,34 @@ public class WelcomeActivity extends Activity {
 
     /** Called when the user clicks the Start button */
     public void start(View view) {
-        // Enviar provincia a parse
-        try {
-            Parse.enableLocalDatastore(this);
-            //Autenticacion con Parse
-            Parse.initialize(this, "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        //Comunicacion con Parse.com
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Provincia");
-        query.whereEqualTo("Nombre",selectedProvincia);
-        query.getFirstInBackground(new GetCallback<ParseObject>() {
-            public void done(ParseObject object, ParseException e) {
-                if (e == null) {
-                    object.increment("Valor");
-                    object.saveInBackground();
-                } else {
-                    //something went wrong
-                }
+        if(!selectedProvincia.equals("-")) {
+            // Enviar provincia a parse
+            try {
+                Parse.enableLocalDatastore(this);
+                //Autenticacion con Parse
+                Parse.initialize(this, "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
-
-        Intent intent = new Intent(this, PreferencesActivity.class);
-        startActivity(intent);
-        finish();
+            //Comunicacion con Parse.com
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("Provincia");
+            query.whereEqualTo("Nombre", selectedProvincia);
+            query.getFirstInBackground(new GetCallback<ParseObject>() {
+                public void done(ParseObject object, ParseException e) {
+                    if (e == null) {
+                        object.increment("Valor");
+                        object.saveInBackground();
+                    } else {
+                        //something went wrong
+                    }
+                }
+            });
+            Intent intent = new Intent(this, PreferencesActivity.class);
+            startActivity(intent);
+            finish();
+        }else{
+            Toast.makeText(context,getResources().getString(R.string.error_provincia),Toast.LENGTH_SHORT).show();
+        }
     }
 
     /*public void idioma(View view) {
