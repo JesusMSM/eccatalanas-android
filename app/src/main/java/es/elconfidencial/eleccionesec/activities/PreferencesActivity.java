@@ -198,7 +198,7 @@ public class PreferencesActivity extends Activity {
         // --------- Ajuste de Fonts-----------
         //Título
         Typeface mb = Typeface.createFromAsset(context.getAssets(),
-                "Milio-Bold.ttf");
+                "Titillium-Regular.otf");
         TextView preferencias = (TextView) findViewById(R.id.preferencias);
         preferencias.setTypeface(mb);
 
@@ -224,7 +224,6 @@ public class PreferencesActivity extends Activity {
         TextView csqep = (TextView) findViewById(R.id.csqep);
         TextView jps = (TextView) findViewById(R.id.jps);
         TextView cup = (TextView) findViewById(R.id.cup);
-        TextView notificaciones_descripcion = (TextView) findViewById(R.id.notificaciones_descripcion);
 
         suscripcion_descripcion.setTypeface(tr);
         cdc.setTypeface(tr);
@@ -235,7 +234,6 @@ public class PreferencesActivity extends Activity {
         csqep.setTypeface(tr);
         jps.setTypeface(tr);
         cup.setTypeface(tr);
-        //notificaciones_descripcion.setTypeface(tr);
 
     }
 }

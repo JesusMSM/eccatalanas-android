@@ -32,7 +32,11 @@
     <string name="titulo_noticias">últimas noticias</string>
     <string name="titulo_fichas">Fichas</string>
     <string name="alerta_conexion_noticias">Conéctese a Internet para recibir las ultimas noticias sobre las Elecciones</string>
-    <string name="alerta_espera_datos">Esperant dades d\'escrutini</string>
+
+    <string name="alerta_espera_datos">Esperant dades d\'escrutini...</string>
+    <string name="alerta_conexion_quizes"><![CDATA[<p></p><p></p><p><strong>NO ES POSIBLE ACCEDER A LA ENCUESTA.</strong></p>
+    <p>Para poder completar la encuesta necesita conexión a Internet. Por favor, revise su conexión e intentalo de nuevo.</p>]]></string>
+
 
     <string name="barcelona">Barcelona</string>
     <string name="gerona">Girona</string>
@@ -495,7 +499,11 @@ La resta del partit va formar una coalició amb Convergència Democràtica de Ca
     <string name="csqep_porcentajeVotos">% vots en les últimes eleccions: nd</string>
     <string name="csqep_ideologia">Ideologia sobre Catalunya: Independencia republicana</string>
     <string name="csqep_partidosRepresentados">Partits representants: Podemos e ICV-EUiA</string>
-    <string name="csqep_perfil"></string>
+    <string name="csqep_perfil"><![CDATA[<p><strong>Catalunya Sí que és Pot</strong> és una coalició electoral catalana d´esquerres creada per a les eleccions al Parlament de Catalunya de 2015, a semblança de la plataforma <strong>Barcelona en comú</strong> que es va presentar a les eleccions municipals de 2015 a Barcelona.</p>
+
+<p>Aquesta candidatura unitària la integren <strong>Iniciativa per Catalunya Verds (ICV), Esquerra Unida i Alternativa (EUiA), Podem i Equo.</strong></p>
+
+<p>El seu cap de llista per Barcelona serà <strong>Lluís Rabell</strong>, fins ara president de la Federació d´Associacions de Veïns de Barcelona, i la número dos serà l´escriptora Gemma Lienas. Els següents llocs els ocuparan Joan Coscubiela (ICV), Àngels Martínez Castells (Podem) i Albano Dante Fachin (Podem). A les altres províncies, Girona estarà encapçalada per Marc Vidal (ICV), Lleida per Sara Vilà (ICV) i Tarragona per Gerard Bargalló (Podem).</p>]]></string>
 
 
 

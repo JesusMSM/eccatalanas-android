@@ -32,7 +32,9 @@
     <string name="titulo_noticias">últimas noticias</string>
     <string name="titulo_fichas">Fichas informativas</string>
     <string name="alerta_conexion_noticias">Conéctese a Internet para recibir las últimas noticias sobre las Elecciones</string>
-    <string name="alerta_espera_datos">Esperando datos del escrutinio</string>
+    <string name="alerta_espera_datos">Esperando datos del escrutinio...</string>
+    <string name="alerta_conexion_quizes"><![CDATA[<p></p><p></p><p><strong>NO ES POSIBLE ACCEDER A LA ENCUESTA.</strong></p>
+    <p>Para poder completar la encuesta necesita conexión a Internet. Por favor, revise su conexión e intentalo de nuevo.</p>]]></string>
 
     <string name="barcelona">Barcelona</string>
     <string name="lerida">Lérida</string>
@@ -486,7 +488,11 @@ En junio de 2015, los tres consejeros de Unió abandonaron el gobierno catalán,
     <string name="csqep_porcentajeVotos">% de votos en las últimas elecciones: nd</string>
     <string name="csqep_ideologia">Ideología sobre Cataluña: Independencia republicana</string>
     <string name="csqep_partidosRepresentados">Partidos representados: Podemos e ICV-EUiA</string>
-    <string name="csqep_perfil"></string>
+    <string name="csqep_perfil"><![CDATA[<p><strong>Catalunya Sí que es Pot</strong> es una coalición electoral catalana de <strong>izquierdas</strong> creada para las elecciones al Parlamento de Cataluña de 2015, a semejanza de la plataforma <strong>Barcelona en Comú</strong> que se presentó en las elecciones municipales de 2015 en Barcelona.</p>
+
+<p>Esta candidatura unitaria la integran <strong>Iniciativa per Catalunya Verds (ICV), Esquerra Unida i Alternativa (EUiA), Podemos y Equo.</strong></p>
+
+<p>Su cabeza de lista por Barcelona será <strong>Lluís Rabell</strong>, hasta ahora presidente de la Federación de Asociaciones de Vecinos de Barcelona, y la número dos será la escritora Gemma Lienas. Los siguientes puestos los ocuparán Joan Coscubiela (ICV), Àngels Martínez Castells (Podemos) y Albano Dante Fachin (Podemos). En las otras provincias, Gerona estará encabezada por Marc Vidal (ICV), Lérida por Sara Vilà (ICV) y Tarragona por Gerard Bargalló (Podemos).</p>]]></string>
 
 
 

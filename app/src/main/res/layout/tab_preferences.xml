@@ -466,6 +466,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="30dp"
                 android:text="@string/seleccion_idioma"
                 android:id="@+id/idiomaButton"
                 android:layout_marginLeft="30dp"
