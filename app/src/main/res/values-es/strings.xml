@@ -14,7 +14,7 @@
     <string name="catalan">Catalán</string>
     <string name="cambiar">Cambiar</string>
     <string name="creditos">Créditos</string>
-    <string name="encuestas">ENCUESTAS</string>
+    <string name="encuestas">QUIZES</string>
     <string name="politicos">POLÍTICOS</string>
     <string name="partidos">PARTIDOS</string>
     <string name="guardar">Guardar</string>
@@ -36,6 +36,17 @@
     <string name="alerta_conexion_quizes"><![CDATA[<p></p><p></p><p><strong>NO ES POSIBLE ACCEDER A LA ENCUESTA.</strong></p>
     <p>Para poder completar la encuesta necesita conexión a Internet. Por favor, revise su conexión e intentalo de nuevo.</p>]]></string>
     <string name="porcentaje_escrutado">% escrutado:</string>
+    <string name="creditosAcerca">Créditos</string>
+    <string name="acercaDe">Acerca de</string>
+    <string name="titulo_creditos">Contribuidores</string>
+    <string name="contenido_creditos">Esta aplicación ha sido desarrollada por: ElConfidencialLAB, en colaboración con:\n\n  Jorge Campos de la Mata \n  Antonio Fernández Llamas \n  Sergio Muñoz López \n  Jesús M. Sánchez Martínez \n  Angel Sans Muro \n\n  moonfishteam@gmail.com</string>
+    <string name="atras_creditos">Atrás</string>
+
+    <string name="quiz1">¿Cúanto sabes de política catalana?</string>
+    <string name="quiz2">¿Cuánto sabes de Ciudadanos?</string>
+    <string name="quiz3">¿Cuánto sabes de Junts Pel Sí?</string>
+    <string name="quiz4">¿Cuánto sabes de Convergencia Democrática de Cataluña?</string>
+    <string name="quiz5">¿Cuánto sabes de Catalunya Sí Que Es Pot?</string>
 
     <string name="barcelona">Barcelona</string>
     <string name="lerida">Lérida</string>

@@ -266,6 +266,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 //Creamos un intent para llamar a QuizContentActivity con los extras del quiz correspondiente
                 Intent intent = new Intent(context, QuizContentActivity.class);
                 intent.putExtra("link", quiz.getLink());
+                intent.putExtra("title", quiz.getTitulo());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

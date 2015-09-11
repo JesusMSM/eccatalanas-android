@@ -237,7 +237,7 @@ public class HomeTab extends Fragment {
 
         ArrayList<String> q = new ArrayList<String>();
 
-        for (int i = 0; i < numPartidos2015 - 6; i++) {   //OJOOOOOOOO HAY QUE BORRAR EL 6
+        for (int i = 0; i < numPartidos2015; i++) {   //OJOOOOOOOO HAY QUE BORRAR EL 6
             q.add(arrayPartidos2015[i].getAlias());
             //if(arrayPartidos[i].getAlias()!=null &&arrayPartidos[i]!= null && arrayPartidos!=null) Log.d("GRAFICOS", arrayPartidos[i].getAlias());
         }
@@ -452,9 +452,9 @@ public class HomeTab extends Fragment {
     private PieData generateDataPie(String ano) {
 
             ArrayList<Entry> entries = new ArrayList<>();
-            int[] colores = new int[numPartidos2015 - 6]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
+            int[] colores = new int[numPartidos2015]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
 
-            for (int i = 0; i < numPartidos2015 - 6; i++) {
+            for (int i = 0; i < numPartidos2015; i++) {
                 float porcentaje = arrayPartidos2015[i].getPorcentajeObtenido().floatValue();
                 Log.d("GRAFICOS", "" + porcentaje);
                 Log.d("GRAFICOS", "" + arrayPartidos2015[i].getPorcentajeObtenido());

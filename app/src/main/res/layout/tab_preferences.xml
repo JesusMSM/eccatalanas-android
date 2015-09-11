@@ -474,6 +474,44 @@
                 style="?android:attr/borderlessButtonStyle"
                 />
 
+    <!-- ACERCA DE -->
+
+
+    <TextView
+        android:id="@+id/acercaDe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:textColor="@color/black"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/creditosAcerca"
+        android:textSize="15sp"
+        android:textAllCaps="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@color/black"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/acercaDe"
+        android:id="@+id/acercaDeButton"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        style="?android:attr/borderlessButtonStyle"
+        />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

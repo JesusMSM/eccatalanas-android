@@ -14,7 +14,7 @@
     <string name="catalan">Català</string>
     <string name="cambiar">Canviar</string>
     <string name="creditos">Crèdits</string>
-    <string name="encuestas">ENQUESTES</string>
+    <string name="encuestas">QUIZES</string>
     <string name="politicos">POLÍTICS</string>
     <string name="partidos">PARTITS</string>
     <string name="guardar">Acabar</string>
@@ -33,6 +33,18 @@
     <string name="titulo_fichas">Fitxes</string>
     <string name="alerta_conexion_noticias">Connecteu-vos a Internet per rebre les últimes notícies sobre les Eleccions</string>
     <string name="porcentaje_escrutado">% escrutat:</string>
+    <string name="creditosAcerca">Crèdits</string>
+    <string name="acercaDe">Sobre</string>
+    <string name="titulo_creditos">Contribuïdors</string>
+    <string name="contenido_creditos">Aquesta aplicació ha estat desenvolupada per: ElConfidencialLAB, en col·laboració amb:\n\n  Jorge Campos de la Mata \n  Antonio Fernández Llamas \n  Sergio Muñoz López \n  Jesús M. Sánchez Martínez \n  Angel Sans Muro \n\n  moonfishteam@gmail.com</string>
+    <string name="atras_creditos">Enrere</string>
+
+
+    <string name="quiz1">Quant saps de política catalana?</string>
+    <string name="quiz2">Quant saps de Ciutadans?</string>
+    <string name="quiz3">Quant saps de Junts Pel Sí?</string>
+    <string name="quiz4">Quant saps de Convergència Democràtica de Catalunya?</string>
+    <string name="quiz5">Quant saps de Catalunya Sí Que Es Pot?</string>
 
     <string name="alerta_espera_datos">Esperant dades d\'escrutini...</string>
     <string name="alerta_conexion_quizes"><![CDATA[<p></p><p></p><p><strong>NO ÉS POSSIBLE ACCEDIR A L\'ENQUESTA.</strong></p>

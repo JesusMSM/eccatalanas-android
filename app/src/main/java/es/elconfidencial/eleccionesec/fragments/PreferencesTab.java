@@ -39,6 +39,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import es.elconfidencial.eleccionesec.R;
+
 import es.elconfidencial.eleccionesec.activities.HomeActivity;
 
 /**
@@ -48,6 +49,7 @@ public class PreferencesTab extends Fragment {
 
     ImageView header;
     Button buttonIdiomas;
+    Button buttonCreditos;
     Context context;
     Activity activity;
     View v;
@@ -120,9 +122,26 @@ public class PreferencesTab extends Fragment {
             }
         });
 
+        //CREDITOS
+        buttonCreditos = (Button) v.findViewById(R.id.acercaDeButton);
+        buttonCreditos.setOnClickListener(new View.OnClickListener() {
+                                              public void onClick(View v) {
+
+                                                  new MaterialDialog.Builder(v.getContext())
+                                                          .title(R.string.titulo_creditos)
+                                                          .content(R.string.contenido_creditos)
+                                                          //.icon(R.drawable.ic_home_grey)
+                                                          .positiveText(R.string.atras_creditos)
+                                                          .show();
+                                              }
+                                          });
 
         // --------- Ajuste de Fonts-----------
         insertFonts(v);
+
+        Typeface tr = Typeface.createFromAsset(context.getAssets(),
+                "Titillium-Regular.otf");
+        buttonCreditos.setTypeface(tr);
 
         //Obtenemos las Tags de partidos que estan almacenadas en PW, almacenandolas en el ArrayList tagNames
         getTagsFromPushWoosh();
@@ -268,9 +287,11 @@ public class PreferencesTab extends Fragment {
                 "Titillium-Semibold.otf");
         TextView suscripcion = (TextView) v.findViewById(R.id.suscripcion);
         TextView idioma = (TextView) v.findViewById(R.id.idioma);
+        TextView creditos = (TextView) v.findViewById(R.id.acercaDe);
 
         suscripcion.setTypeface(ts);
         idioma.setTypeface(ts);
+        creditos.setTypeface(ts);
 
         //Regular(resto del contenido)
         Typeface tr = Typeface.createFromAsset(HomeActivity.context.getAssets(),

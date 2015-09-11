@@ -43,6 +43,7 @@ public class PreferencesActivity extends Activity {
 
     Context context;
     ImageView header;
+    Button buttonCreditos;
 
 
     private PushManager pushManager ;
@@ -72,6 +73,20 @@ public class PreferencesActivity extends Activity {
                 Intent intent = new Intent(view.getContext(), HomeActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        //CREDITOS
+        buttonCreditos = (Button) findViewById(R.id.acercaDeButton);
+        buttonCreditos.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                new MaterialDialog.Builder(v.getContext())
+                        .title(R.string.titulo_creditos)
+                        .content(R.string.contenido_creditos)
+                        .positiveText(R.string.atras_creditos)
+                        .show();
+
             }
         });
 
@@ -130,6 +145,7 @@ public class PreferencesActivity extends Activity {
         Typeface tr = Typeface.createFromAsset(context.getAssets(),
                 "Titillium-Regular.otf");
         buttonIdiomas.setTypeface(tr);
+        buttonCreditos.setTypeface(tr);
 
         //Listeners al modificar el estado de un switch
         SwitchCompat cdc = (SwitchCompat) findViewById(R.id.convergencia_democratica_de_catalunya_cdc_6665);
@@ -208,9 +224,11 @@ public class PreferencesActivity extends Activity {
 
         TextView suscripcion = (TextView) findViewById(R.id.suscripcion);
         TextView idioma = (TextView) findViewById(R.id.idioma);
+        TextView creditos = (TextView) findViewById(R.id.acercaDe);
 
         suscripcion.setTypeface(ts);
         idioma.setTypeface(ts);
+        creditos.setTypeface(ts);
 
         //Regular(resto del contenido)
         Typeface tr = Typeface.createFromAsset(context.getAssets(),
