@@ -132,6 +132,9 @@ public class PreferencesTab extends Fragment {
                                                           .content(R.string.contenido_creditos)
                                                           //.icon(R.drawable.ic_home_grey)
                                                           .positiveText(R.string.atras_creditos)
+                                                          .typeface(Typeface.createFromAsset(context.getAssets(),
+                                                                  "Titillium-Regular.otf"),Typeface.createFromAsset(context.getAssets(),
+                                                                  "Titillium-Light.otf"))
                                                           .show();
                                               }
                                           });
