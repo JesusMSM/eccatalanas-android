@@ -49,7 +49,8 @@
         android:allowBackup="true"
         android:icon="@mipmap/logo_appstore"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:screenOrientation="portrait">
 
         <!-- Datos necesarios para comunicarse con PushWoosh. ATENCION: Cambiarlos por los de EC -->
         <!-- datos ec -->
@@ -65,7 +66,8 @@
 
         <activity
             android:name=".activities.ChooseActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="es.elconfidencial.eleccionesec.MESSAGE" />
 
@@ -79,25 +81,29 @@
         </activity>
         <activity
             android:name=".activities.WelcomeActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.PreferencesActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.HomeActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.NoticiaContentActivity"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:screenOrientation="portrait">
         </activity>
 
         <!-- PUSHWOOSH -->
-        <activity android:name="com.pushwoosh.richpages.RichPageActivity" />
-        <activity android:name="com.pushwoosh.MessageActivity" />
-        <activity android:name="com.pushwoosh.PushHandlerActivity" />
+        <activity android:name="com.pushwoosh.richpages.RichPageActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.pushwoosh.MessageActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.pushwoosh.PushHandlerActivity" android:screenOrientation="portrait"/>
 
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
@@ -131,15 +137,18 @@
 
         <activity
             android:name=".activities.PoliticianCardActivity"
-            android:label="@string/title_activity_politician_card" >
+            android:label="@string/title_activity_politician_card"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.PartyCardActivity"
-            android:label="@string/title_activity_party_card" >
+            android:label="@string/title_activity_party_card"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.QuizContentActivity"
-            android:label="@string/title_activity_quiz_content" >
+            android:label="@string/title_activity_quiz_content"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

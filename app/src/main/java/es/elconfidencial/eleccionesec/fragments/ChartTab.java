@@ -69,6 +69,8 @@ public class ChartTab extends Fragment {
 
     private static final String TAG_DATA = "data";
     private static final String TAG_RESULTS = "results";
+    private static final String TAG_PARTICIPATION = "participation";
+    private static final String TAG_ESCRUTADO = "par_percent_census_counted";
     private static final String TAG_COM_AUT = "res_name";
     private static final String TAG_PORCENTAJE = "res_percent_votes_candidacy";
     private static final String TAG_PARTIDO = "res_party";
@@ -81,6 +83,7 @@ public class ChartTab extends Fragment {
     private int numPartidos2012;
     private PartidoEstadisticas[] arrayPartidos;
     private PartidoEstadisticas[] arrayPartidos2012;
+    public static double porcentajeEscrutado = 0.0;
 
 
     private String[] partidos2012 = {"CiU", "PSC", "PP", "ERC", "ICV", "Ciudadanos", "CUP"};
@@ -156,6 +159,7 @@ public class ChartTab extends Fragment {
 
 
         private JSONObject data;
+        private JSONObject participation;
         private JSONArray results;
 
         @Override
@@ -188,6 +192,8 @@ public class ChartTab extends Fragment {
                 try {
                     // Getting JSON Array
                     data = json.getJSONObject(TAG_DATA);
+                    participation = data.getJSONObject(TAG_PARTICIPATION);
+                    porcentajeEscrutado = participation.getDouble(TAG_ESCRUTADO);
                     results = data.getJSONArray(TAG_RESULTS);
                     numPartidos = results.length();
                     arrayPartidos = new PartidoEstadisticas[numPartidos];

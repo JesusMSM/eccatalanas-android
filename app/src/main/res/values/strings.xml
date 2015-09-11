@@ -35,6 +35,7 @@
     <string name="alerta_espera_datos">Esperando datos del escrutinio...</string>
     <string name="alerta_conexion_quizes"><![CDATA[<p></p><p></p><p><strong>NO ES POSIBLE ACCEDER A LA ENCUESTA.</strong></p>
     <p>Para poder completar la encuesta necesita conexión a Internet. Por favor, revise su conexión e intentalo de nuevo.</p>]]></string>
+    <string name="porcentaje_escrutado">% escrutado:</string>
 
     <string name="barcelona">Barcelona</string>
     <string name="lerida">Lérida</string>
