@@ -39,6 +39,7 @@ import es.elconfidencial.eleccionesec.activities.QuizContentActivity;
 import es.elconfidencial.eleccionesec.chart.LineChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem2012;
+import es.elconfidencial.eleccionesec.fragments.ChartTab;
 import es.elconfidencial.eleccionesec.model.Mensaje;
         import es.elconfidencial.eleccionesec.model.Noticia;
         import es.elconfidencial.eleccionesec.model.Partido;
@@ -506,19 +507,19 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             // apply styling
 
             if (getSizeName(context).equals("xlarge")) {
-                vh9.grafico.setCenterTextSize(40f);
+                vh9.grafico.setCenterTextSize(34f);
             } else if (getSizeName(context).equals("large")) {
-                vh9.grafico.setCenterTextSize(29f);
+                vh9.grafico.setCenterTextSize(22f);
             } else if (getSizeName(context).equals("normal")) {
-                vh9.grafico.setCenterTextSize(26f);
+                vh9.grafico.setCenterTextSize(19f);
             }else {
-                vh9.grafico.setCenterTextSize(17f);
+                vh9.grafico.setCenterTextSize(15f);
             }
 
             vh9.grafico.setDescription("");
             vh9.grafico.setHoleRadius(52f);
             vh9.grafico.setTransparentCircleRadius(57f);
-            vh9.grafico.setCenterText("2015");
+            vh9.grafico.setCenterText(context.getResources().getString(R.string.porcentaje_escrutado)+"\n"+ChartTab.porcentajeEscrutado+" %");
             vh9.grafico.setCenterTextTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
             vh9.grafico.setCenterTextColor(context.getResources().getColor(R.color.ColorAccent));
             vh9.grafico.setTouchEnabled(false);
