@@ -481,6 +481,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             // do not forget to refresh the chart
             // holder.chart.invalidate();
             vh8.grafico.animateXY(900, 900);
+
+            vh8.link.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    try {
+                        HomeActivity.switchFragment(3);
+                    } catch (Exception e) {
+                        Log.e("MyTag", "Object grafico not exists");
+                    }
+                }
+            });
         }
 
     }
@@ -553,6 +563,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             // do not forget to refresh the chart
             // holder.chart.invalidate();
             vh9.grafico.animateXY(900, 900);
+
+            vh9.link.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    try {
+                        HomeActivity.switchFragment(3);
+                    } catch (Exception e) {
+                        Log.e("MyTag", "Object grafico not exists");
+                    }
+                }
+            });
         }
 
     }
