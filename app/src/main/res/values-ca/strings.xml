@@ -32,6 +32,7 @@
     <string name="titulo_noticias">Últimes notícies</string>
     <string name="titulo_fichas">Fitxes</string>
     <string name="alerta_conexion_noticias">Connecteu-vos a Internet per rebre les últimes notícies sobre les Eleccions</string>
+    <string name="porcentaje_escrutado">% escrutat:</string>
 
     <string name="alerta_espera_datos">Esperant dades d\'escrutini...</string>
     <string name="alerta_conexion_quizes"><![CDATA[<p></p><p></p><p><strong>NO ÉS POSSIBLE ACCEDIR A L\'ENQUESTA.</strong></p>
