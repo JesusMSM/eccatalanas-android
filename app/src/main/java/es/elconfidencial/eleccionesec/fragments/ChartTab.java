@@ -262,7 +262,7 @@ public class ChartTab extends Fragment {
             ArrayList<String> q = new ArrayList<String>();
 
 
-            for (int i = 0; i < numPartidos - 6; i++) {   //OJOOOOOOOO HAY QUE BORRAR EL 6
+            for (int i = 0; i < numPartidos; i++) {   //OJOOOOOOOO HAY QUE BORRAR EL 6
                 q.add(arrayPartidos[i].getAlias());
                 //if(arrayPartidos[i].getAlias()!=null &&arrayPartidos[i]!= null && arrayPartidos!=null) Log.d("GRAFICOS", arrayPartidos[i].getAlias());
             }
@@ -276,8 +276,8 @@ public class ChartTab extends Fragment {
     private PieData generateDataPie2015(String ano) {
 
             ArrayList<Entry> entries = new ArrayList<>();
-            int[] colores = new int[numPartidos - 6]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
-            for (int i = 0; i < numPartidos - 6; i++) {
+            int[] colores = new int[numPartidos]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
+            for (int i = 0; i < numPartidos; i++) {
                 float porcentaje = arrayPartidos[i].getPorcentajeObtenido().floatValue();
                 entries.add(new Entry(porcentaje, i));
                 colores[i] = Color.parseColor(colorNotNull(arrayPartidos[i].getColor()));

@@ -3,12 +3,15 @@ package es.elconfidencial.eleccionesec.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -22,14 +25,28 @@ import es.elconfidencial.eleccionesec.R;
 
 public class QuizContentActivity extends ActionBarActivity {
 
+    private String url = "";
+    private String title = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_content);
 
+        //ActionBar
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowCustomEnabled( true );
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
+        LayoutInflater inflator = LayoutInflater.from(this);
+        View v = inflator.inflate(R.layout.custom_title_quizes, null);
+        ((TextView)v.findViewById(R.id.actionBarTitle)).setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Light.otf"));
+        getSupportActionBar().setCustomView(v);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //Extraemos los datos del intent
         Intent intent = getIntent();
-        String url = intent.getStringExtra("link");
+        url = intent.getStringExtra("link");
+        title = intent.getStringExtra("title");
 
 
         //Preparamos el Webview
@@ -38,12 +55,12 @@ public class QuizContentActivity extends ActionBarActivity {
        // webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         webview.getSettings().setDefaultTextEncodingName("utf-8");
 
-        //Comprobamos si tiene conexión a Internet
-        //Si tiene conexión cargamos la url, si no tiene mostramos el mensaje de alerta
+        //Comprobamos si tiene conexiï¿½n a Internet
+        //Si tiene conexiï¿½n cargamos la url, si no tiene mostramos el mensaje de alerta
         if(haveNetworkConnection()){
             webview.loadUrl(url);
         } else {
-            //Compramos el tipo de dispositivo y calculamos el tamaño de letra.
+            //Compramos el tipo de dispositivo y calculamos el tamaï¿½o de letra.
             String textSize= "";
             if (getSizeName().equals("xlarge")) {
                 textSize="25px";
@@ -143,13 +160,12 @@ public class QuizContentActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if(item.getItemId() == android.R.id.home){
+            onBackPressed();
         }
-
+        if(item.getItemId() == R.id.share){
+            shareAction(url,title);
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -158,5 +174,18 @@ public class QuizContentActivity extends ActionBarActivity {
         System.gc();
         finish();
         super.onBackPressed();
+    }
+
+    public void shareAction(String url, String title){
+        // Llama al sistema para que le muestre un diÃ¡logo al usuario con todas las aplicaciones que permitan compartir informaciÃ³n
+        Intent intent = new Intent();
+        String textoCompartir = title + "\n\n" + url;
+
+        intent.setAction( Intent.ACTION_SEND );
+        intent.putExtra(Intent.EXTRA_TEXT, textoCompartir );
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setType( "text/plain" );
+
+        startActivity(  Intent.createChooser( intent, getString(R.string.share) )  );
     }
 }
