@@ -185,7 +185,7 @@ public class WelcomeActivity extends Activity {
                     object.increment("Valor");
                     object.saveInBackground();
                 } else {
-                    // something went wrong
+                    //something went wrong
                 }
             }
         });
