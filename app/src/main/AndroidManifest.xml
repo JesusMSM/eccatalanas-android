@@ -148,6 +148,7 @@
         <activity
             android:name=".activities.QuizContentActivity"
             android:label="@string/title_activity_quiz_content"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:screenOrientation="portrait">
         </activity>
     </application>
