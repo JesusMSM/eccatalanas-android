@@ -95,6 +95,7 @@ public class PartyCardActivity extends ActionBarActivity {
 
         //Obtenemos el tama
         // Tamaño de letra del contenido dependiendo del tamaño de pantalla
+
         String textSize= "";
         if (getSizeName().equals("xlarge")) {
             textSize="25px";
