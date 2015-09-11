@@ -82,6 +82,7 @@
             android:layout_gravity="center_horizontal"
             android:text="POWERED BY"
             android:textColor="@color/white"
+            android:id="@+id/powered"
             android:layout_marginBottom="5dp"/>
         <ImageView
             android:layout_width="60dp"

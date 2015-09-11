@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,6 +52,27 @@
             android:layout_marginRight="60dp"
             android:layout_marginEnd="10dp"
             android:background="@color/white"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="POWERED BY "
+                    android:id="@+id/powered"
+                    android:textColor="@color/white"
+                    android:layout_centerVertical="true"
+                    android:textSize="5pt"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/huawei_horizontal"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/powered"/>
+            </RelativeLayout>
+
 
         </LinearLayout>
 

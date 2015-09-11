@@ -282,6 +282,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         vh3.showContador();
         vh3.contador.setTypeface(Typeface.createFromAsset(context.getAssets(), "Milio-Bold.ttf"));
         vh3.label.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
+        vh3.powered.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
     }
 
     private void configurePartidoViewHolder(PartidoViewHolder vh4, int position) {

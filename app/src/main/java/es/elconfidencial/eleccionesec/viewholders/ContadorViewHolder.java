@@ -19,12 +19,13 @@ import es.elconfidencial.eleccionesec.activities.HomeActivity;
  */
 public class ContadorViewHolder extends RecyclerView.ViewHolder{
 
-    public TextView contador,label;
+    public TextView contador,label,powered;
 
     public ContadorViewHolder(View v) {
         super(v);
         contador = (TextView) v.findViewById(R.id.contador);
         label = (TextView) v.findViewById(R.id.label);
+        powered = (TextView) v.findViewById(R.id.powered);
     }
     public void showContador(){
 

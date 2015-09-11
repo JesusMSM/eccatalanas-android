@@ -214,6 +214,10 @@ public class WelcomeActivity extends Activity {
 
             }
         });
+
+        //Powered
+        TextView powered = (TextView) findViewById(R.id.powered);
+        introduce.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
     }
 
     /** Called when the user clicks the Start button */
