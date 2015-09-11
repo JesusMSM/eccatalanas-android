@@ -26,16 +26,16 @@
     <string name="dias">dies</string>
     <string name="empezar">COMENÇAR</string>
 
-    <string name="titulo_resultados_2015">Resultados Elecciones 2015</string>
-    <string name="titulo_resultados_2012">Resultados Elecciones 2012</string>
-    <string name="titulo_evolucion">Evolución histórica</string>
-    <string name="titulo_noticias">últimas noticias</string>
-    <string name="titulo_fichas">Fichas</string>
-    <string name="alerta_conexion_noticias">Conéctese a Internet para recibir las ultimas noticias sobre las Elecciones</string>
+    <string name="titulo_resultados_2015">Resultats 2015</string>
+    <string name="titulo_resultados_2012">Resultats 2012</string>
+    <string name="titulo_evolucion">Evolució històrica</string>
+    <string name="titulo_noticias">Últimes notícies</string>
+    <string name="titulo_fichas">Fitxes</string>
+    <string name="alerta_conexion_noticias">Connecteu-vos a Internet per rebre les últimes notícies sobre les Eleccions</string>
 
     <string name="alerta_espera_datos">Esperant dades d\'escrutini...</string>
-    <string name="alerta_conexion_quizes"><![CDATA[<p></p><p></p><p><strong>NO ES POSIBLE ACCEDER A LA ENCUESTA.</strong></p>
-    <p>Para poder completar la encuesta necesita conexión a Internet. Por favor, revise su conexión e intentalo de nuevo.</p>]]></string>
+    <string name="alerta_conexion_quizes"><![CDATA[<p></p><p></p><p><strong>NO ÉS POSSIBLE ACCEDIR A L\'ENQUESTA.</strong></p>
+    <p>Per poder completar l\'enquesta necessita connexió a Internet. Si us plau, revisi la seva connexió i torna-ho de nou.</p>]]></string>
 
 
     <string name="barcelona">Barcelona</string>
@@ -504,7 +504,14 @@ La resta del partit va formar una coalició amb Convergència Democràtica de Ca
 <p>Aquesta candidatura unitària la integren <strong>Iniciativa per Catalunya Verds (ICV), Esquerra Unida i Alternativa (EUiA), Podem i Equo.</strong></p>
 
 <p>El seu cap de llista per Barcelona serà <strong>Lluís Rabell</strong>, fins ara president de la Federació d´Associacions de Veïns de Barcelona, i la número dos serà l´escriptora Gemma Lienas. Els següents llocs els ocuparan Joan Coscubiela (ICV), Àngels Martínez Castells (Podem) i Albano Dante Fachin (Podem). A les altres províncies, Girona estarà encapçalada per Marc Vidal (ICV), Lleida per Sara Vilà (ICV) i Tarragona per Gerard Bargalló (Podem).</p>]]></string>
+    <string name="autor_quiz">El Confidencial</string>
 
 
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_politician_card">PoliticianCardActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_party_card">PartyCardActivity</string>
+    <string name="title_activity_quiz_content">QuizContentActivity</string>
 
 </resources>

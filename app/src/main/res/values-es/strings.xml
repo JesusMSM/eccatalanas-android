@@ -495,5 +495,11 @@ En junio de 2015, los tres consejeros de Unió abandonaron el gobierno catalán,
 <p>Su cabeza de lista por Barcelona será <strong>Lluís Rabell</strong>, hasta ahora presidente de la Federación de Asociaciones de Vecinos de Barcelona, y la número dos será la escritora Gemma Lienas. Los siguientes puestos los ocuparán Joan Coscubiela (ICV), Àngels Martínez Castells (Podemos) y Albano Dante Fachin (Podemos). En las otras provincias, Gerona estará encabezada por Marc Vidal (ICV), Lérida por Sara Vilà (ICV) y Tarragona por Gerard Bargalló (Podemos).</p>]]></string>
 
 
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_politician_card">PoliticianCardActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_party_card">PartyCardActivity</string>
+    <string name="title_activity_quiz_content">QuizContentActivity</string>
 
 </resources>

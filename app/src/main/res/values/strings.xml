@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">EleccionesEC</string>
     <string name="action_settings">Preferencias</string>
     <string name="tab_noticias_titulo">Noticias</string>
@@ -7,18 +8,498 @@
     <string name="preferencias_titulo">Preferencias</string>
     <string name="idiomas">Idiomas</string>
     <string name="seleccion_idioma">Seleccione su idioma</string>
+    <string name="introduce_tu_provincia">INTRODUCE TU PROVINCIA</string>
+    <string name="recibir_notificaciones">¿Desea recibir notificaciones?</string>
     <string name="castellano">Castellano</string>
     <string name="catalan">Catalán</string>
     <string name="cambiar">Cambiar</string>
     <string name="creditos">Créditos</string>
+    <string name="encuestas">ENCUESTAS</string>
+    <string name="politicos">POLÍTICOS</string>
+    <string name="partidos">PARTIDOS</string>
+    <string name="guardar">Guardar</string>
     <string name="notificaciones">Notificaciones</string>
+    <string name="suscripcion">Suscripción</string>
+    <string name="suscripcion_descripcion">Usted recibirá notificaciones push cada vez que se publiquen artículos relacionados con las siguientes temáticas.</string>
+    <string name="share">Compartir</string>
+    <string name="cuenta_atras">Cuenta atrás</string>
+    <string name="dias">días</string>
     <string name="empezar">EMPEZAR</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <string name="titulo_resultados_2015">Resultados 2015</string>
+    <string name="titulo_resultados_2012">Resultados 2012</string>
+    <string name="titulo_evolucion">Evolución histórica</string>
+    <string name="titulo_noticias">últimas noticias</string>
+    <string name="titulo_fichas">Fichas informativas</string>
+    <string name="alerta_conexion_noticias">Conéctese a Internet para recibir las últimas noticias sobre las Elecciones</string>
+    <string name="alerta_espera_datos">Esperando datos del escrutinio...</string>
+    <string name="alerta_conexion_quizes"><![CDATA[<p></p><p></p><p><strong>NO ES POSIBLE ACCEDER A LA ENCUESTA.</strong></p>
+    <p>Para poder completar la encuesta necesita conexión a Internet. Por favor, revise su conexión e intentalo de nuevo.</p>]]></string>
+
+    <string name="barcelona">Barcelona</string>
+    <string name="lerida">Lérida</string>
+    <string name="gerona">Gerona</string>
+    <string name="tarragona">Tarragona</string>
+    <string name="otra_provincia">Otra provincia</string>
+
+    <string name="welcome_string">ELECCIONES CATALUÑA 2015</string>
+
+    <string name="autor_quiz">El Confidencial</string>
+
+    <!-- ______________________________STRINGS FICHAS POLÍTICOS_______________________________ -->
+
+    <!-- ARTUR MAS -->
+    <string name="artur_mas_nombre">Artur Mas</string>
+    <string name="artur_mas_edad">59 años</string>
+    <string name="artur_mas_partido">Convergència Democràtica de Catalunya (CDC)</string>
+    <string name="artur_mas_cargo">Presidente de la Generalidad de Cataluña</string>
+    <string name="artur_mas_perfil"><Data><![CDATA[<p><strong>Artur Mas</strong>, heredero del "pactismo" de Jordi Pujol, se ha convertido hoy en el primer presidente catalán que convoca unas elecciones para intentar iniciar un proceso de secesión de España bajo las siglas de una nueva formación (Junts pel Sí) que aglutina a gran parte del independentismo catalán.</p>
+
+<p>El viejo timón que cuelga de su despacho en el Palau de la Generalitat, un regalo de su padre, se ha convertido en la metáfora de su particular "rumbo a Ítaca".</p>
+
+<p>Nacido en Barcelona en 1956, Artur Mas i Gavarró, hijo político de Pujol -quien le designó sucesor- se convirtió en el primer presidente que retó al Estado con un referendo independentista en Cataluña, que finalmente reconvirtió en una consulta alternativa el 9N de 2014 por la que la Fiscalía le acusa de varios delitos, junto a dos consellers más.</p>
+
+<p>Él se define como una persona discreta y trabajadora, que ni siquiera tenía previsto dedicarse a la política cuando se licenció en Ciencias Económicas y Empresariales.</p>
+
+<p>Mas llegó a la Generalitat a principios de los ochenta de la mano del primer conseller de Comercio, Francesc Sanuy, que le puso en primera instancia en Fira de Barcelona, para luego saltar a director general en el Departamento de Industria.</p>
+
+<p>Podría decirse que formaba parte de los que entonces se denominaban JASP, jóvenes aunque sobradamente preparados. Impecable en el vestir y cabellera siempre bien peinada que tapaba una marca de accidente de la infancia con una sartén hirviendo.</p>
+
+<p>Pero el tiempo puso en primera línea a este dirigente políglota -habla inglés y francés-, padre de tres hijos y casado con Helena Rakosnik, tras llegar a ser primero conseller de Obras Públicas y luego titular del importante departamento de Economía.</p>
+
+<p>En 2001 le llegó el gran trampolín: Pujol, que le hizo recitar las comarcas de Cataluña cuando lo fichó para Obras Públicas y le recomendó parar las obras de su cocina porque "le mirarían todo" cuando fuera conseller, lo eligió en detrimento de Josep Antoni Duran Lleida como conseller en cap y como su delfín para relevarlo.</p>
+
+<p>Aprovechó el cargo como lanzadera electoral y llegó a coger hasta 14 vuelos en menos de una semana -incluido sobrevolar el Aconcagua en avioneta- para recabar apoyos entre las colonias de catalanes que viven en países sudamericanos.</p>
+
+<p>Caricaturizado entonces por el actor Toni Albà como un robot en la televisión pública catalana, Mas se fue bregando poco a poco como líder en el particular oasis por el desierto que para él supuso los siete años del tripartito catalán (PSC, ERC e ICV-EUiA). Mas ganó las elecciones de 2003 y 2006, pero no pudo gobernar.</p>
+
+<p>Paciente y astuto, lidió con todo aquel que cuestionó su liderazgo y supo esperar su turno como jefe de la oposición, una oportunidad que finalmente llegó en 2010, cuando ganó claramente las elecciones con 62 diputados -la mayoría absoluta está en 68 en el Parlament- y se coronó por fin President.</p>
+
+<p>Se marcó entonces dos objetivos: el más acuciante, un nuevo sistema de financiación que denominó pacto fiscal y, más a largo plazo, el ejercicio del derecho a decidir. Es decir, concierto económico a la catalana y derecho de autodeterminación.
+El órdago al Estado estaba servido y sus apoyos con socialistas y populares sólo duraron unos meses, muy influido por un entorno netamente independentista.</p>
+
+<p>Su primera legislatura al frente de la Generalitat fue de sólo dos años (2010-2011), en la que persiguió un pacto fiscal para Cataluña que no convenció el presidente del Gobierno, Mariano Rajoy.</p>
+
+<p>De ahí derivó el primer golpe de timón de Mas tras la masiva manifestación del 11 de Septiembre de 2012 y ya apostó decididamente por celebrar una consulta independentista anticipando elecciones.</p>
+
+<p>Lo que no preveía Mas, ni tampoco las encuestas, es que CiU iba a perder 12 diputados en las urnas -se quedó con 50-, un batacazo del que se resarció pactando con una ERC que se hizo fuerte, mientras que CiU pagaba el precio de tener que gobernar solo.</p>
+
+<p>Todo ello sirvió para generar un escenario político de gran tensión, aderezado con otras inclemencias como duros recortes sociales, casos de espionaje político, crisis social y económica, dificultades de tesorería en la Generalitat, batallas por el objetivo de déficit, el "caso Palau" o el fallido concurso de privatización de la empresa pública de agua.</p>
+
+<p>Pero el más destacado revés, por su carga de profundidad, fue el "caso Pujol", la confesión de su padre político de que ocultó dinero en el extranjero.</p>
+
+<p>Sin embargo, y haciendo gala de su autocalificada astucia, Mas supo, en un contexto de descenso en las encuestas de los partidos soberanistas, convencer a ERC de forjar una lista conjunta con representantes de las entidades independentistas y encabezado por un ex ICV, como Raül Romeva.</p>
+
+<p>Con esta tripulación, y él de número 4, Mas ha dado hoy un nuevo paso en su particular "rumbo a Ítaca", haciendo suyo el metafórico viaje narrado por el poeta griego Constantino Cavafis.</p>]]> </Data>
+</string>
+
+
+    <!-- MIQUEL ICETA -->
+    <string name="miquel_iceta_nombre">Miquel Iceta</string>
+    <string name="miquel_iceta_edad">53 años</string>
+    <string name="miquel_iceta_partido">Partido Socialista de Cataluña</string>
+    <string name="miquel_iceta_cargo">Primer secretario del PSC</string>
+    <string name="miquel_iceta_perfil"><![CDATA[<p><strong>Miquel Iceta</strong> es, seguramente, el mejor orador del PSC y quien mejor representa la historia de un partido que una vez conquistó cotas de poder que jamás imaginó, pero que hoy, en sus horas más bajas y quebrado internamente, se aferra a él como un salvavidas que evite el naufragio.</p>
+
+<p><strong>Miquel Iceta i Llorens</strong> (Barcelona, 1960) será esta noche elegido como nuevo líder del PSC, tras cuatro décadas de militancia socialista en las que se ha curtido en mil batallas y le han convertido en un experimentado y hábil conocedor de las entrañas y recovecos de la alta política.</p>
+
+<p>Empezó en las juventudes en 1978. Estuvo en las cocinas de la Moncloa en los primeros gobiernos de Felipe González. Colaboró en la revuelta de "capitanes" del congreso de Sitges en 1994. Llegó a ser el número dos del partido cuando lo lideró José Montilla. Fue el ponente del PSC en la redacción del nuevo Estatuto catalán y ha sido uno de los ideólogos de la propuesta federal del PSOE.</p>
+
+<p>Pero la vida le reservaba un nuevo desafío, cuando hace un mes decidió dar un paso adelante tras la súbita dimisión de Pere Navarro y, sobre todo, de que la opción que gozaba del consenso generalizado para relevarle, Núria Parlon, renunciara inesperadamente.
+Mientras el resto parecía esconder la cabeza a su alrededor, incluido el sector más catalanista, Iceta dio la cara en un aplaudido discurso ante el Consell Nacional: "Podéis contar siempre con mi compromiso, trabajando desde donde haga falta y haciendo lo que haga falta". Un día después, anunció su precandidatura.</p>
+
+<p>Capaz de generar muchas filias, dado que la coincidencia general es que se trata del dirigente más fiable para sostener al PSC hasta que mengüe la tempestad, también crea irremediables fobias, especialmente entre los sectores críticos, que no tardaron en iniciar la escisión, mientras el diputado díscolo Joan Ignasi Elena ya ha anunciado que dejará el grupo parlamentario socialista.</p>
+<p>El interés por la política de Iceta empezó a gestarse de forma incipiente mientras cursaba COU y acudía a sus primeros actos de partidos de izquierdas. No votó en las primeras elecciones democráticas, al no ser mayor de edad aún, pero en 1977 se vinculó al Partido Socialista Popular catalán.</p>
+
+<p>Su verdadera andadura política arrancó un año después, cuando se afilió a las <strong>Juventudes Socialistas de Cataluña</strong> y fue elegido secretario de Política Estudiantil en el congreso constituyente. Entre 1984 y 2011 fue miembro de la ejecutiva del PSC.
+Fue concejal en el Ayuntamiento de Cornellà a finales de los ochenta y, posteriormente, durante la primera mitad de los noventa, director del Departamento de Análisis del Gabinete de la Presidencia del Gobierno, e incluso subdirector de este gabinete.</p>
+
+<p>Entre 1996 y 1999 fue diputado en el Congreso y, desde entonces, es diputado en el Parlament, donde fue <strong>portavoz socialista </strong>durante casi una década y actualmente es secretario primero de la Mesa del hemiciclo. Trabajador incansable, con mucha influencia en el grupo parlamentario, lidera activamente la propuesta del PSC para la ley electoral catalana.</p>
+
+<p>A inicios de este año regresó también al comité federal del PSOE. Muy respetado entre la dirección del socialismo español, su huella está presente en los pilares de la declaración de Granada, que gestó la propuesta de reforma constitucional en clave federal que abanderan ahora los socialistas como solución al encaje de Cataluña.</p>
+
+<p>Y es que Iceta, que destaca en la distancia corta por su gran sentido del humor e ironía, es uno de los grandes ideólogos del PSC, donde actualmente preside la Fundación Rafael Campalans, el laboratorio de ideas de una formación que optó a liderar en 2011, pero se retiró de la carrera para no competir con Pere Navarro.</p>
+
+<p>Adicto a la Coca-Cola light y uno de los primeros políticos españoles en declarar públicamente su homosexualidad, le encanta Twitter, donde comparte diariamente decenas de artículos de prensa con sus más de 10.000 seguidores. Le apasiona leer ensayos de política y de comunicación y marketing electoral, aunque de vez en cuando encuentra un hueco para las novelas de misterio.</p>
+
+<p>La música es su otra debilidad. En su lista nunca faltan Elton John, Carly Simon, Roxy Music, Carole King, Tina Turner, The Carpenters, Bee Gees, Celine Dion, Electric Light Orchestra, Queen, George Benson, Gladys Knight, Marvin Gaye, Michael Jackson, Phil Collins, Rick Astley, Seal, Santana, Supertramp, Take That, Whitney Houston, Simply Red, America y Earth, Wind and Fire.</p>
+
+<p>En quince días, como hace cada verano, tiene previsto refugiarse en la casa de su hermana en Menorca, recargar baterías y tratar de desconectar tras la vorágine del último mes. A la vuelta de la esquina le esperan la consulta soberanista, el lidiar con un partido resquebrajado internamente y unas municipales con la duda de los malos resultados europeos que cosechó.</p>
+
+<p>Entre esos nubarrones en el horizonte, el líder hasta ahora en la sombra agarrará esta noche el mando que nadie ha querido, para intentar apaciguar la zozobra en la que vive instalado últimamente el socialismo catalán.</p>
+]]></string>
+
+    <!-- ANTONIO BAÑOS -->
+    <string name="antonio_banos_nombre">Antonio Baños</string>
+    <string name="antonio_banos_edad">48 años</string>
+    <string name="antonio_banos_partido">CUP</string>
+    <string name="antonio_banos_cargo">Periodista, candidato de la CUP por la provincia de Barcelona</string>
+    <string name="antonio_banos_perfil"><![CDATA[<p>El periodista <strong>Antonio Baños</strong> ha sido hoy proclamado principal candidato de la <strong>CUP</strong> y cabeza de lista por Barcelona para las elecciones del 27S, mientras que encabezarán las listas de las otras tres circunscripciones Benet Salellas (Girona), Ramon Usall (Lleida) y Sergi Saladié (Tarragona).</p>
+
+<p>En la rueda de prensa de presentación de los resultados de las elecciones primarias celebradas en la última semana, Baños ha agradecido la confianza depositada en él por los militantes y simpatizantes de la CUP y ha afirmado que se ha marcado un triple objetivo: "ganar, desobedecer y construir".</p>
+
+<p>Baños, que es independiente y no está afiliado a la CUP, será el cabeza de lista por Barcelona pero no se presenta formalmente como candidato a la presidencia de la Generalitat "porque -según ha recalcado esta formación- la CUP no aspira a investir a ningún presidente autonómico".</p>
+
+<p>En su primera intervención como candidato, Baños, que es miembro de <strong>Súmate</strong> -la plataforma de castellanoparlantes favorable a la independencia-, ha apuntado que la CUP "es una formación política que no tiene miedo y que ve el futuro con esperanza, que es el arma de los que no tienen nada y de los que se oponen a los poderes oligárquicos que humillan a la mayoría de la población".</p>
+
+<p>En respuesta a las declaraciones que anoche hizo el presidente del Gobierno, Mariano Rajoy, en Castelldefels (Barcelona), Baños ha afirmado que si las leyes son injustas "hay que desobedecerlas, y si para esto nos tenemos que buscar problemas, lo haremos -ha dicho-".</p>
+
+<p>El nuevo cabeza de lista en sustitución de David Fernàndez ha finalizado su intervención afirmando: "Los diputados que nos han precedido no han fallado y nosotros tampoco fallaremos"</p>]]>
+</string>
+
+
+    <!-- RAUL ROMEVA -->
+    <string name="raul_romeva_nombre">Raúl Romeva</string>
+    <string name="raul_romeva_edad">44 años</string>
+    <string name="raul_romeva_partido">Junts pel Sí</string>
+    <string name="raul_romeva_cargo">Eurodiputado del Parlamento Europeo, candidato Junts pel SI</string>
+    <string name="raul_romeva_perfil"><![CDATA[<p>Candidato a la presidencia del <strong>Parlamento de Cataluña</strong> en las elecciones de septiembre por la lista de <strong>CDC</strong> y <strong>ERC</strong>, nació en Madrid, el 12 de marzo de 1971. Es licenciado en Ciencias Económicas por la Universidad Autónoma de Barcelona (UAB) y doctor en Relaciones Internacionales por la misma universidad. Ha trabajado como profesor entre 1994 y 2002 y de analista investigador sobre conflictos armados.</p>
+
+<p>Fue ayudante principal del representante de la Unesco en Bosnia y Herzegovina (1995-1996), responsable del programa educativo y de Cultura de Paz de la Unesco y supervisor de la OSCE en las elecciones en ese país.</p>
+
+<p>En 1989 se afilió a <strong>Iniciativa per Cataluña-Verds</strong>, fue miembro del Grupo Promotor de las Juventudes de ICV y de su Consejo Nacional. Candidato de ICV en las elecciones municipales para el ayuntamiento de Calds de Montbui en 1991 y 1995, en las elecciones autonómicas de 1992 y en las generales del 2000.</p>
+
+<p>En junio de 2004 fue elegido eurodiputado de ICV, partido que compartió listas con Izquierda Unida. Romeva ocupó el segundo lugar, después de Willy Meyer (IU). En el Parlamento Europeo ha sido vicepresidente de la comisión de Derechos de la Mujer e Igualdad de Género y de la delegación para las Relaciones con los Países de la América Central, y miembro de la comisión de Asuntos Exteriores, de la subcomisión de Derechos Humanos y de la delegación en la Asamblea Parlamentaria Euro-Latinoamericana.</p>
+
+<p>Cinco años después renovó su escaño y el 30 de junio de 2014 acabó su periodo en el Parlamento.</p>
+<p>Dejó de formar parte de ICV por no compartir la visión del partido en el proceso soberanista.</p>
+<p>En 2015 encabeza la lista unitaria independentista para las elecciones catalanas por cumplir los requisitos que pedían CDC y ERC para pactar, ya que es una persona implicada en el proceso que no despierta animadversión y que no forma parte de ningún partido.</p>]]></string>
+
+
+    <!-- Xavier García Albiol -->
+    <string name="xavier_garcia_albiol_nombre">Xavier García Albiol</string>
+    <string name="xavier_garcia_albiol_edad">47 años</string>
+    <string name="xavier_garcia_albiol_partido">Partido Popular</string>
+    <string name="xavier_garcia_albiol_cargo">Concejal del Ayuntamiento de Badalona</string>
+    <string name="xavier_garcia_albiol_perfil"><![CDATA[<p><strong>Xavier García Albiol</strong>, cabeza de lista del PP para las elecciones del 27-S, es un exjugador de baloncesto de las categorías inferiores del Joventut, con una larga trayectoria dentro de la formación conservadora y con un discurso, basado en el control de la inmigración, robado a grupúsculos más radicales.</p>
+
+<p>García Albiol fue llevado a los tribunales en 2010. Le acusaba ICV de xenofobia por haber repartido panfletos donde vinculaba inmigración (concretamente a gitanos rumanos) y delincuencia. También se querellaron SOS Racismo y la Federación de Asociaciones Gitanas de Cataluña (Fagic). Los tribunales le dieron la razón al popular, pero para entonces ya se había convertido en alcalde al haber obtenido 11 concejales (subió 4) frente a los 9 del PSC (que se quedó igual), los 4 de CiU (bajó uno) y los 3 de ICV (bajó dos, mientras que ERC perdió el suyo). En dos décadas, el <strong>mensaje radical</strong> que transmitía Albiol le dio resultados y le permitió dar la vuelta completamente al marcador: de un concejal obtenido a comienzos de los 90, pasó a ser <strong>alcalde</strong> en 2011. Su mandato también dio que hablar, porque algunas de sus iniciativas quisieron entenderse como de acoso hacia la inmigración, lo que los populares siempre han negado. “Lucha contra la delincuencia, no contra la inmigración”, subrayan fuentes populares.</p>
+
+<p><strong>Badalona</strong>, sin embargo, tiene unas bolsas de inmigrantes hacinados que son problemáticas. Tiene graves problemas de convivencia y guetos de pisos pateras que molestan a los vecinos “autóctonos”. Ahí lanzó sus dardos García Albiol, sacó réditos y los sigue obteniendo. El pasado enero, con motivo del ataque yihadista contra el semanario francés Charlie Hebdo, tuiteó: “Quizá es el momento que la UE se plantee si puede seguir con la política de que cualquiera tiene todos los derechos. No todas las opciones son válidas”. Y luego decía que “negar que la aplicación que algunas hacen del islam es un peligro, para mí es negar la evidencia”.</p>
+</p>Desde que García Albiol vio que con su discurso arañaba votos y que plantaba cara a formaciones emergentes como <strong>Plataforma per Catalunya (PxC)</strong>, que estaban ganando concejales con un discurso basado en la crítica a la inmigración desbordada, el dirigente del PP cogió el rábano por las hojas y comenzó a utilizar ese discurso. En 2007, utilizó un duro DVD antiinmigración y subió un considerable número de votos y de concejales, por lo que los años siguientes fue sembrando de perlas similares sus actuaciones y alcanzó el sillón del primer edil. Su estrategia, pues, fue un rotundo éxito.</p>
+
+<p>Respecto a su lema, García Albiol lo ha defendido pública y privadamente. “Algunos que han alimentado la polémica no han pisado nunca un barrio de Badalona en su vida”, esgrimió en su defensa. Aseguró que, mientras era alcalde, en su ciudad “no se persiguió a nadie en función de su nacionalidad, etnia, religión. Se persiguieron conductas”. Lo dice quien, poco después de ser proclamado alcalde, prohibió el rezo en las calles de su ciudad por el ramadán: al no haber mezquitas, miles de musulmanes utilizaban la plaza Camarón de la Isla para ponerse a rezar los viernes y durante el mes sagrado del islam. “Si a alguien no le parece bien la prohibición, lo que tiene que hacer es darme la dirección de su casa y yo se los enviaré a rezar a su puerta, a ver qué le parece”, amenazó. La oposición también le echó en cara que los establecimientos de extranjeros comenzaron a recibir constantes visitas de la Guardia Urbana para realizar inspecciones. “Era lógico. Allí regía la ley de la selva y lo que se había de hacer es poner un poco de orden y hacer que se cumplieran horarios y normativas”, señala una fuente popular.</p>
+
+<p>Hubo más <strong>polémicas</strong> durante su mandato: el año pasado, convocó oposición para 12 plazas de la Policía local de Badalona. De los 497 aspirantes sólo superaron las pruebas 28, pero los seis mejor puntuados tenían vínculos familiares con escoltas del alcalde o con mandos de la Guardia Urbana, lo que provocó que otros cinco candidatos presentasen una denuncia.</p>
+<p>Esa dulce circunstancia contrasta con la apertura de juicio oral contra el número 5 de la lista del PP y concejal de Seguridad Ciudadana, Miguel Jurado, que está acusado de entrar a la fuerza en una entidad rociera en julio del año 2012. Su partido argumentó que entró en el local de la hermandad Virgen de la Esperanza a la fuerza porque hacía tres meses que le había pedido formalmente su desalojo. Para la oposición, eso fue una consecuencia de las “malas prácticas” del PP. Como cuando el propio García Albiol, en una visita de Ángel Acebes y Josep Piqué al Centro Cultural de Mataró, dio un puñetazo a un manifestante que tomaba parte en una cacerolada. Su desgracia fue que las cámaras lo captaron. ¡Y eso que era secretario ejecutivo de Organización del PP! Otro concejal de Badalona está también a la espera de un juicio porque unas empresas le reclaman al consistorio más de un millón de euros por unas obras ilegales que habría encargado el edil en nombre del ayuntamiento.</p>]]></string>
+
+
+    <!-- INÉS ARRIMADAS -->
+    <string name="ines_arrimadas_nombre">Inés Arrimadas</string>
+    <string name="ines_arrimadas_edad">34 años</string>
+    <string name="ines_arrimadas_partido">Ciudadanos</string>
+    <string name="ines_arrimadas_cargo">Diputada del Parlamento de Cataluña</string>
+    <string name="ines_arrimadas_perfil"><![CDATA[<p>Corría el año 2010 cuando <strong>Inés Arrimadas</strong> (Jerez de la Frontera, 1981) asistió a un mitin del otrora desconocido Albert Rivera. Quedaba menos de un mes para las elecciones autonómicas y Ciutadans –que no Ciudadanos– era una pequeña formación famosa por el cartel protagonizado por un Albert Rivera desnudo. Pese a los discretos resultados del partido, esta joven catalana de adopción quedó prendada de aquel discurso hilvanado. “Aquello no parecía un acto político. Era diferente a todo lo que había visto antes”, afirma.</p>
+
+<p>Esta abogada de 34 años, quien afirma no identificarse “ni con PP ni con PSOE”, sí encontró en las palabras de Rivera un mensaje que calaba. “Me gustó mucho escuchar ideas sobre la libertad, la ciudadanía, los derechos de las personas…”, explica a este diario. Aquel día, nadie le dijo en el Teatre Romea que en un futuro iba a ser ella la que estaría detrás del atril dando los mítines.</p>
+<p>Tras aquella primera toma de contacto, los siguientes meses formaron los mimbres de lo que sería el futuro de Arrimadas en <strong>Ciudadanos</strong>. Comenzó como simpatizante de la formación y, a los pocos meses, decidió afiliarse al partido. Sus primeros pasos fueron en las juventudes del partido, donde los militantes la auparon a la portavocía de la sección de jóvenes. “Me gustó Ciudadanos porque estaba formado por gente normal, con sus trabajos y sus vidas; gente que hacía un hueco para ayudar al partido”, señala a El Confidencial. Ya como portavoz, fue entonces cuando Rivera se fijó en ella.</p>
+
+<p>Después de ver su trabajo en el área de jóvenes, la invitó a participar en la <strong>Comisión de Juventud del Parlament</strong>. Aunque por aquel entonces Arrimadas seguía trabajando en la empresa privada, su papel en la comisión le sirvió para volver a ser llamada por el dirigente catalán, quien le propuso formar parte del Comité Ejecutivo de Ciudadanos en 2011. “Es una persona muy empática”, afirma un miembro de la formación.</p>
+
+<p>Una carrera fulgurante que continuó hasta su desembarco en los pasillos del Parlament a finales de 2012. Con un PP catalán en sus horas más bajas –el batacazo electoral de las municipales casi los ha borrado del mapa–, ella y sus compañeros se han convertido en una suerte de ariete contra el nacionalismo de Artur Mas, que afirman no entender.</p>
+
+<p>Pese a que se considera una persona tímida, Arrimadas pertenece a esa nueva generación de políticos jóvenes bregados en incontables tertulias y platós de televisión. Junto con Podemos, Ciudadanos –ya con marca nacional propia– supo entender la importancia de los medios y es habitual encontrar a dirigentes de estos partidos en la pantalla o en las ondas.</p>
+
+<p>Abogada de profesión y arqueóloga de corazón, Inés Arrimadas comparte oficio con su máximo referente político y el de su jefe: <strong>Adolfo Suárez</strong>. El otrora primer presidente de la democracia es para ambos dirigentes un modelo a seguir. Rivera afirmó que su intención es “sentar a todos los partidos a la mesa” como hizo en su día el político abulense, un espíritu de consenso que también invoca Arrimadas y que a día de hoy, a tenor de la convulsa situación política, parece difícil de conseguir.</p>
+
+<p>Algo similar debió de pensar Albert Rivera cuando se decidieron los candidatos a las generales y a las autonómicas. “La decisión es estratégica”, afirmó en su momento el líder catalán. Si bien es cierto que los candidatos en Ciudadanos se eligen mediante un sistema de primarias, tanto Rivera como Arrimadas fueron los únicos aspirantes que reunieron avales suficientes y fueron proclamados automáticamente.</p>
+
+<p>Para poder ser la cabeza de Ciudadanos en Cataluña, Arrimadas necesitaba un mínimo de 281 avales: obtuvo 376, un resultado holgado que distó mucho de los 14 de su único competidor, Francisco García, miembro de C’s Reus. La candidatura de Arrimadas es el resultado de un proceso que se gestó desde las elecciones municipales. Muchos habían señalado ya a la joven andaluza como la sucesora natural de Rivera y el vídeo de promoción de campaña pareció corroborar esa tesis.</p>
+
+<p>Durante esas semanas, en el acto central de la campaña, Albert Rivera reunió en un mismo escenario a Arrimadas y a otros primeros espadas como Juan Carlos Girauta y Javier Nart, además de los dirigentes regionales y locales Juan Marín (Andalucía) y Carina Mejías (Barcelona). De todos ellos, tan sólo Mejías y Arrimadas tomaron la palabra. Del mismo modo, fue la ‘telonera’ en la presentación de Mejías a la Alcaldía de la Ciudad Condal.  En todas sus intervenciones, Arrimadas enarboló la bandera de la lucha contra el independentismo y demostró ser la primera de la clase con discursos similares a los verbalizados por Rivera.</p>
+
+<p>A nivel nacional, también arropó a algunos candidatos regionales en diferentes actos electorales celebrados en La Rioja, el País Vasco y Navarra. Además de su creciente presencia política, cada vez es más habitual encontrarla en cualquier tertulia en horario de prime time como cabeza de su partido.</p>
+
+<p>Aunque actualmente vive en Barcelona, ha residido en otros lugares como Niza o Sevilla. Una de sus grandes aficiones es viajar y, además del castellano y el catalán, habla inglés y francés, toda una rara avis en la escena política actual. “Me siento catalana y andaluza”, afirma. De ser elegida presidenta de la Generalitat, sería la cuarta persona de origen andaluz en lograrlo.</p>
+<p>Las <strong>elecciones catalanas</strong> se acercan y, por el momento, parece que Arrimadas tendrá que dejar a un lado su pasión viajera y realizar un trabajo ímprobo para preparar los próximos meses, una empresa que se revela como complicada a tenor de las últimas encuestas: si bien todo apunta a que Ciudadanos será la tercera fuerza en el Parlamento catalán, todavía son muchos los escaños que separan a Inés Arrimadas de ser la nueva molt honorable.</p>]]></string>
+
+
+    <!-- LLUIS RABELL -->
+    <string name="lluis_rabell_nombre">Lluís Rabell</string>
+    <string name="lluis_rabell_edad">61 años</string>
+    <string name="lluis_rabell_partido">Cataluña Sí que se Puede</string>
+    <string name="lluis_rabell_cargo">Presidente de la Federación de Asociaciones de Vecinos de Barcelona, candidatos de CSQP</string>
+    <string name="lluis_rabell_perfil"><![CDATA[<p>Nacido en el barcelonés barrio del Raval en 1954, traductor, intérprete y activista vecinal, según se define en su cuenta de Twitter, <strong>Lluís Rabell</strong> es un hombre de acción que pondrá al servicio de la candidatura <strong>Catalunya Sí que es Pot</strong> su experiencia en los movimientos de reivindicación social.</p>
+
+<p>Con camisa blanca y bolígrafo en el bolsillo, el hasta ahora presidente de la <strong>Federación de Asociaciones de Vecinos de Barcelona (FAVB)</strong> ha avanzado hoy su declaración de intenciones en su primera comparecencia ante la prensa como número uno de la candidatura de confluencia de izquierdas: ha llegado el momento de transformar la protesta social en un instrumento político.</p>
+<p>Y no ha sido extraño que al argumentar este objetivo recordara a las alcaldesas de Madrid y Barcelona, Manuela Carmena y Ada Colau, respectivamente, como ejemplo de la meta marcada por esta candidatura, que reúne a Podem-Podemos, ICV y EUiA y a la que podría añadirse mañana la plataforma Procés Constituent de la monja Teresa Forcades.</p>
+
+<p>La cercanía de Rabell con Ada Colau ha sido una constante en los últimos años. De hecho, uno de los primeros actos de la actual alcaldesa antes de su nombramiento fue reunirse con la FABV y los movimientos vecinales de la ciudad.</p>
+
+<p>El poder de Rabell desde que en 2012 asumiera la presidencia de la FAVB ha sido ser la voz de 52 asociaciones vecinales de Barcelona, y como tal ha estado al frente de las protestas sociales contra los recortes, además de ser un auténtico dolor de cabeza para el exalcalde convergente Xavier Trias.</p>
+
+<p>En este sentido, la FAVB de Rabell fue especialmente crítica contra algunas de las medidas del anterior alcalde, como la reforma de la Diagonal o el modelo turístico de Barcelona. Junto a la Plataforma de Afectados por la Hipoteca (PAH) de Colau fue ariete de las protestas contra los desahucios y la reivindicación de alquileres sociales en la Ciudad Condal.</p>
+
+<p>Hombre de acción social, también ha recordado hoy que el pasado 9 de noviembre votó por el "<strong>sí-sí</strong>" (a favor de la independencia) en el "proceso participativo" impulsado por el gobierno catalán como "respuesta enérgica" al rechazo del Gobierno central a esta consulta.</p>
+
+<p>Asimismo, en febrero de 2004, como presidente de la FAVB, firmó con la Asamblea Nacional Catalana (ANC) de Carme Forcadell -ahora en la adversaria lista independentista en las elecciones del 27 de septiembre- un convenio de colaboración para impulsar "el ejercicio del derecho de autodeterminación de Cataluña".</p>
+
+<p>Residente en el distrito barcelonés de L´Eixample, Josep Lluís Franco Rabell vivió en el barrio del Raval hasta los 14 años y por motivos laborales residió unos años en Francia.</p>
+
+<p>A su regreso a Barcelona en 1987 se integró en el movimiento asociativo vecinal, que llegó a liderar, y es habitual en sus discursos públicos el recurso a conceptos como "las clases populares" o la "pérdida de calidad democrática" asociada a la crisis y los recortes que ha combatido hasta hoy en las calles y que aspira a hacerlo como presidente de la Generalitat a partir del próximo mes de septiembre.</p>]]></string>
+
+
+
+
+
+
+
+    <!-- ______________________________STRINGS FICHAS PARTIDOS_______________________________ -->
+
+
+    <!-- CDC -->
+    <string name="cdc_nombre">Convergència Democràtica de Catalunya CDC</string>
+    <string name="cdc_representantes">Representante: Artur Mas</string>
+    <string name="cdc_fundacion">Fundación: 1974</string>
+    <string name="cdc_escanos">Número de escaños actuales: 37 / 135 (dentro de CiU)</string>
+    <string name="cdc_porcentajeVotos">% de votos en las últimas elecciones: 30,7%</string>
+    <string name="cdc_ideologia">Ideología sobre Cataluña: Nacionalista, Independentista</string>
+    <string name="cdc_partidosRepresentados">Partidos representados: CDC</string>
+    <string name="cdc_perfil"><![CDATA[<p><strong>Convergència</strong> participó desde las elecciones autonómicas catalanas de 1980 hasta el año 2015 junto a <strong>Unió Democràtica de Catalunya</strong> en la federación nacionalista <strong>Convergència i Unió</strong>.</p>
+
+<p>La formación gobernó Cataluña desde esas elecciones hasta el año 2003, en que la <strong>Generalidad de Cataluña</strong> fue a parar a manos de la alianza entre los tres partidos catalanes de izquierdas PSC-ERC-ICV (llamada informalmente el tripartito),
+ al no conseguir mayoría absoluta en el Parlamento. Tras la victoria de CiU en las elecciones autonómicas de 2010, Artur Mas fue elegido Presidente del gobierno de la Generalidad catalana.</p>
+
+<p>Más allá de su proyección catalanista, tiene presencia estatal, al haber colaborado tanto con los gobiernos socialistas (1982-1996) como en la etapa en que gobernó el PP (1996-2004),
+dando su apoyo a uno y otro partido para poder formar gobierno. Con el gobierno socialista de <strong>Felipe González</strong> se desarrolló el Estado autonómico y se iniciaron las bases de la financiación autonómica.</p>
+
+<p>También es de destacar su apoyo a las medidas liberalizadoras y de control presupuestario del Gobierno de <strong>José María Aznar</strong>, que permitieron la incorporación de España en la primera fase de adopción del <strong>euro</strong>.
+Asimismo, según se recoge en el Pacto del Majestic entre CiU y PP, se acordaron, entre otros asuntos, el desarrollo de la financiación autonómica ya iniciada en la etapa socialista, la supresión del servicio militar obligatorio
+y el traspaso de competencias.</p>
+
+<p>Desde la retirada política de <strong>Jordi Pujol</strong> en 2003, su dirigente ha sido Artur Mas, quien había sido mano derecha de Pujol y además ha encabezado la lista en las elecciones autonómicas por la coalición Convergència i Unió.</p>
+
+<p>Nueve años más tarde, en el XVI congreso de CDC en la ciudad de Reus el 24 de marzo de 2012, Oriol Pujol, hijo de Jordi Pujol, fue nombrado nuevo secretario general del partido, mientras que el anterior secretario, <strong>Artur Mas</strong>,
+asumió el cargo de presidente. Jordi Pujol recibió el título de presidente fundador del partido.4 En ese mismo congreso, sus dirigentes declararon abiertamente que el objetivo a medio plazo de CDC era la consecución del estado propio,
+es decir, la independencia de Cataluña.</p>
+
+<p>Desde el año 2012 el partido tiene su sede central de la calle Córcega de Barcelona embargada a raíz del escándalo de corrupción conocido como Caso Palau.</p>]]></string>
+
+
+    <!-- PARTIDO SOCIALISTA DE CATALUÑA -->
+    <string name="psc_nombre">Partido Socialista de Cataluña</string>
+    <string name="psc_representantes">Representante: Àngel Ros</string>
+    <string name="psc_fundacion">Fundación: 1978</string>
+    <string name="psc_escanos">Número de escaños actuales: 20 / 135</string>
+    <string name="psc_porcentajeVotos">% de votos en las últimas elecciones: 14,43%</string>
+    <string name="psc_ideologia">Ideología sobre Cataluña: Nacionalista</string>
+    <string name="psc_partidosRepresentados">Partidos representados: PSOE de Cataluña</string>
+    <string name="psc_perfil"><![CDATA[<p>Tras la reinstauración en España del <strong>régimen democrático</strong>, en 1977, el socialismo catalán se hallaba escindido en varios partidos. Por un lado, había varios grupos de carácter nacionalista y progresista, como el <strong>Partit Socialista de Catalunya-Congrés</strong> (antigua Convergència Socialista de Catalunya) y el <strong>Partit Socialista de Catalunya-Reagrupament</strong> (ex Reagrupament Socialista i Democràtic de Catalunya, liderado por Josep Pallach y que se había presentado a las elecciones en coalición con otros partidos de Cataluña). Por otro, el PSOE contaba en Cataluña con una Federación Catalana que basaba su fuerza, sobre todo, en los trabajadores metropolitanos, la mayoría de origen inmigrante.</p>
+
+<p>A finales de 1976 <strong>Convergència Socialista de Catalunya</strong> había promovido un congreso de militancias socialistas dispersas que venía gestándose desde 1974 a fin de promover una reunificación, que culminó en 1977 cuando el PSC-C y la Federación Socialista Catalana del PSOE pactaron una candidatura única para las elecciones de junio. En 1978 las distintas fuerzas socialistas llegaron a un acuerdo que cristalizó en el Congreso de la Unidad Socialista. En este Congreso se fundó el <strong>Partit dels Socialistes de Catalunya (PSC-PSOE)</strong>, resultado de la fusión entre los grupos catalanistas PSC-C, PSC-R y la Federación Catalana del PSOE. El nuevo partido aglutinaba a todo el espectro socialista catalán, y tenía una relación federal con el PSOE, a pesar de que formalmente era un partido diferente y autónomo al fundado por <strong>Pablo Iglesias</strong>.</p>
+
+<p>En las sucesivas convocatorias electorales, el PSC se reveló como la fuerza mayoritaria en Cataluña en las elecciones generales y europeas y municipales (la inmensa mayoría de las alcaldías metropolitanas han sido tradicionalmente gobernadas por dirigentes del PSC). En las elecciones autonómicas, sin embargo, la incapacidad de los líderes del PSC para movilizar a su electorado tradicional ha facilitado la hegemonía parlamentaria de los nacionalistas de Convergència i Unió, que gobernaron la Generalidad de Cataluña hasta 2003. Incluso en las elecciones de 2003, con un desgaste nacionalista sin precedentes tanto por el agotamiento del proyecto convergente como por la retirada del veterano líder Jordi Pujol, los socialistas se quedaron 4 escaños por debajo de la federación nacionalista, aunque la superaron en número de votos.</p>
+
+<p>En diciembre de 2003, el PSC de <strong>Pasqual Maragall</strong> firmó el llamado Pacto del Tinell, en el que se acordó que el Partit dels Socialistes presidiría la Generalidad con el apoyo de <strong>Esquerra Republicana de Catalunya</strong> y la formación ecosocialista <strong>Iniciativa per Catalunya Verds</strong>. Este pacto duró hasta el 11 de mayo de 2006 cuando el presidente de la Generalidad expulsó a los seis consejeros de ERC del Gobierno catalán; sin embargo, tras las siguientes elecciones se reeditó el pacto entre los tres partidos. El presidente, Pasqual Maragall, fue anteriormente alcalde socialista de Barcelona.</p>
+
+<p>En las últimas elecciones generales, el PSC obtuvo 25 escaños en el Congreso de los Diputados que comparten grupo con el PSOE en el Grupo Socialista. Tradicionalmente, dado que es un partido federado al PSOE, cuando éste ha gobernado España, el PSC siempre ha solido tener un representante en el Gobierno. Hasta septiembre de 2006, José Montilla, primer secretario del PSC, ex alcalde de Cornellá de Llobregat y ex presidente de la Generalidad de Cataluña, ejerció de Ministro de Industria del Gobierno de <strong>José Luis Rodríguez Zapatero</strong>, y después ocupó ese cargo Joan Clos, ex alcalde de Barcelona, hasta abril de 2008. Posteriormente, estuvo representado en el Gobierno de España mediante <strong>Carme Chacón</strong>, que fue Ministra de Vivienda entre 2007 y 2008 y Ministra de Defensa entre 2008 y 2011, así como por <strong>Celestino Corbacho</strong>, ex alcalde de Hospitalet de Llobregat (Barcelona) y ex presidente de la Diputación de Barcelona, como Ministro de Trabajo e Inmigración, entre 2008-2010.</p>
+
+<p><strong>Situación actual</strong></p>
+
+<p>Actualmente <strong>Miquel Iceta</strong> es el actual secretario general del PSC.</p>
+
+<p>Tras las elecciones generales de 2011, el PSC es el segundo partido catalán con más representación en el Congreso de los Diputados con 14 diputados (CiU con 16), integrados en el Grupo Socialista. Igualmente, desde el año 2000, el PSC se presenta a las elecciones al Senado dentro de la coalición Entesa Catalana de Progrés, junto a otros partidos nacionalistas de izquierda catalanes (ERC, ICV y EUiA); actualmente Entesa posee 16 senadores, de los cuales 10 pertenecen al PSC. En todas las elecciones en las que se ha presentado como tal, Entesa ha sido la lista mayoritaria en las cuatro circunscripciones catalanas.</p>
+
+<p>En las últimas elecciones autonómicas, celebradas en 2010 el PSC perdió 220.940 votos y 9 diputados en el Parlamento de Cataluña, a la vez que perdía el Gobierno de Cataluña al no poder reeditar el tripartito catalán (junto a ERC e ICV-EUiA) con el que gobernaba; el gobierno pasó a CiU gracias al apoyo del PP.</p>
+
+<p>Tras las elecciones municipales de 2011 el PSC sufrió un grave revés electoral, perdiendo el gobierno de Barcelona, la cual gobernaba desde las primeras elecciones democráticas, a manos de CiU, siendo <strong>Lérida</strong> y <strong>Tarragona</strong> las únicas capitales de provincia de Cataluña en manos de los socialistas catalanes tras dichas elecciones. También perdió la alcaldía de Gerona, pasando a ostentarla CiU también.</p>
+
+<p>Otra ciudad importante perdida por el PSC fue Badalona, ganada por el PP, e igualmente descendió en representación en el área metropolitana de Barcelona. Así, de las abultadas mayorías absolutas que tradicionalmente obtenía en esa área, sólo ha revalidado la de Cornellá de Llobregat, manteniéndose como primer partido pero sin mayoría absoluta en otras poblaciones cómo Hospitalet de Llobregat, Esplugas de Llobregat, Tarrasa o Sabadell, entre algunas pequeñas poblaciones más.</p>
+
+<p>Existe dentro del PSC un sector claramente catalanista o nacionalista catalán, representado por María Badía, Antoni Castells, Àngel Ros, Joaquim Nadal, Mónica Lafuente, Teresa Cunillera, Montserrat Tura, Marina Geli, Jordi Martí, Daniel Font, Martí Carnicer, Juan Manuel del Pozo, Antoni Siurana, Manuel Royes, Jordi William Carnes, Raimon Obiols, Pía Bosch, Martí Carnicer, Jordi Serra, Lluís Miquel Pérez, Joaquim Llera, Laia Bonet, Antoni Dalmau o Isidre Molas, favorable a ganar más autonomía para Cataluña y a reformular la relación de ésta con el resto de España. Algunos incluso se muestran contrarios a la vía federalista del partido, abogan incluso por el derecho de autodeterminación. A principios de octubre de 2012 dicho sector hizo público un manifiesto en el que demandaban un Estado propio para Cataluña y un referendum por la independencia de ésta.</p>]]></string>
+
+
+
+    <!-- CUP -->
+    <string name="cup_nombre">CUP</string>
+    <string name="cup_representantes">Representante: David Fernàndez (portavoz)</string>
+    <string name="cup_fundacion">Fundación: 1991</string>
+    <string name="cup_escanos">Número de escaños actuales: 3 / 135</string>
+    <string name="cup_porcentajeVotos">% de votos en las últimas elecciones: 3,47%</string>
+    <string name="cup_ideologia">Ideología sobre Cataluña: Independentista</string>
+    <string name="cup_partidosRepresentados">Partidos representados: CUP se coordina con la Asamblea Municipal de la Izquierda Independentista</string>
+    <string name="cup_perfil"><![CDATA[<p>La <strong>Candidatura de Unidad Popular</strong> es una organización política asamblearia catalana, de <strong>izquierda</strong> e <strong>independentista</strong>, con presencia en Catalunya, la Comunidad Valenciana y las Islas Baleares.</p>
+
+<p>Se coordina alrededor de la <strong>Asamblea Municipal de la Izquierda Independentista</strong>, donde se discuten los ejes de trabajo e ideológicos de sus programas, que tratan sobre la profundización de la democracia participativa, una mejora de la igualdad social, la construcción nacional de los Países Catalanes, políticas de desarrollo sostenible, así como la promoción del tejido asociativo.</p>
+
+<p><strong>Ideología</strong></p>
+
+<p>En la ponencia aprobada en la Asamblea Nacional Extraordinaria de 2009, La CUP define su <strong>proyecto político</strong> del siguiente modo:</p>
+
+<p><i>La CUP es una organización política asamblearia de alcance y ámbito nacional, que se extiende en todos los Países Catalanes y que, partiendo del ámbito municipal, trabaja por unos Países Catalanes independientes, socialistas, ecológicamente sostenibles, territorialmente equilibrados y no patriarcales.</i></p>
+
+<p>Del mismo modo la CUP, a través de la «unidad popular», apuesta por:</p>
+
+<p>- La defensa de los <strong>derechos políticos</strong> del pueblo catalán: el ejercicio del derecho a la autodeterminación y el acceso a la independencia, la democracia participativa, la defensa de la unidad y la territorialidad del conjunto de los Países Catalanes.</p>
+
+<p>- La defensa de los <strong>derechos de las clases populares y la igualdad</strong>: hacia una sociedad de redistribución de la riqueza, la lucha contra el paro y la precariedad, la defensa de los servicios públicos, el establecimiento de mecanismos de control popular de la economía y el despliegue de políticas efectivas que garanticen la igualdad de género.</p>
+
+<p>- La <strong>defensa del territorio</strong>: contra las agresiones ecológicas y urbanísticas, contra el descuartizamiento del territorio y su destrucción en beneficio de unos pocos, y un desarrollo realmente sostenible.</p>
+
+<p>- La <strong>defensa</strong> de la <strong>lengua</strong> y la <strong>identidad nacional</strong>: por la unidad de la lengua, la oficialidad del catalán en todo el territorio nacional, unas industrias culturales propias y autocentrada, el refuerzo del tejido cultural de raíz popular los Países Catalanes.</p>
+
+<p>- El término «unitat popular» hace referencia a la alianza de izquierdas chilena encabezada por Salvador Allende, que impulsó un movimiento de transformación socialista y gobernó hasta el golpe de Estado de Augusto Pinochet. El concepto, además, tiene una clara <strong>referencia marxista</strong>.</p>
+
+<p>La CUP tiene como precedente en las elecciones municipales españolas de 1979, las primeras después de la muerte del dictador Francisco Franco, a diferentes candidaturas críticas con el rumbo que iban tomando los acontecimientos y adoptaron ese nombre. En la década de 1980 se coordinarían entre sí y se acercarían hacia posturas independentistas. En 1987 se <strong>inscribe</strong> la CUP como <strong>partido político</strong>, siendo la marca de gentes del Moviment d´Esquerra Nacionalista (MEN) y del Moviment de Defensa de la Terra (MDT) para presentarse en la elecciones municipales.</p>
+
+<p>En las elecciones municipales de 1987 y 1991 se presentaron en varias poblaciones catalanas como Salt, El Masnou, Valls, Bañolas, Manresa, Villafranca del Panadés o Arbucias, donde hasta 2003 ostentaron la alcaldía. Algunas se integraron en la coalición Iniciativa per Catalunya (ICV) en 1995, durante una crisis que sufrió la izquierda independentista catalana. Solo años después, con otra generación de independentistas que rompió con experiencias organizativas pasadas, y la propuesta de unidad del independentismo catalán de izquierdas (al margen de ERC) que supuso el Proceso de Vinaroz (en catalán Procés de Vinaròs), las relanzó en las primeras fechas de la década de 2000. Se volvieron a formar candidaturas clásicas y se formaron otras en poblaciones que no tuvieron hasta nuestros días.</p>
+
+<p>Actualmente, las candidaturas de la CUP asumen a nivel municipal los principios que se derivaron del <strong>Proceso de Vinaroz</strong>, siendo la rama municipalista de la izquierda independentista catalana.</p>
+
+<p>La CUP acoge gente de sensibilidades diferentes dentro de la izquierda independentista, pero destaca el elevado número de gente vinculada a "casals" (centros okupados y ateneos independentistas en Cataluña, las islas Baleares y la Comunidad Valenciana) y colectivos de ámbito local, así como a organizaciones de la izquierda independentista como Endavant, el MDT, o la organización juvenil Arran.</p>]]></string>
+
+    <!-- Junts pel si -->
+    <string name="jps_nombre">Junts pel Sí</string>
+    <string name="jps_representantes">Representantes: Raül Romeva, Carme Forcadell, Muriel Casals, Artur Mas, Oriol Junqueras</string>
+    <string name="jps_fundacion">Fundación: 2015</string>
+    <string name="jps_escanos">Número de escaños actuales: nd</string>
+    <string name="jps_porcentajeVotos">% de votos en las últimas elecciones: nd</string>
+    <string name="jps_ideologia">Ideología sobre Cataluña: Nacionalista, Independentista</string>
+    <string name="jps_partidosRepresentados">Partidos representados: CDC, ERC y sociedad cívil</string>
+    <string name="jps_perfil"><![CDATA[<p><strong>Inicios de la candidatura</strong></p>
+<p>Presentación de la coalición el <strong>20 de julio de 2015.</strong></p>
+<p><strong>Artur Mas</strong> entrando en el acto de presentación de Junts pel Sí.</p>
+<p>A mediados de julio de 2015, las negociaciones entre <strong>CDC, ERC y las entidades independentistas ANC y Òmnium</strong> llevaron a un acuerdo para una lista independentista para las elecciones al Parlamento de Cataluña de 2015. En el acuerdo, aprobado tanto por la dirección de CDC como por la de ERC, se designó que la lista de Barcelona fuera encabezada por tres personalidades independientes, seguidas de Mas, Oriol Junqueras y 3 independientes más. A partir del número 8 de las listas, las personas adscritas serían de CDC o de ERC, en una proporción del 60% -40% respectivamente, con presencia de gente de Demócratas de Cataluña y de Movimiento de Izquierdas.</p>
+
+<p><strong>La Candidatura de Unidad Popular (CUP)</strong> fue invitada a unirse a la lista, pero se negó argumentando había cambiado la propuesta inicial para una lista con políticos, en la que no quería participar. En este acuerdo, además, quedaba claro que sí esta era la candidatura ganadora de las elecciones, el lugar que se propondría para la Presidencia de la Generalidad sería por Convergencia, mientras que los puestos de vicepresidencia y Presidencia del Parlamento de Cataluña corresponderían a Esquerra. Así, <strong>Mas</strong> seguiría como presidente, y <strong>Oriol Junqueras</strong> se convertiría en el vicepresidente de Cataluña. Además, este acuerdo prevé que, en caso de salir ganadora, la candidatura propondría un Gobierno de concentración, en el que la CUP rechazó estar desde el principio.</p>
+
+<p>La candidatura de Juntos por Sí se presentó públicamente el 20 de julio de 2015 en la terraza del Museo de Historia de Cataluña, con la presencia de los cinco primeros miembros de la lista por Barcelona (los confirmados en ese momento), y delante de todos los partidos y entidades que apoyaban, además de un amplio despliegue de los medios de comunicación.</p>
+<p><strong>Configuración de las listas</strong></p>
+
+<p>El 24 de julio de 2015 Juntos el Sí recibió el apoyo de <strong>Solidaritat Catalana per la Independència</strong>, después de que el partido lo hubiera preguntado en un referéndum y que la opción mayoritaria hubiera sido el SI (para más del 80 por ciento). Ese mismo día se hicieron públicos los nombres de los cabezas de lista de Gerona y Tarragona, por este orden: Lluís Llach y Germà Bel, respectivamente. El <strong>Parlamento de Cataluña</strong> llevó a cabo el último pleno de la X legislatura, en el que muchos de los parlamentarios tuvieron la oportunidad de despedirse ya que quizás no repetirían a la XI legislatura, sin hacer demasiado hincapié en las elecciones de septiembre. No debería haber sido la última sesión, pero como el 3 de agosto se convocarían elecciones anticipadas, esta era la última semana de la legislatura.</p>
+
+<p>Al día siguiente, el sábado 25 de julio, en un Consejo Nacional, Esquerra Republicana de Catalunya avaló positivamente la lista conjunta con Convergencia, tras ratificar la dirección del partido. También hizo públicos los nombres republicanos que irían a las listas, mezclados con los independientes y los convergentes. El mismo día se supo que Proceso Constituyente no apoyaría ninguna de las candidaturas por el derecho a decidir (Junts pel Sí, CUP y Catalunya Sí que es Pot), y que ni siquiera se presentaría a las elecciones del 27 de septiembre.</p>]]></string>
+
+    <!-- PP -->
+    <string name="pp_nombre">Partido Popular</string>
+    <string name="pp_representantes">Representante: Xavier García Albiol</string>
+    <string name="pp_fundacion">Fundación: 1989</string>
+    <string name="pp_escanos">Número de escaños actuales: 19 / 135</string>
+    <string name="pp_porcentajeVotos">% de votos en las últimas elecciones: 12,97%</string>
+    <string name="pp_ideologia">Ideología sobre Cataluña: Contrario a la independencia</string>
+    <string name="pp_partidosRepresentados">Partidos representados: PP</string>
+    <string name="pp_perfil"><![CDATA[<p>El <strong>Partido Popular de Cataluña</strong> nace como la refundación de Alianza Popular a nivel nacional en 1989, definiéndose a si mismo con una ideología de centro-derecha y constitucionalista, siendo el presidente de ambas formaciones Jorge Fernández Díaz (1983-1991).</p>
+
+<p>A finales de la década de 1980 y principios de la de 1990, el Partido Popular catalán atravesó una profunda crisis debido al choque de <strong>dos tendencias</strong>: una, más decidida a enfrentarse al gobierno de Jordi Pujol liderada por <strong>Vidal-Quadras</strong>, y otra, más moderada liderada por el propio <strong>Jorge Fernández Díaz</strong>. Finalmente, en noviembre de 1990, la ejecutiva dirigida por éste último fue sustituida por una gestora encabezada por Vidal-Quadras en Barcelona y en enero de 1991 lo mismo ocurrió con la ejecutiva regional, que fue relevada por una gestora dirigida por Josep Curtos, por lo que el ala dura del PP regional se hacía con el control de partido.</p>
+
+
+<p>Vidal-Quadras encabezó de forma efectiva una oposición a las políticas nacionalistas, y en el periodo en que fue Presidente (1991-1996) el partido progresó hasta alcanzar 17 diputados y los mejores resultados de la historia en votos y porcentaje de voto (13,08 por ciento) de la historia del partido en las elecciones autonómicas de 1995 (coincidiendo con el periodo en el que el partido alcanzó mayores cuotas de impopularidad: más del 70 por ciento del electorado afirmaba que nunca les votaría ). Sin embargo, tras las elecciones generales del año 1996 en que el Partido Popular obtuvo una mayoría simple, una de las condiciones de Jordi Pujol para apoyar al PP en el Congreso de los Diputados fue que Vidal-Quadras dejara de dirigir el PP en Cataluña, condiciones que se acordaron en el conocido como <strong>Pacto del Majestic</strong>, y que incluía asimismo el desarrollo de la financiación autonómica ya iniciada en la etapa socialista, la supresión del servicio militar obligatorio y el traspaso de competencias). Este pacto tenía también su contrapartida regional puesto que tras las elecciones de 1995 CiU no tenía mayoría absoluta y supuso el apoyo del PP de Cataluña en el Parlament. Así, Vidal-Quadras fue apartado de la presidencia del Partido Popular de Cataluña, presentando su dimisión como Presidente de éste.</p>
+
+
+<p>Tras la destitución de Vidal-Quadras se eligió a <strong>Alberto Fernández Díaz</strong> (hermano del primer Presidente el PPC) para que suavizara la línea del partido en Cataluña con objeto de facilitar el mantenimiento del pacto de gobernabilidad. El desplome en las siguientes regionales de 1999 fue importante perdiendo 120.000 votos y 5 escaños en el Parlament. Sin embargo, en las elecciones generales del año 2000 el PPC obtuvo el máximo resultado de su historia en votos, porcentaje de voto y escaños. Desde ese año, el Presidente del Gobierno <strong>José María Aznar</strong> proclamó a Josep Piqué como el líder de un <<nuevo proyecto de centro catalanista>> capaz de disputar el poder a CiU. Sin embargo Alberto Fernández siguió siendo el líder oficial hasta el año 2003, en que finalmente se consumaba la sustitución.</p>
+
+<p>A pesar de las grandes expectativas creadas, el proyecto de Piqué cosechó unos resultados inferiores en las elecciones regionales (volviendo a caer como cuarta fuerza en el Parlament) y generales. Finalmente, en julio de 2007 presentó su dimisión irrevocable después de hacerse pública la decisión del secretario general nacional del partido, <strong>Ángel Acebes</strong>, de no contar con los hombres de confianza de Piqué como responsables del comité de campaña del PP catalán para las elecciones generales.</p>
+
+
+<p><strong>Alicia Sánchez Camacho</strong>, primera Presidenta del Partido en Cataluña.</p>
+<p>Fue relevado durante un año por <strong>Daniel Sirera</strong>, siendo elegida en el año 2008 la primera Presidenta: Alicia Sánchez-Camacho. Con su dirección el PPC volvió a retomar el pulso recuperando la tercera posición y alcanzando los 18 diputados en las elecciones parlamentarias de 2010 (aunque sin superar el porcentaje y número de votos del año 1995) y apoyando al gobierno en minoría de CiU presidido por Artur Mas.11 El PPC ha tomado además una senda catalanista en el que apoyan el "autonomismo diferencial". (Este apoyo, a pesar de la nueva línea política aprobada en el XVI Congreso nacinoal del PP en 2008 en Valencia respecto de los pactos con partidos nacionalistas.</p>
+
+<p><strong>Elecciones municipales de 2011</strong></p>
+
+<p>La línea de crecimiento del partido quedó ratificada en las elecciones municipales del 22 de mayo de 2011, en las que obtuvo los mejores resultados de su historia en Cataluña y se convirtió en la tercera fuerza de los ayuntamientos catalanes -en porcentaje de votos- con 363.555 votos (12,67 por ciento) y 473 concejales, frente a los 283.195 (9,87 por ciento) y 284 concejales que había obtenido en 2007. Con estos resultados el Partido Popular catalán logró hacerse con diez alcaldías, destacando la de Casteldefels -con 63.000 habitantes- y la de <strong>Badalona</strong>, tercera ciudad más poblada de Cataluña. Con la victoria de <strong>Xavier García Albiol</strong> en Badalona los populares catalanes lograron por primera vez en su historia la alcaldía de una gran ciudad catalana. Además, gracias a distintos pactos, el PPC consiguió entrar en el equipo de gobierno de medio centenar de municipios, destacando capitales de comarca como Viella Mitg Arán y Reus.</p>
+
+<p>Gracias a los resultados en las municipales el Partido Popular Catalán logró entrar también, por primera vez en su historia, en el gobierno de la Diputación de Barcelona. Los populares, con seis diputados en el ente provincial, llegaron a un acuerdo con <strong>Convergència i Unió</strong> -que le cedió dos vicepresidencias- para gobernar conjuntamente, poniendo fin a 32 años de hegemonía del PSC.</p>
+
+<p><strong>Elecciones generales de 2011</strong></p>
+
+<p>En las Elecciones generales de España de 2011 el Partido Popular arrancó la campaña por primera vez en Cataluña con un acto de Mariano Rajoy en Casteldefels.16 Los populares, que fueron la tercera fuerza en las cuatro circunscripciones catalanas -por detrás de CiU y PSC-PSOE- obtuvieron 715.802 votos y once diputados, el segundo mejor resultado de su historia tras el año 2000. Jorge Fernández Díaz, su cabeza de lista por Barcelona, fue posteriormente nombrado Ministro del Interior por Mariano Rajoy.</p>]]></string>
+
+
+    <!-- UDC -->
+    <string name="udc_nombre">Unió Democràtica de Catalunya</string>
+    <string name="udc_representantes">Representante: Ramón Espadaler</string>
+    <string name="udc_fundacion">Fundación: 1931</string>
+    <string name="udc_escanos">Número de escaños actuales: 37 / 135 (dentro de CiU)</string>
+    <string name="udc_porcentajeVotos">% de votos en las últimas elecciones: 30,70%</string>
+    <string name="udc_ideologia">Ideología sobre Cataluña: Independentista</string>
+    <string name="udc_partidosRepresentados">Partidos representados: CUP se coordina con la Asamblea Municipal de la Izquierda Independentista</string>
+    <string name="udc_perfil"><![CDATA[<p>La fundación de <strong>Unió Democràtica de Catalunya</strong> se produjo el 7 de noviembre de 1931, durante la Segunda República Española, como un partido de carácter catalanista y de inspiración cristiana, aunque de carácter no confesional, a raíz de un manifiesto aparecido en el diario conservador El Matí de Barcelona, firmado por Josep O. Anguera, Pere Arderiu, Xavier Aragó, Pere Aragai, Esteve Farré, Josep M. Farré, Àngel Grau, Joan Guinart, Josep M. Modolell, Jaume Morera Millaret, Àngel Morera, Manuel Pugués, Pau Romeva i Ferrer, Joan Baptista Roca i Caball, Maurici Serrahima i Bofill, Ramon Sunyer, Manuel Thió, Ramon Trinxet, Lluís Vila i d´Abadal y Josep Vilaplana. A mediados de 1932 se unieron al partido, entre otros, Manuel Carrasco Formiguera, antiguo militante de Acció Catalana, Miquel Coll i Alentorn, Josep Maria Trias i Peitx, Fèlix Duran i Cañameres y otros más.</p>
+
+<p>La mayoría de los miembros del nuevo partido político procedían bien del campo del carlismo, al que habían decidido abandonar porque el Movimiento Tradicionalista no permitía la propaganda a favor del Estatuto de Autonomía de Cataluña; bien del partido <strong>Acció Catalana</strong>, partido que abandonaron algunos militantes por su voto favorable a la Constitución republicana, en especial a aquellos artículos que consideraban incompatibles con sus opiniones religiosas; otros grupos menores de militantes procedían de la Lliga Regionalista o incluso de Esquerra Republicana de Catalunya.</p>
+
+<p>El nuevo partido, a pesar de hallarse en pleno período constitutivo, tuvo un diputado en las Cortes Constituyentes de la República constituidas tras las elecciones generales de 1931, <strong>Manuel Carrasco Formiguera</strong>, y otro en el nuevo Parlamento de Cataluña surgido tras las elecciones autonómicas de 1932, Pau Romeva i Ferrer.</p>
+
+<p>Por otro lado, el nuevo partido rápidamente estableció vínculos con el minoritario sindicato Unió de Treballadors Cristians de Catalunya, también de inspiración cristiana, fundado en 1934.</p>
+
+<p>Segunda República española y Guerra civil</p>
+
+<p>Durante la Segunda República Española, Unió Democràtica de Catalunya mantuvo una postura moderada.
+Así, por ejemplo, apoyó la Ley de Contratos de Cultivo de 1934 impulsada por la izquierda, que pretendía sustituir los contratos enfiteuticos de rabassa morta para el arrendamiento de campos de cultivo de vides por figuras más cercanas a la propiedad para los pequeños agricultores, siendo ésta una de las medidas solicitadas por la Unió de Rabassaires, el sindicato agrario próximo a Esquerra Republicana de Catalunya. En Cataluña la ley se enfrentó a la fuerte oposición de la Lliga Regionalista. Dicha ley fue posteriormente anulada por el Tribunal de Garantías Constitucionales durante la etapa de gobierno de coalición entre el Partido Republicano Radical de Alejandro Lerroux y la Confederación Española de Derechas Autónomas de José María Gil-Robles, etapa denominada por la izquierda como Bienio Negro.</p>
+
+<p>Por el contrario, el 6 de octubre de 1934, cuando el presidente de la Generalidad de Cataluña <strong>Lluís Companys</strong> proclamó el Estado Catalán dentro de la República Federal Española, tras la amenaza de anulación de la Ley de Contratos de Cultivos por el nuevo Gobierno republicano, Unió Democràtica de Catalunya no le prestó su apoyo.</p>
+
+<p>El 17 de julio de 1936 tuvo lugar un fallido golpe de estado militar, que en Barcelona tuvo su repercusión al día siguiente, 18 de julio, y que, tras fracasar, abrió paso a la Guerra Civil Española. La situación política dejó a Unió Democràtica de Catalunya en una difícil posición. Por un lado, al proclamar su fidelidad al régimen republicano y mantener su ideario nacionalista catalán, el bando sublevado los colocó automáticamente en la situación de enemigos de su régimen. Por otro lado, el hecho de profesar un ideario católico les hacía sospechosos ante los sectores obreros que apoyaban al Gobierno republicano.</p>
+
+<p>Por este motivo, los militantes y dirigentes de Unió Democràtica de Catalunya fueron perseguidos en el territorio que quedó en manos gubernamentales, especialmente por exaltados anarquistas. Algunos de sus dirigentes, como <strong>Francesc de Paula Badia i Tobella</strong> fueron asesinados.</p>
+
+<p>Otros dirigentes prefirieron trasladarse al País Vasco, cuyo Gobierno, en manos de un partido con un ideario similar, el Partido Nacionalista Vasco, se había alineado también a favor del Gobierno republicano. Fue el caso, por ejemplo, de <strong>Manuel Carrasco Formiguera</strong>, uno de los más significados dirigentes del partido. Desde allí, en colaboración con el ministro del PNV Manuel Irujo Ollo trabajó para intentar lograr normalizar las relaciones entre el Gobierno republicano y la Santa Sede.</p>
+<p>Sin embargo, Manuel Carrasco Formiguera fue hecho prisionero al ser abordado su barco por buques de guerra de la Marina de los sublevados, siendo condenado a muerte en juicio sumarísmo y fusilado en Burgos el 8 de agosto de 1937, al igual que fueron represaliados otros militantes del partido.</p>
+
+<p>Tras la caída de Cataluña en manos de los sublevados, la mayoría de los dirigentes del partido optaron por el exilio, en su mayor parte en Francia.</p>
+
+<p><strong>Durante el franquismo</strong></p>
+
+<p>Desde el mismo final de la Guerra civil y del inicio del franquismo, algunos de los dirigentes y militantes que habían permanecido en España, junto con algunos exiliados que fueron de los primeros en regresar, se dedicaron a la reconstrucción del partido, en la clandestinidad, siendo así uno de los partidos de oposición al franquismo. En esta línea destacaron políticos como <strong>Miquel Coll i Alentorn</strong> o <strong>Joan Baptista Roca i Caball</strong>, entre otros.</p>
+
+<p>Las actividades de la reconstruida Unió Democràtica de Catalunya se centraron en temáticas culturales, relativas a la lengua catalana o la Historia de Cataluña, aunque participaron igualmente en los primeros intentos de coordinación de los partidos democráticos de oposición al régimen franquista, como el Consell Nacional de la Democràcia Catalana, fundado ya en 1944. Por otro lado, militantes del partido, como Maurici Serrahima, tomaron parte en las redes de evasión de perseguidos por la Alemania nazi o la Francia de Vichy, así como de militares aliados, especialmente aviadores derribados, ayudándolos a transitar de la frontera francesa hasta la portuguesa, desde donde podían dirigirse hacia el Reino Unido o los Estados Unidos.
+En 1945, se integró en Unió Democràtica de Catalunya un grupo de militantes procedentes del Front Universitari de Catalunya, entre los que cabe destacar a Josep Benet i Morell.</p>
+
+<p>En 1957, desde el partido se colaboró en la refundación de la <strong>Federació Nacional d´Estudiants de Catalunya</strong>, y en la fundación del sindicato de inspiración cristiana Solidaritat d´Obrers Cristians de Catalunya. Por otro lado, en los años 1960 colaboraron con el movimiento Crist Catalunya, al igual que con el político nacionalista Jordi Pujol i Soley, en los llamados fets del Palau de la Música o en el boicot organizado contra el diario La Vanguardia, de quien en ese momento era director Luis Martínez de Galinsoga quien, tras creer que una misa oficiada en latín lo era en catalán, profirió frases insultantes y ofensivas contra los catalanes.</p>
+
+<p>Durante el mismo período, Unió Democràtica de Catalunya inició contactos con el Partido Nacionalista Vasco y con otros grupos de inspiración cristiana de ámbito español, con los que formó una coordinadora, el Equipo Demócrata Cristiano del Estado Español. Junto al resto de fuerzas políticas demócratacristianas se integró en la Unión Europea Demócratacristiana, siendo miembro fundador de la Internacional Demócratacristiana, posteriormente Partido Demócrata Europeo y Partido Popular Europeo.</p>
+
+<p>En 1965 participó en la gestación de <strong>Unió Democràtica del País Valencià</strong> y, en 1974, de <strong>Unió Democràtica de les Illes Balears.</strong>
+El partido fue igualmente miembro de diversas plataformas de coordinación de los partidos democráticos, como la Asamblea de Cataluña o la Comisión Coordinadora de Fuerzas Políticas de Cataluña.</p>
+
+<p>En las elecciones generales españolas de 1977, Unió Democrática de Catalunya formó una candidatura conjunta, para el Congreso de los Diputados, con la Federación de la Democracia Cristiana, liderada por <strong>Joaquín Ruiz-Giménez</strong>, a la que en Cataluña se denominó Unió del Centre i la Democràcia Cristiana de Catalunya, que obtuvo dos diputados, uno de ellos para UDC. Para el Senado, esa coalición se amplió con una candidatura conjunta con el Pacte Democràtic per Catalunya (a su vez coalición entre Convergència Democràtica de Catalunya, Partit Socialista de Catalunya-Reagrupament y Esquerra Democràtica de Catalunya), liderada por Jordi Pujol.</p>
+
+<p>En 1978 se produjo una <strong>escisión</strong> del partido, liderada por Antón Cañellas, que formó Unió Democràtica de Centre Ample, que se coaligó con Unión de Centro Democrático y Unió del Centre de Catalunya para formar Centristes de Catalunya-UCD.
+El resto del partido formó una coalición con Convergència Democràtica de Catalunya, que había absorbido a los dos partidos con los que se había coaligado en 1977, coalición llamada Convergència i Unió.</p>
+
+<p>En el marco de dicha coalición ha formado parte del Gobierno de la Generalidad de Cataluña y sus dirigentes, cuando la coalición ha ganado las elecciones al Parlamento de Cataluña, han sido presidentes del Parlamento de Cataluña, como Miquel Coll, Joaquim Xicoy, Joan Rigol o la actual presidenta, Núria de Gispert.</p>
+
+<p>En 2013 el partido reconoció judicialmente su culpabilidad por corrupción en el caso Pallerols, al asumir junto a sus exdirigentes Lluís Gavaldà, Vicenç Gavaldà y Santiago Vallvé la sustracción de 388.483 euros destinados por la Unión Europea a formación para parados. Gracias al acuerdo judicial ningún imputado llegará previsiblemente a ingresar en la cárcel.</p>
+
+En junio de 2015, los tres consejeros de Unió abandonaron el gobierno catalán, aunque aseguraron que mantenían la federación con Convergència. Finalmente, el 18 de junio se anunció el <strong>final de la federación CiU</strong> y que UDC se presentaría en solitario a las elecciones.]]></string>
+
+
+    <!-- CIUDADANOS -->
+    <string name="cs_nombre">Ciudadanos</string>
+    <string name="cs_representantes">Representante: Inés Arrimadas</string>
+    <string name="cs_fundacion">Fundación: 2006</string>
+    <string name="cs_escanos">Número de escaños actuales: 9 / 135</string>
+    <string name="cs_porcentajeVotos">% de votos en las últimas elecciones: 7,56%</string>
+    <string name="cs_ideologia">Ideología sobre Cataluña: Contrario a la independencia</string>
+    <string name="cs_partidosRepresentados">Partidos representados: Ciudadanos</string>
+    <string name="cs_perfil"><![CDATA[<p><strong>Ciudadanos</strong> nació a partir de la plataforma cívica <strong>Ciutadans de Catalunya</strong>, creada el 7 de junio de 2005 en Barcelona por un grupo de quince intelectuales, profesores universitarios y profesionales de diversos campos. El día 21 de ese mismo mes presentaron en el Centro de Cultura Contemporánea de Barcelona un manifiesto denominado Por la creación de un nuevo partido político en Cataluña, que también se presentó en Bilbao y en Madrid, en el que se comprometían a impulsar la constitución de una nueva fuerza política de ámbito catalán. Se declararon opuestos a lo que consideraban como la imposición del nacionalismo catalán desde diversos ámbitos del poder en Cataluña, lo que calificaron como «nacionalismo obligatorio».</p>
+
+<p>El acto de presentación del proceso constituyente del nuevo partido tuvo lugar el 4 de marzo de 2006, en el teatro Tívoli de Barcelona, con la presencia y apoyo de diversas personalidades del ámbito de la cultura, educación y política. Durante la campaña de la Ciutadans de Catalunya para el referéndum de aprobación del nuevo Estatuto de Autonomía, el 5 de junio de 2006, Arcadi Espada y otros miembros de la plataforma fueron agredidos por un grupo de independentistas catalanes. Pese a que los Mozos de Escuadra —acusados de pasividad por el agredido— desmintieron la agresión en un primer momento, todos los grupos políticos la condenaron. La periodista y subdirectora del diario El Mundo, Victoria Prego, fue testigo de todo ello y lo plasmó en dos artículos. La plataforma formalizó una denuncia ante los juzgados de Gerona y, a propuesta del Partido Popular, el pleno del Congreso de los Diputados aprobó de forma unánime un día después una declaración institucional para condenar la agresión de la que fue objeto.</p>
+
+<p>El proceso culminó en un congreso fundacional, celebrado en Bellaterra los días 8 y 9 de julio de 2006 con la participación de 350 delegados procedentes de las aproximadamente cincuenta agrupaciones territoriales y sectoriales de la organización,31 donde se definió la organización y estructura interna, se eligieron los órganos representativos, se aprobó el cuerpo ideológico que definía al nuevo partido en ese momento, el ámbito de actuación y el nuevo nombre con el que concurriría a las elecciones al Parlamento de Cataluña, celebradas el 1 de noviembre del mismo año. El congreso fundacional eligió como presidente a <strong>Albert Rivera</strong>, un abogado de veintiséis años y como secretario general a Antonio Robles, ambos al frente de un Comité Ejecutivo de quince miembros.</p>
+
+<p>El nuevo partido decidió denominarse <strong>Ciudadanos – Partido de la Ciudadanía</strong>, en castellano, con el fin de reafirmar que su ámbito de actuación es el de toda España, si bien en las comunidades autónomas con más de una lengua oficial se usa indistintamente el nombre en ambos idiomas oficiales. Con posterioridad, Albert Rivera afirmó que escogieron la palabra «ciudadanos» como nombre del partido porque les gustaría ser «ciudadanos del mundo».</p>]]></string>
+
+
+    <!-- Cataluña si que puede -->
+    <string name="csqep_nombre">Catalunya si que es pot</string>
+    <string name="csqep_representantes">Representante: Lluís Rabell</string>
+    <string name="csqep_fundacion">Fundación: 2015</string>
+    <string name="csqep_escanos">Número de escaños actuales: nd</string>
+    <string name="csqep_porcentajeVotos">% de votos en las últimas elecciones: nd</string>
+    <string name="csqep_ideologia">Ideología sobre Cataluña: Independencia republicana</string>
+    <string name="csqep_partidosRepresentados">Partidos representados: Podemos e ICV-EUiA</string>
+    <string name="csqep_perfil"><![CDATA[<p><strong>Catalunya Sí que es Pot</strong> es una coalición electoral catalana de <strong>izquierdas</strong> creada para las elecciones al Parlamento de Cataluña de 2015, a semejanza de la plataforma <strong>Barcelona en Comú</strong> que se presentó en las elecciones municipales de 2015 en Barcelona.</p>
+
+<p>Esta candidatura unitaria la integran <strong>Iniciativa per Catalunya Verds (ICV), Esquerra Unida i Alternativa (EUiA), Podemos y Equo.</strong></p>
+
+<p>Su cabeza de lista por Barcelona será <strong>Lluís Rabell</strong>, hasta ahora presidente de la Federación de Asociaciones de Vecinos de Barcelona, y la número dos será la escritora Gemma Lienas. Los siguientes puestos los ocuparán Joan Coscubiela (ICV), Àngels Martínez Castells (Podemos) y Albano Dante Fachin (Podemos). En las otras provincias, Gerona estará encabezada por Marc Vidal (ICV), Lérida por Sara Vilà (ICV) y Tarragona por Gerard Bargalló (Podemos).</p>]]></string>
+
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_politician_card">PoliticianCardActivity</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_party_card">PartyCardActivity</string>
     <string name="title_activity_quiz_content">QuizContentActivity</string>
+
 </resources>
