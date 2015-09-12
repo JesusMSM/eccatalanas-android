@@ -87,9 +87,9 @@ public class HomeTab extends Fragment {
     private int numPartidos2015;
     private PartidoEstadisticas[] arrayPartidos2015;
 
-    private String[] partidos2012 = {"CiU", "PSC", "PP", "ERC", "ICV", "Ciudadanos", "CUP"};
-    private double[] porcentajes2012 = {30.68,14.44,13,13.69,9.9,7.58,3.48};
-    private String[] colores2012 = {"#002060", "#DF2927","#0077A7" ,"#FFC53F" ,"#C0D52E" ,"#DF843D" ,"#DFD717" };
+    private String[] partidos2012 = {"CiU", "PSC", "PP", "ERC", "ICV", "Ciudadanos", "CUP", "Otros"};
+    private double[] porcentajes2012 = {30.68,14.44,13,13.69,9.9,7.58,3.48,7.23};
+    private String[] colores2012 = {"#002060", "#DF2927","#0077A7" ,"#FFC53F" ,"#C0D52E" ,"#DF843D" ,"#DFD717","#C7C7C7" };
 
 
     @Override
