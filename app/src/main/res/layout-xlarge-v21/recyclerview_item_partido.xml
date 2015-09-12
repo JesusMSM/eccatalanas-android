@@ -23,10 +23,10 @@
 
             <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageView
                 android:id="@+id/imagen"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="2"
                 android:adjustViewBounds="true"
                 android:layout_marginLeft="5dp"
                 android:layout_gravity="top"/>
@@ -42,87 +42,87 @@
                     android:id="@+id/nombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingRight="8dp"
-                    android:paddingLeft="8dp"
-                    android:paddingTop="4dp"
-                    android:paddingBottom="4dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="9dp"
-                    android:layout_marginStart="9dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginEnd="4dp"
+                    android:paddingRight="12dp"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginEnd="6dp"
                     android:gravity="center_vertical"
                     android:background="@color/ColorAccent"
                     android:textColor="@color/white"
-                    android:textSize="9pt"
+                    android:textSize="12pt"
                     android:textAllCaps="true"/>
 
                 <TextView
                     android:id="@+id/representantes"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="9dp"
-                    android:paddingRight="3dp"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="13dp"
+                    android:paddingRight="4dp"
                     android:textColor="@color/black"
                     android:gravity="fill_horizontal"
-                    android:textSize="8pt" />
+                    android:textSize="11pt" />
 
                 <TextView
                     android:id="@+id/fundacion"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="9dp"
-                    android:paddingRight="3dp"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="13dp"
+                    android:paddingRight="4dp"
                     android:textColor="@color/black"
                     android:gravity="fill_horizontal"
-                    android:textSize="8pt" />
+                    android:textSize="11pt" />
 
                 <TextView
                     android:id="@+id/escanos"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="9dp"
-                    android:paddingRight="3dp"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="13dp"
+                    android:paddingRight="4dp"
                     android:textColor="@color/black"
                     android:gravity="fill_horizontal"
-                    android:textSize="8pt" />
+                    android:textSize="11pt" />
 
                 <TextView
                     android:id="@+id/porcentajeVotos"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="9dp"
-                    android:paddingRight="3dp"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="13dp"
+                    android:paddingRight="4dp"
                     android:textColor="@color/black"
                     android:gravity="fill_horizontal"
-                    android:textSize="8pt" />
+                    android:textSize="11pt" />
 
                 <TextView
                     android:id="@+id/ideologia"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="9dp"
-                    android:paddingRight="3dp"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="13dp"
+                    android:paddingRight="4dp"
                     android:textColor="@color/black"
                     android:gravity="fill_horizontal"
-                    android:textSize="8pt" />
+                    android:textSize="11pt" />
 
                 <TextView
                     android:id="@+id/partidosRepresentados"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="9dp"
-                    android:paddingRight="7dp"
-                    android:paddingBottom="30dp"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="13dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="45dp"
                     android:textColor="@color/black"
                     android:gravity="fill_horizontal"
-                    android:textSize="8pt" />
+                    android:textSize="11pt" />
 
             </LinearLayout>
 
@@ -136,12 +136,13 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:src="@drawable/ic_add_white"
-        app:fabSize="mini"
+        app:fabSize="normal"
         app:borderWidth="0dp"
         android:layout_gravity="bottom|end"
-        android:layout_marginTop="-45dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginTop="-30dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="30dp"
         android:clickable="true"
         android:padding="-5dp" />
 
