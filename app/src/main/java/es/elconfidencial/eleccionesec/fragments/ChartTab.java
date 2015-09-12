@@ -262,10 +262,16 @@ public class ChartTab extends Fragment {
             ArrayList<String> q = new ArrayList<String>();
 
 
-            for (int i = 0; i < numPartidos; i++) {   //OJOOOOOOOO HAY QUE BORRAR EL 6
-                q.add(arrayPartidos[i].getAlias());
-                //if(arrayPartidos[i].getAlias()!=null &&arrayPartidos[i]!= null && arrayPartidos!=null) Log.d("GRAFICOS", arrayPartidos[i].getAlias());
+            for (int i = 0; i < numPartidos; i++) {
+                if(arrayPartidos[i].getPorcentajeObtenido() >=3){
+                    q.add(arrayPartidos[i].getAlias());
+                }else{//Otros
+                    if(i == numPartidos-1){//Ultimo
+                        q.add("Otros");
+                    }
+                }
             }
+            //if(arrayPartidos[i].getAlias()!=null &&arrayPartidos[i]!= null && arrayPartidos!=null) Log.d("GRAFICOS", arrayPartidos[i].getAlias());
 
             return q;
 
@@ -274,20 +280,30 @@ public class ChartTab extends Fragment {
 
 
     private PieData generateDataPie2015(String ano) {
-
+            float porcentajeOtros = 0;
             ArrayList<Entry> entries = new ArrayList<>();
-            int[] colores = new int[numPartidos]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
+            List<Integer> coloresList = new ArrayList<>();
+            //int[] colores = new int[numPartidos]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
             for (int i = 0; i < numPartidos; i++) {
                 float porcentaje = arrayPartidos[i].getPorcentajeObtenido().floatValue();
-                entries.add(new Entry(porcentaje, i));
-                colores[i] = Color.parseColor(colorNotNull(arrayPartidos[i].getColor()));
+
+                if(porcentaje>=3){
+                    entries.add(new Entry(porcentaje, i));
+                    coloresList.add(Color.parseColor(colorNotNull(arrayPartidos[i].getColor())));
+                }else{//Otros
+                    porcentajeOtros += porcentaje;
+                    if (i == numPartidos-1){//Ultimo elemento
+                        entries.add(new Entry(porcentajeOtros, i));
+                        coloresList.add(Color.parseColor(colorNotNull("#c7c7c7")));
+                    }
+                }
             }
 
             PieDataSet d = new PieDataSet(entries, "");
 
         // space between slices
             d.setSliceSpace(0.5f);
-            d.setColors(colores);
+            d.setColors(coloresList);
             d.setValueTextColor(Color.BLACK);
 
             PieData cd = new PieData(getQuarters("2015"), d);

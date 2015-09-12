@@ -561,6 +561,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             l.setYOffset(10f);
             l.setWordWrapEnabled(true);
             l.setCustom(mChartData.getColors(), createLegend(mChartData));
+            System.out.println("COLORS: "+ mChartData.getColors().length);
             l.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
 
             // do not forget to refresh the chart
@@ -690,9 +691,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             if(nombre.equals("PARTIDO ANIMALISTA CONTRA EL MALTRATO ANIMAL")){
                 nombre = "PACMA";
             }
-            element = nombre + " (" + (myDataSet.getEntryForXIndex(i).getVal()) + "%)";
-            elements.add(element);
-            System.out.println(element);
+                element = nombre + " (" + (myDataSet.getEntryForXIndex(i).getVal()) + "%)";
+                elements.add(element);
         }
         return elements.toArray(new String[elements.size()]);
     }
