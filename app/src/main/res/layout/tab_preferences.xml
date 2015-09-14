@@ -17,9 +17,9 @@
         android:background="@color/black">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/huawei_logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/eclogo"
             android:scaleType="centerCrop"
             android:cropToPadding="true"
             android:layout_gravity="center"

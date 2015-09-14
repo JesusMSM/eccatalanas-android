@@ -28,6 +28,11 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
+import com.parse.GetCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -64,7 +69,7 @@ public class ChartTab extends Fragment {
     List<Object> items = new ArrayList<>();
     List<Noticia> noticias = new ArrayList<>();
 
-    private static String url_2015 = "http://api.elconfidencial.com/service/elections/place/3/7/99/9/";
+    private static String url_2015 = "";
     private static String url_2012 = "http://api.elconfidencial.com/service/elections/place/1/7/99/9/";
 
     private static final String TAG_DATA = "data";
@@ -107,6 +112,29 @@ public class ChartTab extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.tab_chart, container, false);
+
+        //Parse url_2015
+        try {
+            Parse.enableLocalDatastore(getActivity());
+            //Autenticacion con Parse
+            Parse.initialize(getActivity(), "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //Comunicacion con Parse.com
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("URL");
+        query.whereEqualTo("Name", "url_2015");
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            public void done(ParseObject object, ParseException e) {
+                if (e == null) {
+                    url_2015 = object.getString("Link");
+                    object.saveInBackground();
+                } else {
+                    //something went wrong
+                }
+            }
+        });
+
 
         //RecyclerView
         mRecyclerView = (RecyclerView) v.findViewById(R.id.chart_recycler_view);

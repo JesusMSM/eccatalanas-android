@@ -54,11 +54,11 @@ public class QuizFragment extends Fragment {
 
     private ArrayList<Object> getSampleArrayList() {
         ArrayList<Object> items = new ArrayList<>();
-        items.add(new Quiz(R.drawable.quiz1, getString(R.string.quiz1), getString(R.string.autor_quiz), "http://datos.elconfidencial.com/quizcat1/"));
-        items.add(new Quiz(R.drawable.quiz2, getString(R.string.quiz2), getString(R.string.autor_quiz), "http://datos.elconfidencial.com/quizcat2/"));
-        items.add(new Quiz(R.drawable.quiz3, getString(R.string.quiz3), getString(R.string.autor_quiz), "http://datos.elconfidencial.com/quizcat3/"));
-        items.add(new Quiz(R.drawable.quiz4, getString(R.string.quiz4), getString(R.string.autor_quiz), "http://datos.elconfidencial.com/quizcat4/"));
-        items.add(new Quiz(R.drawable.quiz5, getString(R.string.quiz5), getString(R.string.autor_quiz), "http://datos.elconfidencial.com/quizcat5/"));
+        items.add(new Quiz(R.drawable.quiz1, getString(R.string.quiz1), getString(R.string.autor_quiz), "http://datos.elconfidencial.com/quizcat3/"));
+        items.add(new Quiz(R.drawable.quiz2, getString(R.string.quiz2), getString(R.string.autor_quiz), "http://datos.elconfidencial.com/quizcat4/"));
+        items.add(new Quiz(R.drawable.quiz3, getString(R.string.quiz3), getString(R.string.autor_quiz), "http://datos.elconfidencial.com/quizcat5/"));
+        items.add(new Quiz(R.drawable.quiz4, getString(R.string.quiz4), getString(R.string.autor_quiz), "http://datos.elconfidencial.com/quizcat6/"));
+        items.add(new Quiz(R.drawable.quiz5, getString(R.string.quiz5), getString(R.string.autor_quiz), "http://datos.elconfidencial.com/quizcat7/"));
         return items;
     }
 }

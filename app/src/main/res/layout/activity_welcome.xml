@@ -6,7 +6,7 @@
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/ec_logo"
+        android:src="@drawable/eclogo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:id="@+id/ec_logo"/>
@@ -30,7 +30,7 @@
         android:layout_below="@+id/eg2015"
         android:id="@+id/spinnerIdioma"
         android:layout_marginBottom="20dp"/>
-    <TextView
+    <!--<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
@@ -39,14 +39,14 @@
         android:id="@+id/introduzcaProvincia"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/spinnerIdioma"
-        />
+        />-->
     <Spinner
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/abc_button_padding_vertical_material"
         android:paddingBottom="@dimen/abc_button_padding_vertical_material"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/introduzcaProvincia"
+        android:layout_below="@+id/spinnerIdioma"
         android:id="@+id/spinnerProvincia"
         android:layout_marginBottom="15dp"/>
     <Button
@@ -67,29 +67,26 @@
         android:id="@+id/start" />
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="15dp">
         <TextView
             android:layout_width="wrap_content"
-            android:textSize="9dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="center_horizontal"
-            android:text="POWERED BY"
-            android:textColor="@color/white"
+            android:text="POWERED BY "
             android:id="@+id/powered"
-            android:layout_marginBottom="5dp"/>
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:textSize="5pt"/>
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/huawei_logo"
-            android:layout_gravity="center_horizontal"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true" />
-    </LinearLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/huawei_horizontal"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/powered"/>
+    </RelativeLayout>
 </RelativeLayout>

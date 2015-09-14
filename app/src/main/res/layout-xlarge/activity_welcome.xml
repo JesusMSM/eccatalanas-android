@@ -6,7 +6,7 @@
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/ec_logo"
+        android:src="@drawable/eclogo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
         android:id="@+id/ec_logo"/>
@@ -69,29 +69,24 @@
         android:id="@+id/start" />
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp">
+        android:layout_gravity="center"
+        android:gravity="center">
         <TextView
             android:layout_width="wrap_content"
-            android:textSize="13dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="center_horizontal"
-            android:text="POWERED BY"
-            android:textColor="@color/white"
+            android:text="POWERED BY "
             android:id="@+id/powered"
-            android:layout_marginBottom="10dp"/>
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:textSize="5pt"/>
         <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/huawei_logo"
-            android:layout_gravity="center_horizontal"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true" />
-    </LinearLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/huawei_horizontal"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/powered"/>
+    </RelativeLayout>
 </RelativeLayout>

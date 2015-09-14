@@ -64,8 +64,8 @@ public class WelcomeActivity extends Activity {
         titulo.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Semibold.otf"));
 
         //Introduce Provincia
-        TextView introduce = (TextView) findViewById(R.id.introduzcaProvincia);
-        introduce.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+        //TextView introduce = (TextView) findViewById(R.id.introduzcaProvincia);
+        //introduce.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
 
         //Provincia Spinner
         Spinner spinnerProvincia = (Spinner) findViewById(R.id.spinnerProvincia);
@@ -73,7 +73,7 @@ public class WelcomeActivity extends Activity {
         List<String> spinnerArray =  new ArrayList<String>();
 
         //Default value
-        spinnerArray.add("-");
+        spinnerArray.add(this.getResources().getString(R.string.introduce_tu_provincia));
 
         for (int i = 0; i<arrayProvincias.length;i++){
             spinnerArray.add(arrayProvincias[i]);
@@ -217,7 +217,7 @@ public class WelcomeActivity extends Activity {
 
         //Powered
         TextView powered = (TextView) findViewById(R.id.powered);
-        introduce.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
+        powered.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
     }
 
     /** Called when the user clicks the Start button */
