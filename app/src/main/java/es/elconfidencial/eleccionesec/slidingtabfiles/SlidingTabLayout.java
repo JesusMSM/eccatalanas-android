@@ -231,7 +231,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
                 //tabTitleView.setText(adapter.getPageTitle(i));
                 tabView.setOnClickListener(tabClickListener);
 
-                //Añadimos fondo al estar seleccionada la tab
+                //AÃ±adimos fondo al estar seleccionada la tab
                 tabView.setBackgroundDrawable(getResources().getDrawable(R.drawable.sliding_tag_bg_selector));
                 mTabStrip.addView(tabView);
             }

@@ -45,7 +45,7 @@ public class RssNoticiasHandler extends DefaultHandler {
                 noticiaActual.setTitulo(sbTexto.toString());
                 firstTime = false;
             } else if(localName.equals("content")){
-                //Comprobamos que no esta vacío
+                //Comprobamos que no esta vacio
                 if(!sbTexto.toString().isEmpty()){
                     noticiaActual.setDescripcion(sbTexto.toString().replaceAll("<img src[^>]*>", ""));
                 }

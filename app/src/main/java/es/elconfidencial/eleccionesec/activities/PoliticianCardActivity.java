@@ -83,7 +83,7 @@ public class PoliticianCardActivity extends ActionBarActivity {
         cargo.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Semibold.otf"));
         edad.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "Titillium-Semibold.otf"));
 
-        //Obtenemos el tamaño de letra del contenido dependiendo del tamaño de pantalla
+        //Obtenemos el tamaÃ±o de letra del contenido dependiendo del tamaÃ±o de pantalla
         String textSize= "";
         if (getSizeName().equals("xlarge")) {
             textSize="25px";
