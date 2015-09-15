@@ -13,6 +13,7 @@ import com.pushwoosh.BasePushMessageReceiver;
 import com.pushwoosh.BaseRegistrationReceiver;
 import com.pushwoosh.PushManager;
 
+import com.comscore.analytics.comScore;
 /**
  * Created by JesúsManuel on 03/09/2015.
  */
@@ -42,6 +43,12 @@ public class ChooseActivity extends Activity {
 
         checkMessage(getIntent());
 
+        /*******COMSCORE*************/
+        comScore.setAppContext(getApplicationContext());
+        comScore.setCustomerC2("elo_mtereisa");
+        comScore.setPublisherSecret("c703dc81c1024d5172e35a58f86e2e9b");
+        comScore.onUxActive();
+
         //Comprueba si es la primera vez
         SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         boolean firstTime = prefs.getBoolean("firstTime", true); //Si no existe, devuelve el segundo parametro
@@ -62,6 +69,7 @@ public class ChooseActivity extends Activity {
         super.onResume();
         //Re-register receivers on resume
         registerReceivers();
+        comScore.onEnterForeground();
     }
 
     @Override
@@ -69,6 +77,7 @@ public class ChooseActivity extends Activity {
         super.onPause();
         //Unregister receivers on pause
         unregisterReceivers();
+        comScore.onExitForeground();
     }
     /***********************PUSHWOOSH*****************************/
     //Registration receiver

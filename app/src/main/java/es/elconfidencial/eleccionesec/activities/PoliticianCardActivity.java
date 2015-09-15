@@ -25,8 +25,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import es.elconfidencial.eleccionesec.R;
-import jp.wasabeef.glide.transformations.ColorFilterTransformation;
-import jp.wasabeef.glide.transformations.gpu.VignetteFilterTransformation;
+//import jp.wasabeef.glide.transformations.ColorFilterTransformation;
+//import jp.wasabeef.glide.transformations.gpu.VignetteFilterTransformation;
 
 public class PoliticianCardActivity extends ActionBarActivity {
 
@@ -61,7 +61,8 @@ public class PoliticianCardActivity extends ActionBarActivity {
 
 
             if (currentapiVersion >= 19) {
-                Glide.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).bitmapTransform(new VignetteFilterTransformation(getApplicationContext())).into(imagen);
+                //Glide.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).bitmapTransform(new VignetteFilterTransformation(getApplicationContext())).into(imagen);
+                Glide.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).into(imagen);
             } else {
                 Glide.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).into(imagen);
             }

@@ -136,9 +136,9 @@ public class PieChartRendererEC extends PieChartRenderer {
 
                 //Ocultamos los % muy pequeños
                 String val = dataSet.getValueFormatter().getFormattedValue(value);
-                if (Double.parseDouble(val.split(",")[0]) <= 1){
+                /*if (Double.parseDouble(val.split(",")[0]) <= 1){
                     val = "";
-                }
+                }*/
 
                 float lineHeight = Utils.calcTextHeight(mValuePaint, val)
                         + Utils.convertDpToPixel(4f);

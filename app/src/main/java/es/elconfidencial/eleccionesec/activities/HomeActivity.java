@@ -167,6 +167,8 @@ public class HomeActivity extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
+        //comScore
+
         System.gc();
         finish();
         super.onBackPressed();

@@ -21,7 +21,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import es.elconfidencial.eleccionesec.R;
-import jp.wasabeef.glide.transformations.gpu.VignetteFilterTransformation;
+//import jp.wasabeef.glide.transformations.gpu.VignetteFilterTransformation;
 
 public class PartyCardActivity extends ActionBarActivity {
 
