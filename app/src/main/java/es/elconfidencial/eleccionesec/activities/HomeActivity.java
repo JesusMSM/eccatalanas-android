@@ -23,6 +23,8 @@ import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.adapters.ViewPagerAdapter;
 import es.elconfidencial.eleccionesec.slidingtabfiles.SlidingTabLayout;
 
+import com.comscore.analytics.comScore;
+
 
 public class HomeActivity extends ActionBarActivity {
 
@@ -42,6 +44,8 @@ public class HomeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         resources = getResources();
+
+        comScore.setAppContext(this.getApplicationContext());
 
         /**********INICIALIZAMOS PUSHWOOSH*******************/
         //Register receivers for push notifications
@@ -156,6 +160,7 @@ public class HomeActivity extends ActionBarActivity {
         super.onResume();
         //Re-register receivers on resume
         registerReceivers();
+        comScore.onEnterForeground();
     }
 
     @Override
@@ -163,12 +168,13 @@ public class HomeActivity extends ActionBarActivity {
         super.onPause();
         //Unregister receivers on pause
         unregisterReceivers();
+        comScore.onExitForeground();
     }
 
     @Override
     public void onBackPressed() {
         //comScore
-
+        comScore.onUxInactive();
         System.gc();
         finish();
         super.onBackPressed();

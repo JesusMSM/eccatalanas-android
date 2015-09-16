@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.comscore.analytics.comScore;
 
 import es.elconfidencial.eleccionesec.R;
 
@@ -39,6 +40,8 @@ public class NoticiaContentActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content_noticia);
+
+        comScore.setAppContext(this.getApplicationContext());
 
         //ActionBar
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -223,5 +226,19 @@ public class NoticiaContentActivity extends ActionBarActivity {
         public static final int HOUR_MILLIS = 60 * MINUTE_MILLIS;
         /** One day (in milliseconds) */
         public static final int DAY_MILLIS = 24 * HOUR_MILLIS;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Re-register receivers on resume
+        comScore.onEnterForeground();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //Unregister receivers on pause
+        comScore.onExitForeground();
     }
 }

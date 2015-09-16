@@ -21,6 +21,8 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.comscore.analytics.comScore;
+
 import es.elconfidencial.eleccionesec.R;
 
 public class QuizContentActivity extends ActionBarActivity {
@@ -32,6 +34,8 @@ public class QuizContentActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_content);
+
+        comScore.setAppContext(this.getApplicationContext());
 
         //ActionBar
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -187,5 +191,21 @@ public class QuizContentActivity extends ActionBarActivity {
         intent.setType( "text/plain" );
 
         startActivity(  Intent.createChooser( intent, getString(R.string.share) )  );
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Re-register receivers on resume
+
+        comScore.onEnterForeground();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //Unregister receivers on pause
+
+        comScore.onExitForeground();
     }
 }

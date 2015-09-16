@@ -37,6 +37,8 @@ import es.elconfidencial.eleccionesec.adapters.IdiomaSpinnerAdapter;
 import es.elconfidencial.eleccionesec.adapters.ProvinciaSpinnerAdapter;
 import es.elconfidencial.eleccionesec.model.IdiomaSpinnerModel;
 
+import com.comscore.analytics.comScore;
+
 /**
  * Created by JesúsManuel on 30/07/2015.
  */
@@ -53,6 +55,8 @@ public class WelcomeActivity extends Activity {
 
         setContentView(R.layout.activity_welcome);
         this.context = getApplicationContext();
+
+        comScore.setAppContext(this.getApplicationContext());
 
         //Cargamos las preferencias sobre idiomas si las hay
         SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
@@ -314,5 +318,27 @@ public class WelcomeActivity extends Activity {
 
         config.locale = locale;
         standardResources.updateConfiguration(config, metrics);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Re-register receivers on resume
+
+        comScore.onEnterForeground();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //Unregister receivers on pause
+
+        comScore.onExitForeground();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        comScore.onUxInactive();
     }
 }

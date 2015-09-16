@@ -23,8 +23,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.comscore.analytics.comScore;
 
 import es.elconfidencial.eleccionesec.R;
+import jp.wasabeef.glide.transformations.gpu.VignetteFilterTransformation;
 //import jp.wasabeef.glide.transformations.ColorFilterTransformation;
 //import jp.wasabeef.glide.transformations.gpu.VignetteFilterTransformation;
 
@@ -36,6 +38,8 @@ public class PoliticianCardActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_politician_card);
+
+        comScore.setAppContext(this.getApplicationContext());
 
         //Extraemos el intent para leer los par?metros y rellenar los campos
         Intent intent = getIntent();
@@ -61,8 +65,8 @@ public class PoliticianCardActivity extends ActionBarActivity {
 
 
             if (currentapiVersion >= 19) {
-                //Glide.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).bitmapTransform(new VignetteFilterTransformation(getApplicationContext())).into(imagen);
-                Glide.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).into(imagen);
+                Glide.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).bitmapTransform(new VignetteFilterTransformation(getApplicationContext())).into(imagen);
+                //Glide.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).into(imagen);
             } else {
                 Glide.with(getApplicationContext()).load(resid).placeholder(R.drawable.nopicpoliticolow).into(imagen);
             }
@@ -170,5 +174,21 @@ public class PoliticianCardActivity extends ActionBarActivity {
     public void onBackPressed() {
         System.gc();
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Re-register receivers on resume
+
+        comScore.onEnterForeground();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //Unregister receivers on pause
+
+        comScore.onExitForeground();
     }
 }

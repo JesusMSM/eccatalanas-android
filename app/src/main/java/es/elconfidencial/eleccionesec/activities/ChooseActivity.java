@@ -7,11 +7,14 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.multidex.MultiDex;
 import android.widget.Toast;
 
 import com.pushwoosh.BasePushMessageReceiver;
 import com.pushwoosh.BaseRegistrationReceiver;
 import com.pushwoosh.PushManager;
+
+import com.comscore.analytics.comScore;
 
 /**
  * Created by JesúsManuel on 03/09/2015.
@@ -19,7 +22,13 @@ import com.pushwoosh.PushManager;
 public class ChooseActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MultiDex.install(this);
         super.onCreate(savedInstanceState);
+
+        comScore.setAppContext(this.getApplicationContext());
+        comScore.setCustomerC2("elo_mtereisa");
+        comScore.setPublisherSecret("c703dc81c1024d5172e35a58f86e2e9b");
+        comScore.onUxActive();
 
         /**********INICIALIZAMOS PUSHWOOSH*******************/
         //Register receivers for push notifications
@@ -62,6 +71,7 @@ public class ChooseActivity extends Activity {
         super.onResume();
         //Re-register receivers on resume
         registerReceivers();
+        comScore.onEnterForeground();
     }
 
     @Override
@@ -69,6 +79,7 @@ public class ChooseActivity extends Activity {
         super.onPause();
         //Unregister receivers on pause
         unregisterReceivers();
+        comScore.onExitForeground();
     }
     /***********************PUSHWOOSH*****************************/
     //Registration receiver

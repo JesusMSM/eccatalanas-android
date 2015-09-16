@@ -28,6 +28,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.pushwoosh.PushManager;
 import com.pushwoosh.SendPushTagsCallBack;
 
+import com.comscore.analytics.comScore;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -59,6 +61,8 @@ public class PreferencesActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         this.context = getApplicationContext();
+
+        comScore.setAppContext(this.getApplicationContext());
 
         setContentView(R.layout.tab_preferences);
 
@@ -253,5 +257,27 @@ public class PreferencesActivity extends Activity {
         jps.setTypeface(tr);
         cup.setTypeface(tr);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Re-register receivers on resume
+
+        comScore.onEnterForeground();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //Unregister receivers on pause
+
+        comScore.onExitForeground();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        comScore.onUxInactive();
     }
 }

@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.comscore.analytics.comScore;
 
 import es.elconfidencial.eleccionesec.R;
 //import jp.wasabeef.glide.transformations.gpu.VignetteFilterTransformation;
@@ -30,6 +31,8 @@ public class PartyCardActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_party_card);
+
+        comScore.setAppContext(this.getApplicationContext());
 
         //Extraemos el intent para leer los par?metros y rellenar los campos
         Intent intent = getIntent();
@@ -182,5 +185,21 @@ public class PartyCardActivity extends ActionBarActivity {
     public void onBackPressed() {
         System.gc();
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Re-register receivers on resume
+
+        comScore.onEnterForeground();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //Unregister receivers on pause
+
+        comScore.onExitForeground();
     }
 }
