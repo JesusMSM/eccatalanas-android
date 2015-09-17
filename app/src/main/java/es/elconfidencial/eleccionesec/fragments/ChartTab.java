@@ -38,7 +38,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import es.elconfidencial.eleccionesec.R;
@@ -49,6 +51,7 @@ import es.elconfidencial.eleccionesec.chart.LineChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem2012;
 import es.elconfidencial.eleccionesec.json.JSONParser;
+import es.elconfidencial.eleccionesec.model.Mensaje;
 import es.elconfidencial.eleccionesec.model.Noticia;
 import es.elconfidencial.eleccionesec.model.PartidoEstadisticas;
 import es.elconfidencial.eleccionesec.model.Title;
@@ -89,6 +92,8 @@ public class ChartTab extends Fragment {
     private PartidoEstadisticas[] arrayPartidos;
     private PartidoEstadisticas[] arrayPartidos2012;
     public static double porcentajeEscrutado = 0.0;
+
+    private String fechaElecciones = "27/09/2015";
 
 
     private String[] partidos2012 = {"CiU", "PSC", "PP", "ERC", "ICV", "Ciudadanos", "CUP", "Otros"};
@@ -263,11 +268,30 @@ public class ChartTab extends Fragment {
 
         if(items.size()>0) items.clear();
 
-        if(arrayPartidos!=null) {
-            //Grafico de 2015
-            items.add(new Title(getString(R.string.titulo_resultados_2015)));
-            items.add(new PieChartItem(generateDataPie2015("2015"), HomeActivity.context));
+        Date today = new Date();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date electionsDate;
+        try {
+            electionsDate = sdf.parse(fechaElecciones);
+        }catch (Exception e){
+            e.printStackTrace();
+            electionsDate =null;
         }
+
+        int comparacion = today.compareTo(electionsDate);
+        boolean isElectionDay = false;
+        if(comparacion>=0) isElectionDay = true;
+
+        if(isElectionDay){
+            if(numPartidos>0){
+                items.add(new Title(getString(R.string.titulo_resultados_2015)));
+                items.add(new PieChartItem(generateDataPie2015("2015"), HomeActivity.context));
+            }else{
+                items.add(new Mensaje(getString(R.string.alerta_espera_datos)));
+            }
+        }
+
 
         //Grafico de 2012
         items.add(new Title(getString(R.string.titulo_resultados_2012)));
