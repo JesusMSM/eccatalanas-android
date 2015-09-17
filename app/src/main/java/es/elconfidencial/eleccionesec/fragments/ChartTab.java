@@ -118,6 +118,15 @@ public class ChartTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.tab_chart, container, false);
 
+
+
+
+        //RecyclerView
+        mRecyclerView = (RecyclerView) v.findViewById(R.id.chart_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(HomeActivity.context);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
         //Parse url_2015
         try {
             Parse.enableLocalDatastore(getActivity());
@@ -128,26 +137,20 @@ public class ChartTab extends Fragment {
         }
         //Comunicacion con Parse.com
         ParseQuery<ParseObject> query = ParseQuery.getQuery("URL");
-        query.whereEqualTo("Name", "url_2015");
+        query.whereEqualTo("Name", "prueba_url_2015");
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             public void done(ParseObject object, ParseException e) {
                 if (e == null) {
                     url_2015 = object.getString("Link");
                     object.saveInBackground();
+                    downloadData();
+
                 } else {
                     //something went wrong
                 }
             }
         });
 
-
-        //RecyclerView
-        mRecyclerView = (RecyclerView) v.findViewById(R.id.chart_recycler_view);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(HomeActivity.context);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        downloadData();
 
         layout = (PullRefreshLayout) v.findViewById(R.id.swipeRefreshLayoutChart);
 
