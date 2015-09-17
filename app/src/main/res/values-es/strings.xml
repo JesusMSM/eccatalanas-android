@@ -31,6 +31,7 @@
     <string name="titulo_evolucion">Evolución histórica</string>
     <string name="titulo_noticias">últimas noticias</string>
     <string name="titulo_fichas">Fichas informativas</string>
+    <string name="titulo_encuesta">Participa: ¿A quién votarías en las Elecciones Catalanas de 2015?</string>
     <string name="alerta_conexion_noticias">Conéctese a Internet para recibir las últimas noticias sobre las Elecciones</string>
     <string name="alerta_espera_datos">Esperando datos del escrutinio...</string>
     <string name="alerta_conexion_quizes"><![CDATA[<p></p><p></p><p><strong>NO ES POSIBLE ACCEDER A LA ENCUESTA.</strong></p>

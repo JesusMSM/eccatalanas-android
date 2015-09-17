@@ -31,6 +31,7 @@
     <string name="titulo_evolucion">Evolució històrica</string>
     <string name="titulo_noticias">Últimes notícies</string>
     <string name="titulo_fichas">Fitxes</string>
+    <string name="titulo_encuesta">Participa: ¿A qui votaries a les eleccions catalanes de 2015 ?</string>
     <string name="alerta_conexion_noticias">Connecteu-vos a Internet per rebre les últimes notícies sobre les Eleccions</string>
     <string name="porcentaje_escrutado">% escrutat:</string>
     <string name="creditosAcerca">Crèdits</string>

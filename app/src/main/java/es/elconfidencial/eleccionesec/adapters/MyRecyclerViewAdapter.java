@@ -47,6 +47,7 @@ import es.elconfidencial.eleccionesec.model.Mensaje;
         import es.elconfidencial.eleccionesec.model.Quiz;
         import es.elconfidencial.eleccionesec.model.Title;
         import es.elconfidencial.eleccionesec.viewholders.ContadorViewHolder;
+import es.elconfidencial.eleccionesec.viewholders.EncuestaViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.Grafico2012ViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.Grafico2015ViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.GraficoLineasViewHolder;
@@ -65,7 +66,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     // The items to display in your RecyclerView
     private List<Object> items;
     Context context;
-    private final int NOTICIA = 0, QUIZ = 1, CONTADOR = 2, PARTIDO = 3, POLITICO = 4, TITULO = 5, MENSAJE = 6, GRAFICO2012 = 7, GRAFICO2015 = 8, GRAFICOLINEAS = 9;
+    private final int NOTICIA = 0, QUIZ = 1, CONTADOR = 2, PARTIDO = 3, POLITICO = 4, TITULO = 5, MENSAJE = 6, GRAFICO2012 = 7, GRAFICO2015 = 8, GRAFICOLINEAS = 9, ENCUESTA = 10;
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyRecyclerViewAdapter(Context context, List<Object> items) {
@@ -102,6 +103,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             return GRAFICO2015;
         } else if (items.get(position) instanceof LineChartItem) {
             return GRAFICOLINEAS;
+        }else if (items.get(position).equals("encuesta")) {
+            return ENCUESTA;
         }
         return -1;
     }
@@ -153,6 +156,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 View v10 = inflater.inflate(R.layout.chart_line, viewGroup, false);
                 viewHolder = new GraficoLineasViewHolder(v10);
                 break;
+            case ENCUESTA:
+                View v11 = inflater.inflate(R.layout.recyclerview_item_encuesta, viewGroup, false);
+                viewHolder = new EncuestaViewHolder(v11);
+                break;
             default:
                 viewHolder = null;
                 break;
@@ -203,6 +210,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             case GRAFICOLINEAS:
                 GraficoLineasViewHolder vh10 = (GraficoLineasViewHolder) viewHolder;
                 configureGraficoLineasViewHolder(vh10, position);
+                break;
+            case ENCUESTA:
+                EncuestaViewHolder vh11 = (EncuestaViewHolder) viewHolder;
+                configureEncuestaViewHolder(vh11, position);
                 break;
             default:
         }
@@ -531,7 +542,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh9.grafico.setDescription("");
             vh9.grafico.setHoleRadius(52f);
             vh9.grafico.setTransparentCircleRadius(57f);
-            vh9.grafico.setCenterText(context.getResources().getString(R.string.porcentaje_escrutado)+"\n"+ChartTab.porcentajeEscrutado+" %");
+            vh9.grafico.setCenterText(context.getResources().getString(R.string.porcentaje_escrutado) + "\n" + ChartTab.porcentajeEscrutado + " %");
             vh9.grafico.setCenterTextTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
             vh9.grafico.setCenterTextColor(context.getResources().getColor(R.color.ColorAccent));
             vh9.grafico.setTouchEnabled(false);
@@ -561,7 +572,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             l.setYOffset(10f);
             l.setWordWrapEnabled(true);
             l.setCustom(mChartData.getColors(), createLegend(mChartData));
-            System.out.println("COLORS: "+ mChartData.getColors().length);
+            System.out.println("COLORS: " + mChartData.getColors().length);
             l.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
 
             // do not forget to refresh the chart
@@ -658,6 +669,36 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
 
     }
+
+    private void configureEncuestaViewHolder(EncuestaViewHolder vh11, int position) {
+        try {
+            System.gc();
+            Glide.with(context).load(R.drawable.psc).placeholder(R.drawable.nopicpoliticolow).into(vh11.psc);
+            Glide.with(context).load(R.drawable.cup).placeholder(R.drawable.nopicpoliticolow).into(vh11.cup);
+            Glide.with(context).load(R.drawable.jps).placeholder(R.drawable.nopicpoliticolow).into(vh11.jps);
+            Glide.with(context).load(R.drawable.pp).placeholder(R.drawable.nopicpoliticolow).into(vh11.pp);
+            Glide.with(context).load(R.drawable.udc).placeholder(R.drawable.nopicpoliticolow).into(vh11.udc);
+            Glide.with(context).load(R.drawable.cs).placeholder(R.drawable.nopicpoliticolow).into(vh11.cs);
+            Glide.with(context).load(R.drawable.csqep).placeholder(R.drawable.nopicpoliticolow).into(vh11.csqep);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Metodos auxiliares
 
     private static String getSizeName(Context context) {
         int screenLayout = context.getResources().getConfiguration().screenLayout;
