@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.support.multidex.MultiDex;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.support.v4.view.ViewPager;
@@ -41,6 +42,7 @@ public class HomeActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MultiDex.install(this);
         super.onCreate(savedInstanceState);
 
         resources = getResources();

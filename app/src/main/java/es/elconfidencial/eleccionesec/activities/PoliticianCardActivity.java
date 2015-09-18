@@ -25,6 +25,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.comscore.analytics.comScore;
 
+import android.support.multidex.MultiDex;
+
 import es.elconfidencial.eleccionesec.R;
 import jp.wasabeef.glide.transformations.gpu.VignetteFilterTransformation;
 //import jp.wasabeef.glide.transformations.ColorFilterTransformation;
@@ -36,6 +38,7 @@ public class PoliticianCardActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MultiDex.install(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_politician_card);
 

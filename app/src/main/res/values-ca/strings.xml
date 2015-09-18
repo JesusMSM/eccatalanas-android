@@ -38,7 +38,7 @@
     <string name="titulo_creditos">Contribuïdors</string>
     <string name="contenido_creditos">Aquesta aplicació ha estat desenvolupada per: ElConfidencialLAB, en col·laboració amb:\n\n  Jorge Campos de la Mata \n  Antonio Fernández Llamas \n  Sergio Muñoz López \n  Jesús M. Sánchez Martínez \n  Angel Sans Muro \n\n  moonfishteam@gmail.com</string>
     <string name="atras_creditos">Enrere</string>
-
+    <string name="encuesta_ec">Enquetes El Confidencial</string>
 
     <string name="quiz1">Quant saps de política catalana?</string>
     <string name="quiz2">Quant saps de Ciutadans?</string>

@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.ChartData;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.PieData;
@@ -36,6 +37,7 @@ import es.elconfidencial.eleccionesec.activities.NoticiaContentActivity;
         import es.elconfidencial.eleccionesec.activities.PartyCardActivity;
         import es.elconfidencial.eleccionesec.activities.PoliticianCardActivity;
 import es.elconfidencial.eleccionesec.activities.QuizContentActivity;
+import es.elconfidencial.eleccionesec.chart.HorizontalBarChartItem;
 import es.elconfidencial.eleccionesec.chart.LineChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem2012;
@@ -49,6 +51,7 @@ import es.elconfidencial.eleccionesec.model.Mensaje;
         import es.elconfidencial.eleccionesec.viewholders.ContadorViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.Grafico2012ViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.Grafico2015ViewHolder;
+import es.elconfidencial.eleccionesec.viewholders.GraficoHorizontalBarViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.GraficoLineasViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.MensajeViewHolder;
         import es.elconfidencial.eleccionesec.viewholders.NoticiaViewHolder;
@@ -65,7 +68,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     // The items to display in your RecyclerView
     private List<Object> items;
     Context context;
-    private final int NOTICIA = 0, QUIZ = 1, CONTADOR = 2, PARTIDO = 3, POLITICO = 4, TITULO = 5, MENSAJE = 6, GRAFICO2012 = 7, GRAFICO2015 = 8, GRAFICOLINEAS = 9;
+    private final int NOTICIA = 0, QUIZ = 1, CONTADOR = 2, PARTIDO = 3, POLITICO = 4, TITULO = 5, MENSAJE = 6, GRAFICO2012 = 7, GRAFICO2015 = 8, GRAFICOLINEAS = 9, GRAFICOHORIZONTALBAR=10;
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyRecyclerViewAdapter(Context context, List<Object> items) {
@@ -102,6 +105,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             return GRAFICO2015;
         } else if (items.get(position) instanceof LineChartItem) {
             return GRAFICOLINEAS;
+        }else if (items.get(position) instanceof HorizontalBarChartItem) {
+            return GRAFICOHORIZONTALBAR;
         }
         return -1;
     }
@@ -153,6 +158,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 View v10 = inflater.inflate(R.layout.chart_line, viewGroup, false);
                 viewHolder = new GraficoLineasViewHolder(v10);
                 break;
+            case GRAFICOHORIZONTALBAR:
+                View v11 = inflater.inflate(R.layout.chart_horizontal_bar, viewGroup, false);
+                viewHolder = new GraficoHorizontalBarViewHolder(v11);
+                break;
             default:
                 viewHolder = null;
                 break;
@@ -203,6 +212,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             case GRAFICOLINEAS:
                 GraficoLineasViewHolder vh10 = (GraficoLineasViewHolder) viewHolder;
                 configureGraficoLineasViewHolder(vh10, position);
+                break;
+            case GRAFICOHORIZONTALBAR:
+                GraficoHorizontalBarViewHolder vh11 = (GraficoHorizontalBarViewHolder) viewHolder;
+                configureGraficoHorizontalBarViewHolder(vh11, position);
                 break;
             default:
         }
@@ -531,7 +544,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh9.grafico.setDescription("");
             vh9.grafico.setHoleRadius(52f);
             vh9.grafico.setTransparentCircleRadius(57f);
-            vh9.grafico.setCenterText(context.getResources().getString(R.string.porcentaje_escrutado)+"\n"+ChartTab.porcentajeEscrutado+" %");
+            vh9.grafico.setCenterText(context.getResources().getString(R.string.porcentaje_escrutado) + "\n" + ChartTab.porcentajeEscrutado + " %");
             vh9.grafico.setCenterTextTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Regular.otf"));
             vh9.grafico.setCenterTextColor(context.getResources().getColor(R.color.ColorAccent));
             vh9.grafico.setTouchEnabled(false);
@@ -561,7 +574,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             l.setYOffset(10f);
             l.setWordWrapEnabled(true);
             l.setCustom(mChartData.getColors(), createLegend(mChartData));
-            System.out.println("COLORS: "+ mChartData.getColors().length);
+            System.out.println("COLORS: " + mChartData.getColors().length);
             l.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
 
             // do not forget to refresh the chart
@@ -658,6 +671,71 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
 
     }
+
+    private void configureGraficoHorizontalBarViewHolder(GraficoHorizontalBarViewHolder vh11, int position) {
+        final HorizontalBarChartItem grafico = (HorizontalBarChartItem) items.get(position);
+        ChartData<?> mChartData = grafico.getItemData();
+
+
+        if (grafico != null) {
+            // apply styling
+            vh11.grafico.setDrawBarShadow(false);
+
+            vh11.grafico.setDrawValueAboveBar(true);
+
+            vh11.grafico.setDescription("");
+
+            // if more than 60 entries are displayed in the chart, no values will be
+            // drawn
+            vh11.grafico.setMaxVisibleValueCount(60);
+
+            // scaling can now only be done on x- and y-axis separately
+            vh11.grafico.setPinchZoom(false);
+
+            // draw shadows for each bar that show the maximum value
+            // mChart.setDrawBarShadow(true);
+
+            // mChart.setDrawXLabels(false);
+
+            vh11.grafico.setDrawGridBackground(false);
+
+            // mChart.setDrawYLabels(false);
+
+
+            XAxis xl = vh11.grafico.getXAxis();
+            xl.setPosition(XAxis.XAxisPosition.BOTTOM);
+            xl.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            xl.setDrawAxisLine(true);
+            xl.setDrawGridLines(false);
+            xl.setGridLineWidth(0.3f);
+
+
+            YAxis yl = vh11.grafico.getAxisLeft();
+            yl.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            yl.setDrawAxisLine(true);
+            yl.setDrawGridLines(false);
+            yl.setGridLineWidth(0.3f);
+            yl.setInverted(true);
+
+            YAxis yr = vh11.grafico.getAxisRight();
+            yr.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            yr.setDrawAxisLine(true);
+            yr.setDrawGridLines(false);
+//            yr.setInverted(true);
+
+            vh11.grafico.setData((BarData) mChartData);
+            vh11.grafico.animateY(2500);
+
+
+            Legend l = vh11.grafico.getLegend();
+            l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
+            l.setFormSize(8f);
+            l.setXEntrySpace(4f);
+
+        }
+
+    }
+
 
     private static String getSizeName(Context context) {
         int screenLayout = context.getResources().getConfiguration().screenLayout;
