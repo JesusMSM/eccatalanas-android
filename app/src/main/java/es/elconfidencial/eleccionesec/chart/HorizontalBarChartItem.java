@@ -16,11 +16,11 @@ import es.elconfidencial.eleccionesec.R;
 /**
  * Created by JesúsManuel on 14/08/2015.
  */
-public class BarChartItem extends ChartItem {
+public class HorizontalBarChartItem extends ChartItem {
 
     private Typeface mTf;
 
-    public BarChartItem(ChartData<?> cd, Context c) {
+    public HorizontalBarChartItem(ChartData<?> cd, Context c) {
         super(cd);
 
         mTf = Typeface.createFromAsset(c.getAssets(), "OpenSans-Regular.ttf");
