@@ -348,6 +348,12 @@ public class HomeTab extends Fragment {
         }*/
 
         //Título del grafico
+        items.add(new Title(getString(R.string.titulo_encuesta)));
+
+        //Insertamos grafico PIECHART 2012
+        items.add("encuesta");
+
+        //Título del grafico
         items.add(new Title(getString(R.string.titulo_resultados_2012)));
 
         //Insertamos grafico PIECHART 2012

@@ -1,7 +1,9 @@
 package es.elconfidencial.eleccionesec.adapters;
 
+import android.app.Activity;
 import android.content.Context;
         import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -15,6 +17,7 @@ import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.CompoundButton;
 
 import com.bumptech.glide.Glide;
 import com.github.mikephil.charting.components.Legend;
@@ -27,6 +30,12 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.utils.PercentFormatter;
 import com.github.mikephil.charting.utils.Utils;
 import com.google.android.gms.fitness.data.DataSet;
+import com.parse.GetCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -49,6 +58,7 @@ import es.elconfidencial.eleccionesec.model.Mensaje;
         import es.elconfidencial.eleccionesec.model.Quiz;
         import es.elconfidencial.eleccionesec.model.Title;
         import es.elconfidencial.eleccionesec.viewholders.ContadorViewHolder;
+import es.elconfidencial.eleccionesec.viewholders.EncuestaViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.Grafico2012ViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.Grafico2015ViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.GraficoHorizontalBarViewHolder;
@@ -68,7 +78,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     // The items to display in your RecyclerView
     private List<Object> items;
     Context context;
-    private final int NOTICIA = 0, QUIZ = 1, CONTADOR = 2, PARTIDO = 3, POLITICO = 4, TITULO = 5, MENSAJE = 6, GRAFICO2012 = 7, GRAFICO2015 = 8, GRAFICOLINEAS = 9, GRAFICOHORIZONTALBAR=10;
+
+    private final int NOTICIA = 0, QUIZ = 1, CONTADOR = 2, PARTIDO = 3, POLITICO = 4, TITULO = 5, MENSAJE = 6, GRAFICO2012 = 7, GRAFICO2015 = 8, GRAFICOLINEAS = 9, ENCUESTA = 10, GRAFICOHORIZONTALBAR =11;
+
+    int partidoMarcado = 7;
+
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyRecyclerViewAdapter(Context context, List<Object> items) {
@@ -105,6 +119,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             return GRAFICO2015;
         } else if (items.get(position) instanceof LineChartItem) {
             return GRAFICOLINEAS;
+        }else if (items.get(position).equals("encuesta")) {
+            return ENCUESTA;
         }else if (items.get(position) instanceof HorizontalBarChartItem) {
             return GRAFICOHORIZONTALBAR;
         }
@@ -158,9 +174,13 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 View v10 = inflater.inflate(R.layout.chart_line, viewGroup, false);
                 viewHolder = new GraficoLineasViewHolder(v10);
                 break;
+            case ENCUESTA:
+                View v11 = inflater.inflate(R.layout.recyclerview_item_encuesta, viewGroup, false);
+                viewHolder = new EncuestaViewHolder(v11);
+                break;
             case GRAFICOHORIZONTALBAR:
-                View v11 = inflater.inflate(R.layout.chart_horizontal_bar, viewGroup, false);
-                viewHolder = new GraficoHorizontalBarViewHolder(v11);
+                View v12 = inflater.inflate(R.layout.chart_horizontal_bar, viewGroup, false);
+                viewHolder = new GraficoHorizontalBarViewHolder(v12);
                 break;
             default:
                 viewHolder = null;
@@ -213,9 +233,13 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 GraficoLineasViewHolder vh10 = (GraficoLineasViewHolder) viewHolder;
                 configureGraficoLineasViewHolder(vh10, position);
                 break;
+            case ENCUESTA:
+                EncuestaViewHolder vh11 = (EncuestaViewHolder) viewHolder;
+                configureEncuestaViewHolder(vh11, position);
+                break;
             case GRAFICOHORIZONTALBAR:
-                GraficoHorizontalBarViewHolder vh11 = (GraficoHorizontalBarViewHolder) viewHolder;
-                configureGraficoHorizontalBarViewHolder(vh11, position);
+                GraficoHorizontalBarViewHolder vh12 = (GraficoHorizontalBarViewHolder) viewHolder;
+                configureGraficoHorizontalBarViewHolder(vh12, position);
                 break;
             default:
         }
@@ -672,37 +696,39 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     }
 
-    private void configureGraficoHorizontalBarViewHolder(GraficoHorizontalBarViewHolder vh11, int position) {
+
+
+    private void configureGraficoHorizontalBarViewHolder(GraficoHorizontalBarViewHolder vh12, int position) {
         final HorizontalBarChartItem grafico = (HorizontalBarChartItem) items.get(position);
         ChartData<?> mChartData = grafico.getItemData();
 
 
         if (grafico != null) {
             // apply styling
-            vh11.grafico.setDrawBarShadow(false);
+            vh12.grafico.setDrawBarShadow(false);
 
-            vh11.grafico.setDrawValueAboveBar(true);
+            vh12.grafico.setDrawValueAboveBar(true);
 
-            vh11.grafico.setDescription("");
+            vh12.grafico.setDescription("");
 
             // if more than 60 entries are displayed in the chart, no values will be
             // drawn
-            vh11.grafico.setMaxVisibleValueCount(60);
+            vh12.grafico.setMaxVisibleValueCount(60);
 
             // scaling can now only be done on x- and y-axis separately
-            vh11.grafico.setPinchZoom(false);
+            vh12.grafico.setPinchZoom(false);
 
             // draw shadows for each bar that show the maximum value
             // mChart.setDrawBarShadow(true);
 
             // mChart.setDrawXLabels(false);
 
-            vh11.grafico.setDrawGridBackground(false);
+            vh12.grafico.setDrawGridBackground(false);
 
             // mChart.setDrawYLabels(false);
 
 
-            XAxis xl = vh11.grafico.getXAxis();
+            XAxis xl = vh12.grafico.getXAxis();
             xl.setPosition(XAxis.XAxisPosition.BOTTOM);
             xl.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
             xl.setDrawAxisLine(true);
@@ -710,24 +736,24 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             xl.setGridLineWidth(0.3f);
 
 
-            YAxis yl = vh11.grafico.getAxisLeft();
+            YAxis yl = vh12.grafico.getAxisLeft();
             yl.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
             yl.setDrawAxisLine(true);
             yl.setDrawGridLines(false);
             yl.setGridLineWidth(0.3f);
             yl.setInverted(true);
 
-            YAxis yr = vh11.grafico.getAxisRight();
+            YAxis yr = vh12.grafico.getAxisRight();
             yr.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
             yr.setDrawAxisLine(true);
             yr.setDrawGridLines(false);
 //            yr.setInverted(true);
 
-            vh11.grafico.setData((BarData) mChartData);
-            vh11.grafico.animateY(2500);
+            vh12.grafico.setData((BarData) mChartData);
+            vh12.grafico.animateY(2500);
 
 
-            Legend l = vh11.grafico.getLegend();
+            Legend l = vh12.grafico.getLegend();
             l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
             l.setFormSize(8f);
             l.setXEntrySpace(4f);
@@ -735,6 +761,148 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
 
     }
+
+    private void configureEncuestaViewHolder(final EncuestaViewHolder vh11, int position) {
+        try {
+            System.gc();
+
+            //Imagenes
+            Glide.with(context).load(R.drawable.psc).placeholder(R.drawable.nopicpartidolow).into(vh11.psc);
+            Glide.with(context).load(R.drawable.cup).placeholder(R.drawable.nopicpartidolow).into(vh11.cup);
+            Glide.with(context).load(R.drawable.jps).placeholder(R.drawable.nopicpartidolow).into(vh11.jps);
+            Glide.with(context).load(R.drawable.pp).placeholder(R.drawable.nopicpartidolow).into(vh11.pp);
+            Glide.with(context).load(R.drawable.udc).placeholder(R.drawable.nopicpartidolow).into(vh11.udc);
+            Glide.with(context).load(R.drawable.cs).placeholder(R.drawable.nopicpartidolow).into(vh11.cs);
+            Glide.with(context).load(R.drawable.csqep).placeholder(R.drawable.nopicpartidolow).into(vh11.csqep);
+
+            //TextViews
+            vh11.psc_tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            vh11.cup_tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            vh11.jps_tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            vh11.pp_tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            vh11.udc_tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            vh11.cs_tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            vh11.csqep_tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+
+            //Checkbox
+            vh11.psc_cb.setOnCheckedChangeListener(new myCheckerListener(vh11));
+            vh11.cup_cb.setOnCheckedChangeListener(new myCheckerListener(vh11));
+            vh11.jps_cb.setOnCheckedChangeListener(new myCheckerListener(vh11));
+            vh11.pp_cb.setOnCheckedChangeListener(new myCheckerListener(vh11));
+            vh11.udc_cb.setOnCheckedChangeListener(new myCheckerListener(vh11));
+            vh11.cs_cb.setOnCheckedChangeListener(new myCheckerListener(vh11));
+            vh11.csqep_cb.setOnCheckedChangeListener(new myCheckerListener(vh11));
+
+
+            vh11.votar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Marcar como que ha votado
+                    //Cargamos las preferencias compartidas, es como la base de datos para guardarlas y que se recuerden mas tarde
+                    Activity mAct = (Activity)(v.getContext());
+                    SharedPreferences prefs = mAct.getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("hasVoted", "true"); //Lo guardamos para recordarlo
+                    editor.commit(); //Guardamos las SharedPreferences
+
+                    //Mandar a parse
+                    // Enviar voto a parse
+                    try {
+                        Parse.enableLocalDatastore(v.getContext());
+                        //Autenticacion con Parse
+                        Parse.initialize(v.getContext(), "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    //Comunicacion con Parse.com
+                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Partido");
+                    query.whereEqualTo("Name", "Votaciones");
+                    query.getFirstInBackground(new GetCallback<ParseObject>() {
+                        public void done(ParseObject object, ParseException e) {
+                            if (e == null) {
+                                try {
+                                    switch (partidoMarcado) {
+                                        case 0:
+                                            object.getJSONArray("Valores").put(0,object.getJSONArray("Valores").getInt(0)+1);
+                                            object.saveInBackground();
+                                            break;
+                                        case 1:
+                                            break;
+                                        case 2:
+                                            break;
+                                        case 3:
+                                            break;
+                                        case 4:
+                                            break;
+                                        case 5:
+                                            break;
+                                        case 6:
+                                            break;
+                                    }
+                                }catch (Exception ex){
+                                    ex.printStackTrace();
+                                }
+                                //object = ParseObject.votos;
+                                object.saveInBackground();
+                            } else {
+                                //something went wrong
+                            }
+                        }
+                    });
+                    items.remove(2);
+                    notifyItemRemoved(2);
+                    items.add(2,new Mensaje("Gracias por participar"));
+                    notifyItemInserted(2);
+                }
+            });
+
+            vh11.verResultados.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    HomeActivity.switchFragment(3);
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public class myCheckerListener implements CompoundButton.OnCheckedChangeListener{
+        private EncuestaViewHolder vh11;
+        myCheckerListener(RecyclerView.ViewHolder vh11){
+            this.vh11= (EncuestaViewHolder) vh11;
+        }
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (isChecked){
+                //Uncheck all
+                vh11.psc_cb.setChecked(false);
+                vh11.cup_cb.setChecked(false);
+                vh11.jps_cb.setChecked(false);
+                vh11.pp_cb.setChecked(false);
+                vh11.udc_cb.setChecked(false);
+                vh11.cs_cb.setChecked(false);
+                vh11.csqep_cb.setChecked(false);
+
+                //Check this button
+                buttonView.setChecked(true);
+                switch (buttonView.getId()){
+                    case R.id.checkboxPSC: partidoMarcado= 0;break;
+                    case R.id.checkboxCUP: partidoMarcado = 1;break;
+                    case R.id.checkboxJPS: partidoMarcado = 2;break;
+                    case R.id.checkboxPP: partidoMarcado = 3;break;
+                    case R.id.checkboxUDC: partidoMarcado = 4;break;
+                    case R.id.checkboxCS: partidoMarcado = 5;break;
+                    case R.id.checkboxCSQEP: partidoMarcado = 6;break;
+                    default: partidoMarcado = 7;break;
+                }
+            }
+        }
+    }
+
+
+    //Metodos auxiliares
 
 
     private static String getSizeName(Context context) {

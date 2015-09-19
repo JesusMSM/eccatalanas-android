@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:id="@+id/llayout">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <android.support.v7.widget.CardView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="BARRAS"
-        android:id="@+id/autor"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
-        android:background="@color/md_material_blue_800"
-        android:textColor="@color/white"
-        android:paddingRight="5dp"
-        android:paddingLeft="5dp"
-        />
+        android:layout_marginBottom="16dp"
+        card_view:contentPaddingBottom="5dp"
+        card_view:cardCornerRadius="3dp">
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/chart"
-        android:layout_width="match_parent"
-        android:layout_height="300dp" />
+        <com.github.mikephil.charting.charts.HorizontalBarChart
+            android:id="@+id/chartBar"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
