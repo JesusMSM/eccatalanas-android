@@ -135,34 +135,6 @@ public class ChartTab extends Fragment {
         mLayoutManager = new LinearLayoutManager(HomeActivity.context);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        //Descargamos valores de Parse
-        try {
-            Parse.enableLocalDatastore(getActivity());
-            //Autenticacion con Parse
-            Parse.initialize(getActivity(), "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //Comunicacion con Parse.com
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Partido");
-
-
-        query.whereEqualTo("Name", "Votaciones");
-        query.getFirstInBackground(new GetCallback<ParseObject>() {
-            public void done(ParseObject object, ParseException e) {
-                if (e == null) {
-                    jsonArrayVotaciones = object.getJSONArray("Valores");
-                    Log.d("VOTACIONES", jsonArrayVotaciones.toString());
-                    object.saveInBackground();
-
-                } else {
-                    //something went wrong
-                }
-            }
-        });
-
-
-
 
         //Parse url_2015
         try {
@@ -222,6 +194,31 @@ public class ChartTab extends Fragment {
     }
 
     public void downloadData() {
+        //Descargamos valores de Parse
+        try {
+            Parse.enableLocalDatastore(getActivity());
+            //Autenticacion con Parse
+            Parse.initialize(getActivity(), "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //Comunicacion con Parse.com
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Partido");
+
+
+        query.whereEqualTo("Name", "Votaciones");
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            public void done(ParseObject object, ParseException e) {
+                if (e == null) {
+                    jsonArrayVotaciones = object.getJSONArray("Valores");
+                    Log.d("VOTACIONES", jsonArrayVotaciones.toString());
+                    object.saveInBackground();
+
+                } else {
+                    //something went wrong
+                }
+            }
+        });
 
          new JSONParse2015().execute();
 
@@ -382,7 +379,7 @@ public class ChartTab extends Fragment {
             yVals1.add(new BarEntry((float) valores[i], i));
         }
 
-        BarDataSet set1 = new BarDataSet(yVals1, "");
+        BarDataSet set1 = new BarDataSet(yVals1, "Valores");
 
         ArrayList<BarDataSet> dataSets = new ArrayList<BarDataSet>();
         dataSets.add(set1);
@@ -423,7 +420,6 @@ public class ChartTab extends Fragment {
             float porcentajeOtros = 0;
             ArrayList<Entry> entries = new ArrayList<>();
             List<Integer> coloresList = new ArrayList<>();
-            //int[] colores = new int[numPartidos]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
             for (int i = 0; i < numPartidos; i++) {
                 float porcentaje = arrayPartidos[i].getPorcentajeObtenido().floatValue();
 

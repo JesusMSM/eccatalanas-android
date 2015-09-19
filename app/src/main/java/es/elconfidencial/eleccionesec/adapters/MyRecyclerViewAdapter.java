@@ -707,7 +707,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             // apply styling
             vh12.grafico.setDrawBarShadow(false);
 
-            vh12.grafico.setDrawValueAboveBar(true);
+            vh12.grafico.setTouchEnabled(false);
+            vh12.grafico.setDrawValueAboveBar(false);
 
             vh12.grafico.setDescription("");
 
@@ -741,12 +742,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             yl.setDrawAxisLine(true);
             yl.setDrawGridLines(false);
             yl.setGridLineWidth(0.3f);
-            yl.setInverted(true);
+
+          //  yl.setInverted(true);
 
             YAxis yr = vh12.grafico.getAxisRight();
             yr.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
             yr.setDrawAxisLine(true);
             yr.setDrawGridLines(false);
+            yr.setTextColor(Color.TRANSPARENT);
 //            yr.setInverted(true);
 
             vh12.grafico.setData((BarData) mChartData);
