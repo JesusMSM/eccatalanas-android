@@ -786,6 +786,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh11.udc_tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
             vh11.cs_tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
             vh11.csqep_tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            vh11.nsnc_tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            vh11.otros_tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
 
             //Checkbox
             vh11.psc_cb.setOnCheckedChangeListener(new myCheckerListener(vh11));
@@ -795,6 +797,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh11.udc_cb.setOnCheckedChangeListener(new myCheckerListener(vh11));
             vh11.cs_cb.setOnCheckedChangeListener(new myCheckerListener(vh11));
             vh11.csqep_cb.setOnCheckedChangeListener(new myCheckerListener(vh11));
+            vh11.nsnc_cb.setOnCheckedChangeListener(new myCheckerListener(vh11));
+            vh11.otros_cb.setOnCheckedChangeListener(new myCheckerListener(vh11));
 
 
             vh11.votar.setOnClickListener(new View.OnClickListener() {
@@ -830,23 +834,37 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                                             object.saveInBackground();
                                             break;
                                         case 1:
+                                            object.getJSONArray("Valores").put(1,object.getJSONArray("Valores").getInt(1)+1);
+                                            object.saveInBackground();
                                             break;
                                         case 2:
+                                            object.getJSONArray("Valores").put(2,object.getJSONArray("Valores").getInt(2)+1);
+                                            object.saveInBackground();
                                             break;
                                         case 3:
+                                            object.getJSONArray("Valores").put(3,object.getJSONArray("Valores").getInt(3)+1);
+                                            object.saveInBackground();
                                             break;
                                         case 4:
+                                            object.getJSONArray("Valores").put(4,object.getJSONArray("Valores").getInt(4)+1);
+                                            object.saveInBackground();
                                             break;
                                         case 5:
+                                            object.getJSONArray("Valores").put(5,object.getJSONArray("Valores").getInt(5)+1);
+                                            object.saveInBackground();
                                             break;
                                         case 6:
+                                            object.getJSONArray("Valores").put(6,object.getJSONArray("Valores").getInt(6)+1);
+                                            object.saveInBackground();
+                                            break;
+                                        case 7:
+                                            object.getJSONArray("Valores").put(7,object.getJSONArray("Valores").getInt(7)+1);
+                                            object.saveInBackground();
                                             break;
                                     }
                                 }catch (Exception ex){
                                     ex.printStackTrace();
                                 }
-                                //object = ParseObject.votos;
-                                object.saveInBackground();
                             } else {
                                 //something went wrong
                             }
@@ -887,6 +905,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 vh11.udc_cb.setChecked(false);
                 vh11.cs_cb.setChecked(false);
                 vh11.csqep_cb.setChecked(false);
+                vh11.nsnc_cb.setChecked(false);
+                vh11.otros_cb.setChecked(false);
 
                 //Check this button
                 buttonView.setChecked(true);
@@ -898,7 +918,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     case R.id.checkboxUDC: partidoMarcado = 4;break;
                     case R.id.checkboxCS: partidoMarcado = 5;break;
                     case R.id.checkboxCSQEP: partidoMarcado = 6;break;
-                    default: partidoMarcado = 7;break;
+                    case R.id.checkboxOTROS: partidoMarcado = 7;break;
+                    case R.id.checkboxNSNC: partidoMarcado = 8;break;
+                    default: partidoMarcado = 8;break;
                 }
             }
         }

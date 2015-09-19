@@ -16,8 +16,8 @@ import es.elconfidencial.eleccionesec.chart.PieChartEC;
  */
 public class EncuestaViewHolder extends RecyclerView.ViewHolder{
     public ImageView psc,cup,jps,pp,udc,cs,csqep;
-    public TextView psc_tv,cup_tv,jps_tv,pp_tv,udc_tv,cs_tv,csqep_tv;
-    public CheckBox psc_cb,cup_cb,jps_cb,pp_cb,udc_cb,cs_cb,csqep_cb;
+    public TextView psc_tv,cup_tv,jps_tv,pp_tv,udc_tv,cs_tv,csqep_tv,nsnc_tv,otros_tv;
+    public CheckBox psc_cb,cup_cb,jps_cb,pp_cb,udc_cb,cs_cb,csqep_cb,nsnc_cb,otros_cb;
     public Button votar,verResultados;
 
     public EncuestaViewHolder(View v) {
@@ -37,6 +37,8 @@ public class EncuestaViewHolder extends RecyclerView.ViewHolder{
         udc_tv = (TextView) v.findViewById(R.id.udc_enc);
         cs_tv = (TextView) v.findViewById(R.id.cs_enc);
         csqep_tv = (TextView) v.findViewById(R.id.csqep_enc);
+        nsnc_tv = (TextView) v.findViewById(R.id.nsnc_enc);
+        otros_tv = (TextView) v.findViewById(R.id.otros_enc);
 
         psc_cb = (CheckBox) v.findViewById(R.id.checkboxPSC);
         cup_cb = (CheckBox) v.findViewById(R.id.checkboxCUP);
@@ -45,6 +47,8 @@ public class EncuestaViewHolder extends RecyclerView.ViewHolder{
         udc_cb = (CheckBox) v.findViewById(R.id.checkboxUDC);
         cs_cb = (CheckBox) v.findViewById(R.id.checkboxCS);
         csqep_cb = (CheckBox) v.findViewById(R.id.checkboxCSQEP);
+        nsnc_cb = (CheckBox) v.findViewById(R.id.checkboxNSNC);
+        otros_cb = (CheckBox) v.findViewById(R.id.checkboxOTROS);
 
         votar = (Button) v.findViewById(R.id.votar);
         verResultados = (Button) v.findViewById(R.id.verResultados);

@@ -220,6 +220,46 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="12"
+                    android:padding="3dp"
+                    android:id="@+id/otros_enc"
+                    android:text="Otros partidos"
+                    android:layout_gravity="center_vertical"/>
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:layout_weight="2"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/checkboxOTROS"/>
+            </LinearLayout>
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="12"
+                android:padding="3dp"
+                android:id="@+id/nsnc_enc"
+                android:text="NS/NC"
+                android:layout_gravity="center_vertical"/>
+            <CheckBox
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:layout_weight="2"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/checkboxNSNC"/>
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:orientation="horizontal">
                 <Button
