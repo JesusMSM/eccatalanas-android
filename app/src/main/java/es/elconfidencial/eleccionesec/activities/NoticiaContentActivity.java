@@ -23,6 +23,8 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import android.support.multidex.MultiDex;
+
 import com.bumptech.glide.Glide;
 import com.comscore.analytics.comScore;
 
@@ -38,6 +40,7 @@ public class NoticiaContentActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MultiDex.install(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content_noticia);
 

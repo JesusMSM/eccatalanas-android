@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.multidex.MultiDex;
 
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -58,6 +59,7 @@ public class PreferencesActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MultiDex.install(this);
         super.onCreate(savedInstanceState);
 
         this.context = getApplicationContext();

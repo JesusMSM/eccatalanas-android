@@ -17,17 +17,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 
 import com.baoyz.widget.PullRefreshLayout;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.parse.GetCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
@@ -46,6 +48,7 @@ import java.util.List;
 import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.activities.HomeActivity;
 import es.elconfidencial.eleccionesec.adapters.MyRecyclerViewAdapter;
+import es.elconfidencial.eleccionesec.chart.HorizontalBarChartItem;
 import es.elconfidencial.eleccionesec.chart.ChartItem;
 import es.elconfidencial.eleccionesec.chart.LineChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem;
@@ -93,6 +96,11 @@ public class ChartTab extends Fragment {
     private PartidoEstadisticas[] arrayPartidos2012;
     public static double porcentajeEscrutado = 0.0;
 
+    int numPartidosCat = 8;
+    int[] valores = new int[numPartidosCat];
+    int contadorAux=0;
+    JSONArray jsonArrayVotaciones; //JSON que se descarga de Parse con las votaciones de los usuarios
+
     private String fechaElecciones = "27/09/2015";
 
 
@@ -127,6 +135,7 @@ public class ChartTab extends Fragment {
         mLayoutManager = new LinearLayoutManager(HomeActivity.context);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+
         //Parse url_2015
         try {
             Parse.enableLocalDatastore(getActivity());
@@ -136,9 +145,9 @@ public class ChartTab extends Fragment {
             e.printStackTrace();
         }
         //Comunicacion con Parse.com
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("URL");
-        query.whereEqualTo("Name", "prueba_url_2015");
-        query.getFirstInBackground(new GetCallback<ParseObject>() {
+        ParseQuery<ParseObject> queryURL = ParseQuery.getQuery("URL");
+        queryURL.whereEqualTo("Name", "prueba_url_2015");
+        queryURL.getFirstInBackground(new GetCallback<ParseObject>() {
             public void done(ParseObject object, ParseException e) {
                 if (e == null) {
                     url_2015 = object.getString("Link");
@@ -185,6 +194,31 @@ public class ChartTab extends Fragment {
     }
 
     public void downloadData() {
+        //Descargamos valores de Parse
+        try {
+            Parse.enableLocalDatastore(getActivity());
+            //Autenticacion con Parse
+            Parse.initialize(getActivity(), "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //Comunicacion con Parse.com
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Partido");
+
+
+        query.whereEqualTo("Name", "Votaciones");
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            public void done(ParseObject object, ParseException e) {
+                if (e == null) {
+                    jsonArrayVotaciones = object.getJSONArray("Valores");
+                    Log.d("VOTACIONES", jsonArrayVotaciones.toString());
+                    object.saveInBackground();
+
+                } else {
+                    //something went wrong
+                }
+            }
+        });
 
          new JSONParse2015().execute();
 
@@ -304,13 +338,59 @@ public class ChartTab extends Fragment {
         items.add(new Title(getString(R.string.titulo_evolucion)));
         items.add(new LineChartItem(generateDataLine(), HomeActivity.context));
 
+        //Grafico de votacion usuarios
+        items.add(new Title(getString(R.string.encuesta_ec)));
+        items.add(new HorizontalBarChartItem(generateDataBar(), HomeActivity.context));
+
         mAdapter = new MyRecyclerViewAdapter(HomeActivity.context,items);
         mRecyclerView.setAdapter(mAdapter);
         if(layout!=null) layout.setRefreshing(false);
 
     }
 
+    private BarData generateDataBar(){
 
+        ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
+        ArrayList<String> xVals = new ArrayList<String>();
+        xVals.add("PSC");
+        xVals.add("CUP");
+        xVals.add("Junts Pel Sí");
+        xVals.add("PP");
+        xVals.add("UDC");
+        xVals.add("Ciudadanos");
+        xVals.add("Cat Si que es Pot");
+        xVals.add("NS/NC");
+
+
+
+
+        for(contadorAux=0; contadorAux< numPartidosCat; contadorAux++) {
+            Log.d("VOTACIONES", "SE HA METIDO EN EL BUCLE");
+            try {
+                Log.d("VOTACIONESVALOR", jsonArrayVotaciones.getInt(contadorAux)+" indice: " +contadorAux);
+                valores[contadorAux] = jsonArrayVotaciones.getInt(contadorAux);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+
+        for (int i = 0; i < numPartidosCat; i++) {
+            yVals1.add(new BarEntry((float) valores[i], i));
+        }
+
+        BarDataSet set1 = new BarDataSet(yVals1, "Valores");
+
+        ArrayList<BarDataSet> dataSets = new ArrayList<BarDataSet>();
+        dataSets.add(set1);
+
+        BarData data = new BarData(xVals, dataSets);
+        data.setValueTextSize(10f);
+        //data.setValueTypeface(mTf);
+
+
+        return data;
+    }
 
     private ArrayList<String> getQuarters(String ano) {
 
@@ -334,11 +414,12 @@ public class ChartTab extends Fragment {
 
 
 
+
+
     private PieData generateDataPie2015(String ano) {
             float porcentajeOtros = 0;
             ArrayList<Entry> entries = new ArrayList<>();
             List<Integer> coloresList = new ArrayList<>();
-            //int[] colores = new int[numPartidos]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
             for (int i = 0; i < numPartidos; i++) {
                 float porcentaje = arrayPartidos[i].getPorcentajeObtenido().floatValue();
 

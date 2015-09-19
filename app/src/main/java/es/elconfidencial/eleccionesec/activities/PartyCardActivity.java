@@ -18,6 +18,8 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import android.support.multidex.MultiDex;
+
 import com.bumptech.glide.Glide;
 import com.comscore.analytics.comScore;
 
@@ -29,6 +31,7 @@ public class PartyCardActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MultiDex.install(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_party_card);
 

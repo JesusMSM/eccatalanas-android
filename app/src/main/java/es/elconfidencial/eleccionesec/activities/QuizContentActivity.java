@@ -21,6 +21,8 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import android.support.multidex.MultiDex;
+
 import com.comscore.analytics.comScore;
 
 import es.elconfidencial.eleccionesec.R;
@@ -32,6 +34,7 @@ public class QuizContentActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MultiDex.install(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_content);
 
