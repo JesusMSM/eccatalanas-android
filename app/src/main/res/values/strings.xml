@@ -44,6 +44,9 @@
     <string name="atras_creditos">Atrás</string>
     <string name="encuesta_ec">Encuesta El Confidencial</string>
 
+    <string name="votar">Votar</string>
+    <string name="ver_resultados">Ver resultados</string>
+
     <string name="quiz1">¿Cúanto sabes de política catalana?</string>
     <string name="quiz2">¿Cuánto sabes de Ciudadanos?</string>
     <string name="quiz3">¿Cuánto sabes de Junts Pel Sí?</string>

@@ -96,9 +96,12 @@ public class ChartTab extends Fragment {
     private PartidoEstadisticas[] arrayPartidos2012;
     public static double porcentajeEscrutado = 0.0;
 
-    int numPartidosCat = 8;
+    int numPartidosCat = 9;
     int[] valores = new int[numPartidosCat];
     int contadorAux=0;
+    //[PSC,CUP,JUNTS,PP,UDC,CS,CSQEP,Otros,NSNC]
+    private String[] partidosBarras ={"PSC","CUP","Junts Pel si","PP","UDC","Ciudadanos","Cat si que es pot","Otros","NS/NC"};
+    private String[] coloresBarras = {"#DF2927","#DFD717","#C7C7C7","#0077A7","#C7C7C7","#DF843D","#C7C7C7","#C7C7C7","#C7C7C7"};
     JSONArray jsonArrayVotaciones; //JSON que se descarga de Parse con las votaciones de los usuarios
 
     private String fechaElecciones = "27/09/2015";
@@ -350,41 +353,39 @@ public class ChartTab extends Fragment {
 
     private BarData generateDataBar(){
 
-        ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
-        ArrayList<String> xVals = new ArrayList<String>();
-        xVals.add("PSC");
-        xVals.add("CUP");
-        xVals.add("Junts Pel Sí");
-        xVals.add("PP");
-        xVals.add("UDC");
-        xVals.add("Ciudadanos");
-        xVals.add("Cat Si que es Pot");
-        xVals.add("NS/NC");
+        ArrayList<BarEntry> nVotos = new ArrayList<BarEntry>();
+        ArrayList<String> partidos = new ArrayList<String>();
+        ArrayList<Integer> colores = new ArrayList<Integer>();
+
 
 
 
 
         for(contadorAux=0; contadorAux< numPartidosCat; contadorAux++) {
-            Log.d("VOTACIONES", "SE HA METIDO EN EL BUCLE");
             try {
-                Log.d("VOTACIONESVALOR", jsonArrayVotaciones.getInt(contadorAux)+" indice: " +contadorAux);
                 valores[contadorAux] = jsonArrayVotaciones.getInt(contadorAux);
             }catch (Exception e){
                 e.printStackTrace();
             }
         }
 
-
-        for (int i = 0; i < numPartidosCat; i++) {
-            yVals1.add(new BarEntry((float) valores[i], i));
+        int j = 0; //Posición del int del array que recibimos de Parse
+        //Al pintarse el gráfico a la inversa, hacemos un bucle for con i descendiente
+        for (int i = numPartidosCat-1; i >= 0; i--) {
+            nVotos.add(new BarEntry((float) valores[i], j));
+            partidos.add(partidosBarras[i]);
+            colores.add(Color.parseColor(colorNotNull(coloresBarras[i])));
+            j++;
         }
 
-        BarDataSet set1 = new BarDataSet(yVals1, "Valores");
+        BarDataSet set1 = new BarDataSet(nVotos, "Valores");
+
+        set1.setColors(colores);
 
         ArrayList<BarDataSet> dataSets = new ArrayList<BarDataSet>();
         dataSets.add(set1);
 
-        BarData data = new BarData(xVals, dataSets);
+        BarData data = new BarData(partidos, dataSets);
         data.setValueTextSize(10f);
         //data.setValueTypeface(mTf);
 

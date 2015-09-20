@@ -706,10 +706,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if (grafico != null) {
             // apply styling
             vh12.grafico.setDrawBarShadow(false);
-
             vh12.grafico.setTouchEnabled(false);
             vh12.grafico.setDrawValueAboveBar(false);
-
+            vh12.grafico.setBackgroundColor(Color.TRANSPARENT);
+            vh12.grafico.setGridBackgroundColor(Color.TRANSPARENT);
             vh12.grafico.setDescription("");
 
             // if more than 60 entries are displayed in the chart, no values will be
@@ -728,38 +728,35 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
             // mChart.setDrawYLabels(false);
 
+            mChartData.setValueTextColor(Color.WHITE);
+
 
             XAxis xl = vh12.grafico.getXAxis();
             xl.setPosition(XAxis.XAxisPosition.BOTTOM);
             xl.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
-            xl.setDrawAxisLine(true);
+            xl.setDrawAxisLine(false);
             xl.setDrawGridLines(false);
             xl.setGridLineWidth(0.3f);
 
 
             YAxis yl = vh12.grafico.getAxisLeft();
             yl.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
-            yl.setDrawAxisLine(true);
+            yl.setDrawAxisLine(false);
             yl.setDrawGridLines(false);
+            yl.setTextColor(Color.TRANSPARENT);
             yl.setGridLineWidth(0.3f);
 
-          //  yl.setInverted(true);
+            //  yl.setInverted(true);
 
             YAxis yr = vh12.grafico.getAxisRight();
             yr.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
-            yr.setDrawAxisLine(true);
+            yr.setDrawAxisLine(false);
             yr.setDrawGridLines(false);
             yr.setTextColor(Color.TRANSPARENT);
 //            yr.setInverted(true);
 
             vh12.grafico.setData((BarData) mChartData);
             vh12.grafico.animateY(2500);
-
-
-            Legend l = vh12.grafico.getLegend();
-            l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
-            l.setFormSize(8f);
-            l.setXEntrySpace(4f);
 
         }
 
@@ -788,6 +785,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh11.csqep_tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
             vh11.nsnc_tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
             vh11.otros_tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            vh11.votar.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
+            vh11.verResultados.setTypeface(Typeface.createFromAsset(context.getAssets(), "Titillium-Light.otf"));
 
             //Checkbox
             vh11.psc_cb.setOnCheckedChangeListener(new myCheckerListener(vh11));
@@ -829,36 +828,40 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                             if (e == null) {
                                 try {
                                     switch (partidoMarcado) {
-                                        case 0:
+                                        case 0: //PSC
                                             object.getJSONArray("Valores").put(0,object.getJSONArray("Valores").getInt(0)+1);
                                             object.saveInBackground();
                                             break;
-                                        case 1:
+                                        case 1: //CUP
                                             object.getJSONArray("Valores").put(1,object.getJSONArray("Valores").getInt(1)+1);
                                             object.saveInBackground();
                                             break;
-                                        case 2:
+                                        case 2: //JUNTS
                                             object.getJSONArray("Valores").put(2,object.getJSONArray("Valores").getInt(2)+1);
                                             object.saveInBackground();
                                             break;
-                                        case 3:
+                                        case 3: //PP
                                             object.getJSONArray("Valores").put(3,object.getJSONArray("Valores").getInt(3)+1);
                                             object.saveInBackground();
                                             break;
-                                        case 4:
+                                        case 4: //UNIO
                                             object.getJSONArray("Valores").put(4,object.getJSONArray("Valores").getInt(4)+1);
                                             object.saveInBackground();
                                             break;
-                                        case 5:
+                                        case 5: //CS
                                             object.getJSONArray("Valores").put(5,object.getJSONArray("Valores").getInt(5)+1);
                                             object.saveInBackground();
                                             break;
-                                        case 6:
+                                        case 6: //CAT SI QUE ES POT
                                             object.getJSONArray("Valores").put(6,object.getJSONArray("Valores").getInt(6)+1);
                                             object.saveInBackground();
                                             break;
-                                        case 7:
+                                        case 7: //OTROS
                                             object.getJSONArray("Valores").put(7,object.getJSONArray("Valores").getInt(7)+1);
+                                            object.saveInBackground();
+                                            break;
+                                        case 8: //NSNC
+                                            object.getJSONArray("Valores").put(8,object.getJSONArray("Valores").getInt(8)+1);
                                             object.saveInBackground();
                                             break;
                                     }

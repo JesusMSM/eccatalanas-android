@@ -26,8 +26,7 @@
                     android:layout_weight="3"
                     android:adjustViewBounds="true"
                     android:padding="3dp"
-                    android:layout_gravity="top"
-                    android:src="@drawable/psc"/>
+                    android:layout_gravity="top" />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -55,8 +54,7 @@
                     android:layout_weight="3"
                     android:adjustViewBounds="true"
                     android:padding="3dp"
-                    android:layout_gravity="top"
-                    android:src="@drawable/psc"/>
+                    android:layout_gravity="top" />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -84,8 +82,7 @@
                     android:layout_weight="3"
                     android:adjustViewBounds="true"
                     android:padding="3dp"
-                    android:layout_gravity="top"
-                    android:src="@drawable/psc"/>
+                    android:layout_gravity="top" />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -113,8 +110,7 @@
                     android:layout_weight="3"
                     android:adjustViewBounds="true"
                     android:padding="3dp"
-                    android:layout_gravity="top"
-                    android:src="@drawable/psc"/>
+                    android:layout_gravity="top" />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -142,8 +138,7 @@
                     android:layout_weight="3"
                     android:adjustViewBounds="true"
                     android:padding="3dp"
-                    android:layout_gravity="top"
-                    android:src="@drawable/psc"/>
+                    android:layout_gravity="top" />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -171,8 +166,7 @@
                     android:layout_weight="3"
                     android:adjustViewBounds="true"
                     android:padding="3dp"
-                    android:layout_gravity="top"
-                    android:src="@drawable/psc"/>
+                    android:layout_gravity="top" />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -200,8 +194,7 @@
                     android:layout_weight="3"
                     android:adjustViewBounds="true"
                     android:padding="3dp"
-                    android:layout_gravity="top"
-                    android:src="@drawable/psc"/>
+                    android:layout_gravity="top" />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -222,10 +215,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+                <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:adjustViewBounds="true"
+                    android:padding="3dp"
+                    android:layout_gravity="top"
+                    android:src="@drawable/nopicpartido_white"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="12"
+                    android:layout_weight="9"
                     android:padding="3dp"
                     android:id="@+id/otros_enc"
                     android:text="Otros partidos"
@@ -242,10 +243,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+                <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:adjustViewBounds="true"
+                    android:padding="3dp"
+                    android:layout_gravity="top"
+                    android:src="@drawable/nopicpartido_white"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="12"
+                android:layout_weight="9"
                 android:padding="3dp"
                 android:id="@+id/nsnc_enc"
                 android:text="NS/NC"
@@ -258,6 +267,15 @@
                 android:layout_gravity="center_vertical"
                 android:id="@+id/checkboxNSNC"/>
         </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="#E0E0E0"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
@@ -267,13 +285,29 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:id="@+id/votar"
-                    android:text="Votar"/>
+                    android:textColor="@color/ColorAccent"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:background="@android:color/transparent"
+                    android:textSize="14sp"
+                    android:cropToPadding="true"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/votar"
+                    android:layout_gravity="center"/>
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_marginTop="3dp"
                     android:id="@+id/verResultados"
-                    android:text="Ver Resultados"/>
+                    android:textColor="@color/ColorAccent"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:background="@android:color/transparent"
+                    android:textSize="15sp"
+                    android:layout_gravity="center"
+                    android:cropToPadding="true"
+                    android:text="@string/ver_resultados"/>
 
             </LinearLayout>
         </LinearLayout>
