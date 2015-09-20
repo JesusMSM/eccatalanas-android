@@ -91,6 +91,23 @@ public class PreferencesActivity extends Activity {
                         .title(R.string.titulo_creditos)
                         .content(R.string.contenido_creditos)
                         .positiveText(R.string.atras_creditos)
+                        .negativeText(R.string.contacto)
+                        .callback(new MaterialDialog.ButtonCallback() {
+                            @Override
+                            public void onNegative(MaterialDialog dialog) {
+                                try {
+                                    Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+                                    sendIntent.setType("plain/text");
+                                    sendIntent.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
+                                    sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"moonfishteam@gmail.com", "laboratorio@elconfidencial.com"});
+                                    sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Contacto Elecciones Catalanas 2015");
+
+                                    startActivity(sendIntent);
+                                }catch(Exception e){
+                                    e.printStackTrace();
+                                }
+                            }
+                        })
                         .show();
 
             }

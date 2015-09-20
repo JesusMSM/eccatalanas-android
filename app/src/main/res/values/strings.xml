@@ -40,9 +40,10 @@
     <string name="creditosAcerca">Créditos</string>
     <string name="acercaDe">Acerca de</string>
     <string name="titulo_creditos">Contribuidores</string>
-    <string name="contenido_creditos">Esta aplicación ha sido desarrollada por: ElConfidencialLAB, en colaboración con:\n\n  Jorge Campos de la Mata \n  Antonio Fernández Llamas \n  Sergio Muñoz López \n  Jesús M. Sánchez Martínez \n  Angel Sans Muro \n\n  moonfishteam@gmail.com</string>
+    <string name="contenido_creditos">Esta aplicación ha sido desarrollada por: ElConfidencialLAB, en colaboración con:\n\n  Jorge Campos de la Mata \n  Antonio Fernández Llamas \n  Sergio Muñoz López \n  Jesús M. Sánchez Martínez \n  Angel Sans Muro </string>
     <string name="atras_creditos">Atrás</string>
     <string name="encuesta_ec">Encuesta El Confidencial</string>
+    <string name="contacto">Contacto</string>
 
     <string name="votar">Votar</string>
     <string name="ver_resultados">Ver resultados</string>

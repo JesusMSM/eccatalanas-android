@@ -74,30 +74,6 @@ public class HomeActivity extends ActionBarActivity {
         setContentView(R.layout.activity_home);
         this.context = getApplicationContext();
 
-      /*  actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.actionBar_color))); //Para que el color quede uniforme
-        actionBar.setDisplayShowTitleEnabled(false); //Sin titulo*
-
-        //Cargamos un customView para la action bar, es necesario si quieres distribuir uniformemente los botones
-        LayoutInflater mInflater = LayoutInflater.from(this);
-        View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
-
-        //Codigo para manejar los clicks en la action bar
-        ImageButton homeButton = (ImageButton) mCustomView
-                .findViewById(R.id.home);
-        homeButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Home Clicked!",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
-
-        //Cargamos el customView
-        actionBar.setCustomView(mCustomView);
-        actionBar.setDisplayShowCustomEnabled(true);*/
-
         SharedPreferences prefs = context.getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean("firstTime", false);

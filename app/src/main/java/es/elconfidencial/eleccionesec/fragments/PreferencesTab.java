@@ -2,11 +2,13 @@ package es.elconfidencial.eleccionesec.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.support.annotation.Nullable;
@@ -132,8 +134,25 @@ public class PreferencesTab extends Fragment {
                                                           .content(R.string.contenido_creditos)
                                                           //.icon(R.drawable.ic_home_grey)
                                                           .positiveText(R.string.atras_creditos)
+                                                          .negativeText(R.string.contacto)
+                                                          .callback(new MaterialDialog.ButtonCallback() {
+                                                              @Override
+                                                              public void onNegative(MaterialDialog dialog) {
+                                                                  try {
+                                                                      Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+                                                                      sendIntent.setType("plain/text");
+                                                                      sendIntent.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
+                                                                      sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"moonfishteam@gmail.com", "laboratorio@elconfidencial.com"});
+                                                                      sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Contacto Elecciones Catalanas 2015");
+
+                                                                      startActivity(sendIntent);
+                                                                  }catch(Exception e){
+                                                                      e.printStackTrace();
+                                                                  }
+                                                              }
+                                                          })
                                                           .typeface(Typeface.createFromAsset(context.getAssets(),
-                                                                  "Titillium-Regular.otf"),Typeface.createFromAsset(context.getAssets(),
+                                                                  "Titillium-Regular.otf"), Typeface.createFromAsset(context.getAssets(),
                                                                   "Titillium-Light.otf"))
                                                           .show();
                                               }

@@ -4,6 +4,7 @@ package es.elconfidencial.eleccionesec.fragments;
  * Created by MOONFISH on 14/07/2015.
  */
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -347,11 +348,17 @@ public class HomeTab extends Fragment {
             items.add(new PieChartItem(generateDataPie("2015"), HomeActivity.context));
         }*/
 
-        //Título del grafico
-        items.add(new Title(getString(R.string.titulo_encuesta)));
 
-        //Insertamos grafico PIECHART 2012
-        items.add("encuesta");
+        SharedPreferences prefs = getActivity().getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        String votado= prefs.getString("hasVoted", "false");
+
+        if(votado.equals("false")) {
+            //Título del grafico
+            items.add(new Title(getString(R.string.titulo_encuesta)));
+
+            //Insertamos encuesta
+            items.add("encuesta");
+        }
 
         //Título del grafico
         items.add(new Title(getString(R.string.titulo_resultados_2012)));
