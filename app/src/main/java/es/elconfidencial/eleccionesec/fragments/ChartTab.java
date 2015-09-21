@@ -377,6 +377,7 @@ public class ChartTab extends Fragment {
             j++;
         }
 
+
         BarDataSet set1 = new BarDataSet(nVotos, "Valores");
 
         set1.setColors(colores);
