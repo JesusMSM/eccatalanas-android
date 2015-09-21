@@ -713,7 +713,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         } else if (getSizeName(context).equals("large")) {
             mChartData.setValueTextSize(17f);
         } else if (getSizeName(context).equals("normal")) {
-            mChartData.setValueTextSize(15f);
+            mChartData.setValueTextSize(13f);
         }else {
             mChartData.setValueTextSize(11f);
         }        if (grafico != null) {
@@ -949,6 +949,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     case R.id.checkboxNSNC: partidoMarcado = 8;break;
                     default: partidoMarcado = -1;break;
                 }
+            }else{
+                partidoMarcado = -1;
             }
         }
     }

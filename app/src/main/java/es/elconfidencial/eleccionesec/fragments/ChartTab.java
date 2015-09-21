@@ -30,6 +30,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.ValueFormatter;
 import com.parse.GetCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
@@ -371,7 +372,7 @@ public class ChartTab extends Fragment {
         int j = 0; //Posición del int del array que recibimos de Parse
         //Al pintarse el gráfico a la inversa, hacemos un bucle for con i descendiente
         for (int i = numPartidosCat-1; i >= 0; i--) {
-            nVotos.add(new BarEntry(valores[i], j));
+            nVotos.add(new BarEntry((int)valores[i], j));
             partidos.add(partidosBarras[i]);
             colores.add(Color.parseColor(colorNotNull(coloresBarras[i])));
             j++;
@@ -387,6 +388,12 @@ public class ChartTab extends Fragment {
 
         BarData data = new BarData(partidos, dataSets);
         data.setValueTextSize(10f);
+        data.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float v) {
+                return "" + (int)v;
+            }
+        });
         //data.setValueTypeface(mTf);
 
 
