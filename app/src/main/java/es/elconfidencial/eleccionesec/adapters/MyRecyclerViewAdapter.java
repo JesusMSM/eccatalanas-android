@@ -923,6 +923,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            System.out.println(partidoMarcado);
             if (isChecked){
                 //Uncheck all
                 vh11.psc_cb.setChecked(false);
