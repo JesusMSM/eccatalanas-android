@@ -104,13 +104,6 @@ public class HorizontalBarChartItem extends ChartItem {
         holder.chart.setData((BarData) mChartData);
         holder.chart.animateY(2500);
 
-
-        Legend l = holder.chart.getLegend();
-        l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
-        l.setFormSize(8f);
-        l.setXEntrySpace(4f);
-
-
         return convertView;
     }
 

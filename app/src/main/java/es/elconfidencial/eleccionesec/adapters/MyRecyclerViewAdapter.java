@@ -2,7 +2,7 @@ package es.elconfidencial.eleccionesec.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-        import android.content.Intent;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -10,14 +10,15 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
-        import android.text.Html;
-        import android.util.Log;
+import android.text.Html;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.github.mikephil.charting.components.Legend;
@@ -36,15 +37,17 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
-        import es.elconfidencial.eleccionesec.R;
+import es.elconfidencial.eleccionesec.R;
 import es.elconfidencial.eleccionesec.activities.HomeActivity;
 import es.elconfidencial.eleccionesec.activities.NoticiaContentActivity;
-        import es.elconfidencial.eleccionesec.activities.PartyCardActivity;
-        import es.elconfidencial.eleccionesec.activities.PoliticianCardActivity;
+import es.elconfidencial.eleccionesec.activities.PartyCardActivity;
+import es.elconfidencial.eleccionesec.activities.PoliticianCardActivity;
 import es.elconfidencial.eleccionesec.activities.QuizContentActivity;
 import es.elconfidencial.eleccionesec.chart.HorizontalBarChartItem;
 import es.elconfidencial.eleccionesec.chart.LineChartItem;
@@ -52,23 +55,23 @@ import es.elconfidencial.eleccionesec.chart.PieChartItem;
 import es.elconfidencial.eleccionesec.chart.PieChartItem2012;
 import es.elconfidencial.eleccionesec.fragments.ChartTab;
 import es.elconfidencial.eleccionesec.model.Mensaje;
-        import es.elconfidencial.eleccionesec.model.Noticia;
-        import es.elconfidencial.eleccionesec.model.Partido;
-        import es.elconfidencial.eleccionesec.model.Politico;
-        import es.elconfidencial.eleccionesec.model.Quiz;
-        import es.elconfidencial.eleccionesec.model.Title;
-        import es.elconfidencial.eleccionesec.viewholders.ContadorViewHolder;
+import es.elconfidencial.eleccionesec.model.Noticia;
+import es.elconfidencial.eleccionesec.model.Partido;
+import es.elconfidencial.eleccionesec.model.Politico;
+import es.elconfidencial.eleccionesec.model.Quiz;
+import es.elconfidencial.eleccionesec.model.Title;
+import es.elconfidencial.eleccionesec.viewholders.ContadorViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.EncuestaViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.Grafico2012ViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.Grafico2015ViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.GraficoHorizontalBarViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.GraficoLineasViewHolder;
 import es.elconfidencial.eleccionesec.viewholders.MensajeViewHolder;
-        import es.elconfidencial.eleccionesec.viewholders.NoticiaViewHolder;
-        import es.elconfidencial.eleccionesec.viewholders.PartidoViewHolder;
-        import es.elconfidencial.eleccionesec.viewholders.PoliticoViewHolder;
-        import es.elconfidencial.eleccionesec.viewholders.QuizViewHolder;
-        import es.elconfidencial.eleccionesec.viewholders.TitleViewHolder;
+import es.elconfidencial.eleccionesec.viewholders.NoticiaViewHolder;
+import es.elconfidencial.eleccionesec.viewholders.PartidoViewHolder;
+import es.elconfidencial.eleccionesec.viewholders.PoliticoViewHolder;
+import es.elconfidencial.eleccionesec.viewholders.QuizViewHolder;
+import es.elconfidencial.eleccionesec.viewholders.TitleViewHolder;
 
 /**
  * Created by MOONFISH on 01/08/2015.
@@ -78,10 +81,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     // The items to display in your RecyclerView
     private List<Object> items;
     Context context;
+    private String fechaElecciones = "27/09/2015";
 
     private final int NOTICIA = 0, QUIZ = 1, CONTADOR = 2, PARTIDO = 3, POLITICO = 4, TITULO = 5, MENSAJE = 6, GRAFICO2012 = 7, GRAFICO2015 = 8, GRAFICOLINEAS = 9, ENCUESTA = 10, GRAFICOHORIZONTALBAR =11;
 
-    int partidoMarcado = 7;
+    int partidoMarcado = -1;
 
 
     // Provide a suitable constructor (depends on the kind of dataset)
@@ -420,6 +424,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                         HomeActivity.switchFragment(3);
                     } else if (nombreTitulo.equals(context.getResources().getString(R.string.titulo_evolucion))) {
                         HomeActivity.switchFragment(3);
+                    } else if (nombreTitulo.equals(context.getResources().getString(R.string.titulo_encuesta))) {
+                        HomeActivity.switchFragment(3);
                     } else {
                         HomeActivity.switchFragment(1);
                     }
@@ -702,8 +708,18 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         final HorizontalBarChartItem grafico = (HorizontalBarChartItem) items.get(position);
         ChartData<?> mChartData = grafico.getItemData();
 
+        if (getSizeName(context).equals("xlarge")) {
+            mChartData.setValueTextSize(25f);
+        } else if (getSizeName(context).equals("large")) {
+            mChartData.setValueTextSize(17f);
+        } else if (getSizeName(context).equals("normal")) {
+            mChartData.setValueTextSize(15f);
+        }else {
+            mChartData.setValueTextSize(11f);
+        }        if (grafico != null) {
 
-        if (grafico != null) {
+            vh12.grafico.getLegend().setEnabled(false);
+
             // apply styling
             vh12.grafico.setDrawBarShadow(false);
             vh12.grafico.setTouchEnabled(false);
@@ -757,7 +773,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
             vh12.grafico.setData((BarData) mChartData);
             vh12.grafico.animateY(2500);
-
         }
 
     }
@@ -803,80 +818,89 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             vh11.votar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Marcar como que ha votado
-                    //Cargamos las preferencias compartidas, es como la base de datos para guardarlas y que se recuerden mas tarde
-                    Activity mAct = (Activity)(v.getContext());
-                    SharedPreferences prefs = mAct.getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = prefs.edit();
-                    editor.putString("hasVoted", "true"); //Lo guardamos para recordarlo
-                    editor.commit(); //Guardamos las SharedPreferences
+                    if (partidoMarcado != -1) {
+                        //Marcar como que ha votado
+                        //Cargamos las preferencias compartidas, es como la base de datos para guardarlas y que se recuerden mas tarde
+                        Activity mAct = (Activity) (v.getContext());
+                        SharedPreferences prefs = mAct.getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putString("hasVoted", "true"); //Lo guardamos para recordarlo
+                        editor.commit(); //Guardamos las SharedPreferences
 
-                    //Mandar a parse
-                    // Enviar voto a parse
-                    try {
-                        Parse.enableLocalDatastore(v.getContext());
-                        //Autenticacion con Parse
-                        Parse.initialize(v.getContext(), "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    //Comunicacion con Parse.com
-                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Partido");
-                    query.whereEqualTo("Name", "Votaciones");
-                    query.getFirstInBackground(new GetCallback<ParseObject>() {
-                        public void done(ParseObject object, ParseException e) {
-                            if (e == null) {
-                                try {
-                                    switch (partidoMarcado) {
-                                        case 0: //PSC
-                                            object.getJSONArray("Valores").put(0,object.getJSONArray("Valores").getInt(0)+1);
-                                            object.saveInBackground();
-                                            break;
-                                        case 1: //CUP
-                                            object.getJSONArray("Valores").put(1,object.getJSONArray("Valores").getInt(1)+1);
-                                            object.saveInBackground();
-                                            break;
-                                        case 2: //JUNTS
-                                            object.getJSONArray("Valores").put(2,object.getJSONArray("Valores").getInt(2)+1);
-                                            object.saveInBackground();
-                                            break;
-                                        case 3: //PP
-                                            object.getJSONArray("Valores").put(3,object.getJSONArray("Valores").getInt(3)+1);
-                                            object.saveInBackground();
-                                            break;
-                                        case 4: //UNIO
-                                            object.getJSONArray("Valores").put(4,object.getJSONArray("Valores").getInt(4)+1);
-                                            object.saveInBackground();
-                                            break;
-                                        case 5: //CS
-                                            object.getJSONArray("Valores").put(5,object.getJSONArray("Valores").getInt(5)+1);
-                                            object.saveInBackground();
-                                            break;
-                                        case 6: //CAT SI QUE ES POT
-                                            object.getJSONArray("Valores").put(6,object.getJSONArray("Valores").getInt(6)+1);
-                                            object.saveInBackground();
-                                            break;
-                                        case 7: //OTROS
-                                            object.getJSONArray("Valores").put(7,object.getJSONArray("Valores").getInt(7)+1);
-                                            object.saveInBackground();
-                                            break;
-                                        case 8: //NSNC
-                                            object.getJSONArray("Valores").put(8,object.getJSONArray("Valores").getInt(8)+1);
-                                            object.saveInBackground();
-                                            break;
-                                    }
-                                }catch (Exception ex){
-                                    ex.printStackTrace();
-                                }
-                            } else {
-                                //something went wrong
-                            }
+                        //Mandar a parse
+                        // Enviar voto a parse
+                        try {
+                            Parse.enableLocalDatastore(v.getContext());
+                            //Autenticacion con Parse
+                            Parse.initialize(v.getContext(), "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                    });
-                    items.remove(2);
-                    notifyItemRemoved(2);
-                    items.add(2,new Mensaje("Gracias por participar"));
-                    notifyItemInserted(2);
+                        //Comunicacion con Parse.com
+                        ParseQuery<ParseObject> query = ParseQuery.getQuery("Partido");
+                        query.whereEqualTo("Name", "Votaciones");
+                        query.getFirstInBackground(new GetCallback<ParseObject>() {
+                            public void done(ParseObject object, ParseException e) {
+                                if (e == null) {
+                                    try {
+                                        switch (partidoMarcado) {
+                                            case 0: //PSC
+                                                object.getJSONArray("Valores").put(0, object.getJSONArray("Valores").getInt(0) + 1);
+                                                object.saveInBackground();
+                                                break;
+                                            case 1: //CUP
+                                                object.getJSONArray("Valores").put(1, object.getJSONArray("Valores").getInt(1) + 1);
+                                                object.saveInBackground();
+                                                break;
+                                            case 2: //JUNTS
+                                                object.getJSONArray("Valores").put(2, object.getJSONArray("Valores").getInt(2) + 1);
+                                                object.saveInBackground();
+                                                break;
+                                            case 3: //PP
+                                                object.getJSONArray("Valores").put(3, object.getJSONArray("Valores").getInt(3) + 1);
+                                                object.saveInBackground();
+                                                break;
+                                            case 4: //UNIO
+                                                object.getJSONArray("Valores").put(4, object.getJSONArray("Valores").getInt(4) + 1);
+                                                object.saveInBackground();
+                                                break;
+                                            case 5: //CS
+                                                object.getJSONArray("Valores").put(5, object.getJSONArray("Valores").getInt(5) + 1);
+                                                object.saveInBackground();
+                                                break;
+                                            case 6: //CAT SI QUE ES POT
+                                                object.getJSONArray("Valores").put(6, object.getJSONArray("Valores").getInt(6) + 1);
+                                                object.saveInBackground();
+                                                break;
+                                            case 7: //OTROS
+                                                object.getJSONArray("Valores").put(7, object.getJSONArray("Valores").getInt(7) + 1);
+                                                object.saveInBackground();
+                                                break;
+                                            case 8: //NSNC
+                                                object.getJSONArray("Valores").put(8, object.getJSONArray("Valores").getInt(8) + 1);
+                                                object.saveInBackground();
+                                                break;
+                                        }
+                                    } catch (Exception ex) {
+                                        ex.printStackTrace();
+                                    }
+                                } else {
+                                    //something went wrong
+                                }
+                            }
+                        });
+                        int pos = 2;
+                        if(isElectionDay()){
+                            pos = 3;
+                        }
+                        items.remove(pos);
+                        notifyItemRemoved(pos);
+                        items.add(pos, new Mensaje(context.getResources().getString(R.string.encuestagracias)));
+                        notifyItemInserted(pos);
+                    }else{
+                        Toast.makeText(context,context.getResources().getString(R.string.encuestaerror),Toast.LENGTH_SHORT).show();
+
+                    }
                 }
             });
 
@@ -923,7 +947,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     case R.id.checkboxCSQEP: partidoMarcado = 6;break;
                     case R.id.checkboxOTROS: partidoMarcado = 7;break;
                     case R.id.checkboxNSNC: partidoMarcado = 8;break;
-                    default: partidoMarcado = 8;break;
+                    default: partidoMarcado = -1;break;
                 }
             }
         }
@@ -965,31 +989,48 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             if(nombre.equals("PARTIDO ANIMALISTA CONTRA EL MALTRATO ANIMAL")){
                 nombre = "PACMA";
             }
-                element = nombre + " (" + (myDataSet.getEntryForXIndex(i).getVal()) + "%)";
-                elements.add(element);
+            element = nombre + " (" + (myDataSet.getEntryForXIndex(i).getVal()) + "%)";
+            elements.add(element);
         }
         return elements.toArray(new String[elements.size()]);
     }
+public boolean isElectionDay() {
+    Date today = new Date();
 
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    Date electionsDate;
+    try {
+        electionsDate = sdf.parse(fechaElecciones);
+    } catch (Exception e) {
+        e.printStackTrace();
+        electionsDate = null;
+    }
 
-   /** public String [] createLegendLines(ChartData<?> mChartData){
+    int comparacion = today.compareTo(electionsDate);
+    boolean isElectionDay = false;
+    if (comparacion >= 0) isElectionDay = true;
 
-        //Datos de alias de partidos.
-        com.github.mikephil.charting.data.DataSet myDataSet = mChartData.getDataSetByLabel("",true);
+    return isElectionDay;
+}
 
-        String element = "";
-        List<String> elements = new ArrayList<String>(Arrays.asList(new String[] {}));
-        //Creamos cada string
-        for (int i = 0;i<myDataSet.getEntryCount(); i++){
-            String nombre =(String) myDataSet.getEntryForXIndex(i).getData();
-            Log.i("MyTag", nombre);
-            if(nombre.equals("PARTIDO ANIMALISTA CONTRA EL MALTRATO ANIMAL")){
-                nombre = "PACMA";
-            }
-            element = nombre + "     ";
-            elements.add(element);
-            System.out.println(element);
-        }
-        return elements.toArray(new String[elements.size()]);
-    }**/
+    /** public String [] createLegendLines(ChartData<?> mChartData){
+
+     //Datos de alias de partidos.
+     com.github.mikephil.charting.data.DataSet myDataSet = mChartData.getDataSetByLabel("",true);
+
+     String element = "";
+     List<String> elements = new ArrayList<String>(Arrays.asList(new String[] {}));
+     //Creamos cada string
+     for (int i = 0;i<myDataSet.getEntryCount(); i++){
+     String nombre =(String) myDataSet.getEntryForXIndex(i).getData();
+     Log.i("MyTag", nombre);
+     if(nombre.equals("PARTIDO ANIMALISTA CONTRA EL MALTRATO ANIMAL")){
+     nombre = "PACMA";
+     }
+     element = nombre + "     ";
+     elements.add(element);
+     System.out.println(element);
+     }
+     return elements.toArray(new String[elements.size()]);
+     }**/
 }

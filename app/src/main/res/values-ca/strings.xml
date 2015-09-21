@@ -41,6 +41,9 @@
     <string name="atras_creditos">Enrere</string>
     <string name="encuesta_ec">Enquetes El Confidencial</string>
     <string name="contacto">Contacte</string>
+    <string name="encuestagracias">Gràcies per participar-hi. Podeu veure els resultats a l´apartat d´estadístiques
+</string>
+    <string name="encuestaerror">Si us plau , marqui una casella per participar en l´enquesta</string>
 
     <string name="votar">Votar</string>
     <string name="ver_resultados">Veure resultats</string>

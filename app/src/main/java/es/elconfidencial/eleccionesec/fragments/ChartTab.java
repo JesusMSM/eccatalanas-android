@@ -101,11 +101,10 @@ public class ChartTab extends Fragment {
     int contadorAux=0;
     //[PSC,CUP,JUNTS,PP,UDC,CS,CSQEP,Otros,NSNC]
     private String[] partidosBarras ={"PSC","CUP","Junts Pel si","PP","UDC","Ciudadanos","Cat si que es pot","Otros","NS/NC"};
-    private String[] coloresBarras = {"#DF2927","#DFD717","#C7C7C7","#0077A7","#C7C7C7","#DF843D","#C7C7C7","#C7C7C7","#C7C7C7"};
+    private String[] coloresBarras = {"#DF2927","#DFD717","#38B7A4","#0077A7","#0033A9","#DF843D","#EE3173","#C7C7C7","#464646"};
     JSONArray jsonArrayVotaciones; //JSON que se descarga de Parse con las votaciones de los usuarios
 
     private String fechaElecciones = "27/09/2015";
-
 
     private String[] partidos2012 = {"CiU", "PSC", "PP", "ERC", "ICV", "Ciudadanos", "CUP", "Otros"};
     private double[] porcentajes2012 = {30.68,14.44,13,13.69,9.9,7.58,3.48,7.23};
@@ -372,7 +371,7 @@ public class ChartTab extends Fragment {
         int j = 0; //Posición del int del array que recibimos de Parse
         //Al pintarse el gráfico a la inversa, hacemos un bucle for con i descendiente
         for (int i = numPartidosCat-1; i >= 0; i--) {
-            nVotos.add(new BarEntry((float) valores[i], j));
+            nVotos.add(new BarEntry(valores[i], j));
             partidos.add(partidosBarras[i]);
             colores.add(Color.parseColor(colorNotNull(coloresBarras[i])));
             j++;
