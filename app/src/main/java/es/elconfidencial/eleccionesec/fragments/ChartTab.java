@@ -342,8 +342,10 @@ public class ChartTab extends Fragment {
         items.add(new LineChartItem(generateDataLine(), HomeActivity.context));
 
         //Grafico de votacion usuarios
-        items.add(new Title(getString(R.string.encuesta_ec)));
-        items.add(new HorizontalBarChartItem(generateDataBar(), HomeActivity.context));
+        if(haveNetworkConnection()) {
+            items.add(new Title(getString(R.string.encuesta_ec)));
+            items.add(new HorizontalBarChartItem(generateDataBar(), HomeActivity.context));
+        }
 
         mAdapter = new MyRecyclerViewAdapter(HomeActivity.context,items);
         mRecyclerView.setAdapter(mAdapter);

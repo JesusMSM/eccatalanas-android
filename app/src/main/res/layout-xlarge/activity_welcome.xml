@@ -81,10 +81,10 @@
             android:id="@+id/powered"
             android:textColor="@color/white"
             android:layout_centerVertical="true"
-            android:textSize="5pt"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:textSize="12pt"/>
+        <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:src="@drawable/huawei_horizontal"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/powered"/>

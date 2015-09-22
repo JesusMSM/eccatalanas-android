@@ -753,6 +753,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             xl.setDrawAxisLine(false);
             xl.setDrawGridLines(false);
             xl.setGridLineWidth(0.3f);
+            if (getSizeName(context).equals("xlarge")) {
+                xl.setTextSize(25f);
+            } else if (getSizeName(context).equals("large")) {
+                xl.setTextSize(14f);
+            } else if (getSizeName(context).equals("normal")) {
+                xl.setTextSize(11f);
+            }else {
+                xl.setTextSize(8f);
+            }
 
 
             YAxis yl = vh12.grafico.getAxisLeft();

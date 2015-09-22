@@ -349,16 +349,20 @@ public class HomeTab extends Fragment {
         }*/
 
 
-        SharedPreferences prefs = getActivity().getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-        String votado= prefs.getString("hasVoted", "false");
+        if(haveNetworkConnection()) {
+            SharedPreferences prefs = getActivity().getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+            String votado = prefs.getString("hasVoted", "false");
 
-        if(votado.equals("false")) {
-            //Título del grafico
-            items.add(new Title(getString(R.string.titulo_encuesta)));
+            if (votado.equals("false")) {
+                //Título del grafico
+                items.add(new Title(getString(R.string.titulo_encuesta)));
 
-            //Insertamos encuesta
-            items.add("encuesta");
+                //Insertamos encuesta
+                items.add("encuesta");
+            }
         }
+
+
 
         //Título del grafico
         items.add(new Title(getString(R.string.titulo_resultados_2012)));
