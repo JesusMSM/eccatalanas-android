@@ -109,30 +109,9 @@ public class HomeTab extends Fragment {
         mLayoutManager = new LinearLayoutManager(HomeActivity.context);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        downloadDataCharts();
 
-        //Parse url_2015
-        try {
-            Parse.enableLocalDatastore(getActivity());
-            //Autenticacion con Parse
-            Parse.initialize(getActivity(), "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //Comunicacion con Parse.com
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("URL");
-        query.whereEqualTo("Name", "prueba_url_2015");
-        query.getFirstInBackground(new GetCallback<ParseObject>() {
-            public void done(ParseObject object, ParseException e) {
-                if (e == null) {
-                    url_2015 = object.getString("Link");
-                    object.saveInBackground();
-                    downloadDataCharts();
 
-                } else {
-                    //something went wrong
-                }
-            }
-        });
 
         layout = (PullRefreshLayout) v.findViewById(R.id.swipeRefreshLayout);
 
@@ -170,14 +149,32 @@ public class HomeTab extends Fragment {
 
     public void downloadDataCharts(){
          //Cargamos datos de 2015 del grafico
+
+        //Parse url_2015
+        try {
+            Parse.enableLocalDatastore(getActivity());
+            //Autenticacion con Parse
+            Parse.initialize(getActivity(), "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //Comunicacion con Parse.com
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("URL");
+        query.whereEqualTo("Name", "prueba_url_2015");
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            public void done(ParseObject object, ParseException e) {
+                if (e == null) {
+                    url_2015 = object.getString("Link");
+                    object.saveInBackground();
+                } else {
+                    //something went wrong
+                }
+            }
+        });
+
          new JSONParse2015().execute();
 
     }
-
-
-
-
-
 
 
 

@@ -68,7 +68,8 @@
                 android:textSize="12pt"/>
             <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageView
                 android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/huawei_horizontal"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/powered"/>
