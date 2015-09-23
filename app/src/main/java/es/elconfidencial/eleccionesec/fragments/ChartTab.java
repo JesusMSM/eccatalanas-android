@@ -129,7 +129,31 @@ public class ChartTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.tab_chart, container, false);
 
+        //Parse url_2015
+        try {
+            Parse.enableLocalDatastore(getActivity());
+            //Autenticacion con Parse
+            Parse.initialize(getActivity(), "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //Comunicacion con Parse.com
+        ParseQuery<ParseObject> queryURL = ParseQuery.getQuery("URL");
+        queryURL.whereEqualTo("Name", "url_2015");
+        queryURL.getFirstInBackground(new GetCallback<ParseObject>() {
+            public void done(ParseObject object, ParseException e) {
+                if (e == null) {
+                    url_2015 = object.getString("Link");
+                    object.saveInBackground();
 
+
+                } else {
+                    //something went wrong
+                }
+            }
+        });
+
+        getVotacionesParse();
 
 
         //RecyclerView
@@ -147,6 +171,8 @@ public class ChartTab extends Fragment {
         layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+
+                getVotacionesParse();
                 downloadData();
 
             }
@@ -154,6 +180,27 @@ public class ChartTab extends Fragment {
 
 
         return v;
+    }
+
+    private void getVotacionesParse(){
+
+        //Comunicacion con Parse.com
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Partido");
+
+
+        query.whereEqualTo("Name", "Votaciones");
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            public void done(ParseObject object, ParseException e) {
+                if (e == null) {
+                    jsonArrayVotaciones = object.getJSONArray("Valores");
+                    Log.d("VOTACIONES", jsonArrayVotaciones.toString());
+                    object.saveInBackground();
+
+                } else {
+                    //something went wrong
+                }
+            }
+        });
     }
 
     private boolean haveNetworkConnection() {
@@ -174,55 +221,6 @@ public class ChartTab extends Fragment {
     }
 
     public void downloadData() {
-
-        //Parse url_2015
-        try {
-            Parse.enableLocalDatastore(getActivity());
-            //Autenticacion con Parse
-            Parse.initialize(getActivity(), "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //Comunicacion con Parse.com
-        ParseQuery<ParseObject> queryURL = ParseQuery.getQuery("URL");
-        queryURL.whereEqualTo("Name", "prueba_url_2015");
-        queryURL.getFirstInBackground(new GetCallback<ParseObject>() {
-            public void done(ParseObject object, ParseException e) {
-                if (e == null) {
-                    url_2015 = object.getString("Link");
-                    object.saveInBackground();
-
-
-                } else {
-                    //something went wrong
-                }
-            }
-        });
-        //Descargamos valores de Parse
-        try {
-            Parse.enableLocalDatastore(getActivity());
-            //Autenticacion con Parse
-            Parse.initialize(getActivity(), "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //Comunicacion con Parse.com
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Partido");
-
-
-        query.whereEqualTo("Name", "Votaciones");
-        query.getFirstInBackground(new GetCallback<ParseObject>() {
-            public void done(ParseObject object, ParseException e) {
-                if (e == null) {
-                    jsonArrayVotaciones = object.getJSONArray("Valores");
-                    Log.d("VOTACIONES", jsonArrayVotaciones.toString());
-                    object.saveInBackground();
-
-                } else {
-                    //something went wrong
-                }
-            }
-        });
 
          new JSONParse2015().execute();
 
