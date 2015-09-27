@@ -78,7 +78,7 @@ public class HomeTab extends Fragment {
 
 
     //CONSTANTES GRAFICOS
-    private static String url_2015="http://api.elconfidencial.com/service/elections/place/3/7/99/9/";
+    private static String url_2015="";
 
     private static final String TAG_DATA = "data";
     private static final String TAG_RESULTS = "results";

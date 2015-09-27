@@ -900,7 +900,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                         });
                         int pos = 2;
                         if(isElectionDay()){
-                            pos = 3;
+                            if(items.get(0) instanceof Mensaje){//Esperando datos de escrutinio
+                                pos = 2;
+                            }else{
+                                pos = 3;
+                            }
                         }
                         items.remove(pos);
                         notifyItemRemoved(pos);
