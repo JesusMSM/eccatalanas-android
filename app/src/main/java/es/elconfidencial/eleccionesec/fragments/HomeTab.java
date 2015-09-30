@@ -90,8 +90,9 @@ public class HomeTab extends Fragment {
     private static final String TAG_COLOR = "par_color";
     private static final String TAG_ELECTED_MEMBERS = "res_elected_members";
 
-    private int numPartidos2015;
-    private PartidoEstadisticas[] arrayPartidos2015;
+    private String[] partidos2015 = {"JxSí", "C's", "PSC", "CSQEP", "PP", "CUP", "Otros"};
+    private double[] porcentajes2015 = {39.54,17.92,12.73,8.94,8.5,8.21,3.63};
+    private String[] colores2015 = {"#38B7A4", "#DF843D","#DF2927" ,"#EE3173" ,"#0077A7" ,"#DFD717" ,"#C7C7C7" };
 
     private String[] partidos2012 = {"CiU", "PSC", "PP", "ERC", "ICV", "Ciudadanos", "CUP", "Otros"};
     private double[] porcentajes2012 = {30.68,14.44,13,13.69,9.9,7.58,3.48,7.23};
@@ -150,130 +151,14 @@ public class HomeTab extends Fragment {
     public void downloadDataCharts(){
          //Cargamos datos de 2015 del grafico
 
-        //Parse url_2015
-        try {
-            Parse.enableLocalDatastore(getActivity());
-            //Autenticacion con Parse
-            Parse.initialize(getActivity(), "7P82tODwUk7C6AZLyLSuKBvyjLZcdpNz80J6RT2Z", "3jhqLEIKUI7RknTCU8asoITvPC9PjHD5n2FDub4h");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //Comunicacion con Parse.com
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("URL");
-        query.whereEqualTo("Name", "prueba_url_2015");
-        query.getFirstInBackground(new GetCallback<ParseObject>() {
-            public void done(ParseObject object, ParseException e) {
-                if (e == null) {
-                    url_2015 = object.getString("Link");
-                    object.saveInBackground();
-                } else {
-                    //something went wrong
-                }
-            }
-        });
+        new CargarXmlTask().execute(rss_url);
 
-         new JSONParse2015().execute();
-
-    }
-
-
-
-    //------------------TAREA-------------BAJAR DATOS DE GRAFICOS---------------------------------
-
-    private class JSONParse2015 extends AsyncTask<String, String, JSONObject> {
-
-        private JSONObject data;
-        private JSONArray results;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-        }
-
-        @Override
-        protected JSONObject doInBackground(String... args) {
-            JSONParser jParser = new JSONParser();
-            JSONObject json;
-            try {
-                if(haveNetworkConnection()) {
-                    // Getting JSON from URL
-                    json = jParser.getJSONFromUrl(url_2015);
-                }else{
-                    json = null;
-                }
-            }catch (Exception e){
-                e.printStackTrace();
-                json = null;
-            }
-            return json;
-        }
-        @Override
-        protected void onPostExecute(JSONObject json) {
-            if (json != null) {
-                try {
-                    // Getting JSON Array
-                    data = json.getJSONObject(TAG_DATA);
-                    results = data.getJSONArray(TAG_RESULTS);
-                    numPartidos2015 = results.length();
-                    arrayPartidos2015 = new PartidoEstadisticas[numPartidos2015];
-
-                    for (int i = 0; i < numPartidos2015; i++) {
-
-                        PartidoEstadisticas partido = new PartidoEstadisticas();
-
-                        JSONObject jsonEstadisticas = results.getJSONObject(i); //Vamos cargando cada partido
-
-                        partido.setComunidadAutonoma(jsonEstadisticas.getString(TAG_COM_AUT));
-
-                        partido.setPorcentajeObtenido(jsonEstadisticas.getDouble(TAG_PORCENTAJE));
-
-                        JSONObject jsonPartido = jsonEstadisticas.getJSONObject(TAG_PARTIDO);
-                        partido.setNombre(jsonPartido.getString(TAG_NOMBRE));
-                        partido.setAlias(jsonPartido.getString(TAG_ALIAS));
-                        partido.setColor(jsonPartido.getString(TAG_COLOR));
-
-                        arrayPartidos2015[i] = partido;
-
-                    }
-                    if (layout != null) layout.setRefreshing(false);
-                    new CargarXmlTask().execute(rss_url); //Se han terminado de cargar gráficos, ahora empezamos a bajar las noticias
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            } else{
-                new CargarXmlTask().execute(rss_url); //Para que cargue las noticias aunque el json de graficos sea null
-                addItems();
-            }
-        }
     }
 
     private String colorNotNull(String color){
         if (color==null || color.equals("")) return "#9b9999";
         else return color;
     }
-
-    private ArrayList<String> getQuarters(String ano) {
-
-        ArrayList<String> q = new ArrayList<String>();
-
-        for (int i = 0; i < numPartidos2015; i++) {
-            if(arrayPartidos2015[i].getPorcentajeObtenido() >=3){
-                q.add(arrayPartidos2015[i].getAlias());
-            }else{//Otros
-                if(i == numPartidos2015-1){//Ultimo
-                    q.add("Otros");
-                }
-            }
-        }
-        return q;
-    }
-
-
-
-
 
 
 
@@ -310,42 +195,11 @@ public class HomeTab extends Fragment {
 
         if(items.size()>0) items.clear(); //Evitar duplicados
 
-        Date today = new Date();
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date electionsDate;
-        try {
-            electionsDate = sdf.parse(fechaElecciones);
-        }catch (Exception e){
-            e.printStackTrace();
-            electionsDate =null;
-        }
-
-        int comparacion = today.compareTo(electionsDate);
-        boolean isElectionDay = false;
-        if(comparacion>=0) isElectionDay = true;
-
-        if(isElectionDay){
-           if(numPartidos2015>0){
-               items.add(new Title(getString(R.string.titulo_resultados_2015)));
-               items.add(new PieChartItem(generateDataPie("2015"), HomeActivity.context));
-           }else{
-               items.add(new Mensaje(getString(R.string.alerta_espera_datos)));
-           }
-        }else{
-            items.add("contador");
-        }
-       /* //Primero insertamos el contador
-        if(numPartidos2015<=0 || !isElectionDay) items.add("contador");
-        if (numPartidos2015<=0 && isElectionDay){
-            items.add(new Mensaje(getString(R.string.alerta_conexion_noticias)));
-        }
-        if(numPartidos2015>0){
-            items.add(new Title(getString(R.string.titulo_resultados_2015)));
-            items.add(new PieChartItem(generateDataPie("2015"), HomeActivity.context));
-        }*/
+        items.add(new Title(getString(R.string.titulo_resultados_2015)));
+        items.add(new PieChartItem(cargarDatos2015(), HomeActivity.context));
 
 
+/*
         if(haveNetworkConnection()) {
             SharedPreferences prefs = getActivity().getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
             String votado = prefs.getString("hasVoted", "false");
@@ -357,7 +211,7 @@ public class HomeTab extends Fragment {
                 //Insertamos encuesta
                 items.add("encuesta");
             }
-        }
+        }*/
 
 
 
@@ -492,35 +346,34 @@ public class HomeTab extends Fragment {
 
     }
 
-    private PieData generateDataPie(String ano) {
-            float porcentajeOtros = 0;
-            ArrayList<Entry> entries = new ArrayList<>();
-            //int[] colores = new int[numPartidos2015]; //OJOOOOOOOOOO HAY QUE BORRAR EL -6, es para que aparezcan menos
-            List<Integer> coloresList = new ArrayList<>();
+    private PieData cargarDatos2015 (){
 
-            for (int i = 0; i < numPartidos2015; i++) {
-                float porcentaje = arrayPartidos2015[i].getPorcentajeObtenido().floatValue();
-                if(porcentaje>=3){
-                    entries.add(new Entry(porcentaje, i));
-                    coloresList.add(Color.parseColor(colorNotNull(arrayPartidos2015[i].getColor())));
-                }else{//Otros
-                    porcentajeOtros += porcentaje;
-                    if (i == numPartidos2015-1){//Ultimo elemento
-                        entries.add(new Entry(porcentajeOtros, i));
-                        coloresList.add(Color.parseColor(colorNotNull("#c7c7c7")));
-                    }
-                }
-            }
+        ArrayList<Entry> entries = new ArrayList<>();
 
-            PieDataSet d = new PieDataSet(entries, "");
+        int[] colores = new int[partidos2015.length];
+        for (int i = 0; i < partidos2015.length; i++) {
+            int porcentaje = (int)porcentajes2015[i];
+            entries.add(new Entry(porcentaje, i));
+            colores[i] = Color.parseColor(colorNotNull(colores2015[i]));
+        }
 
-            // space between slices
-            d.setSliceSpace(0.5f);
-            d.setColors(coloresList);
-            d.setValueTextColor(Color.BLACK);
+        PieDataSet d = new PieDataSet(entries, "");
 
-            PieData cd = new PieData(getQuarters("2015"), d);
-            return cd;
+        // space between slices
+        d.setSliceSpace(0.5f);
+        d.setColors(colores);
+        d.setValueTextColor(Color.BLACK);
+
+        ArrayList<String> q = new ArrayList<String>();
+
+        for(int i=0; i<partidos2015.length; i++){
+            q.add(partidos2015[i]);
+        }
+
+        PieData cd = new PieData(q, d);
+        return cd;
+
+
     }
 
 

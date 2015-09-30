@@ -1,5 +1,6 @@
 package es.elconfidencial.eleccionesec.activities;
 
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,11 +12,17 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.parse.GetCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.pushwoosh.BasePushMessageReceiver;
 import com.pushwoosh.BaseRegistrationReceiver;
 import com.pushwoosh.PushManager;
@@ -25,6 +32,8 @@ import es.elconfidencial.eleccionesec.adapters.ViewPagerAdapter;
 import es.elconfidencial.eleccionesec.slidingtabfiles.SlidingTabLayout;
 
 import com.comscore.analytics.comScore;
+
+import org.json.JSONArray;
 
 
 public class HomeActivity extends ActionBarActivity {
@@ -37,7 +46,7 @@ public class HomeActivity extends ActionBarActivity {
     SlidingTabLayout tabs;
     int numbOfTabs =5;
     CharSequence[] Titles = new CharSequence[numbOfTabs];
-
+    public static JSONArray jsonArrayVotaciones; //JSON que se descarga de Parse con las votaciones de los usuarios
 
 
     @Override
