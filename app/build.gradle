@@ -39,7 +39,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.android.support:cardview-v7:21.0.+'
     compile 'com.android.support:recyclerview-v7:21.0.+'
-    compile 'com.afollestad:material-dialogs:0.7.6.0'
+    compile 'com.github.afollestad:material-dialogs:0.8.1.0'
     compile 'com.jenzz:materialpreference:1.3'
     compile 'com.pushwoosh:pushwoosh:+'
     compile 'com.parse.bolts:bolts-android:1.+'

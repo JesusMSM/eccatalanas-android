@@ -3,6 +3,7 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url "https://jitpack.io" }
         mavenCentral()  // GPUImage for Android
     }
     dependencies {
@@ -17,6 +18,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url "https://jitpack.io" }
         mavenCentral()
     }
 }
